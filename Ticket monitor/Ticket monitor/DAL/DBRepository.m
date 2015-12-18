@@ -23,7 +23,7 @@
    self.DB = [FMDatabase databaseWithPath:dbPath];
    
     	
-        
+//wwhwh
         return self;
     }
     else
