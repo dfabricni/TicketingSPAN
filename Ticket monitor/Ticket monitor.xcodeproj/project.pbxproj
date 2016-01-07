@@ -79,11 +79,20 @@
 		C39C61221C242547002EE4C2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C611B1C242546002EE4C2 /* FMDatabaseQueue.m */; };
 		C39C61231C242547002EE4C2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C611E1C242546002EE4C2 /* FMResultSet.m */; };
 		C39C61261C2425AA002EE4C2 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C39C61251C2425AA002EE4C2 /* libsqlite3.0.tbd */; };
-		C39C612C1C2426B6002EE4C2 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C612B1C2426B6002EE4C2 /* Company.m */; };
-		C39C61371C242E5D002EE4C2 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61341C242E5D002EE4C2 /* Service.m */; };
-		C39C61381C242E5D002EE4C2 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61361C242E5D002EE4C2 /* Subject.m */; };
 		C39C613B1C242F5C002EE4C2 /* DBRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C613A1C242F5C002EE4C2 /* DBRepository.m */; };
 		C39C613F1C2439B7002EE4C2 /* SLFDB.rdb in Resources */ = {isa = PBXBuildFile; fileRef = C39C613E1C2439B7002EE4C2 /* SLFDB.rdb */; };
+		C39C61551C3E65FF002EE4C2 /* SLFService.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C614E1C3E65FF002EE4C2 /* SLFService.m */; };
+		C39C61571C3E65FF002EE4C2 /* SLFSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61521C3E65FF002EE4C2 /* SLFSubject.m */; };
+		C39C61581C3E65FF002EE4C2 /* SLFSubjectsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61541C3E65FF002EE4C2 /* SLFSubjectsResponse.m */; };
+		C39C615D1C3E6757002EE4C2 /* SLFCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C615A1C3E6757002EE4C2 /* SLFCompany.m */; };
+		C39C615E1C3E6757002EE4C2 /* SLFCompaniesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C615C1C3E6757002EE4C2 /* SLFCompaniesResponse.m */; };
+		C39C61611C3E6AFB002EE4C2 /* SLFServicesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61601C3E6AFB002EE4C2 /* SLFServicesResponse.m */; };
+		C39C61681C3E6DB0002EE4C2 /* SLFGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61631C3E6DB0002EE4C2 /* SLFGroup.m */; };
+		C39C61691C3E6DB0002EE4C2 /* SLFSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61651C3E6DB0002EE4C2 /* SLFSubscription.m */; };
+		C39C616A1C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61671C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m */; };
+		C39C616D1C3E6FDD002EE4C2 /* SLFDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C616C1C3E6FDD002EE4C2 /* SLFDevice.m */; };
+		C39C61701C3E731E002EE4C2 /* SLFTicketDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C616F1C3E731E002EE4C2 /* SLFTicketDetail.m */; };
+		C39C61731C3E7775002EE4C2 /* SLFRuleType.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61721C3E7775002EE4C2 /* SLFRuleType.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,15 +264,34 @@
 		C39C611D1C242546002EE4C2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = fmdb/FMResultSet.h; sourceTree = "<group>"; };
 		C39C611E1C242546002EE4C2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = fmdb/FMResultSet.m; sourceTree = "<group>"; };
 		C39C61251C2425AA002EE4C2 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		C39C612A1C2426B6002EE4C2 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Company.h; path = Entities/Company.h; sourceTree = "<group>"; };
-		C39C612B1C2426B6002EE4C2 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Company.m; path = Entities/Company.m; sourceTree = "<group>"; };
-		C39C61331C242E5D002EE4C2 /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Service.h; path = Entities/Service.h; sourceTree = "<group>"; };
-		C39C61341C242E5D002EE4C2 /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Service.m; path = Entities/Service.m; sourceTree = "<group>"; };
-		C39C61351C242E5D002EE4C2 /* Subject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Subject.h; path = Entities/Subject.h; sourceTree = "<group>"; };
-		C39C61361C242E5D002EE4C2 /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subject.m; path = Entities/Subject.m; sourceTree = "<group>"; };
 		C39C61391C242F5C002EE4C2 /* DBRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBRepository.h; path = DAL/DBRepository.h; sourceTree = "<group>"; };
 		C39C613A1C242F5C002EE4C2 /* DBRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBRepository.m; path = DAL/DBRepository.m; sourceTree = "<group>"; };
 		C39C613E1C2439B7002EE4C2 /* SLFDB.rdb */ = {isa = PBXFileReference; lastKnownFileType = file; name = SLFDB.rdb; path = "Ticket monitor/SLFDB.rdb"; sourceTree = "<group>"; };
+		C39C61401C3E6461002EE4C2 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataModels.h; path = Entities/DataModels.h; sourceTree = "<group>"; };
+		C39C614D1C3E65FF002EE4C2 /* SLFService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFService.h; path = Entities/SLFService.h; sourceTree = "<group>"; };
+		C39C614E1C3E65FF002EE4C2 /* SLFService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFService.m; path = Entities/SLFService.m; sourceTree = "<group>"; };
+		C39C61511C3E65FF002EE4C2 /* SLFSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFSubject.h; path = Entities/SLFSubject.h; sourceTree = "<group>"; };
+		C39C61521C3E65FF002EE4C2 /* SLFSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFSubject.m; path = Entities/SLFSubject.m; sourceTree = "<group>"; };
+		C39C61531C3E65FF002EE4C2 /* SLFSubjectsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFSubjectsResponse.h; path = Entities/SLFSubjectsResponse.h; sourceTree = "<group>"; };
+		C39C61541C3E65FF002EE4C2 /* SLFSubjectsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFSubjectsResponse.m; path = Entities/SLFSubjectsResponse.m; sourceTree = "<group>"; };
+		C39C61591C3E6757002EE4C2 /* SLFCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFCompany.h; path = Entities/SLFCompany.h; sourceTree = "<group>"; };
+		C39C615A1C3E6757002EE4C2 /* SLFCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFCompany.m; path = Entities/SLFCompany.m; sourceTree = "<group>"; };
+		C39C615B1C3E6757002EE4C2 /* SLFCompaniesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFCompaniesResponse.h; path = Entities/SLFCompaniesResponse.h; sourceTree = "<group>"; };
+		C39C615C1C3E6757002EE4C2 /* SLFCompaniesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFCompaniesResponse.m; path = Entities/SLFCompaniesResponse.m; sourceTree = "<group>"; };
+		C39C615F1C3E6AFB002EE4C2 /* SLFServicesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFServicesResponse.h; path = Entities/SLFServicesResponse.h; sourceTree = "<group>"; };
+		C39C61601C3E6AFB002EE4C2 /* SLFServicesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFServicesResponse.m; path = Entities/SLFServicesResponse.m; sourceTree = "<group>"; };
+		C39C61621C3E6DB0002EE4C2 /* SLFGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFGroup.h; path = Entities/SLFGroup.h; sourceTree = "<group>"; };
+		C39C61631C3E6DB0002EE4C2 /* SLFGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFGroup.m; path = Entities/SLFGroup.m; sourceTree = "<group>"; };
+		C39C61641C3E6DB0002EE4C2 /* SLFSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFSubscription.h; path = Entities/SLFSubscription.h; sourceTree = "<group>"; };
+		C39C61651C3E6DB0002EE4C2 /* SLFSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFSubscription.m; path = Entities/SLFSubscription.m; sourceTree = "<group>"; };
+		C39C61661C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFSubscriptionsResponse.h; path = Entities/SLFSubscriptionsResponse.h; sourceTree = "<group>"; };
+		C39C61671C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFSubscriptionsResponse.m; path = Entities/SLFSubscriptionsResponse.m; sourceTree = "<group>"; };
+		C39C616B1C3E6FDD002EE4C2 /* SLFDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFDevice.h; path = Entities/SLFDevice.h; sourceTree = "<group>"; };
+		C39C616C1C3E6FDD002EE4C2 /* SLFDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFDevice.m; path = Entities/SLFDevice.m; sourceTree = "<group>"; };
+		C39C616E1C3E731E002EE4C2 /* SLFTicketDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFTicketDetail.h; path = Entities/SLFTicketDetail.h; sourceTree = "<group>"; };
+		C39C616F1C3E731E002EE4C2 /* SLFTicketDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFTicketDetail.m; path = Entities/SLFTicketDetail.m; sourceTree = "<group>"; };
+		C39C61711C3E7775002EE4C2 /* SLFRuleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFRuleType.h; path = Entities/SLFRuleType.h; sourceTree = "<group>"; };
+		C39C61721C3E7775002EE4C2 /* SLFRuleType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFRuleType.m; path = Entities/SLFRuleType.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -553,12 +581,31 @@
 		C39C61291C24266F002EE4C2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				C39C61331C242E5D002EE4C2 /* Service.h */,
-				C39C61341C242E5D002EE4C2 /* Service.m */,
-				C39C61351C242E5D002EE4C2 /* Subject.h */,
-				C39C61361C242E5D002EE4C2 /* Subject.m */,
-				C39C612A1C2426B6002EE4C2 /* Company.h */,
-				C39C612B1C2426B6002EE4C2 /* Company.m */,
+				C39C616E1C3E731E002EE4C2 /* SLFTicketDetail.h */,
+				C39C616F1C3E731E002EE4C2 /* SLFTicketDetail.m */,
+				C39C616B1C3E6FDD002EE4C2 /* SLFDevice.h */,
+				C39C616C1C3E6FDD002EE4C2 /* SLFDevice.m */,
+				C39C61621C3E6DB0002EE4C2 /* SLFGroup.h */,
+				C39C61631C3E6DB0002EE4C2 /* SLFGroup.m */,
+				C39C61641C3E6DB0002EE4C2 /* SLFSubscription.h */,
+				C39C61651C3E6DB0002EE4C2 /* SLFSubscription.m */,
+				C39C61661C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.h */,
+				C39C61671C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m */,
+				C39C615F1C3E6AFB002EE4C2 /* SLFServicesResponse.h */,
+				C39C61601C3E6AFB002EE4C2 /* SLFServicesResponse.m */,
+				C39C61591C3E6757002EE4C2 /* SLFCompany.h */,
+				C39C615A1C3E6757002EE4C2 /* SLFCompany.m */,
+				C39C615B1C3E6757002EE4C2 /* SLFCompaniesResponse.h */,
+				C39C615C1C3E6757002EE4C2 /* SLFCompaniesResponse.m */,
+				C39C614D1C3E65FF002EE4C2 /* SLFService.h */,
+				C39C614E1C3E65FF002EE4C2 /* SLFService.m */,
+				C39C61511C3E65FF002EE4C2 /* SLFSubject.h */,
+				C39C61521C3E65FF002EE4C2 /* SLFSubject.m */,
+				C39C61531C3E65FF002EE4C2 /* SLFSubjectsResponse.h */,
+				C39C61541C3E65FF002EE4C2 /* SLFSubjectsResponse.m */,
+				C39C61401C3E6461002EE4C2 /* DataModels.h */,
+				C39C61711C3E7775002EE4C2 /* SLFRuleType.h */,
+				C39C61721C3E7775002EE4C2 /* SLFRuleType.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -704,8 +751,12 @@
 				BCCF6BB51C09029B001F0EAD /* ADPkeyAuthHelper.m in Sources */,
 				BCCF6A471C08F513001F0EAD /* UIButton+AFNetworking.m in Sources */,
 				BCCF6BB01C09029B001F0EAD /* ADKeyChainHelper.m in Sources */,
+				C39C61581C3E65FF002EE4C2 /* SLFSubjectsResponse.m in Sources */,
 				BCCF6BB91C09029B001F0EAD /* ADTokenCacheValue.m in Sources */,
+				C39C616A1C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m in Sources */,
+				C39C61701C3E731E002EE4C2 /* SLFTicketDetail.m in Sources */,
 				BCCF6BBB1C09029B001F0EAD /* ADUserInformation.m in Sources */,
+				C39C61551C3E65FF002EE4C2 /* SLFService.m in Sources */,
 				BCCF6A4A1C08F513001F0EAD /* UIRefreshControl+AFNetworking.m in Sources */,
 				BCCF6BAE1C09029B001F0EAD /* ADHelpers.m in Sources */,
 				BCCF6BBC1C09029B001F0EAD /* ADWebRequest.m in Sources */,
@@ -715,7 +766,6 @@
 				BCCF6BB41C09029B001F0EAD /* ADOAuth2Constants.m in Sources */,
 				BCCF6BB71C09029B001F0EAD /* ADTokenCacheStoreItem.m in Sources */,
 				BCCF6A461C08F513001F0EAD /* UIAlertView+AFNetworking.m in Sources */,
-				C39C61381C242E5D002EE4C2 /* Subject.m in Sources */,
 				BCCF6BBE1C09029B001F0EAD /* ADWorkPlaceJoin.m in Sources */,
 				BCCF697C1C08F1AC001F0EAD /* SecondViewController.m in Sources */,
 				BCCF6A2C1C08F4D3001F0EAD /* AFSecurityPolicy.m in Sources */,
@@ -724,6 +774,9 @@
 				BCCF6BC21C09029B001F0EAD /* NSURL+ADExtensions.m in Sources */,
 				BCCF69761C08F1AC001F0EAD /* AppDelegate.m in Sources */,
 				BCCF6BC11C09029B001F0EAD /* NSString+ADHelperMethods.m in Sources */,
+				C39C61611C3E6AFB002EE4C2 /* SLFServicesResponse.m in Sources */,
+				C39C61681C3E6DB0002EE4C2 /* SLFGroup.m in Sources */,
+				C39C61571C3E65FF002EE4C2 /* SLFSubject.m in Sources */,
 				BCCF6BA51C09029A001F0EAD /* ADAuthenticationOperation.m in Sources */,
 				BCCF6BA11C09029A001F0EAD /* ADALiOS.m in Sources */,
 				BCCF6A291C08F4D3001F0EAD /* AFHTTPRequestOperationManager.m in Sources */,
@@ -731,18 +784,21 @@
 				BCCF6BC31C09029B001F0EAD /* UIAlertView+Additions.m in Sources */,
 				BCCF6BBD1C09029B001F0EAD /* ADWebResponse.m in Sources */,
 				BCCF6A2D1C08F4D3001F0EAD /* AFURLConnectionOperation.m in Sources */,
+				C39C615E1C3E6757002EE4C2 /* SLFCompaniesResponse.m in Sources */,
 				BCCF6A481C08F513001F0EAD /* UIImageView+AFNetworking.m in Sources */,
-				C39C612C1C2426B6002EE4C2 /* Company.m in Sources */,
 				BCCF6A281C08F4D3001F0EAD /* AFHTTPRequestOperation.m in Sources */,
 				BCCF6A451C08F513001F0EAD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				BCCF69791C08F1AC001F0EAD /* FirstViewController.m in Sources */,
 				C39C61221C242547002EE4C2 /* FMDatabaseQueue.m in Sources */,
 				C39C61211C242547002EE4C2 /* FMDatabasePool.m in Sources */,
+				C39C61731C3E7775002EE4C2 /* SLFRuleType.m in Sources */,
 				C39C611F1C242546002EE4C2 /* FMDatabase.m in Sources */,
 				BCCF6A2E1C08F4D3001F0EAD /* AFURLRequestSerialization.m in Sources */,
 				BCCF6A2A1C08F4D3001F0EAD /* AFHTTPSessionManager.m in Sources */,
 				C39C61231C242547002EE4C2 /* FMResultSet.m in Sources */,
+				C39C615D1C3E6757002EE4C2 /* SLFCompany.m in Sources */,
 				BCCF6BAD1C09029B001F0EAD /* ADClientMetrics.m in Sources */,
+				C39C616D1C3E6FDD002EE4C2 /* SLFDevice.m in Sources */,
 				BCCF6BBA1C09029B001F0EAD /* ADURLProtocol.m in Sources */,
 				BCCF6BB11C09029B001F0EAD /* ADKeychainTokenCacheStore.m in Sources */,
 				BCCF6A2B1C08F4D3001F0EAD /* AFNetworkReachabilityManager.m in Sources */,
@@ -751,7 +807,6 @@
 				BCCF6A2F1C08F4D3001F0EAD /* AFURLResponseSerialization.m in Sources */,
 				BCCF6A4B1C08F513001F0EAD /* UIWebView+AFNetworking.m in Sources */,
 				BCCF6BBF1C09029B001F0EAD /* ADWorkPlaceJoinUtil.m in Sources */,
-				C39C61371C242E5D002EE4C2 /* Service.m in Sources */,
 				BCCF6BB21C09029B001F0EAD /* ADLogger.m in Sources */,
 				BCCF6BA21C09029A001F0EAD /* ADAuthenticationBroker.m in Sources */,
 				C39C61201C242547002EE4C2 /* FMDatabaseAdditions.m in Sources */,
@@ -761,6 +816,7 @@
 				BCCF6BA91C09029A001F0EAD /* ADAuthenticationResult.m in Sources */,
 				BCCF6A441C08F513001F0EAD /* AFNetworkActivityIndicatorManager.m in Sources */,
 				BCCF6BAB1C09029B001F0EAD /* ADAuthenticationViewController.m in Sources */,
+				C39C61691C3E6DB0002EE4C2 /* SLFSubscription.m in Sources */,
 				BCCF69731C08F1AC001F0EAD /* main.m in Sources */,
 				C39C613B1C242F5C002EE4C2 /* DBRepository.m in Sources */,
 			);

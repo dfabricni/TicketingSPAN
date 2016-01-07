@@ -9,7 +9,7 @@
 #import "DBRepository.h"
 #import "FMDatabase.h"
 #import <Foundation/Foundation.h>
-#import "Company.h"
+#import "SLFCompany.h"
 
 @implementation DBRepository
 
@@ -23,7 +23,7 @@
    self.DB = [FMDatabase databaseWithPath:dbPath];
    
     	
-//wwhwh
+//wwß
         return self;
     }
     else
@@ -39,7 +39,7 @@
     
     FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Company"];
     while ([s next]) {
-        Company * company = [[Company alloc] init];
+        SLFCompany * company = [[SLFCompany alloc] init];
         
         company.ID = [s intForColumn:@"ID"];
         company.name = [s stringForColumn:@"Name"];
