@@ -9,7 +9,7 @@
 #import "DBRepository.h"
 #import "FMDatabase.h"
 #import <Foundation/Foundation.h>
-#import "SLFCompany.h"
+#import "DataModels.h"
 
 @implementation DBRepository
 
@@ -31,30 +31,6 @@
     
 }
 
--(NSMutableArray *) getAllCompanies
-{
-    NSMutableArray *items = [[NSMutableArray alloc] init];
-    
-    [self.DB open];
-    
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Company"];
-    while ([s next]) {
-        SLFCompany * company = [[SLFCompany alloc] init];
-        
-        company.ID = [s intForColumn:@"ID"];
-        company.name = [s stringForColumn:@"Name"];
-        
-        [items addObject:company];
-    }
-    
-    [s close];
-    
-    
-    [self.DB close];
-    
-    return items;
-
-}
 
 
 +(void) prepareSqlLiteFile
@@ -95,4 +71,151 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 
     
 }
+
+
+
+
+-(NSMutableArray *) getAllCompanies
+{
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Company"];
+    while ([s next]) {
+        SLFCompany * company = [[SLFCompany alloc] init];
+        
+        company.ID = [s intForColumn:@"ID"];
+        company.name = [s stringForColumn:@"Name"];
+        
+        [items addObject:company];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
+    
+}
+
+
+
+
+-(NSMutableArray *) getAllSubjects
+{
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Subject"];
+    while ([s next]) {
+        SLFSubject * subject = [[SLFSubject alloc] init];
+        
+        subject.ID = [s intForColumn:@"ID"];
+        subject.name = [s stringForColumn:@"Name"];
+        
+        [items addObject:subject];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
+    
+}
+
+-(NSMutableArray *) getAllServices
+{
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Service"];
+    while ([s next]) {
+        SLFService * service = [[SLFService alloc] init];
+        
+        service.ID = [s intForColumn:@"ID"];
+        service.name = [s stringForColumn:@"Name"];
+        
+        [items addObject:service];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
+    
+}
+
+
+
+-(NSMutableArray *) getAllRuleTypes
+{
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM RuleType where Active = 1"];
+    while ([s next]) {
+        SLFRuleType * ruleType = [[SLFRuleType alloc] init];
+        
+        ruleType.ID = [s intForColumn:@"ID"];
+        ruleType.name = [s stringForColumn:@"Name"];
+        ruleType.code = [s stringForColumn:@"Code"];
+        
+        [items addObject:ruleType];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
+    
+}
+
+-(SLFSettings *) getSettings{
+    
+     SLFSettings * settings = [[SLFSettings alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Settings limit 1"];
+    while ([s next]) {
+        
+        settings.ServicesTimestamp = [s doubleForColumn:@"ServicesTimestamp"];
+        settings.CompaniesTimestamp= [s doubleForColumn:@"CompaniesTimestamp"];
+        settings.SubjectsTimestamp = [s doubleForColumn:@"SubjectsTimestamp"];
+       
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return settings;
+    
+}
+
+-(void) saveSettings:(SLFSettings*) setting{
+   
+    [self.DB open];
+    
+    [self.DB executeUpdate:@"update settings set ServicesTimestamp = ? , SubjectsTimestamp = ? , CompaniesTimestamp = ?" , [NSNumber numberWithDouble:setting.ServicesTimestamp ], [NSNumber numberWithDouble:setting.SubjectsTimestamp ],[NSNumber numberWithDouble:setting.CompaniesTimestamp ],nil];
+    
+    [self.DB close];
+    
+}
+
+
+
+
 @end

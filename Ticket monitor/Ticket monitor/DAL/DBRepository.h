@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
+#import "DataModels.h"
 
 
 @interface DBRepository : NSObject
@@ -19,6 +20,17 @@
 
 
 -(NSMutableArray *) getAllCompanies;
+
+-(NSMutableArray *) getAllSubjects;
+
+-(NSMutableArray *) getAllServices;
+
+-(NSMutableArray *) getAllRuleTypes;
+
+-(void) saveSettings:(SLFSettings*) settings;
+
+-(SLFSettings *) getSettings;
+
 
 
 +(void) prepareSqlLiteFile;

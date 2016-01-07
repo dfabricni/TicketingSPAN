@@ -5,4 +5,11 @@
 //  Copyright (c) 2016 __MyCompanyName__. All rights reserved.
 //
 
-#import "SLFTicketDetail.h"
+#import "SLFTicketDetail.h"
+
+
+#import "SLFCompany.h"
+#import "SLFService.h"
+#import "SLFSubject.h"
+#import "SLFRuleType.h"
+#import "SLFSettings.h"
