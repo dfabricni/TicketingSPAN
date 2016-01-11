@@ -13,3 +13,5 @@
 #import "SLFSubject.h"
 #import "SLFRuleType.h"
 #import "SLFSettings.h"
+#import "SLFGroup.h"
+#import "SLFSubscription.h"

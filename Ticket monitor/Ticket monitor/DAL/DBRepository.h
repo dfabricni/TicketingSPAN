@@ -32,8 +32,18 @@
 -(SLFSettings *) getSettings;
 
 
-
 +(void) prepareSqlLiteFile;
+
+
+-(NSMutableArray *) getAllGroups;
+
+-(NSMutableArray *) getAllSubscriptionsForGroup:(NSString*) groupId;
+
+-(void) saveGroup:(SLFGroup*) group;
+
+-(void) saveSubscription:(SLFSubscription*) subscription;
+
+
 
 
 @end

@@ -216,6 +216,91 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 }
 
 
+-(NSMutableArray *) getAllGroups{
+    
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM SubscriptionGroup where Active = 1"];
+    while ([s next]) {
+        SLFGroup * group = [[SLFGroup alloc] init];
+        
+        group.iDProperty = [s stringForColumn:@"ID"];
+        group.name = [s stringForColumn:@"Name"];
+        group.groupOperation = [s stringForColumn:@"GroupOperation"];
+        group.active = [s boolForColumn:@"Active"];
+        
+        [items addObject:group];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
+}
+
+-(NSMutableArray *) getAllSubscriptionsForGroup:(NSString*) groupId{
+
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Subscription	 where Active = 1 and SubscriptionGroupID = ?", groupId];
+    while ([s next]) {
+        SLFSubscription * subscription = [[SLFSubscription alloc] init];
+        
+        subscription.iDProperty = [s stringForColumn:@"ID"];
+        subscription.subscriptionGroupID = [s stringForColumn:@"SubscriptionGroupID"];
+        subscription.ruleTypeID = [s doubleForColumn:@"RuleTypeID"];
+        subscription.lastCheckPoint = [s stringForColumn:@"LastCheckPoint"];
+        subscription.value = [s stringForColumn:@"Value"];
+        subscription.valueDisplayText = [s stringForColumn:@"ValueDisplayText"];
+        subscription.active = [s boolForColumn:@"Active"];
+        
+        [items addObject:subscription];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
+}
+
+
+-(void) saveGroup:(SLFGroup*) group{
+    
+    
+    [self.DB open];
+    
+    [self.DB executeUpdate:@"update SubscriptionGroup set Name = ? , GroupOperation = ? , Active = ?, SyncStatus = 0 where ID = ? 	" , group.name , group.groupOperation, group.active, group.iDProperty,nil];
+    
+    // jsut in case then make insert
+    
+    [self.DB executeUpdate:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values(?,?,?,?,?)", group.iDProperty, group.name,group.groupOperation,1,0];
+    
+    [self.DB close];
+    
+}
+
+-(void) saveSubscription:(SLFSubscription*) subscription
+{
+
+    [self.DB open];
+    
+    [self.DB executeUpdate:@"update Subscription set SubscriptionGroupID = ? , RuleTypeID = ? , LastCheckPoint = ?, Value=?, ValueDisplayText = ? , Active = ?, SyncStatus = 0 where ID = ? 	" , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active, subscription.iDProperty ,nil];
+    
+    // jsut in case then make insert
+    
+    [self.DB executeUpdate:@"insert or ignore into Subscription(ID,SubscriptionGroupID,RuleTypeID,LastCheckPoint,Value,ValueDisplayText ,Active,SyncStatus) values(?,?,?,?,?,?,?,?)", subscription.iDProperty, subscription.subscriptionGroupID,subscription.ruleTypeID,subscription.lastCheckPoint,subscription.value,subscription.valueDisplayText ,1,0];
+    
+    [self.DB close];
+    
+}
 
 
 @end

@@ -11,16 +11,16 @@
 
 @interface SLFTicketDetail : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, assign) id note;
-@property (nonatomic, assign) double detailID;
-@property (nonatomic, assign) double subject;
+@property (nonatomic, strong) NSString * note;
+@property (nonatomic, assign) int detailID;
+@property (nonatomic, assign) int subject;
 @property (nonatomic, strong) NSString *actionDesc;
-@property (nonatomic, assign) double sEQPRIORITY;
+@property (nonatomic, assign) int sEQPRIORITY;
 @property (nonatomic, strong) NSString *pDATE;
-@property (nonatomic, assign) double ticketID;
+@property (nonatomic, assign) int ticketID;
 @property (nonatomic, strong) NSString *ticketDesc;
-@property (nonatomic, assign) id sEQSERVICE;
-@property (nonatomic, assign) double cOMPANY;
+@property (nonatomic, assign) int sEQSERVICE;
+@property (nonatomic, assign) int cOMPANY;
 @property (nonatomic, strong) NSString *detailDesc;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

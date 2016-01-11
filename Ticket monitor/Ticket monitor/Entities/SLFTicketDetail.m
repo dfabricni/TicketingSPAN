@@ -55,15 +55,15 @@ NSString *const kSLFTicketDetailDetailDesc = @"DetailDesc";
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.note = [self objectOrNilForKey:kSLFTicketDetailNote fromDictionary:dict];
-            self.detailID = [[self objectOrNilForKey:kSLFTicketDetailDetailID fromDictionary:dict] doubleValue];
-            self.subject = [[self objectOrNilForKey:kSLFTicketDetailSubject fromDictionary:dict] doubleValue];
+            self.detailID = [[self objectOrNilForKey:kSLFTicketDetailDetailID fromDictionary:dict] intValue];
+            self.subject = [[self objectOrNilForKey:kSLFTicketDetailSubject fromDictionary:dict] intValue];
             self.actionDesc = [self objectOrNilForKey:kSLFTicketDetailActionDesc fromDictionary:dict];
-            self.sEQPRIORITY = [[self objectOrNilForKey:kSLFTicketDetailSEQPRIORITY fromDictionary:dict] doubleValue];
+            self.sEQPRIORITY = [[self objectOrNilForKey:kSLFTicketDetailSEQPRIORITY fromDictionary:dict] intValue];
             self.pDATE = [self objectOrNilForKey:kSLFTicketDetailPDATE fromDictionary:dict];
-            self.ticketID = [[self objectOrNilForKey:kSLFTicketDetailTicketID fromDictionary:dict] doubleValue];
+            self.ticketID = [[self objectOrNilForKey:kSLFTicketDetailTicketID fromDictionary:dict] intValue];
             self.ticketDesc = [self objectOrNilForKey:kSLFTicketDetailTicketDesc fromDictionary:dict];
-            self.sEQSERVICE = [self objectOrNilForKey:kSLFTicketDetailSEQSERVICE fromDictionary:dict];
-            self.cOMPANY = [[self objectOrNilForKey:kSLFTicketDetailCOMPANY fromDictionary:dict] doubleValue];
+            self.sEQSERVICE = [[self objectOrNilForKey:kSLFTicketDetailSEQSERVICE fromDictionary:dict] intValue];
+            self.cOMPANY = [[self objectOrNilForKey:kSLFTicketDetailCOMPANY fromDictionary:dict] intValue];
             self.detailDesc = [self objectOrNilForKey:kSLFTicketDetailDetailDesc fromDictionary:dict];
 
     }
@@ -76,15 +76,15 @@ NSString *const kSLFTicketDetailDetailDesc = @"DetailDesc";
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:self.note forKey:kSLFTicketDetailNote];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.detailID] forKey:kSLFTicketDetailDetailID];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.subject] forKey:kSLFTicketDetailSubject];
+    [mutableDict setValue:[NSNumber numberWithInt:self.detailID] forKey:kSLFTicketDetailDetailID];
+    [mutableDict setValue:[NSNumber numberWithInt:self.subject] forKey:kSLFTicketDetailSubject];
     [mutableDict setValue:self.actionDesc forKey:kSLFTicketDetailActionDesc];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.sEQPRIORITY] forKey:kSLFTicketDetailSEQPRIORITY];
+    [mutableDict setValue:[NSNumber numberWithInt:self.sEQPRIORITY] forKey:kSLFTicketDetailSEQPRIORITY];
     [mutableDict setValue:self.pDATE forKey:kSLFTicketDetailPDATE];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.ticketID] forKey:kSLFTicketDetailTicketID];
+    [mutableDict setValue:[NSNumber numberWithInt:self.ticketID] forKey:kSLFTicketDetailTicketID];
     [mutableDict setValue:self.ticketDesc forKey:kSLFTicketDetailTicketDesc];
-    [mutableDict setValue:self.sEQSERVICE forKey:kSLFTicketDetailSEQSERVICE];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.cOMPANY] forKey:kSLFTicketDetailCOMPANY];
+    [mutableDict setValue:[NSNumber numberWithInt: self.sEQSERVICE ]forKey:kSLFTicketDetailSEQSERVICE];
+    [mutableDict setValue:[NSNumber numberWithInt:self.cOMPANY] forKey:kSLFTicketDetailCOMPANY];
     [mutableDict setValue:self.detailDesc forKey:kSLFTicketDetailDetailDesc];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
@@ -110,15 +110,15 @@ NSString *const kSLFTicketDetailDetailDesc = @"DetailDesc";
     self = [super init];
 
     self.note = [aDecoder decodeObjectForKey:kSLFTicketDetailNote];
-    self.detailID = [aDecoder decodeDoubleForKey:kSLFTicketDetailDetailID];
-    self.subject = [aDecoder decodeDoubleForKey:kSLFTicketDetailSubject];
+    self.detailID = [aDecoder decodeIntForKey:kSLFTicketDetailDetailID];
+    self.subject = [aDecoder decodeIntForKey:kSLFTicketDetailSubject];
     self.actionDesc = [aDecoder decodeObjectForKey:kSLFTicketDetailActionDesc];
-    self.sEQPRIORITY = [aDecoder decodeDoubleForKey:kSLFTicketDetailSEQPRIORITY];
+    self.sEQPRIORITY = [aDecoder decodeIntForKey:kSLFTicketDetailSEQPRIORITY];
     self.pDATE = [aDecoder decodeObjectForKey:kSLFTicketDetailPDATE];
-    self.ticketID = [aDecoder decodeDoubleForKey:kSLFTicketDetailTicketID];
+    self.ticketID = [aDecoder decodeIntForKey:kSLFTicketDetailTicketID];
     self.ticketDesc = [aDecoder decodeObjectForKey:kSLFTicketDetailTicketDesc];
-    self.sEQSERVICE = [aDecoder decodeObjectForKey:kSLFTicketDetailSEQSERVICE];
-    self.cOMPANY = [aDecoder decodeDoubleForKey:kSLFTicketDetailCOMPANY];
+    self.sEQSERVICE = [aDecoder decodeIntForKey:kSLFTicketDetailSEQSERVICE];
+    self.cOMPANY = [aDecoder decodeIntForKey:kSLFTicketDetailCOMPANY];
     self.detailDesc = [aDecoder decodeObjectForKey:kSLFTicketDetailDetailDesc];
     return self;
 }
@@ -127,15 +127,15 @@ NSString *const kSLFTicketDetailDetailDesc = @"DetailDesc";
 {
 
     [aCoder encodeObject:_note forKey:kSLFTicketDetailNote];
-    [aCoder encodeDouble:_detailID forKey:kSLFTicketDetailDetailID];
-    [aCoder encodeDouble:_subject forKey:kSLFTicketDetailSubject];
+    [aCoder encodeInt:_detailID forKey:kSLFTicketDetailDetailID];
+    [aCoder encodeInt:_subject forKey:kSLFTicketDetailSubject];
     [aCoder encodeObject:_actionDesc forKey:kSLFTicketDetailActionDesc];
-    [aCoder encodeDouble:_sEQPRIORITY forKey:kSLFTicketDetailSEQPRIORITY];
+    [aCoder encodeInt:_sEQPRIORITY forKey:kSLFTicketDetailSEQPRIORITY];
     [aCoder encodeObject:_pDATE forKey:kSLFTicketDetailPDATE];
-    [aCoder encodeDouble:_ticketID forKey:kSLFTicketDetailTicketID];
+    [aCoder encodeInt:_ticketID forKey:kSLFTicketDetailTicketID];
     [aCoder encodeObject:_ticketDesc forKey:kSLFTicketDetailTicketDesc];
-    [aCoder encodeObject:_sEQSERVICE forKey:kSLFTicketDetailSEQSERVICE];
-    [aCoder encodeDouble:_cOMPANY forKey:kSLFTicketDetailCOMPANY];
+    [aCoder encodeInt:_sEQSERVICE forKey:kSLFTicketDetailSEQSERVICE];
+    [aCoder encodeInt:_cOMPANY forKey:kSLFTicketDetailCOMPANY];
     [aCoder encodeObject:_detailDesc forKey:kSLFTicketDetailDetailDesc];
 }
 
@@ -153,7 +153,7 @@ NSString *const kSLFTicketDetailDetailDesc = @"DetailDesc";
         copy.pDATE = [self.pDATE copyWithZone:zone];
         copy.ticketID = self.ticketID;
         copy.ticketDesc = [self.ticketDesc copyWithZone:zone];
-        copy.sEQSERVICE = [self.sEQSERVICE copyWithZone:zone];
+        copy.sEQSERVICE = self.sEQSERVICE ;
         copy.cOMPANY = self.cOMPANY;
         copy.detailDesc = [self.detailDesc copyWithZone:zone];
     }
