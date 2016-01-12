@@ -15,3 +15,7 @@
 #import "SLFSettings.h"
 #import "SLFGroup.h"
 #import "SLFSubscription.h"
+#import "SLFCompaniesResponse.h"
+#import "SLFSubjectsResponse.h"
+#import "SLFServicesResponse.h"
+#import "SLFSubscriptionsResponse.h"

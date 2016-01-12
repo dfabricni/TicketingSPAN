@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "DataModels.h"
 
+
+
+
+
 @interface Globals : NSObject
 
 
-@property (nonatomic, retain) NSString * oAuthAccessToken;
+@property (nonatomic, copy) NSString * oAuthAccessToken;
 @property (nonatomic, retain) SLFSettings * settings;
 
 @property (nonatomic, assign) long  servicesTimestamp;

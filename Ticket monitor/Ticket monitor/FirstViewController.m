@@ -10,6 +10,9 @@
 #import "AFURLSessionManager.h"
 #import "ADAuthenticationContext.h"
 #import "DBRepository.h"
+#import "Globals.h"
+#import "SLFHttpClient.h"
+#import "Synchronizer.h"
 
 @interface FirstViewController ()
 
@@ -24,6 +27,8 @@
     DBRepository * repo =  [[DBRepository alloc] init];
     
     [repo getAllCompanies   ];
+    
+    [self logIn];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,11 +36,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
--(IBAction)logMeIn:(id)sender
+-(void) logIn
 {
     NSString *authority = @"https://login.windows.net/b0460523-b78c-4b4a-8a10-5928b799ad45/FederationMetadata/2007-06/FederationMetadata.xml";
-    NSString *resourceURI = @"https://apitestadfs.mcd.com/api/contacts";
+    NSString *resourceURI = @"http://slf-mobile-span.azurewebsites.net";
     NSString *clientID = @"714bf373-f063-4c64-9141-77a258e94d3c";
     NSString *redirectURI = @"http://console-app-test-oauth/";
     
@@ -50,12 +54,34 @@
         }
         else
         {
-            NSDictionary *payload = @{
-                                      @"access_token" : result.tokenCacheStoreItem.accessToken
-                                      };
+            
+            Globals * globals  = [Globals instance];
+            
+            globals.oAuthAccessToken = [NSString stringWithFormat:@"%@ %@",result.tokenCacheStoreItem.accessTokenType, result.tokenCacheStoreItem.accessToken];
+            
+            
+            SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
+            
+            [httpClient setBearerToken:globals.oAuthAccessToken];
+            
+            Synchronizer * sync  =  [Synchronizer instance];
+            
+            [sync Sync];
+            
+            //[httpClient getCompanies:0];
             
         }
     }];
+
 }
+
+-(IBAction)logMeIn:(id)sender
+{
+    
+    Synchronizer * sync  =  [Synchronizer instance];
+    
+    [sync Sync];
+    
+   }
 
 @end

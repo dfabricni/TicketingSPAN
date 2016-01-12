@@ -11,7 +11,7 @@
 
 @interface SLFCompany : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, assign) double ID;
+@property (nonatomic, assign) int ID;
 @property (nonatomic, strong) NSString *name;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

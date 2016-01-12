@@ -98,6 +98,8 @@
 		C39C61851C43CA84002EE4C2 /* SLFSubscriptionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61841C43CA84002EE4C2 /* SLFSubscriptionStatus.m */; };
 		C39C61881C43CCA8002EE4C2 /* SLFGroupStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61871C43CCA8002EE4C2 /* SLFGroupStatus.m */; };
 		C39C618B1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C618A1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m */; };
+		C39C618E1C43EC31002EE4C2 /* Synchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C618D1C43EC31002EE4C2 /* Synchronizer.m */; };
+		C39C61911C43F0E2002EE4C2 /* SLFHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61901C43F0E2002EE4C2 /* SLFHttpClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -307,6 +309,10 @@
 		C39C61871C43CCA8002EE4C2 /* SLFGroupStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFGroupStatus.m; path = Entities/SLFGroupStatus.m; sourceTree = "<group>"; };
 		C39C61891C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFSubscriptionStatusesResponse.h; path = Entities/SLFSubscriptionStatusesResponse.h; sourceTree = "<group>"; };
 		C39C618A1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFSubscriptionStatusesResponse.m; path = Entities/SLFSubscriptionStatusesResponse.m; sourceTree = "<group>"; };
+		C39C618C1C43EC31002EE4C2 /* Synchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Synchronizer.h; sourceTree = "<group>"; };
+		C39C618D1C43EC31002EE4C2 /* Synchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Synchronizer.m; sourceTree = "<group>"; };
+		C39C618F1C43F0E2002EE4C2 /* SLFHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFHttpClient.h; sourceTree = "<group>"; };
+		C39C61901C43F0E2002EE4C2 /* SLFHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFHttpClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +388,8 @@
 				BCCF6BCA1C090812001F0EAD /* PrefixHeader.pch */,
 				C39C61741C3E84DA002EE4C2 /* Globals.h */,
 				C39C61751C3E84DA002EE4C2 /* Globals.m */,
+				C39C618C1C43EC31002EE4C2 /* Synchronizer.h */,
+				C39C618D1C43EC31002EE4C2 /* Synchronizer.m */,
 			);
 			path = "Ticket monitor";
 			sourceTree = "<group>";
@@ -591,6 +599,8 @@
 		C39C61281C242655002EE4C2 /* MobileAPI */ = {
 			isa = PBXGroup;
 			children = (
+				C39C618F1C43F0E2002EE4C2 /* SLFHttpClient.h */,
+				C39C61901C43F0E2002EE4C2 /* SLFHttpClient.m */,
 			);
 			name = MobileAPI;
 			sourceTree = "<group>";
@@ -804,6 +814,7 @@
 				BCCF69761C08F1AC001F0EAD /* AppDelegate.m in Sources */,
 				BCCF6BC11C09029B001F0EAD /* NSString+ADHelperMethods.m in Sources */,
 				C39C61611C3E6AFB002EE4C2 /* SLFServicesResponse.m in Sources */,
+				C39C618E1C43EC31002EE4C2 /* Synchronizer.m in Sources */,
 				C39C61681C3E6DB0002EE4C2 /* SLFGroup.m in Sources */,
 				C39C61571C3E65FF002EE4C2 /* SLFSubject.m in Sources */,
 				BCCF6BA51C09029A001F0EAD /* ADAuthenticationOperation.m in Sources */,
@@ -826,6 +837,7 @@
 				BCCF6A2A1C08F4D3001F0EAD /* AFHTTPSessionManager.m in Sources */,
 				C39C61231C242547002EE4C2 /* FMResultSet.m in Sources */,
 				C39C615D1C3E6757002EE4C2 /* SLFCompany.m in Sources */,
+				C39C61911C43F0E2002EE4C2 /* SLFHttpClient.m in Sources */,
 				BCCF6BAD1C09029B001F0EAD /* ADClientMetrics.m in Sources */,
 				C39C616D1C3E6FDD002EE4C2 /* SLFDevice.m in Sources */,
 				BCCF6BBA1C09029B001F0EAD /* ADURLProtocol.m in Sources */,

@@ -40,6 +40,7 @@
     
     if(!overwrite)
         return;
+  //  /Users/administrator/Library/Developer/CoreSimulator/Devices/AE397F1A-CE56-4967-AC0E-2B55C48A7EA0/data/Containers/Data/Application/AF79198C-31B5-431E-B461-E9789E085E0F/Documents/
     
     
     // copy sql lite file if we decide
@@ -276,12 +277,15 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     
     [self.DB open];
+  // [self.DB executeUpdate:@"update SubscriptionGroup set Name = ? , GroupOperation = ? , Active = ?, SyncStatus = 0 where ID = ? " , group.name , group.groupOperation, TRUE, group.iDProperty,nil];
     
-    [self.DB executeUpdate:@"update SubscriptionGroup set Name = ? , GroupOperation = ? , Active = ?, SyncStatus = 0 where ID = ? 	" , group.name , group.groupOperation, group.active, group.iDProperty,nil];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update SubscriptionGroup set Name = '%@' , GroupOperation = '%@' , Active = %d, SyncStatus = 0 where ID = '%@' " , group.name , group.groupOperation, TRUE, group.iDProperty ]];
     
     // jsut in case then make insert
     
-    [self.DB executeUpdate:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values(?,?,?,?,?)", group.iDProperty, group.name,group.groupOperation,1,0];
+     [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values('%@','%@','%@',%d,1)" , group.iDProperty ,group.name , group.groupOperation, TRUE ]];
+    
+   // [self.DB executeUpdate:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values(?,?,?,?,?)", group.iDProperty, group.name,group.groupOperation,1,0];
     
     [self.DB close];
     
@@ -292,14 +296,87 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 
     [self.DB open];
     
-    [self.DB executeUpdate:@"update Subscription set SubscriptionGroupID = ? , RuleTypeID = ? , LastCheckPoint = ?, Value=?, ValueDisplayText = ? , Active = ?, SyncStatus = 0 where ID = ? 	" , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active, subscription.iDProperty ,nil];
+     [self.DB executeUpdate:[NSString stringWithFormat:@"update Subscription set SubscriptionGroupID = '%@' , RuleTypeID = %d , LastCheckPoint = '%@', Value='%@', ValueDisplayText = '%@' , Active = %d, SyncStatus = 1 where ID = '%@' " , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active, subscription.iDProperty]];
+    
+  //  [self.DB executeUpdate:@"update Subscription set SubscriptionGroupID = ? , RuleTypeID = ? , LastCheckPoint = ?, Value=?, ValueDisplayText = ? , Active = ?, SyncStatus = 0 where ID = ? 	" , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active, subscription.iDProperty ,nil];
     
     // jsut in case then make insert
     
-    [self.DB executeUpdate:@"insert or ignore into Subscription(ID,SubscriptionGroupID,RuleTypeID,LastCheckPoint,Value,ValueDisplayText ,Active,SyncStatus) values(?,?,?,?,?,?,?,?)", subscription.iDProperty, subscription.subscriptionGroupID,subscription.ruleTypeID,subscription.lastCheckPoint,subscription.value,subscription.valueDisplayText ,1,0];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Subscription(ID,SubscriptionGroupID,RuleTypeID,LastCheckPoint,Value,ValueDisplayText ,Active,SyncStatus) values('%@','%@',%d,'%@','%@','%@',%d,%d)", subscription.iDProperty, subscription.subscriptionGroupID,subscription.ruleTypeID,subscription.lastCheckPoint,subscription.value,subscription.valueDisplayText ,subscription.active,1]];
     
     [self.DB close];
     
+}
+
+-(void) saveTicketDetail:(SLFTicketDetail *)ticketDetail
+{
+    [self.DB open];
+    
+    [self.DB executeUpdate:@"update TicketDetail set TicketID = ?, SubjectID = ?, DetailDescription = ?, ActionDescription = ?, CompanyID = ?, Datetime = ?, Priority = ?, ServiceID = ?, Note = ?,  TicketDescription = ?, where ID = ? 	" , ticketDetail.ticketID, ticketDetail.subject, ticketDetail.detailDesc, ticketDetail.actionDesc, ticketDetail.cOMPANY, ticketDetail.pDATE, ticketDetail.sEQPRIORITY, ticketDetail.sEQSERVICE, ticketDetail.note, ticketDetail.ticketDesc, ticketDetail.detailID ,nil];
+    
+    // jsut in case then make insert
+    
+    [self.DB executeUpdate:@"insert or ignore into Subscription(ID,TicketID, SubjectID, DetailDescription, ActionDescription, CompanyID, Datetime, Priority, ServiceID, Note,  TicketDescription) values(?,?,?,?,?,?,?,?,?,?,?)", ticketDetail.detailID, ticketDetail.ticketID, ticketDetail.subject, ticketDetail.detailDesc, ticketDetail.actionDesc, ticketDetail.cOMPANY, ticketDetail.pDATE, ticketDetail.sEQPRIORITY, ticketDetail.sEQSERVICE, ticketDetail.note, ticketDetail.ticketDesc];
+    
+    [self.DB close];
+    
+    
+}
+
+-(void) markAllAsRead
+{
+    [self.DB open];
+    
+    [self.DB executeUpdate:@"update TicketDetail set Read = 1"];
+    
+    [self.DB close];
+}
+
+-(void) markTicketAsRead:(int)detailID
+{
+    [self.DB open];
+    
+    [self.DB executeUpdate:@"update TicketDetail set Read = 1 where ID  = ?",detailID,nil];
+    
+    [self.DB close];
+}
+
+
+-(void) saveCompany:(SLFCompany *)company
+{
+    [self.DB open];
+    
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update Company set Name = '%@'  where ID = %d " , company.name ,company.ID]];
+    
+    
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Company(Id,Name) values(%d,'%@')", company.ID,company.name ]];
+    
+    [self.DB close];
+}
+
+-(void) saveService:(SLFService *)service
+{
+    [self.DB open];
+    
+    
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update Service set Name = '%@'  where ID = %d" , service.name ,service.ID]];
+    
+    
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Service(Id,Name) values(%d,%@)", service.ID,service.name  ]];
+    
+    [self.DB close];
+}
+
+-(void) saveSubject:(SLFSubject *)subject
+{
+    [self.DB open];
+    
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update Subject set Name = '%@'  where ID = %d 	" , subject.name ,subject.ID]];
+    
+    
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Subject(Id,Name) values(%d,'%@')" , subject.ID,subject.name  ]];
+    
+    [self.DB close];
 }
 
 

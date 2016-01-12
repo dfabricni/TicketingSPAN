@@ -43,7 +43,15 @@
 
 -(void) saveSubscription:(SLFSubscription*) subscription;
 
+-(void) saveTicketDetail:(SLFTicketDetail*) ticketDetail;
 
+-(void) markTicketAsRead:(int) detailID;
+
+-(void) markAllAsRead;
+
+-(void) saveCompany:(SLFCompany*) company;
+-(void) saveService:(SLFService*) service;
+-(void) saveSubject:(SLFSubject*) subject;
 
 
 @end

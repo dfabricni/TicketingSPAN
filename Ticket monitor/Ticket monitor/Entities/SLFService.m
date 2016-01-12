@@ -36,7 +36,7 @@ NSString *const kSLFServicesName = @"Name";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.ID = [[self objectOrNilForKey:kSLFServicesId fromDictionary:dict] doubleValue];
+            self.ID = [[self objectOrNilForKey:kSLFServicesId fromDictionary:dict] intValue];
             self.name = [self objectOrNilForKey:kSLFServicesName fromDictionary:dict];
 
     }
@@ -48,7 +48,7 @@ NSString *const kSLFServicesName = @"Name";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.ID] forKey:kSLFServicesId];
+    [mutableDict setValue:[NSNumber numberWithInt:self.ID] forKey:kSLFServicesId];
     [mutableDict setValue:self.name forKey:kSLFServicesName];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
@@ -73,7 +73,7 @@ NSString *const kSLFServicesName = @"Name";
 {
     self = [super init];
 
-    self.ID = [aDecoder decodeDoubleForKey:kSLFServicesId];
+    self.ID = [aDecoder decodeIntForKey:kSLFServicesId];
     self.name = [aDecoder decodeObjectForKey:kSLFServicesName];
     return self;
 }
@@ -81,7 +81,7 @@ NSString *const kSLFServicesName = @"Name";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_servicesIdentifier forKey:kSLFServicesId];
+    [aCoder encodeInt:_servicesIdentifier forKey:kSLFServicesId];
     [aCoder encodeObject:_name forKey:kSLFServicesName];
 }
 

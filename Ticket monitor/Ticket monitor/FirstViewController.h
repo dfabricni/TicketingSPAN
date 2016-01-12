@@ -14,6 +14,7 @@
 
 -(IBAction)logMeIn:(id)sender;
 
+-(void) logIn;
 
 @end
 

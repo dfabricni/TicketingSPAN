@@ -47,7 +47,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.active = [[self objectOrNilForKey:kSLFSubscriptionsActive fromDictionary:dict] boolValue];
-            self.ruleTypeID = [[self objectOrNilForKey:kSLFSubscriptionsRuleTypeID fromDictionary:dict] doubleValue];
+            self.ruleTypeID = [[self objectOrNilForKey:kSLFSubscriptionsRuleTypeID fromDictionary:dict] intValue];
             self.subscriptionGroupID = [self objectOrNilForKey:kSLFSubscriptionsSubscriptionGroupID fromDictionary:dict];
             self.lastCheckPoint = [self objectOrNilForKey:kSLFSubscriptionsLastCheckPoint fromDictionary:dict];
             self.valueDisplayText = [self objectOrNilForKey:kSLFSubscriptionsValueDisplayText fromDictionary:dict];
@@ -64,7 +64,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithBool:self.active] forKey:kSLFSubscriptionsActive];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.ruleTypeID] forKey:kSLFSubscriptionsRuleTypeID];
+    [mutableDict setValue:[NSNumber numberWithInt:self.ruleTypeID] forKey:kSLFSubscriptionsRuleTypeID];
     [mutableDict setValue:self.subscriptionGroupID forKey:kSLFSubscriptionsSubscriptionGroupID];
     [mutableDict setValue:self.lastCheckPoint forKey:kSLFSubscriptionsLastCheckPoint];
     [mutableDict setValue:self.valueDisplayText forKey:kSLFSubscriptionsValueDisplayText];
@@ -94,7 +94,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
     self = [super init];
 
     self.active = [aDecoder decodeBoolForKey:kSLFSubscriptionsActive];
-    self.ruleTypeID = [aDecoder decodeDoubleForKey:kSLFSubscriptionsRuleTypeID];
+    self.ruleTypeID = [aDecoder decodeIntForKey:kSLFSubscriptionsRuleTypeID];
     self.subscriptionGroupID = [aDecoder decodeObjectForKey:kSLFSubscriptionsSubscriptionGroupID];
     self.lastCheckPoint = [aDecoder decodeObjectForKey:kSLFSubscriptionsLastCheckPoint];
     self.valueDisplayText = [aDecoder decodeObjectForKey:kSLFSubscriptionsValueDisplayText];
@@ -107,7 +107,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
 {
 
     [aCoder encodeBool:_active forKey:kSLFSubscriptionsActive];
-    [aCoder encodeDouble:_ruleTypeID forKey:kSLFSubscriptionsRuleTypeID];
+    [aCoder encodeInt:_ruleTypeID forKey:kSLFSubscriptionsRuleTypeID];
     [aCoder encodeObject:_subscriptionGroupID forKey:kSLFSubscriptionsSubscriptionGroupID];
     [aCoder encodeObject:_lastCheckPoint forKey:kSLFSubscriptionsLastCheckPoint];
     [aCoder encodeObject:_valueDisplayText forKey:kSLFSubscriptionsValueDisplayText];

@@ -32,7 +32,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vve-f9-QVm">
                                 <rect key="frame" x="72" y="85" width="120" height="30"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Sync"/>
                                 <connections>
                                     <action selector="logMeIn:" destination="W5J-7L-Pyd" eventType="touchUpInside" id="pSl-rP-5jc"/>
                                 </connections>
