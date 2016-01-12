@@ -243,6 +243,33 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     return items;
 }
 
+
+-(NSMutableArray *) getAllGroupsForSync{
+    
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM SubscriptionGroup where Active = 1 and SyncStatus = 0"];
+    while ([s next]) {
+        SLFGroup * group = [[SLFGroup alloc] init];
+        
+        group.iDProperty = [s stringForColumn:@"ID"];
+        group.name = [s stringForColumn:@"Name"];
+        group.groupOperation = [s stringForColumn:@"GroupOperation"];
+        group.active = [s boolForColumn:@"Active"];
+        
+        [items addObject:group];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
+}
+
 -(NSMutableArray *) getAllSubscriptionsForGroup:(NSString*) groupId{
 
     NSMutableArray *items = [[NSMutableArray alloc] init];
@@ -273,13 +300,43 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 }
 
 
+-(NSMutableArray *) getAllSubscriptionsForSync{
+    
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Subscription	 where Active = 1 and SyncStatus  =  0"];
+    while ([s next]) {
+        SLFSubscription * subscription = [[SLFSubscription alloc] init];
+        
+        subscription.iDProperty = [s stringForColumn:@"ID"];
+        subscription.subscriptionGroupID = [s stringForColumn:@"SubscriptionGroupID"];
+        subscription.ruleTypeID = [s doubleForColumn:@"RuleTypeID"];
+        subscription.lastCheckPoint = [s stringForColumn:@"LastCheckPoint"];
+        subscription.value = [s stringForColumn:@"Value"];
+        subscription.valueDisplayText = [s stringForColumn:@"ValueDisplayText"];
+        subscription.active = [s boolForColumn:@"Active"];
+        
+        [items addObject:subscription];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
+}
+
+
 -(void) saveGroup:(SLFGroup*) group{
     
     
     [self.DB open];
   // [self.DB executeUpdate:@"update SubscriptionGroup set Name = ? , GroupOperation = ? , Active = ?, SyncStatus = 0 where ID = ? " , group.name , group.groupOperation, TRUE, group.iDProperty,nil];
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"update SubscriptionGroup set Name = '%@' , GroupOperation = '%@' , Active = %d, SyncStatus = 0 where ID = '%@' " , group.name , group.groupOperation, TRUE, group.iDProperty ]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update SubscriptionGroup set Name = '%@' , GroupOperation = '%@' , Active = %d, SyncStatus = 1 where ID = '%@' " , group.name , group.groupOperation, TRUE, group.iDProperty ]];
     
     // jsut in case then make insert
     
@@ -337,6 +394,17 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     [self.DB open];
     
     [self.DB executeUpdate:@"update TicketDetail set Read = 1 where ID  = ?",detailID,nil];
+    
+    [self.DB close];
+}
+
+-(void) markAllAsSynced
+{
+    [self.DB open];
+    
+    [self.DB executeUpdate:@"update SubscriptionGroup set SyncStatus = 1"];
+    
+    [self.DB executeUpdate:@"update Subscription set SyncStatus = 1"];
     
     [self.DB close];
 }

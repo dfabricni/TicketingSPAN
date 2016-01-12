@@ -10,6 +10,7 @@
 #import "DataModels.h"
 #import "Globals.h"
 #import "DBRepository.h"
+#import "AFHTTPRequestOperationManager.h"
 
 static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.net/api/";
 
@@ -29,8 +30,8 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
     return _sharedSLFHTTPClient;
 }
-
 /*
+
 - (instancetype)initWithBaseURL:(NSURL *)url
 {
     self = [super initWithBaseURL:url];
@@ -41,18 +42,80 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     }
 
     return self;
-}
- */
+}*/
+ 
 
 -(void) setBearerToken:(NSString *)token
 {
-   //[self.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+  // [self.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+
     self.oAuthAccessToken = token;
 }
 
--(void) postSubscriptions:(SLFSubscriptionsRequest *)subscription{
+-(void) postSubscriptions:(SLFSubscriptionsRequest *)subscriptions{
+    
+      // NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@subscriptions", BaseURLString]]];
+    /*
+     DBRepository * repo = [[DBRepository alloc] init];
+    NSDictionary *parameters = [subscriptions dictionaryRepresentation];
+    
+    // Do any additional setup after loading the view.
+   AFHTTPRequestOperationManager *operationManager = [AFHTTPRequestOperationManager manager];
+   operationManager.requestSerializer =[AFJSONRequestSerializer serializer];
+
+   [operationManager POST:[NSString stringWithFormat:@"%@subscriptions", BaseURLString] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+  
+    [repo markAllAsSynced];
+    NSLog(@"JSON: %@", [responseObject description]);
+    
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    
+    NSLog(@"Error: %@", [error description]);
+    if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+        [self.delegate slfHTTPClient:self didFailWithError:error];
+    }
+}];
+
     
     
+   
+    }];
+*/
+    
+    DBRepository * repo = [[DBRepository alloc] init];
+    NSDictionary *parameters = [subscriptions dictionaryRepresentation];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer =[AFJSONRequestSerializer serializer];
+  
+    
+    NSMutableURLRequest *request =  [manager.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@subscriptions", BaseURLString] parameters:parameters error:nil];
+    
+    
+    [request setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
+    [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+        [repo markAllAsSynced];
+        NSLog(@"JSON: %@", [responseObject description]);
+    
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    
+    NSLog(@"Error: %@", [error description]);
+    if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+        [self.delegate slfHTTPClient:self didFailWithError:error];
+    }
+    
+}];
+    
+    [operation start];
+    [operation waitUntilFinished];
+   // [manager.operationQueue addOperation:operation];
+
     
 }
 
@@ -67,8 +130,8 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
  
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
-    operation.responseSerializer =[AFJSONResponseSerializer serializer];
-  
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+
    
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -99,6 +162,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
          
      }];
     
+    
     [operation start];
     [operation waitUntilFinished];
 
@@ -117,7 +181,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
-    operation.responseSerializer =[AFJSONResponseSerializer serializer];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
        
@@ -158,7 +222,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
  
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
-    operation.responseSerializer =[AFJSONResponseSerializer serializer];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
 
       [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -201,7 +265,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
-    operation.responseSerializer =[AFJSONResponseSerializer serializer];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         

@@ -10,8 +10,8 @@
 #import "AFHTTPSessionManager.h"
 #import "AFHTTPRequestOperation.h"
 #import "SLFSubscriptionsResponse.h"
+#import "DataModels.h"
 
-#define SLFSubscriptionsRequest SLFSubscriptionsResponse
 
 @protocol SLFHttpClientDelegate;
 
@@ -30,7 +30,7 @@
 
 
 
-//- (instancetype)initWithBaseURL:(NSURL *)url;
+- (instancetype)initWithBaseURL:(NSURL *)url;
 
 -(void) postSubscriptions:(SLFSubscriptionsRequest*) subscriptions;
 
@@ -39,6 +39,8 @@
 -(void) getSubjects:(double) timestamp;
 
 -(void) getAllSubscriptions;
+
+
 
 
 @end

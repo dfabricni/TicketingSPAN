@@ -39,11 +39,18 @@
 
 -(NSMutableArray *) getAllSubscriptionsForGroup:(NSString*) groupId;
 
+-(NSMutableArray *) getAllSubscriptionsForSync;
+
+-(NSMutableArray *) getAllGroupsForSync;
+
+
 -(void) saveGroup:(SLFGroup*) group;
 
 -(void) saveSubscription:(SLFSubscription*) subscription;
 
 -(void) saveTicketDetail:(SLFTicketDetail*) ticketDetail;
+
+-(void) markAllAsSynced;
 
 -(void) markTicketAsRead:(int) detailID;
 

@@ -10,6 +10,7 @@
 #import "Globals.h"
 #import "DataModels.h"
 #import "SLFHttpClient.h"
+#import "DBRepository.h"
 
 @implementation Synchronizer
 
@@ -45,13 +46,30 @@
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     // Perform long running process
     
+     SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
    
-
+    // push subscriptions ready to sync
+    
+     DBRepository * repo = [[DBRepository alloc] init];
+    
+    SLFSubscriptionsRequest * slfSubscriptionsRequest = [[SLFSubscriptionsRequest alloc] init];
+    
+    slfSubscriptionsRequest.groups = [repo getAllGroupsForSync];
+    slfSubscriptionsRequest.subscriptions = [repo getAllSubscriptionsForSync];
+    
+    int n  = 5;
+    
+    if ([slfSubscriptionsRequest.groups count] > 0 || [slfSubscriptionsRequest.subscriptions count] > 0) {
+        
+        [httpClient postSubscriptions:slfSubscriptionsRequest];
+        
+    }
+   
     
     
     // first begin with notification that syncing is in progress
     
-    SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+   
     Globals * globals = [Globals instance];
     
     

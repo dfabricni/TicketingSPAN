@@ -6,8 +6,6 @@
 //
 
 #import "SLFTicketDetail.h"
-
-
 #import "SLFCompany.h"
 #import "SLFService.h"
 #import "SLFSubject.h"
@@ -19,3 +17,8 @@
 #import "SLFSubjectsResponse.h"
 #import "SLFServicesResponse.h"
 #import "SLFSubscriptionsResponse.h"
+
+
+#define SLFSubscriptionsRequest SLFSubscriptionsResponse
+
+
