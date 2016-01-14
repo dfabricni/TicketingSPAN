@@ -8,6 +8,13 @@
 
 #import "AppDelegate.h"
 #import "DBRepository.h"
+#import "SLFHttpClient.h"
+#import "Globals.h"
+#import "DataModels.h"
+#import "ADAuthenticationContext.h"
+#import "DBRepository.h"
+
+#import "Synchronizer.h"
 
 @interface AppDelegate ()
 
@@ -20,9 +27,16 @@
     // Override point for customization after application launch.
     
     
-
+    	UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+		UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+       [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+       [[UIApplication sharedApplication]  registerForRemoteNotifications];
     
     [DBRepository prepareSqlLiteFile];
+    
+   
+    
+   
     
     return YES;
 }
@@ -49,5 +63,65 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+-(void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    
+    const uint64_t *tokenBytes = deviceToken.bytes;
+    NSString *hex = [NSString stringWithFormat:@"%016llx%016llx%016llx%016llx",
+                 ntohll(tokenBytes[0]), ntohll(tokenBytes[1]),
+                 ntohll(tokenBytes[2]), ntohll(tokenBytes[3])];
+
+    
+    NSLog(@"Did Register for Remote Notifications with Device Token (%@)", deviceToken);
+    
+     Globals * globals = [Globals instance];
+    globals.device = [[SLFDevice alloc] init];
+    globals.device.deviceID = [NSString stringWithFormat:@"%@", hex];
+    globals.device.deviceType = [NSString stringWithFormat:@"A"];
+    
+}
+
+-(void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Did Fail to Register for Remote Notifications");
+    NSLog(@"%@, %@", error, error.localizedDescription);
+
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+
+    
+    
+    SLFNotification * notification   =[[SLFNotification alloc] initWithDictionary:userInfo];
+    
+    SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+    
+    [httpClient getDetailID:notification.detailID];
+    
+    
+    //************************************************************
+    // I only want this called if the user opened from swiping the push notification. 
+    // Otherwise I just want to update the local model
+    //************************************************************
+    if(application.applicationState == UIApplicationStateActive) {
+        
+        
+        //MPOOpenViewController *openVc = [[MPOOpenViewController alloc] init];
+       // [self.navigationController pushViewController:openVc animated:NO];
+        
+        
+    } else {
+        
+        ///Update local model
+        
+        
+        
+    }
+
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+
 
 @end

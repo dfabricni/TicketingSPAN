@@ -52,8 +52,10 @@
     NSError *error = nil;
 
     //delte old one
-    if([[NSFileManager defaultManager] fileExistsAtPath:documentsDBFilePath isDirectory:false])
+    if([[NSFileManager defaultManager] fileExistsAtPath:documentsDBFilePath isDirectory:false]){
+     
         [[NSFileManager defaultManager] removeItemAtPath: documentsDBFilePath  error: &error];
+    }
     
     
     if(error !=  nil)
@@ -355,7 +357,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
      [self.DB executeUpdate:[NSString stringWithFormat:@"update Subscription set SubscriptionGroupID = '%@' , RuleTypeID = %d , LastCheckPoint = '%@', Value='%@', ValueDisplayText = '%@' , Active = %d, SyncStatus = 1 where ID = '%@' " , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active, subscription.iDProperty]];
     
-  //  [self.DB executeUpdate:@"update Subscription set SubscriptionGroupID = ? , RuleTypeID = ? , LastCheckPoint = ?, Value=?, ValueDisplayText = ? , Active = ?, SyncStatus = 0 where ID = ? 	" , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active, subscription.iDProperty ,nil];
+  
     
     // jsut in case then make insert
     
@@ -369,15 +371,41 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 {
     [self.DB open];
     
-    [self.DB executeUpdate:@"update TicketDetail set TicketID = ?, SubjectID = ?, DetailDescription = ?, ActionDescription = ?, CompanyID = ?, Datetime = ?, Priority = ?, ServiceID = ?, Note = ?,  TicketDescription = ?, where ID = ? 	" , ticketDetail.ticketID, ticketDetail.subject, ticketDetail.detailDesc, ticketDetail.actionDesc, ticketDetail.cOMPANY, ticketDetail.pDATE, ticketDetail.sEQPRIORITY, ticketDetail.sEQSERVICE, ticketDetail.note, ticketDetail.ticketDesc, ticketDetail.detailID ,nil];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update TicketDetail set TicketID = %D, SubjectID = %d, DetailDescription = '%@', ActionDescription = '%@', CompanyID = %d, Datetime = '%@', Priority = %d, ServiceID = %d, Note = '%@',  TicketDescription = '%@' where ID = %d " , ticketDetail.ticketID, ticketDetail.subject, ticketDetail.detailDesc, ticketDetail.actionDesc, ticketDetail.cOMPANY, ticketDetail.pDATE, ticketDetail.sEQPRIORITY, ticketDetail.sEQSERVICE, ticketDetail.note, ticketDetail.ticketDesc, ticketDetail.detailID ]];
     
     // jsut in case then make insert
     
-    [self.DB executeUpdate:@"insert or ignore into Subscription(ID,TicketID, SubjectID, DetailDescription, ActionDescription, CompanyID, Datetime, Priority, ServiceID, Note,  TicketDescription) values(?,?,?,?,?,?,?,?,?,?,?)", ticketDetail.detailID, ticketDetail.ticketID, ticketDetail.subject, ticketDetail.detailDesc, ticketDetail.actionDesc, ticketDetail.cOMPANY, ticketDetail.pDATE, ticketDetail.sEQPRIORITY, ticketDetail.sEQSERVICE, ticketDetail.note, ticketDetail.ticketDesc];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into TicketDetail(ID,TicketID, SubjectID, DetailDescription, ActionDescription, CompanyID, Datetime, Priority, ServiceID, Note,  TicketDescription) values(%d,%d,%d,'%@','%@',%d,'%@',%d,%d,'%@','%@')", ticketDetail.detailID, ticketDetail.ticketID, ticketDetail.subject, ticketDetail.detailDesc, ticketDetail.actionDesc, ticketDetail.cOMPANY, ticketDetail.pDATE, ticketDetail.sEQPRIORITY, ticketDetail.sEQSERVICE, ticketDetail.note, ticketDetail.ticketDesc]];
     
     [self.DB close];
     
     
+}
+
+-(NSMutableArray*) getAllDetails
+{
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM TicketDetail	 order by ID desc limit 500"];
+    while ([s next]) {
+        NSMutableDictionary * detail = [NSMutableDictionary dictionary];
+        
+    detail[@"ID"] = @([s intForColumn:@"ID"]);
+    detail[@"DetailDescription"] = [s stringForColumn:@"DetailDescription"];
+    detail[@"Datetime"] = [s stringForColumn:@"Datetime"];
+        
+       
+       [items addObject:detail];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
 }
 
 -(void) markAllAsRead

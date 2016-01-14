@@ -52,36 +52,48 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     self.oAuthAccessToken = token;
 }
 
+-(void) registerDevice:(SLFDevice *)device
+{
+    
+   // DBRepository * repo = [[DBRepository alloc] init];
+    NSDictionary *parameters = [device dictionaryRepresentation];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer =[AFJSONRequestSerializer serializer];
+    
+    
+    NSMutableURLRequest *request =  [manager.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@device", BaseURLString] parameters:parameters error:nil];
+    
+    
+    [request setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", [responseObject description]);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", [error description]);
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+            [self.delegate slfHTTPClient:self didFailWithError:error];
+        }
+        
+    }];
+    
+    [operation start];
+    [operation waitUntilFinished];
+    // [manager.operationQueue addOperation:operation];
+    
+    
+}
+
+
 -(void) postSubscriptions:(SLFSubscriptionsRequest *)subscriptions{
     
-      // NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@subscriptions", BaseURLString]]];
-    /*
-     DBRepository * repo = [[DBRepository alloc] init];
-    NSDictionary *parameters = [subscriptions dictionaryRepresentation];
-    
-    // Do any additional setup after loading the view.
-   AFHTTPRequestOperationManager *operationManager = [AFHTTPRequestOperationManager manager];
-   operationManager.requestSerializer =[AFJSONRequestSerializer serializer];
-
-   [operationManager POST:[NSString stringWithFormat:@"%@subscriptions", BaseURLString] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    
-  
-    [repo markAllAsSynced];
-    NSLog(@"JSON: %@", [responseObject description]);
-    
-} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    
-    NSLog(@"Error: %@", [error description]);
-    if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
-        [self.delegate slfHTTPClient:self didFailWithError:error];
-    }
-}];
-
-    
-    
-   
-    }];
-*/
     
     DBRepository * repo = [[DBRepository alloc] init];
     NSDictionary *parameters = [subscriptions dictionaryRepresentation];
@@ -295,7 +307,44 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [operation start];
     [operation waitUntilFinished];
 
-}
+}	
 
+-(void) getDetailID:(double)detailID
+{
+    
+    Globals * globals = [Globals instance];
+    
+     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"detailID"] = [NSString stringWithFormat:@"%f", detailID ];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:  BaseURLString]];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:@"detail" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {;;
+        
+          NSLog(@"JSON Ticket Detail: %@", [responseObject description]);
+        
+        SLFTicketDetail * ticketDetail = [[SLFTicketDetail alloc] initWithDictionary:responseObject];
+        
+        DBRepository * repo = [[DBRepository alloc] init];
+        [repo saveTicketDetail:ticketDetail];
+        
+        // call delegate to refresh table view
+        
+        
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+            if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+                [self.delegate slfHTTPClient:self didFailWithError:error];
+            }
+            
+        }];
+
+
+}
 
 @end

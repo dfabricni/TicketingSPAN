@@ -17,7 +17,10 @@
 #import "SLFSubjectsResponse.h"
 #import "SLFServicesResponse.h"
 #import "SLFSubscriptionsResponse.h"
-
+#import "SLFDevice.h"
+#import "SLFAlert.h"
+#import "SLFAps.h"
+#import "SLFNotification.h"
 
 #define SLFSubscriptionsRequest SLFSubscriptionsResponse
 

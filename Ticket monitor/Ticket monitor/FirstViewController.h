@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property ( retain, nonatomic) IBOutlet UIButton * btnLogin;
+
+@property (strong, nonatomic) IBOutlet UITableView * tableView;
+
+@property (strong, nonatomic) NSMutableArray * details;
 
 -(IBAction)logMeIn:(id)sender;
 

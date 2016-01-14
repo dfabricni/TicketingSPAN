@@ -30,7 +30,7 @@
 
 
 
-- (instancetype)initWithBaseURL:(NSURL *)url;
+//- (instancetype)initWithBaseURL:(NSURL *)url;
 
 -(void) postSubscriptions:(SLFSubscriptionsRequest*) subscriptions;
 
@@ -40,8 +40,9 @@
 
 -(void) getAllSubscriptions;
 
+-(void) registerDevice:(SLFDevice*) device;
 
-
+-(void) getDetailID:(double) detailID;
 
 @end
 

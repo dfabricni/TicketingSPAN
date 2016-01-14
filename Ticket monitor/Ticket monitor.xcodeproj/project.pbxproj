@@ -100,6 +100,9 @@
 		C39C618B1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C618A1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m */; };
 		C39C618E1C43EC31002EE4C2 /* Synchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C618D1C43EC31002EE4C2 /* Synchronizer.m */; };
 		C39C61911C43F0E2002EE4C2 /* SLFHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61901C43F0E2002EE4C2 /* SLFHttpClient.m */; };
+		C3E999CE1C47A7C00008456D /* SLFAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999C91C47A7C00008456D /* SLFAlert.m */; };
+		C3E999CF1C47A7C00008456D /* SLFAps.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999CB1C47A7C00008456D /* SLFAps.m */; };
+		C3E999D01C47A7C00008456D /* SLFNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999CD1C47A7C00008456D /* SLFNotification.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,6 +316,12 @@
 		C39C618D1C43EC31002EE4C2 /* Synchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Synchronizer.m; sourceTree = "<group>"; };
 		C39C618F1C43F0E2002EE4C2 /* SLFHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFHttpClient.h; sourceTree = "<group>"; };
 		C39C61901C43F0E2002EE4C2 /* SLFHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFHttpClient.m; sourceTree = "<group>"; };
+		C3E999C81C47A7C00008456D /* SLFAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFAlert.h; path = Entities/SLFAlert.h; sourceTree = "<group>"; };
+		C3E999C91C47A7C00008456D /* SLFAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFAlert.m; path = Entities/SLFAlert.m; sourceTree = "<group>"; };
+		C3E999CA1C47A7C00008456D /* SLFAps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFAps.h; path = Entities/SLFAps.h; sourceTree = "<group>"; };
+		C3E999CB1C47A7C00008456D /* SLFAps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFAps.m; path = Entities/SLFAps.m; sourceTree = "<group>"; };
+		C3E999CC1C47A7C00008456D /* SLFNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFNotification.h; path = Entities/SLFNotification.h; sourceTree = "<group>"; };
+		C3E999CD1C47A7C00008456D /* SLFNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFNotification.m; path = Entities/SLFNotification.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +617,12 @@
 		C39C61291C24266F002EE4C2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C3E999C81C47A7C00008456D /* SLFAlert.h */,
+				C3E999C91C47A7C00008456D /* SLFAlert.m */,
+				C3E999CA1C47A7C00008456D /* SLFAps.h */,
+				C3E999CB1C47A7C00008456D /* SLFAps.m */,
+				C3E999CC1C47A7C00008456D /* SLFNotification.h */,
+				C3E999CD1C47A7C00008456D /* SLFNotification.m */,
 				C39C61891C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.h */,
 				C39C618A1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m */,
 				C39C61861C43CCA8002EE4C2 /* SLFGroupStatus.h */,
@@ -713,6 +728,14 @@
 					BCCF696D1C08F1AB001F0EAD = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 76HPNVM3Z5;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					BCCF69891C08F1AC001F0EAD = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -797,6 +820,7 @@
 				BCCF6A4A1C08F513001F0EAD /* UIRefreshControl+AFNetworking.m in Sources */,
 				BCCF6BAE1C09029B001F0EAD /* ADHelpers.m in Sources */,
 				BCCF6BBC1C09029B001F0EAD /* ADWebRequest.m in Sources */,
+				C3E999CE1C47A7C00008456D /* SLFAlert.m in Sources */,
 				BCCF6BAA1C09029B001F0EAD /* ADAuthenticationSettings.m in Sources */,
 				BCCF6BAF1C09029B001F0EAD /* ADInstanceDiscovery.m in Sources */,
 				BCCF6BA61C09029A001F0EAD /* ADAuthenticationParameters+Internal.m in Sources */,
@@ -832,6 +856,7 @@
 				C39C61221C242547002EE4C2 /* FMDatabaseQueue.m in Sources */,
 				C39C61211C242547002EE4C2 /* FMDatabasePool.m in Sources */,
 				C39C61731C3E7775002EE4C2 /* SLFRuleType.m in Sources */,
+				C3E999D01C47A7C00008456D /* SLFNotification.m in Sources */,
 				C39C611F1C242546002EE4C2 /* FMDatabase.m in Sources */,
 				BCCF6A2E1C08F4D3001F0EAD /* AFURLRequestSerialization.m in Sources */,
 				BCCF6A2A1C08F4D3001F0EAD /* AFHTTPSessionManager.m in Sources */,
@@ -846,6 +871,7 @@
 				BCCF6BA71C09029A001F0EAD /* ADAuthenticationParameters.m in Sources */,
 				BCCF6BAC1C09029B001F0EAD /* ADAuthenticationWebViewController.m in Sources */,
 				BCCF6A2F1C08F4D3001F0EAD /* AFURLResponseSerialization.m in Sources */,
+				C3E999CF1C47A7C00008456D /* SLFAps.m in Sources */,
 				BCCF6A4B1C08F513001F0EAD /* UIWebView+AFNetworking.m in Sources */,
 				BCCF6BBF1C09029B001F0EAD /* ADWorkPlaceJoinUtil.m in Sources */,
 				C39C618B1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m in Sources */,
@@ -1004,7 +1030,7 @@
 		BCCF699F1C08F1AC001F0EAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Domagoj Fabricni (FG634J27KE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Ticket monitor/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1018,7 +1044,7 @@
 		BCCF69A01C08F1AC001F0EAD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Domagoj Fabricni (FG634J27KE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Ticket monitor/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

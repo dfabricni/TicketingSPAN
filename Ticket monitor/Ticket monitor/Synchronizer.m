@@ -41,13 +41,24 @@
     // dispatch it in another thread
     // start progress notification
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-
-//dispatch_queue_t myQueue = dispatch_queue_create("Sync queue",NULL);
-dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+    //dispatch_queue_t myQueue = dispatch_queue_create("Sync queue",NULL);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     // Perform long running process
     
      SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
    
+    Globals * globals = [Globals instance];
+   
+    // register device if needed
+        
+    if(globals.device != nil)
+    {
+        [httpClient registerDevice:globals.device];
+    
+    }
+        
+        
     // push subscriptions ready to sync
     
      DBRepository * repo = [[DBRepository alloc] init];
@@ -57,7 +68,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     slfSubscriptionsRequest.groups = [repo getAllGroupsForSync];
     slfSubscriptionsRequest.subscriptions = [repo getAllSubscriptionsForSync];
     
-    int n  = 5;
+    
     
     if ([slfSubscriptionsRequest.groups count] > 0 || [slfSubscriptionsRequest.subscriptions count] > 0) {
         
@@ -70,7 +81,6 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     // first begin with notification that syncing is in progress
     
    
-    Globals * globals = [Globals instance];
     
     
     
@@ -96,19 +106,18 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
     
     // push new  subscriptions
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // Update the UI
+            // end progress notification
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
+            
+        });
         
-        // Update the UI
-        // end progress notification
-     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO; 
-
+        
         
     });
-    
-    
-    
-});
     
 
 }

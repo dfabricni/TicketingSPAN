@@ -18,7 +18,7 @@
 
 @property (nonatomic, copy) NSString * oAuthAccessToken;
 @property (nonatomic, retain) SLFSettings * settings;
-
+@property (nonatomic, retain) SLFDevice * device;
 @property (nonatomic, assign) long  servicesTimestamp;
 
 

@@ -43,6 +43,7 @@
 
 -(NSMutableArray *) getAllGroupsForSync;
 
+-(NSMutableArray *) getAllDetails;
 
 -(void) saveGroup:(SLFGroup*) group;
 
