@@ -13,6 +13,7 @@
 #import "Globals.h"
 #import "SLFHttpClient.h"
 #import "Synchronizer.h"
+#import "TicketDetaillViewController.h"
 
 @interface FirstViewController ()
 
@@ -57,6 +58,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
+    
+    [self.navigationController pushViewController:vc animated:TRUE];
+
 }
 
 -(CGFloat)  tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,10 +179,28 @@
     self.details = [repo getAllDetails];
     
     [self.tableView reloadData];
-        
+    
+    
+    
+    //UIViewController * rootController =  [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    
+   // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+   // UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
+   // [self.navigationController pushViewController:vc animated:YES];
+    
+//[self performSegueWithIdentifier:@"TicketDetail" sender:self];
+
+    
+   // TicketDetaillViewController * detailController = [[TicketDetaillViewController alloc] initWithNibName:@"TicketDetaillViewController" bundle:nil];
+    
+    
+   // [self.navigationController pushViewController:detailController animated:true];
+   //[self presentViewController:vc animated:TRUE completion:nil];
+    
    // Synchronizer * sync  =  [Synchronizer instance];
     //[sync Sync];
         
     
 }
 @end
+

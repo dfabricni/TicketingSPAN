@@ -103,6 +103,7 @@
 		C3E999CE1C47A7C00008456D /* SLFAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999C91C47A7C00008456D /* SLFAlert.m */; };
 		C3E999CF1C47A7C00008456D /* SLFAps.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999CB1C47A7C00008456D /* SLFAps.m */; };
 		C3E999D01C47A7C00008456D /* SLFNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999CD1C47A7C00008456D /* SLFNotification.m */; };
+		C3E99A221C48FDF90008456D /* TicketDetaillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A201C48FDF90008456D /* TicketDetaillViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -322,6 +323,8 @@
 		C3E999CB1C47A7C00008456D /* SLFAps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFAps.m; path = Entities/SLFAps.m; sourceTree = "<group>"; };
 		C3E999CC1C47A7C00008456D /* SLFNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFNotification.h; path = Entities/SLFNotification.h; sourceTree = "<group>"; };
 		C3E999CD1C47A7C00008456D /* SLFNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFNotification.m; path = Entities/SLFNotification.m; sourceTree = "<group>"; };
+		C3E99A1F1C48FDF90008456D /* TicketDetaillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketDetaillViewController.h; sourceTree = "<group>"; };
+		C3E99A201C48FDF90008456D /* TicketDetaillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketDetaillViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +384,8 @@
 		BCCF69701C08F1AB001F0EAD /* Ticket monitor */ = {
 			isa = PBXGroup;
 			children = (
+				C3E99A1F1C48FDF90008456D /* TicketDetaillViewController.h */,
+				C3E99A201C48FDF90008456D /* TicketDetaillViewController.m */,
 				C39C61291C24266F002EE4C2 /* Entities */,
 				C39C61281C242655002EE4C2 /* MobileAPI */,
 				C39C61271C24264B002EE4C2 /* DAL */,
@@ -856,6 +861,7 @@
 				C39C61221C242547002EE4C2 /* FMDatabaseQueue.m in Sources */,
 				C39C61211C242547002EE4C2 /* FMDatabasePool.m in Sources */,
 				C39C61731C3E7775002EE4C2 /* SLFRuleType.m in Sources */,
+				C3E99A221C48FDF90008456D /* TicketDetaillViewController.m in Sources */,
 				C3E999D01C47A7C00008456D /* SLFNotification.m in Sources */,
 				C39C611F1C242546002EE4C2 /* FMDatabase.m in Sources */,
 				BCCF6A2E1C08F4D3001F0EAD /* AFURLRequestSerialization.m in Sources */,

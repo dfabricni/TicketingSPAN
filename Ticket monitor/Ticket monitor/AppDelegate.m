@@ -13,7 +13,7 @@
 #import "DataModels.h"
 #import "ADAuthenticationContext.h"
 #import "DBRepository.h"
-
+#import "TicketDetaillViewController.h"
 #import "Synchronizer.h"
 
 @interface AppDelegate ()
@@ -91,14 +91,71 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 
-    
+   
+     UIApplicationState state = application.applicationState;
     
     SLFNotification * notification   =[[SLFNotification alloc] initWithDictionary:userInfo];
     
     SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
     
-    [httpClient getDetailID:notification.detailID];
     
+   
+    if(state == UIApplicationStateBackground)
+    {
+        // just download it
+        [httpClient getDetailID:notification.detailID];
+        
+        
+    } else if(state == UIApplicationStateInactive)
+    {
+        // download it  and  show it
+        
+        // [httpClient getDetailID:notification.detailID];
+        
+        // maybe first show view controller
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
+        
+        UITabBarController * tabBarController =  (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+        
+        
+       // [tabBarController.navigationController pushViewController:vc animated:true];
+        
+        // then cehck DB
+        // if does not exists then dwnload it
+       UINavigationController * navController =(UINavigationController*)[tabBarController.viewControllers objectAtIndex:0];
+        
+        // check is that view already on the stack
+        if([navController.viewControllers count] == 1)
+        {
+        
+            [navController pushViewController:vc animated:TRUE];
+        
+        }else if( [[navController.viewControllers objectAtIndex:1] isKindOfClass:[TicketDetaillViewController class]])
+        {
+            
+            TicketDetaillViewController *vcExisting =(TicketDetaillViewController*) [navController.viewControllers objectAtIndex:1];
+            
+        }
+        
+        
+    }
+    else if(state == UIApplicationStateActive)
+    {
+        
+        // download it and refresh Firstview screen (table)
+        [httpClient getDetailID:notification.detailID];
+        
+        
+    }
+    
+    
+    
+    
+    //NSLog(application.ap );
+    
+   /*
     
     //************************************************************
     // I only want this called if the user opened from swiping the push notification. 
@@ -106,9 +163,18 @@
     //************************************************************
     if(application.applicationState == UIApplicationStateActive) {
         
+         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        //MPOOpenViewController *openVc = [[MPOOpenViewController alloc] init];
-       // [self.navigationController pushViewController:openVc animated:NO];
+        TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
+        
+        UIViewController * unknownController =  [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+       // UITabBarController * tabBarController =  (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+        int n = 5;
+      //  UINavigationController * navController =(UINavigationController*)[tabBarController.tabBar.items objectAtIndex:0];
+        
+      //  [navController pushViewController:vc animated:TRUE];
+        
+        
         
         
     } else {
@@ -118,6 +184,7 @@
         
         
     }
+    */
 
     completionHandler(UIBackgroundFetchResultNewData);
 }
