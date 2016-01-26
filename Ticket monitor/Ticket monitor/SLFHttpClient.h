@@ -38,11 +38,13 @@
 -(void) getCompanies:(double) timestamp;
 -(void) getSubjects:(double) timestamp;
 
+-(void) getLatestFeeds;
+
 -(void) getAllSubscriptions;
 
 -(void) registerDevice:(SLFDevice*) device;
 
--(void) getDetailID:(double) detailID;
+-(void) getDetailByGUID:(NSString*) GUID;
 
 @end
 
@@ -50,8 +52,8 @@
 
 @protocol SLFHttpClientDelegate <NSObject>
 @optional
--(void)slfHTTPClient:(SLFHttpClient *)client didUpdateSubscriptions:(id)subscriptions;
-
+-(void)slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdating:(id)object;
+@optional
 -(void)slfHTTPClient:(SLFHttpClient *)client didFailWithError:(NSError *)error;
 
 @end

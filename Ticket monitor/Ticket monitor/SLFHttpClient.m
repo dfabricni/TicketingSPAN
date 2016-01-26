@@ -309,14 +309,14 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
 }	
 
--(void) getDetailID:(double)detailID
+-(void) getDetailByGUID:(NSString*) GUID
 {
     
     Globals * globals = [Globals instance];
     
      NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    parameters[@"detailID"] = [NSString stringWithFormat:@"%f", detailID ];
+    parameters[@"guid"] = [NSString stringWithFormat:@"%@", GUID ];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:  BaseURLString]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -335,6 +335,9 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         
         // call delegate to refresh table view
         
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdating:)]) {
+            [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdating:ticketDetail];
+        }
         
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
@@ -344,6 +347,63 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
             
         }];
 
+
+}
+
+-(void) getLatestFeeds
+{
+    NSString * timestamp = nil;
+   
+    DBRepository * repo = [[DBRepository alloc] init];
+    Globals * globals = [Globals instance];
+    
+    
+    double maxTimestampInSeconds =  [repo findMaxTimestamp];
+    
+    // convert it to time Z format
+   // 2016-01-20T11:33:55.678Z
+    
+   timestamp  =  [globals formatDateFromTimestamp:maxTimestampInSeconds];  
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"timestamp"] = [NSString stringWithFormat:@"%@", timestamp ];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:  BaseURLString]];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:@"feed" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {;;
+        
+        NSLog(@"JSON Ticket Detail: %@", [responseObject description]);
+        
+        NSArray * array = (NSArray*) responseObject;
+        
+        for(int i=0; i < [array count] ; i++)
+        {
+            SLFTicketDetail * ticketDetail = [[SLFTicketDetail alloc] initWithDictionary: (NSDictionary *)[array objectAtIndex:i]];
+            
+            DBRepository * repo = [[DBRepository alloc] init];
+            [repo saveTicketDetail:ticketDetail];
+
+        }
+        
+        // call delegate to refresh table view
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdating:)]) {
+            [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdating:nil];
+        }
+
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+            [self.delegate slfHTTPClient:self didFailWithError:error];
+        }
+        
+    }];
 
 }
 

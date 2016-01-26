@@ -13,6 +13,6 @@
 @property (nonatomic, assign) double ServicesTimestamp;
 @property (nonatomic, assign) double CompaniesTimestamp;
 @property (nonatomic, assign) double SubjectsTimestamp;
-
+@property (nonatomic, assign) double FeedsTimestamp;
 
 @end

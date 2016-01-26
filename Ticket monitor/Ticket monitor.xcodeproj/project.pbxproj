@@ -91,7 +91,6 @@
 		C39C61691C3E6DB0002EE4C2 /* SLFSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61651C3E6DB0002EE4C2 /* SLFSubscription.m */; };
 		C39C616A1C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61671C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m */; };
 		C39C616D1C3E6FDD002EE4C2 /* SLFDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C616C1C3E6FDD002EE4C2 /* SLFDevice.m */; };
-		C39C61701C3E731E002EE4C2 /* SLFTicketDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C616F1C3E731E002EE4C2 /* SLFTicketDetail.m */; };
 		C39C61731C3E7775002EE4C2 /* SLFRuleType.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61721C3E7775002EE4C2 /* SLFRuleType.m */; };
 		C39C61761C3E84DA002EE4C2 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61751C3E84DA002EE4C2 /* Globals.m */; };
 		C39C61791C3E8B0B002EE4C2 /* SLFSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61781C3E8B0B002EE4C2 /* SLFSettings.m */; };
@@ -104,6 +103,7 @@
 		C3E999CF1C47A7C00008456D /* SLFAps.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999CB1C47A7C00008456D /* SLFAps.m */; };
 		C3E999D01C47A7C00008456D /* SLFNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999CD1C47A7C00008456D /* SLFNotification.m */; };
 		C3E99A221C48FDF90008456D /* TicketDetaillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A201C48FDF90008456D /* TicketDetaillViewController.m */; };
+		C3E99A491C564E7F0008456D /* SLFTicketDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A481C564E7F0008456D /* SLFTicketDetail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,8 +299,6 @@
 		C39C61671C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFSubscriptionsResponse.m; path = Entities/SLFSubscriptionsResponse.m; sourceTree = "<group>"; };
 		C39C616B1C3E6FDD002EE4C2 /* SLFDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFDevice.h; path = Entities/SLFDevice.h; sourceTree = "<group>"; };
 		C39C616C1C3E6FDD002EE4C2 /* SLFDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFDevice.m; path = Entities/SLFDevice.m; sourceTree = "<group>"; };
-		C39C616E1C3E731E002EE4C2 /* SLFTicketDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFTicketDetail.h; path = Entities/SLFTicketDetail.h; sourceTree = "<group>"; };
-		C39C616F1C3E731E002EE4C2 /* SLFTicketDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFTicketDetail.m; path = Entities/SLFTicketDetail.m; sourceTree = "<group>"; };
 		C39C61711C3E7775002EE4C2 /* SLFRuleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFRuleType.h; path = Entities/SLFRuleType.h; sourceTree = "<group>"; };
 		C39C61721C3E7775002EE4C2 /* SLFRuleType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFRuleType.m; path = Entities/SLFRuleType.m; sourceTree = "<group>"; };
 		C39C61741C3E84DA002EE4C2 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
@@ -325,6 +323,8 @@
 		C3E999CD1C47A7C00008456D /* SLFNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFNotification.m; path = Entities/SLFNotification.m; sourceTree = "<group>"; };
 		C3E99A1F1C48FDF90008456D /* TicketDetaillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketDetaillViewController.h; sourceTree = "<group>"; };
 		C3E99A201C48FDF90008456D /* TicketDetaillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketDetaillViewController.m; sourceTree = "<group>"; };
+		C3E99A471C564E7F0008456D /* SLFTicketDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFTicketDetail.h; path = Entities/SLFTicketDetail.h; sourceTree = "<group>"; };
+		C3E99A481C564E7F0008456D /* SLFTicketDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFTicketDetail.m; path = Entities/SLFTicketDetail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,6 +622,8 @@
 		C39C61291C24266F002EE4C2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C3E99A471C564E7F0008456D /* SLFTicketDetail.h */,
+				C3E99A481C564E7F0008456D /* SLFTicketDetail.m */,
 				C3E999C81C47A7C00008456D /* SLFAlert.h */,
 				C3E999C91C47A7C00008456D /* SLFAlert.m */,
 				C3E999CA1C47A7C00008456D /* SLFAps.h */,
@@ -634,8 +636,6 @@
 				C39C61871C43CCA8002EE4C2 /* SLFGroupStatus.m */,
 				C39C61831C43CA84002EE4C2 /* SLFSubscriptionStatus.h */,
 				C39C61841C43CA84002EE4C2 /* SLFSubscriptionStatus.m */,
-				C39C616E1C3E731E002EE4C2 /* SLFTicketDetail.h */,
-				C39C616F1C3E731E002EE4C2 /* SLFTicketDetail.m */,
 				C39C616B1C3E6FDD002EE4C2 /* SLFDevice.h */,
 				C39C616C1C3E6FDD002EE4C2 /* SLFDevice.m */,
 				C39C61621C3E6DB0002EE4C2 /* SLFGroup.h */,
@@ -819,7 +819,6 @@
 				C39C61761C3E84DA002EE4C2 /* Globals.m in Sources */,
 				BCCF6BB91C09029B001F0EAD /* ADTokenCacheValue.m in Sources */,
 				C39C616A1C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m in Sources */,
-				C39C61701C3E731E002EE4C2 /* SLFTicketDetail.m in Sources */,
 				BCCF6BBB1C09029B001F0EAD /* ADUserInformation.m in Sources */,
 				C39C61551C3E65FF002EE4C2 /* SLFService.m in Sources */,
 				BCCF6A4A1C08F513001F0EAD /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -880,6 +879,7 @@
 				C3E999CF1C47A7C00008456D /* SLFAps.m in Sources */,
 				BCCF6A4B1C08F513001F0EAD /* UIWebView+AFNetworking.m in Sources */,
 				BCCF6BBF1C09029B001F0EAD /* ADWorkPlaceJoinUtil.m in Sources */,
+				C3E99A491C564E7F0008456D /* SLFTicketDetail.m in Sources */,
 				C39C618B1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m in Sources */,
 				BCCF6BB21C09029B001F0EAD /* ADLogger.m in Sources */,
 				BCCF6BA21C09029A001F0EAD /* ADAuthenticationBroker.m in Sources */,

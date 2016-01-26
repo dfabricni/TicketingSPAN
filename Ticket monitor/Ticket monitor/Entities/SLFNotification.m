@@ -10,7 +10,7 @@
 
 
 NSString *const kSLFNotificationAps = @"aps";
-NSString *const kSLFNotificationDetailID = @"detailID";
+NSString *const kSLFNotificationGUID = @"GUID";
 NSString *const kSLFNotificationShortDescription = @"shortDescription";
 
 
@@ -23,7 +23,7 @@ NSString *const kSLFNotificationShortDescription = @"shortDescription";
 @implementation SLFNotification
 
 @synthesize aps = _aps;
-@synthesize detailID = _detailID;
+@synthesize GUID = _GUID;
 @synthesize shortDescription = _shortDescription;
 
 
@@ -40,7 +40,7 @@ NSString *const kSLFNotificationShortDescription = @"shortDescription";
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.aps = [SLFAps modelObjectWithDictionary:[dict objectForKey:kSLFNotificationAps]];
-            self.detailID = [[self objectOrNilForKey:kSLFNotificationDetailID fromDictionary:dict] doubleValue];
+            self.GUID = [self objectOrNilForKey:kSLFNotificationGUID fromDictionary:dict] ;
             self.shortDescription = [self objectOrNilForKey:kSLFNotificationShortDescription fromDictionary:dict];
 
     }
@@ -53,7 +53,7 @@ NSString *const kSLFNotificationShortDescription = @"shortDescription";
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[self.aps dictionaryRepresentation] forKey:kSLFNotificationAps];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.detailID] forKey:kSLFNotificationDetailID];
+    [mutableDict setValue:self.GUID forKey:kSLFNotificationGUID];
     [mutableDict setValue:self.shortDescription forKey:kSLFNotificationShortDescription];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
@@ -79,7 +79,7 @@ NSString *const kSLFNotificationShortDescription = @"shortDescription";
     self = [super init];
 
     self.aps = [aDecoder decodeObjectForKey:kSLFNotificationAps];
-    self.detailID = [aDecoder decodeDoubleForKey:kSLFNotificationDetailID];
+    self.GUID = [aDecoder decodeObjectForKey:kSLFNotificationGUID];
     self.shortDescription = [aDecoder decodeObjectForKey:kSLFNotificationShortDescription];
     return self;
 }
@@ -88,7 +88,7 @@ NSString *const kSLFNotificationShortDescription = @"shortDescription";
 {
 
     [aCoder encodeObject:_aps forKey:kSLFNotificationAps];
-    [aCoder encodeDouble:_detailID forKey:kSLFNotificationDetailID];
+    [aCoder encodeObject:_GUID forKey:kSLFNotificationGUID];
     [aCoder encodeObject:_shortDescription forKey:kSLFNotificationShortDescription];
 }
 
@@ -99,7 +99,7 @@ NSString *const kSLFNotificationShortDescription = @"shortDescription";
     if (copy) {
 
         copy.aps = [self.aps copyWithZone:zone];
-        copy.detailID = self.detailID;
+        copy.GUID = self.GUID;
         copy.shortDescription = [self.shortDescription copyWithZone:zone];
     }
     

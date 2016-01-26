@@ -36,8 +36,6 @@
     
    
     
-   
-    
     return YES;
 }
 
@@ -103,7 +101,7 @@
     if(state == UIApplicationStateBackground)
     {
         // just download it
-        [httpClient getDetailID:notification.detailID];
+        [httpClient getDetailByGUID:notification.GUID];
         
         
     } else if(state == UIApplicationStateInactive)
@@ -116,10 +114,10 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
-        
+        [vc initWithTicketDetailID:notification.GUID];
         UITabBarController * tabBarController =  (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
         
-        
+       // TicketDetaillViewController * ticketDetailVC = nil;
        // [tabBarController.navigationController pushViewController:vc animated:true];
         
         // then cehck DB
@@ -136,7 +134,7 @@
         {
             
             TicketDetaillViewController *vcExisting =(TicketDetaillViewController*) [navController.viewControllers objectAtIndex:1];
-            
+            [vcExisting initWithTicketDetailID:notification.GUID];
         }
         
         
@@ -145,7 +143,7 @@
     {
         
         // download it and refresh Firstview screen (table)
-        [httpClient getDetailID:notification.detailID];
+        [httpClient getDetailByGUID:notification.GUID];
         
         
     }

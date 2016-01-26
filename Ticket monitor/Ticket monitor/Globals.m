@@ -44,5 +44,15 @@
     
 }
 
+-(NSString*) formatDateFromTimestamp:(double) timestamp
+{
+    NSString * strTimestamp = nil;
+    
+    NSDate * date = [NSDate dateWithTimeIntervalSince1970:timestamp/1000.];
+    NSDateFormatter * dateFormater = [[NSDateFormatter alloc]init];
+    dateFormater.dateFormat =  @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    strTimestamp =  [dateFormater stringFromDate:date];
+    return  strTimestamp;
+}
 
 @end

@@ -7,18 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLFHttpClient.h"
 
-@interface FirstViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface FirstViewController : UITableViewController<SLFHttpClientDelegate>
 
-@property ( retain, nonatomic) IBOutlet UIButton * btnLogin;
+//@property ( retain, nonatomic) IBOutlet UIButton * btnLogin;
 
-@property (strong, nonatomic) IBOutlet UITableView * tableView;
+//@property (strong, nonatomic) IBOutlet UITableView * tableView;
 
 @property (strong, nonatomic) NSMutableArray * details;
+
+//@property (nonatomic, strong) UIRefreshControl * refreshControl;
 
 -(IBAction)logMeIn:(id)sender;
 
 -(void) logIn;
+
+-(void) getMoreFeeds;
 
 @end
 

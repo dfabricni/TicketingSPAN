@@ -44,6 +44,8 @@
 -(NSMutableArray *) getAllGroupsForSync;
 
 -(NSMutableArray *) getAllDetails;
+-(SLFTicketDetail *) getTicketDetail:(NSString*) guid;
+
 
 -(void) saveGroup:(SLFGroup*) group;
 
@@ -60,6 +62,7 @@
 -(void) saveCompany:(SLFCompany*) company;
 -(void) saveService:(SLFService*) service;
 -(void) saveSubject:(SLFSubject*) subject;
+-(double) findMaxTimestamp;
 
 
 @end

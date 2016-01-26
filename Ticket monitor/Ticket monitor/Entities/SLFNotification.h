@@ -12,7 +12,7 @@
 @interface SLFNotification : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, strong) SLFAps *aps;
-@property (nonatomic, assign) double detailID;
+@property (nonatomic, assign) NSString * GUID;
 @property (nonatomic, strong) NSString *shortDescription;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

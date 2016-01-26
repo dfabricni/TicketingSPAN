@@ -196,6 +196,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
         settings.ServicesTimestamp = [s doubleForColumn:@"ServicesTimestamp"];
         settings.CompaniesTimestamp= [s doubleForColumn:@"CompaniesTimestamp"];
         settings.SubjectsTimestamp = [s doubleForColumn:@"SubjectsTimestamp"];
+        settings.FeedsTimestamp = [s doubleForColumn:@"FeedsTimestamp"];
        
     }
     
@@ -212,7 +213,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
    
     [self.DB open];
     
-    [self.DB executeUpdate:@"update settings set ServicesTimestamp = ? , SubjectsTimestamp = ? , CompaniesTimestamp = ?" , [NSNumber numberWithDouble:setting.ServicesTimestamp ], [NSNumber numberWithDouble:setting.SubjectsTimestamp ],[NSNumber numberWithDouble:setting.CompaniesTimestamp ],nil];
+    [self.DB executeUpdate:@"update settings set ServicesTimestamp = ? , SubjectsTimestamp = ? , CompaniesTimestamp = ? , FeedsTimestamp = ?" , [NSNumber numberWithDouble:setting.ServicesTimestamp ], [NSNumber numberWithDouble:setting.SubjectsTimestamp ],[NSNumber numberWithDouble:setting.CompaniesTimestamp ],[NSNumber numberWithDouble:setting.FeedsTimestamp ],nil];
     
     [self.DB close];
     
@@ -371,11 +372,11 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 {
     [self.DB open];
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"update TicketDetail set TicketID = %D, SubjectID = %d, DetailDescription = '%@', ActionDescription = '%@', CompanyID = %d, Datetime = '%@', Priority = %d, ServiceID = %d, Note = '%@',  TicketDescription = '%@' where ID = %d " , ticketDetail.ticketID, ticketDetail.subject, ticketDetail.detailDesc, ticketDetail.actionDesc, ticketDetail.cOMPANY, ticketDetail.pDATE, ticketDetail.sEQPRIORITY, ticketDetail.sEQSERVICE, ticketDetail.note, ticketDetail.ticketDesc, ticketDetail.detailID ]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update TicketDetail set TicketID = %D, SubjectID = %d, DetailDescription = '%@', ActionDescription = '%@', CompanyID = %d, Datetime = '%@', Priority = %d, ServiceID = %d, DetailNote = '%@',  TicketDescription = '%@' , ServerTimestamp = %f where GUID = '%@' " , ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp, ticketDetail.gUID]];
     
     // jsut in case then make insert
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into TicketDetail(ID,TicketID, SubjectID, DetailDescription, ActionDescription, CompanyID, Datetime, Priority, ServiceID, Note,  TicketDescription) values(%d,%d,%d,'%@','%@',%d,'%@',%d,%d,'%@','%@')", ticketDetail.detailID, ticketDetail.ticketID, ticketDetail.subject, ticketDetail.detailDesc, ticketDetail.actionDesc, ticketDetail.cOMPANY, ticketDetail.pDATE, ticketDetail.sEQPRIORITY, ticketDetail.sEQSERVICE, ticketDetail.note, ticketDetail.ticketDesc]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into TicketDetail(GUID,TicketID, SubjectID, DetailDescription, ActionDescription, CompanyID, Datetime, Priority, ServiceID, DetailNote,  TicketDescription,ServerTimestamp) values('%@',%d,%d,'%@','%@',%d,'%@',%d,%d,'%@','%@',%f)", ticketDetail.gUID, ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp]];
     
     [self.DB close];
     
@@ -388,11 +389,11 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM TicketDetail	 order by ID desc limit 500"];
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM TicketDetail	 order by ServerTimestamp desc limit 500"];
     while ([s next]) {
         NSMutableDictionary * detail = [NSMutableDictionary dictionary];
         
-    detail[@"ID"] = @([s intForColumn:@"ID"]);
+    detail[@"GUID"] = [s stringForColumn:@"GUID"];
     detail[@"DetailDescription"] = [s stringForColumn:@"DetailDescription"];
     detail[@"Datetime"] = [s stringForColumn:@"Datetime"];
         
@@ -406,6 +407,38 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     [self.DB close];
     
     return items;
+}
+-(SLFTicketDetail *) getTicketDetail:(NSString*) guid
+{
+    SLFTicketDetail * detail = nil;
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat: @"SELECT * FROM TicketDetail	 where GUID = '%@'", guid ]];
+    while ([s next]) {
+       
+        detail =  [[SLFTicketDetail alloc] init];
+        
+        detail.gUID = [s stringForColumn:@"GUID"];
+        detail.detailDescription  = [s stringForColumn:@"DetailDescription"];
+        detail.detailNote  = [s stringForColumn:@"DetailNote"];
+        detail.ticketMasterDescription  = [s stringForColumn:@"TicketMasterDescription"];
+        detail.subjectID  = [s intForColumn:@"SubjectID"];
+        detail.companyID  = [s intForColumn:@"CompanyID"];
+        detail.serviceID  = [s intForColumn:@"ServiceID"];
+        detail.priorityID  = [s intForColumn:@"Priority"];
+        detail.datetime  = [s stringForColumn:@"Datetime"];
+        detail.ticketID  = [s intForColumn:@"TicketID"];
+        detail.action  = [s stringForColumn:@"ActionDescription"];
+        
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return detail;
 }
 
 -(void) markAllAsRead
@@ -473,6 +506,25 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Subject(Id,Name) values(%d,'%@')" , subject.ID,subject.name  ]];
     
     [self.DB close];
+}
+-(double) findMaxTimestamp
+{
+    double res = 0;
+   
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT ifnull(max(ServerTimestamp),0)  FROM TicketDetail"];
+    while ([s next]) {
+        
+        res = [s doubleForColumnIndex:0];       
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return res;
 }
 
 

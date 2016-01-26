@@ -7,7 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataModels.h"
+#import "SLFHttpClient.h"
 
-@interface TicketDetaillViewController : UIViewController
+
+@interface TicketDetaillViewController : UIViewController<SLFHttpClientDelegate>
+
+
+@property (strong, nonatomic) IBOutlet UISegmentedControl * segmentedControl;
+@property (strong, nonatomic) IBOutlet UITextView * textView;
+
+@property (strong, nonatomic)  SLFTicketDetail * ticketDetail;
+@property (copy, nonatomic)  NSString * ticketGUID;
+
+-(void) initWithTicketDetail:(SLFTicketDetail*) ticketDetail;
+
+-(void) initWithTicketDetailID:(NSString *)guid;
+
+-(void) showTicketDetail;
+
 
 @end

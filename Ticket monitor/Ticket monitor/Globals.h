@@ -25,5 +25,7 @@
 + (id)instance;
 
 -(void) saveSettings;
+-(NSString*) formatDateFromTimestamp:(double) timestamp;
+
 
 @end

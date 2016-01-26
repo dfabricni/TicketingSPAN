@@ -7,6 +7,8 @@
 //
 
 #import "TicketDetaillViewController.h"
+#import "DBRepository.h"
+#import "SLFHttpClient.h"
 
 @interface TicketDetaillViewController ()
 
@@ -14,9 +16,60 @@
 
 @implementation TicketDetaillViewController
 
+
+-(void) initWithTicketDetail:(SLFTicketDetail*) ticketDetail
+{
+   
+  
+    self.ticketGUID = ticketDetail.gUID;
+    self.ticketDetail = ticketDetail;
+      
+    
+}
+
+-(void) initWithTicketDetailID:(NSString *)guid
+{
+   
+        self.ticketGUID = guid;
+        DBRepository * repo =  [[DBRepository alloc] init];    
+        self.ticketDetail = [repo getTicketDetail:guid];
+   
+}
+
+-(void) showTicketDetail
+{
+    self.textView.text = [NSString stringWithFormat:@"%@  \n %@ ",self.ticketDetail.detailDescription, self.ticketDetail.detailNote ];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    // get from server if there is none here
+    if(!self.ticketDetail )
+    {
+        //trz pull from server
+        SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
+        httpClient.delegate = self;
+        [httpClient getDetailByGUID:self.ticketGUID];
+    }else{
+        
+        [self showTicketDetail];
+    }
+    
+    
+    
+}
+-(void)slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdating:(id)object
+{
+    
+    DBRepository * repo =  [[DBRepository alloc] init];
+    self.ticketDetail = [repo getTicketDetail:self.ticketGUID];
+    
+    client.delegate = nil;
+    [self showTicketDetail];
 }
 
 - (void)didReceiveMemoryWarning {
