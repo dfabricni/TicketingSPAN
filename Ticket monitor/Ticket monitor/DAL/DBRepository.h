@@ -18,6 +18,7 @@
 
 @property(atomic,strong)  FMDatabase * DB;
 
+-(NSString*) getCodeItemName:(NSString*) codeName  identifer:(int) identifier;
 
 -(NSMutableArray *) getAllCompanies;
 
@@ -55,7 +56,7 @@
 
 -(void) markAllAsSynced;
 
--(void) markTicketAsRead:(int) detailID;
+-(void) markTicketAsRead:(NSString*)guid;
 
 -(void) markAllAsRead;
 

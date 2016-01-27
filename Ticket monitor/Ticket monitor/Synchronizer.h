@@ -7,11 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SLFHttpClient.h"
 
-@interface Synchronizer : NSObject
+@protocol SynchronizerDelegate;
+
+
+@interface Synchronizer : NSObject<SLFHttpClientDelegate>
 
 + (id)instance;
 
 -(void) Sync;
+@property (nonatomic, weak) id<SynchronizerDelegate>delegate;
+
+@end
+
+
+
+@protocol SynchronizerDelegate <NSObject>
+
+
+@optional
+-(void) synchronizer:(Synchronizer*) sync  didFinishedSynchronizing:(id) object;
+
+@optional
+-(void) synchronizer:(Synchronizer*) sync  errorOccured:(NSError*) error;
 
 @end

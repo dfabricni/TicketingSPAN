@@ -38,6 +38,7 @@
 -(void) getCompanies:(double) timestamp;
 -(void) getSubjects:(double) timestamp;
 
+
 -(void) getLatestFeeds;
 
 -(void) getAllSubscriptions;

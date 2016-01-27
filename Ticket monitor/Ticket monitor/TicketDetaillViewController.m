@@ -24,30 +24,10 @@
     self.ticketGUID = ticketDetail.gUID;
     self.ticketDetail = ticketDetail;
       
-    
+    [self refreshTicketDetail];
 }
-
--(void) initWithTicketDetailID:(NSString *)guid
+-(void) refreshTicketDetail
 {
-   
-        self.ticketGUID = guid;
-        DBRepository * repo =  [[DBRepository alloc] init];    
-        self.ticketDetail = [repo getTicketDetail:guid];
-   
-}
-
--(void) showTicketDetail
-{
-    self.textView.text = [NSString stringWithFormat:@"%@  \n %@ ",self.ticketDetail.detailDescription, self.ticketDetail.detailNote ];
-}
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    
-    // get from server if there is none here
     if(!self.ticketDetail )
     {
         //trz pull from server
@@ -58,9 +38,71 @@
         
         [self showTicketDetail];
     }
+}
+-(void) initWithTicketDetailID:(NSString *)guid
+{
+   
+        self.ticketGUID = guid;
+        DBRepository * repo =  [[DBRepository alloc] init];    
+        self.ticketDetail = [repo getTicketDetail:guid];
+   
+        [self refreshTicketDetail];
+    
+}
+
+-(void) showTicketDetail
+{
+   
+    
+    self.textView.text = [NSString stringWithFormat:@"%@  \n %@ ",self.ticketDetail.detailDescription, self.ticketDetail.detailNote ];
+    
+    [[[DBRepository alloc] init] markTicketAsRead:self.ticketDetail.gUID];
+   
+
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    
+   [self showTicketDetail];
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
     
     
     
+}
+
+-(void)showMessage:(NSString*)message withTitle:(NSString *)title
+{
+    
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        //do something when click button
+    }];
+    [alert addAction:okAction];
+    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    [vc presentViewController:alert animated:YES completion:nil];
+}
+
+-(void) slfHTTPClient:(SLFHttpClient *)client didFailWithError:(NSError *)error
+{
+    NSLog(@"Network error:   %@",   [error userInfo]);
+    
+    client.delegate  = nil;
+    
+    [self showMessage:@"Error synchronizing data"
+            withTitle:@"Error"];
+
 }
 -(void)slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdating:(id)object
 {
@@ -72,19 +114,84 @@
     [self showTicketDetail];
 }
 
+
+-(IBAction)segmentChangeViewValueChanged:(UISegmentedControl *)SControl
+{
+     if (SControl.selectedSegmentIndex==0)
+    {
+        self.textView.hidden  = false;
+        self.infoView.hidden = true;
+        [self showTicketDetail];
+        
+        
+    }
+    else if (SControl.selectedSegmentIndex==1)
+    {
+         self.textView.hidden  = false;
+         self.infoView.hidden = true;
+         self.textView.text  = self.ticketDetail.ticketMasterDescription;
+        
+    }
+else if (SControl.selectedSegmentIndex==2)
+    {
+         self.textView.hidden  = true;
+         self.infoView.hidden = false;
+        [self showTicketInfo];
+    }
+
+}
+
+-(void) showTicketInfo
+{
+    DBRepository * repo =  [[DBRepository alloc] init];
+    
+    
+    if( self.ticketDetail.companyID > 0){
+        
+       NSString * name = [repo getCodeItemName:@"Company" identifer:self.ticketDetail.companyID];
+        
+        if(name)
+        {
+            self.lblCompany.text = name;
+        }
+        
+    }
+    
+    if( self.ticketDetail.serviceID > 0){
+        
+         NSString * name = [repo getCodeItemName:@"Service" identifer:self.ticketDetail.serviceID];
+        
+        if(name)
+        {
+            self.lblService.text = name;
+        }
+    }
+
+    if( self.ticketDetail.subjectID > 0){
+        
+         NSString * name = [repo getCodeItemName:@"Subject" identifer:self.ticketDetail.subjectID];
+        
+        if(name)
+        {
+            self.lblSubject.text = name;
+        }
+    }
+
+    
+    if( self.ticketDetail.priorityID > 0){
+        
+       
+        self.lblPriority.text = [NSString stringWithFormat:@"%d", self.ticketDetail.priorityID ];
+       
+    }
+    
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

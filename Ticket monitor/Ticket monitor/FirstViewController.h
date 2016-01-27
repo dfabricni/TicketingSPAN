@@ -8,22 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import "SLFHttpClient.h"
+#import "Synchronizer.h"
 
-@interface FirstViewController : UITableViewController<SLFHttpClientDelegate>
+@interface FirstViewController : UITableViewController<SLFHttpClientDelegate,SynchronizerDelegate>
 
-//@property ( retain, nonatomic) IBOutlet UIButton * btnLogin;
-
-//@property (strong, nonatomic) IBOutlet UITableView * tableView;
 
 @property (strong, nonatomic) NSMutableArray * details;
 
-//@property (nonatomic, strong) UIRefreshControl * refreshControl;
-
--(IBAction)logMeIn:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView * overlayView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView * indicatorView;
 
 -(void) logIn;
 
 -(void) getMoreFeeds;
+
+-(void) invalidateTableView;
+
+-(void)showMessage:(NSString*)message withTitle:(NSString *)title;
+
+-(void) refreshRefreshControl;
 
 @end
 

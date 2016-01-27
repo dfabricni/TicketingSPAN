@@ -18,7 +18,10 @@
     if ( self = [super init] ) {
 
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString * dbPath = [documentsDirectory stringByAppendingString:@"/SLFDB.rdb"];
+    NSString *dbVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"DBVersion"];
+        
+    NSString * dbFileName = [NSString stringWithFormat:@"/SLFDB-%@.rdb",dbVersion];
+    NSString * dbPath = [documentsDirectory stringByAppendingString:dbFileName];
     
    self.DB = [FMDatabase databaseWithPath:dbPath];
    
@@ -35,34 +38,37 @@
 
 +(void) prepareSqlLiteFile
 {
-    bool overwrite = true;
+      NSString *dbVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"DBVersion"];
     
+    NSString * dbFileName = [NSString stringWithFormat:@"/SLFDB-%@.rdb",dbVersion];
     
-    if(!overwrite)
-        return;
-  //  /Users/administrator/Library/Developer/CoreSimulator/Devices/AE397F1A-CE56-4967-AC0E-2B55C48A7EA0/data/Containers/Data/Application/AF79198C-31B5-431E-B461-E9789E085E0F/Documents/
-    
+
     
     // copy sql lite file if we decide
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"SLFDB.rdb"];
     
-    NSString * documentsDBFilePath = [documentsDirectory stringByAppendingString:@"/SLFDB.rdb"];
+    NSString * documentsDBFilePath = [documentsDirectory stringByAppendingString:dbFileName];
     
     NSError *error = nil;
 
     //delte old one
     if([[NSFileManager defaultManager] fileExistsAtPath:documentsDBFilePath isDirectory:false]){
      
-        [[NSFileManager defaultManager] removeItemAtPath: documentsDBFilePath  error: &error];
+        // file is of same version, so don't do anything
+        return;
+      
+    }else{
+        // delete all rdb files in documentsDirectory
+        NSFileManager *fileMgr = [NSFileManager defaultManager];
+        NSArray *fileArray = [fileMgr contentsOfDirectoryAtPath:documentsDirectory error:nil];
+        for (NSString *filename in fileArray)  {
+            
+            [fileMgr removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:filename] error:NULL];
+        }
     }
     
-    
-    if(error !=  nil)
-    {
-        NSLog(@"Error description-%@ \n", [error localizedDescription]);
-        NSLog(@"Error reason-%@", [error localizedFailureReason]);
-    }
+  
     
 if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBFilePath error:&error]){
     NSLog(@"Default file successfully copied over.");
@@ -76,7 +82,24 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 }
 
 
-
+-(NSString*) getCodeItemName:(NSString*) codeName  identifer:(int) identifier;
+{
+   NSString * name = nil;
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat: @"SELECT * FROM %@  where ID = %d", codeName, identifier   ]];
+    while ([s next]) {
+        
+        name = [s stringForColumn:@"Name"];
+    }
+    
+    [s close];
+    
+    [self.DB close];
+    
+    return name;
+}
 
 -(NSMutableArray *) getAllCompanies
 {
@@ -422,7 +445,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
         detail.gUID = [s stringForColumn:@"GUID"];
         detail.detailDescription  = [s stringForColumn:@"DetailDescription"];
         detail.detailNote  = [s stringForColumn:@"DetailNote"];
-        detail.ticketMasterDescription  = [s stringForColumn:@"TicketMasterDescription"];
+        detail.ticketMasterDescription  = [s stringForColumn:@"TicketDescription"];
         detail.subjectID  = [s intForColumn:@"SubjectID"];
         detail.companyID  = [s intForColumn:@"CompanyID"];
         detail.serviceID  = [s intForColumn:@"ServiceID"];
@@ -450,11 +473,11 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     [self.DB close];
 }
 
--(void) markTicketAsRead:(int)detailID
+-(void) markTicketAsRead:(NSString*)guid
 {
     [self.DB open];
     
-    [self.DB executeUpdate:@"update TicketDetail set Read = 1 where ID  = ?",detailID,nil];
+    [self.DB executeUpdate: [NSString stringWithFormat:@"update TicketDetail set Read = 1 where GUID  = '%@'",guid]];
     
     [self.DB close];
 }
@@ -491,7 +514,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     [self.DB executeUpdate:[NSString stringWithFormat:@"update Service set Name = '%@'  where ID = %d" , service.name ,service.ID]];
     
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Service(Id,Name) values(%d,%@)", service.ID,service.name  ]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Service(Id,Name) values(%d,'%@')", service.ID,service.name  ]];
     
     [self.DB close];
 }

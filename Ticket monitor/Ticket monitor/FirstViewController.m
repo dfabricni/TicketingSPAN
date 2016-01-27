@@ -63,13 +63,64 @@
     self.details = [repo getAllDetails];
     
     [self.tableView reloadData];
+    [self invalidateTableView];
 }
 
+-(void) invalidateTableView
+{
+    if ([self.details count] > 0) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+       
+        
+    }
+    else{
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        messageLabel.text = @"No data is currently available. Please pull down to refresh.";
+        messageLabel.textColor = [UIColor blackColor];
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+       // messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
+        [messageLabel sizeToFit];
+        
+        self.tableView.backgroundView = messageLabel;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        
+    }
+}
 -(void) getMoreFeeds
 {
     SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
     httpClient.delegate = self;
     [httpClient getLatestFeeds];
+}
+
+-(void)slfHTTPClient:(SLFHttpClient *)client didFailWithError:(NSError *)error
+{
+    client.delegate = nil;
+    
+    [self showMessage:@"Network error occured"
+            withTitle:@"Error"];
+    
+    [self refreshRefreshControl];
+    
+   
+    
+}
+-(void) refreshRefreshControl
+{
+    if (self.refreshControl) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]forKey:NSForegroundColorAttributeName];
+        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+        self.refreshControl.attributedTitle = attributedTitle;
+        
+        [self.refreshControl endRefreshing];
+    }
 }
 -(void)slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdating:(id)object
 {
@@ -80,17 +131,8 @@
     
     [self.tableView reloadData];
     
-    if (self.refreshControl) {
-
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MMM d, h:mm a"];
-        NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
-        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]forKey:NSForegroundColorAttributeName];
-        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
-        self.refreshControl.attributedTitle = attributedTitle;
-
-        [self.refreshControl endRefreshing];
-}
+    [self refreshRefreshControl];
+    
     client.delegate = nil;
 }
 
@@ -115,27 +157,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if ([self.details count] > 0) {
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        return 1;
-        
-    }
-    else{
-        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-
-        messageLabel.text = @"No data is currently available. Please pull down to refresh.";
-        messageLabel.textColor = [UIColor blackColor];
-        messageLabel.numberOfLines = 0;
-        messageLabel.textAlignment = NSTextAlignmentCenter;
-        messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
-        [messageLabel sizeToFit];
-
-        self.tableView.backgroundView = messageLabel;
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
-        
-            return 1;
-        }
+    
+    return 1;
+    
+   
 }
 
 -(CGFloat)  tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -179,6 +204,45 @@
     
     return cell;
     
+}
+
+-(void) synchronizer:(Synchronizer *)sync didFinishedSynchronizing:(id)object
+{
+   // self.overlayView.hidden  =  true;
+    sync.delegate  = nil;
+    [self.indicatorView stopAnimating];
+    [self.overlayView removeFromSuperview];
+    
+}
+-(void) synchronizer:(Synchronizer *)sync errorOccured:(NSError *)error
+{
+    NSLog(@"Network error:   %@",   [error userInfo]);
+
+    sync.delegate  = nil;
+    
+    [self showMessage:@"Error synchronizing data"
+                    withTitle:@"Error"];
+
+    [self.indicatorView stopAnimating];
+   // self.overlayView.hidden  =  true;
+    [self.overlayView removeFromSuperview];
+    
+}
+-(void)showMessage:(NSString*)message withTitle:(NSString *)title
+{
+
+ UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+
+        //do something when click button
+    }];
+    [alert addAction:okAction];
+    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    [vc presentViewController:alert animated:YES completion:nil];
 }
 
 -(void) logIn
@@ -226,8 +290,16 @@
             
             [httpClient setBearerToken:globals.oAuthAccessToken];
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.navigationController.view addSubview:self.overlayView];
+                [self.indicatorView startAnimating];
+                
+            });
+            
             
             Synchronizer * sync  =  [Synchronizer instance];
+            sync.delegate = self;
             [sync Sync];
 
             
@@ -238,37 +310,5 @@
 }
 
 
--(IBAction)logMeIn:(id)sender
-{
-    
-    
-    DBRepository * repo =  [[DBRepository alloc] init];
-    
-    self.details = [repo getAllDetails];
-    
-    [self.tableView reloadData];
-    
-    
-    
-    //UIViewController * rootController =  [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    
-   // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-   // UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
-   // [self.navigationController pushViewController:vc animated:YES];
-    
-//[self performSegueWithIdentifier:@"TicketDetail" sender:self];
-
-    
-   // TicketDetaillViewController * detailController = [[TicketDetaillViewController alloc] initWithNibName:@"TicketDetaillViewController" bundle:nil];
-    
-    
-   // [self.navigationController pushViewController:detailController animated:true];
-   //[self presentViewController:vc animated:TRUE completion:nil];
-    
-   // Synchronizer * sync  =  [Synchronizer instance];
-    //[sync Sync];
-        
-    
-}
 @end
 

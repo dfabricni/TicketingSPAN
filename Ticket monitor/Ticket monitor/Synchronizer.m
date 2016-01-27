@@ -34,6 +34,20 @@
     }
     return self;
 }
+- (void)slfHTTPClient:(SLFHttpClient *)client didFailWithError:(NSError *)error
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        // Update the UI
+        // end progress notification
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        if ([self.delegate respondsToSelector:@selector(synchronizer:errorOccured:)])
+            [self.delegate synchronizer:self errorOccured:error];
+        
+    });
+    
+}
 
 -(void) Sync
 {
@@ -47,6 +61,7 @@
     // Perform long running process
     
      SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+        httpClient.delegate = self;
    
     Globals * globals = [Globals instance];
    
@@ -78,11 +93,6 @@
    
     
     
-    // first begin with notification that syncing is in progress
-    
-   
-    
-    
     
     // get new services
     [httpClient getServices:globals.settings.ServicesTimestamp];
@@ -100,7 +110,8 @@
     [httpClient getAllSubscriptions];
     
     
-    
+    // get feeds
+   // [httpClient getLatestFeeds];
     
     // push new groups
     
@@ -112,6 +123,8 @@
             // end progress notification
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             
+            if ([self.delegate respondsToSelector:@selector(synchronizer:didFinishedSynchronizing:)])
+                [self.delegate synchronizer:self didFinishedSynchronizing:nil];
             
         });
         

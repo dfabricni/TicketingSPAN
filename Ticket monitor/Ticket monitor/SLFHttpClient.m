@@ -132,6 +132,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 }
 
 
+
 -(void) getCompanies:(double)timestamp
 {
     Globals * globals = [Globals instance];
