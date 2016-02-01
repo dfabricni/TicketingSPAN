@@ -104,6 +104,7 @@
 		C3E999D01C47A7C00008456D /* SLFNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999CD1C47A7C00008456D /* SLFNotification.m */; };
 		C3E99A221C48FDF90008456D /* TicketDetaillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A201C48FDF90008456D /* TicketDetaillViewController.m */; };
 		C3E99A491C564E7F0008456D /* SLFTicketDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A481C564E7F0008456D /* SLFTicketDetail.m */; };
+		C3E99A4C1C5F976E0008456D /* NewGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A4B1C5F976E0008456D /* NewGroupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,6 +326,8 @@
 		C3E99A201C48FDF90008456D /* TicketDetaillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketDetaillViewController.m; sourceTree = "<group>"; };
 		C3E99A471C564E7F0008456D /* SLFTicketDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFTicketDetail.h; path = Entities/SLFTicketDetail.h; sourceTree = "<group>"; };
 		C3E99A481C564E7F0008456D /* SLFTicketDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFTicketDetail.m; path = Entities/SLFTicketDetail.m; sourceTree = "<group>"; };
+		C3E99A4A1C5F976E0008456D /* NewGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGroupViewController.h; sourceTree = "<group>"; };
+		C3E99A4B1C5F976E0008456D /* NewGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGroupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +407,8 @@
 				C39C61751C3E84DA002EE4C2 /* Globals.m */,
 				C39C618C1C43EC31002EE4C2 /* Synchronizer.h */,
 				C39C618D1C43EC31002EE4C2 /* Synchronizer.m */,
+				C3E99A4A1C5F976E0008456D /* NewGroupViewController.h */,
+				C3E99A4B1C5F976E0008456D /* NewGroupViewController.m */,
 			);
 			path = "Ticket monitor";
 			sourceTree = "<group>";
@@ -876,6 +881,7 @@
 				BCCF6BA71C09029A001F0EAD /* ADAuthenticationParameters.m in Sources */,
 				BCCF6BAC1C09029B001F0EAD /* ADAuthenticationWebViewController.m in Sources */,
 				BCCF6A2F1C08F4D3001F0EAD /* AFURLResponseSerialization.m in Sources */,
+				C3E99A4C1C5F976E0008456D /* NewGroupViewController.m in Sources */,
 				C3E999CF1C47A7C00008456D /* SLFAps.m in Sources */,
 				BCCF6A4B1C08F513001F0EAD /* UIWebView+AFNetworking.m in Sources */,
 				BCCF6BBF1C09029B001F0EAD /* ADWorkPlaceJoinUtil.m in Sources */,

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *gUID;
 @property (nonatomic, assign) int companyID;
 @property (nonatomic, assign) double timestamp;
+@property (nonatomic, assign) double datetimeInSeconds;
 @property (nonatomic, assign) int priorityID;
 @property (nonatomic, assign) int ticketID;
 @property (nonatomic, assign) int serviceID;

@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UITableViewController
+
+@property (strong, nonatomic) NSMutableArray * groups;
+
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButtonNEW;
+
+
+-(IBAction)onNew :(id)sender;
 
 @end
+
+
 

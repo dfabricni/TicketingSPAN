@@ -395,11 +395,11 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 {
     [self.DB open];
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"update TicketDetail set TicketID = %D, SubjectID = %d, DetailDescription = '%@', ActionDescription = '%@', CompanyID = %d, Datetime = '%@', Priority = %d, ServiceID = %d, DetailNote = '%@',  TicketDescription = '%@' , ServerTimestamp = %f where GUID = '%@' " , ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp, ticketDetail.gUID]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update TicketDetail set TicketID = %D, SubjectID = %d, DetailDescription = '%@', ActionDescription = '%@', CompanyID = %d, Datetime = '%@', Priority = %d, ServiceID = %d, DetailNote = '%@',  TicketDescription = '%@' , ServerTimestamp = %f , DatetimeInSeconds = %f where GUID = '%@' " , ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp, ticketDetail.datetimeInSeconds, ticketDetail.gUID]];
     
     // jsut in case then make insert
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into TicketDetail(GUID,TicketID, SubjectID, DetailDescription, ActionDescription, CompanyID, Datetime, Priority, ServiceID, DetailNote,  TicketDescription,ServerTimestamp) values('%@',%d,%d,'%@','%@',%d,'%@',%d,%d,'%@','%@',%f)", ticketDetail.gUID, ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into TicketDetail(GUID,TicketID, SubjectID, DetailDescription, ActionDescription, CompanyID, Datetime, Priority, ServiceID, DetailNote,  TicketDescription,ServerTimestamp,DateTimeInSeconds) values('%@',%d,%d,'%@','%@',%d,'%@',%d,%d,'%@','%@',%f,%f)", ticketDetail.gUID, ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp, ticketDetail.datetimeInSeconds]];
     
     [self.DB close];
     
@@ -412,7 +412,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM TicketDetail	 order by ServerTimestamp desc limit 500"];
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM TicketDetail	 order by DatetimeInSeconds desc limit 500"];
     while ([s next]) {
         NSMutableDictionary * detail = [NSMutableDictionary dictionary];
         

@@ -20,6 +20,7 @@ NSString *const kSLFTicketDetailTicketID = @"TicketID";
 NSString *const kSLFTicketDetailServiceID = @"ServiceID";
 NSString *const kSLFTicketDetailDatetime = @"Datetime";
 NSString *const kSLFTicketDetailSubjectID = @"SubjectID";
+NSString *const kSLFTicketDetailDatetimeInSeconds= @"DatetimeInSeconds";
 
 
 @interface SLFTicketDetail ()
@@ -42,6 +43,7 @@ NSString *const kSLFTicketDetailSubjectID = @"SubjectID";
 @synthesize serviceID = _serviceID;
 @synthesize datetime = _datetime;
 @synthesize subjectID = _subjectID;
+@synthesize datetimeInSeconds = _datetimeInSeconds;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -63,6 +65,7 @@ NSString *const kSLFTicketDetailSubjectID = @"SubjectID";
         self.gUID = [self objectOrNilForKey:kSLFTicketDetailGUID fromDictionary:dict];
         self.companyID = [[self objectOrNilForKey:kSLFTicketDetailCompanyID fromDictionary:dict] intValue];
         self.timestamp = [[self objectOrNilForKey:kSLFTicketDetailTimestamp fromDictionary:dict] doubleValue];
+        self.datetimeInSeconds = [[self objectOrNilForKey:kSLFTicketDetailDatetimeInSeconds fromDictionary:dict] doubleValue];
         self.priorityID = [[self objectOrNilForKey:kSLFTicketDetailPriorityID fromDictionary:dict] intValue];
         self.ticketID = [[self objectOrNilForKey:kSLFTicketDetailTicketID fromDictionary:dict] intValue];
         self.serviceID = [[self objectOrNilForKey:kSLFTicketDetailServiceID fromDictionary:dict] intValue];
@@ -84,7 +87,8 @@ NSString *const kSLFTicketDetailSubjectID = @"SubjectID";
     [mutableDict setValue:self.ticketMasterDescription forKey:kSLFTicketDetailTicketMasterDescription];
     [mutableDict setValue:self.gUID forKey:kSLFTicketDetailGUID];
     [mutableDict setValue:[NSNumber numberWithInt:self.companyID] forKey:kSLFTicketDetailCompanyID];
-    [mutableDict setValue:[NSNumber numberWithInt:self.timestamp] forKey:kSLFTicketDetailTimestamp];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.datetimeInSeconds] forKey:kSLFTicketDetailDatetimeInSeconds];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.timestamp] forKey:kSLFTicketDetailTimestamp];
     [mutableDict setValue:[NSNumber numberWithInt:self.priorityID] forKey:kSLFTicketDetailPriorityID];
     [mutableDict setValue:[NSNumber numberWithInt:self.ticketID] forKey:kSLFTicketDetailTicketID];
     [mutableDict setValue:[NSNumber numberWithInt:self.serviceID] forKey:kSLFTicketDetailServiceID];
@@ -120,6 +124,7 @@ NSString *const kSLFTicketDetailSubjectID = @"SubjectID";
     self.gUID = [aDecoder decodeObjectForKey:kSLFTicketDetailGUID];
     self.companyID = [aDecoder decodeIntForKey:kSLFTicketDetailCompanyID];
     self.timestamp = [aDecoder decodeDoubleForKey:kSLFTicketDetailTimestamp];
+    self.datetimeInSeconds = [aDecoder decodeDoubleForKey:kSLFTicketDetailDatetimeInSeconds];
     self.priorityID = [aDecoder decodeIntForKey:kSLFTicketDetailPriorityID];
     self.ticketID = [aDecoder decodeIntForKey:kSLFTicketDetailTicketID];
     self.serviceID = [aDecoder decodeIntForKey:kSLFTicketDetailServiceID];
@@ -138,6 +143,7 @@ NSString *const kSLFTicketDetailSubjectID = @"SubjectID";
     [aCoder encodeObject:_gUID forKey:kSLFTicketDetailGUID];
     [aCoder encodeInt:_companyID forKey:kSLFTicketDetailCompanyID];
     [aCoder encodeDouble:_timestamp forKey:kSLFTicketDetailTimestamp];
+    [aCoder encodeDouble:_datetimeInSeconds forKey:kSLFTicketDetailDatetimeInSeconds];
     [aCoder encodeInt:_priorityID forKey:kSLFTicketDetailPriorityID];
     [aCoder encodeInt:_ticketID forKey:kSLFTicketDetailTicketID];
     [aCoder encodeInt:_serviceID forKey:kSLFTicketDetailServiceID];
@@ -158,6 +164,7 @@ NSString *const kSLFTicketDetailSubjectID = @"SubjectID";
         copy.gUID = [self.gUID copyWithZone:zone];
         copy.companyID = self.companyID;
         copy.timestamp = self.timestamp ;
+        copy.datetimeInSeconds = self.datetimeInSeconds ;
         copy.priorityID = self.priorityID;
         copy.ticketID = self.ticketID;
         copy.serviceID = self.serviceID;
