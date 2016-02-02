@@ -362,7 +362,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     [self.DB open];
   // [self.DB executeUpdate:@"update SubscriptionGroup set Name = ? , GroupOperation = ? , Active = ?, SyncStatus = 0 where ID = ? " , group.name , group.groupOperation, TRUE, group.iDProperty,nil];
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"update SubscriptionGroup set Name = '%@' , GroupOperation = '%@' , Active = %d, SyncStatus = 1 where ID = '%@' " , group.name , group.groupOperation, TRUE, group.iDProperty ]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update SubscriptionGroup set Name = '%@' , GroupOperation = '%@' , Active = %d, SyncStatus = 1 where ID = '%@' " , group.name , group.groupOperation, group.active, group.iDProperty ]];
     
     // jsut in case then make insert
     

@@ -2441,11 +2441,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SecondViewController.m"
-            timestampString = "476032041.972409"
+            timestampString = "476116275.02898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-onNew:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2457,7 +2457,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SecondViewController.m"
-            timestampString = "476029094.018491"
+            timestampString = "476098474.142752"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/SecondViewController.m"
+            timestampString = "476098474.142752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -2473,28 +2489,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SecondViewController.m"
-            timestampString = "476029116.13851"
+            timestampString = "476114561.479347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "-viewWillAppear:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SecondViewController.m"
-            timestampString = "476029117.666831"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-onRemove:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2521,11 +2521,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SecondViewController.m"
-            timestampString = "476032041.972409"
+            timestampString = "476116275.02898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2544,6 +2544,22 @@
             endingLineNumber = "49"
             landmarkName = "-initWithGroup:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/SecondViewController.m"
+            timestampString = "476116275.02898"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "@implementation SecondViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

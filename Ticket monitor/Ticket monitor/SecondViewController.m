@@ -22,7 +22,8 @@
     [super viewDidLoad];
     
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+    self.editing = false;
+   // [self.tableView setEditing:TRUE animated:TRUE];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -38,6 +39,19 @@
 {
 
 }
+-(IBAction)onRemove :(id)sender
+{
+    
+    [self.tableView setEditing:!self.editing animated:TRUE];
+    
+    self.editing = !self.editing;
+   /*
+    if(self.editing)
+        self.leftButtonRemove.title = @"Stop";
+    else
+        self.leftButtonRemove.title = @"Delete";
+    */
+}
 
 -(IBAction)onNew :(id)sender
 {
@@ -49,6 +63,30 @@
     [self.navigationController pushViewController:vc animated:TRUE];
     
 }
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    // If row is deleted, remove it from the list.
+
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+
+        //SimpleEditableListAppDelegate *controller = (SimpleEditableListAppDelegate *)[[UIApplication sharedApplication] delegate];
+        DBRepository * repo =  [[DBRepository alloc] init];
+        SLFGroup* group = (SLFGroup*) [self.groups objectAtIndex:[indexPath row]];
+        
+        group.active =  false;
+        //[controller removeObjectFromListAtIndex:indexPath.row];
+
+        [repo saveGroup:group];
+        self.groups = [repo getAllGroups];
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+    }
+
+}
+
+
 
 -(CGFloat)  tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
