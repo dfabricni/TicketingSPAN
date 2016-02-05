@@ -105,6 +105,7 @@
 		C3E99A221C48FDF90008456D /* TicketDetaillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A201C48FDF90008456D /* TicketDetaillViewController.m */; };
 		C3E99A491C564E7F0008456D /* SLFTicketDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A481C564E7F0008456D /* SLFTicketDetail.m */; };
 		C3E99A4C1C5F976E0008456D /* NewGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A4B1C5F976E0008456D /* NewGroupViewController.m */; };
+		C3E99A4F1C64D7FF0008456D /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E99A4E1C64D7FF0008456D /* SearchTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +329,8 @@
 		C3E99A481C564E7F0008456D /* SLFTicketDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFTicketDetail.m; path = Entities/SLFTicketDetail.m; sourceTree = "<group>"; };
 		C3E99A4A1C5F976E0008456D /* NewGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGroupViewController.h; sourceTree = "<group>"; };
 		C3E99A4B1C5F976E0008456D /* NewGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGroupViewController.m; sourceTree = "<group>"; };
+		C3E99A4D1C64D7FF0008456D /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
+		C3E99A4E1C64D7FF0008456D /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +412,8 @@
 				C39C618D1C43EC31002EE4C2 /* Synchronizer.m */,
 				C3E99A4A1C5F976E0008456D /* NewGroupViewController.h */,
 				C3E99A4B1C5F976E0008456D /* NewGroupViewController.m */,
+				C3E99A4D1C64D7FF0008456D /* SearchTableViewController.h */,
+				C3E99A4E1C64D7FF0008456D /* SearchTableViewController.m */,
 			);
 			path = "Ticket monitor";
 			sourceTree = "<group>";
@@ -855,6 +860,7 @@
 				BCCF6A291C08F4D3001F0EAD /* AFHTTPRequestOperationManager.m in Sources */,
 				BCCF6BB61C09029B001F0EAD /* ADRegistrationInformation.m in Sources */,
 				BCCF6BC31C09029B001F0EAD /* UIAlertView+Additions.m in Sources */,
+				C3E99A4F1C64D7FF0008456D /* SearchTableViewController.m in Sources */,
 				BCCF6BBD1C09029B001F0EAD /* ADWebResponse.m in Sources */,
 				BCCF6A2D1C08F4D3001F0EAD /* AFURLConnectionOperation.m in Sources */,
 				C39C615E1C3E6757002EE4C2 /* SLFCompaniesResponse.m in Sources */,

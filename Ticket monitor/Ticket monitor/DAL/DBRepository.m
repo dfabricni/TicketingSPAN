@@ -179,7 +179,27 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
 }
 
-
+-(NSMutableArray *) getExistingSubscriptionsTypes:(NSString*) groupId;
+{
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat: @"SELECT RuleTypeID FROM Subscription where Active = 1 and SubscriptionGroupID = '%@'", groupId ]];
+    while ([s next]) {
+        
+      int ruleTypeID = [s intForColumn:@"RuleTypeID"];
+        [items addObject: [NSNumber numberWithInt: ruleTypeID ]];
+        
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return items;
+}
 
 -(NSMutableArray *) getAllRuleTypes
 {

@@ -40,6 +40,8 @@
 
 -(NSMutableArray *) getAllSubscriptionsForGroup:(NSString*) groupId;
 
+-(NSMutableArray *) getExistingSubscriptionsTypes:(NSString*) groupId;;
+
 -(NSMutableArray *) getAllSubscriptionsForSync;
 
 -(NSMutableArray *) getAllGroupsForSync;

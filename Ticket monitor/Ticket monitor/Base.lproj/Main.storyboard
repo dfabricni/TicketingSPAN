@@ -192,6 +192,43 @@
             </objects>
             <point key="canvasLocation" x="823" y="312"/>
         </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="x8G-Iq-DCg">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchVC" id="H5S-wL-g5y" customClass="SearchTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8dP-jH-i2u">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableFooterView" contentMode="redraw" id="GDr-Ot-YhT">
+                            <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fv6-a0-bGT">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fv6-a0-bGT" id="gaU-bd-nNP">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="H5S-wL-g5y" id="FQV-Gf-kfv"/>
+                            <outlet property="delegate" destination="H5S-wL-g5y" id="66i-tk-83y"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="GDr-Ot-YhT" id="Q8s-vU-zjn"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VXW-ae-tdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1240" y="952"/>
+        </scene>
         <!--New group-->
         <scene sceneID="CqR-B0-VZG">
             <objects>
@@ -224,6 +261,11 @@
                                 <rect key="frame" x="239" y="156" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="x4g-rP-VK3">
+                                <rect key="frame" x="0.0" y="212" width="320" height="308"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -237,6 +279,7 @@
                     <connections>
                         <outlet property="orSwitch" destination="QLQ-p7-nvL" id="SuZ-ct-KWU"/>
                         <outlet property="rightButtonSave" destination="P2x-UK-zp6" id="IeP-ec-FgO"/>
+                        <outlet property="tableView" destination="x4g-rP-VK3" id="46U-JB-8b8"/>
                         <outlet property="txtName" destination="PWf-kF-6HG" id="uhZ-32-4M3"/>
                     </connections>
                 </viewController>

@@ -9,18 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "SLFGroup.h"
 
-@interface NewGroupViewController : UIViewController
+@interface NewGroupViewController : UIViewController<UIActionSheetDelegate, UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButtonSave;
 @property (strong, nonatomic) IBOutlet UITextField * txtName;
 @property (strong, nonatomic) IBOutlet UISwitch * orSwitch;
 @property (strong, nonatomic)  SLFGroup * group;
+@property (strong, nonatomic)  NSMutableArray * subscriptions;
+@property (strong, nonatomic) IBOutlet UITableView * tableView;
 
 -(IBAction)onSave :(id)sender;
 
 -(BOOL) validateName;
 
 -(void) initWithGroup:(SLFGroup*) group;
-
+-(NSString*) resolveDetailType:(int) type;
 @end
