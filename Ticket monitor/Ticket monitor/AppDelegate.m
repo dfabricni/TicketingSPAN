@@ -15,6 +15,7 @@
 #import "DBRepository.h"
 #import "TicketDetaillViewController.h"
 #import "Synchronizer.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface AppDelegate ()
 
@@ -32,6 +33,16 @@
        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
        [[UIApplication sharedApplication]  registerForRemoteNotifications];
     
+    
+    // UITabBarController * tabBarController =  (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+     //tabBarController.tabBar.barTintColor = [UIColor blackColor];
+    [[UITabBar appearance] setTintColor:[UIColor redColor]];
+   // [[UITabBar appearance] setSelectedImageTintColor:[UIColor redColor]];
+
+//
+    // this will give selected icons and text your apps tint color
+    //tabBarController.tabBar.tintColor = [UIColor colorWithRed:226 green:34 blue:33 alpha:1]; ;  // appTintColor is a UIColor *
+
     [DBRepository prepareSqlLiteFile];
     
    

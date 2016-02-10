@@ -14,11 +14,12 @@
 
 
 @property (strong, nonatomic) NSMutableArray * details;
-
+@property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButtonNEW;
 @property (strong, nonatomic) IBOutlet UIView * overlayView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView * indicatorView;
+@property (nonatomic, assign) BOOL  syncNeeded;
 
--(void) logIn;
+//-(void) logIn;
 
 -(void) getMoreFeeds;
 
@@ -28,6 +29,7 @@
 
 -(void) refreshRefreshControl;
 
+-(IBAction)onRemove :(id)sender;
 @end
 
 

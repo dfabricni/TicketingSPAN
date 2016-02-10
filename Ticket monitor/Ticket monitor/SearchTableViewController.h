@@ -11,21 +11,27 @@
 
 
 typedef NS_ENUM(NSInteger, SLFFilterType) {
-    SLFCompanyFilter = 0,
-    SLFSubjectFilter = 1,
-    SLFServiceFilter = 2
+    SLFCompanyFilter = 2,
+    SLFSubjectFilter = 4,
+    SLFServiceFilter = 3
     
 };
 
 
-@interface SearchTableViewController : UITableViewController
+@interface SearchTableViewController : UITableViewController< UISearchBarDelegate>
 
-
+@property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButtonDone;
 @property (strong, nonatomic) IBOutlet UISearchBar * searchBar;
 @property (assign, nonatomic)  SLFFilterType  FilterType;
 @property (strong, nonatomic)  NSMutableArray * items;
-
+@property (copy, nonatomic)  NSString * groupID;
+@property (weak, nonatomic)  UITableView * searchTableView;
 @property (assign, nonatomic)  long  checkedIndex;
 
+@property (assign, nonatomic)  BOOL  isFiltering;
+
 -(void) initCustom;
+
+-(IBAction)onDone :(id)sender;
+
 @end

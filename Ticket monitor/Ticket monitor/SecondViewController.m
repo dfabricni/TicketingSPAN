@@ -27,18 +27,99 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
--(void) viewWillAppear:(BOOL)animated
+
+-(void) viewDidAppear:(BOOL)animated
 {
     DBRepository * repo =  [[DBRepository alloc] init];
     
-    self.groups = [repo getAllGroups];
-    [self.tableView reloadData];	
+    Globals * globals  = [Globals instance];   
+    if([globals needsReauthentication])
+        return;
     
-}
--(void) viewDidAppear:(BOOL)animated
-{
+    
+    // check to see if there is need to sync
+    BOOL needsync = [repo checkUnsynced];
+    if(needsync)
+    {
+        
+        [self sync];
+        
+    }
+        
+    self.groups = [repo getAllGroups];
+    [self.tableView reloadData];
+        
+    
 
 }
+-(void) sync
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        // Perform long running process
+        
+    DBRepository * repo =  [[DBRepository alloc] init];
+    SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+    httpClient.delegate = self;
+    // start syncing
+    SLFSubscriptionsRequest * slfSubscriptionsRequest = [[SLFSubscriptionsRequest alloc] init];
+    
+    slfSubscriptionsRequest.groups = [repo getAllGroupsForSync];
+    slfSubscriptionsRequest.subscriptions = [repo getAllSubscriptionsForSync];
+    
+    
+    
+    if ([slfSubscriptionsRequest.groups count] > 0 || [slfSubscriptionsRequest.subscriptions count] > 0) {
+        
+        
+        [httpClient postSubscriptions:slfSubscriptionsRequest];
+        
+    }
+        
+     });
+        
+}
+-(void) slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdating:(id)object
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        // Update the UI
+        // end progress notification
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        client.delegate= nil;
+        DBRepository * repo =  [[DBRepository alloc] init];
+        self.groups = [repo getAllGroups];
+        [self.tableView reloadData];
+        
+    });
+    
+   
+    
+}
+-(void) slfHTTPClient:(SLFHttpClient *)client didFailWithError:(NSError *)error
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        // Update the UI
+        // end progress notification
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        NSLog(@"Network error:   %@",   [error userInfo]);
+        
+        client.delegate  = nil;
+        
+        [self showMessage:@"Error synchronizing data"
+                withTitle:@"Error"];
+        
+    });
+    
+   
+    
+}
+
 -(IBAction)onRemove :(id)sender
 {
     
@@ -77,11 +158,13 @@
         group.active =  false;
         //[controller removeObjectFromListAtIndex:indexPath.row];
 
-        [repo saveGroup:group];
+        [repo saveGroup:group syncStatus:0];
+        [repo disableAllSubscriptionsForGroup:group.iDProperty];
         self.groups = [repo getAllGroups];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
+        [self sync];
     }
 
 }
@@ -102,7 +185,7 @@
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"DefaultCell"];
         
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     }
     
@@ -137,6 +220,23 @@
         return [self.groups count];
     else
         return 0;
+}
+
+-(void)showMessage:(NSString*)message withTitle:(NSString *)title
+{
+    
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        //do something when click button
+    }];
+    [alert addAction:okAction];
+    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    [vc presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

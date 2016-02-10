@@ -77,7 +77,7 @@
     // push subscriptions ready to sync
     
      DBRepository * repo = [[DBRepository alloc] init];
-    
+    /*
     SLFSubscriptionsRequest * slfSubscriptionsRequest = [[SLFSubscriptionsRequest alloc] init];
     
     slfSubscriptionsRequest.groups = [repo getAllGroupsForSync];
@@ -91,7 +91,7 @@
         
     }
    
-    
+    */
     
     
     // get new services
@@ -111,7 +111,7 @@
     
     
     // get feeds
-   // [httpClient getLatestFeeds];
+    [httpClient getLatestFeeds];
     
     // push new groups
     

@@ -9,6 +9,7 @@
 #import "TicketDetaillViewController.h"
 #import "DBRepository.h"
 #import "SLFHttpClient.h"
+#import "Globals.h"
 
 @interface TicketDetaillViewController ()
 
@@ -26,10 +27,16 @@
       
     [self refreshTicketDetail];
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
 -(void) refreshTicketDetail
 {
-    if(!self.ticketDetail )
+    if(self.ticketDetail==nil )
     {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         //trz pull from server
         SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
         httpClient.delegate = self;
@@ -53,20 +60,29 @@
 -(void) showTicketDetail
 {
    
-    
+    if(self.ticketDetail)
+    {
     self.textView.text = [NSString stringWithFormat:@"%@  \n %@ ",self.ticketDetail.detailDescription, self.ticketDetail.detailNote ];
     
     [[[DBRepository alloc] init] markTicketAsRead:self.ticketDetail.gUID];
-   
+    }else
+    {
+        self.textView.text = @"";
+    }
 
     
 }
 
--(void) viewWillAppear:(BOOL)animated
+-(void) viewDidAppear:(BOOL)animated
 {
+    Globals * globals  = [Globals instance];
+    if([globals needsReauthentication])
+        return;
     
-   [self showTicketDetail];
+    [self showTicketDetail];
+
 }
+
 
 
 - (void)viewDidLoad {
@@ -96,22 +112,28 @@
 
 -(void) slfHTTPClient:(SLFHttpClient *)client didFailWithError:(NSError *)error
 {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
     NSLog(@"Network error:   %@",   [error userInfo]);
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     client.delegate  = nil;
     
     [self showMessage:@"Error synchronizing data"
             withTitle:@"Error"];
-
+  });
 }
 -(void)slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdating:(id)object
 {
-    
-    DBRepository * repo =  [[DBRepository alloc] init];
-    self.ticketDetail = [repo getTicketDetail:self.ticketGUID];
-    
-    client.delegate = nil;
-    [self showTicketDetail];
+     dispatch_async(dispatch_get_main_queue(), ^{
+         
+         DBRepository * repo =  [[DBRepository alloc] init];
+         self.ticketDetail = [repo getTicketDetail:self.ticketGUID];
+         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         client.delegate = nil;
+         [self showTicketDetail];
+         
+    });
 }
 
 

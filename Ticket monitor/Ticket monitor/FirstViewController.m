@@ -41,29 +41,61 @@
     
    // self.tableView.delegate  = self;
     //self.tableView.dataSource =  self;
-
+    self.syncNeeded = true;
     //init refresh control
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor purpleColor];
-    self.refreshControl.tintColor = [UIColor whiteColor];
+    self.refreshControl.backgroundColor = UIColorFromRGB(0xe3e3e3);
+    self.refreshControl.tintColor = UIColorFromRGB(0xe22221);
     [self.refreshControl addTarget:self action:@selector(getMoreFeeds) forControlEvents:UIControlEventValueChanged];
 
     
     
    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-    [self logIn];
    
+
 }
--(void) viewWillAppear:(BOOL)animated
+-(void) viewDidAppear:(BOOL)animated
 {
+    Globals * globals  = [Globals instance];
+    if([globals needsReauthentication])
+        return;
+    /*
+    if (globals.authInProcess) {
+        return;
+    }*/
+    
     DBRepository * repo =  [[DBRepository alloc] init];
     
     self.details = [repo getAllDetails];
     
     [self.tableView reloadData];
     [self invalidateTableView];
+    
+    
+    /*
+    // TODO revidirat ovo oko syncanja
+    if (self.syncNeeded) {
+        Synchronizer * sync  =  [Synchronizer instance];
+        sync.delegate = self;
+        [sync Sync];
+        self.syncNeeded = false;
+    }
+    */
+
+    
+    
+    
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    
+    
+    
+    
 }
 
 -(void) invalidateTableView
@@ -113,7 +145,7 @@
     if (self.refreshControl) {
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MMM d, h:mm a"];
+        [formatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
         NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
         NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]forKey:NSForegroundColorAttributeName];
         NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
@@ -245,68 +277,13 @@
     [vc presentViewController:alert animated:YES completion:nil];
 }
 
--(void) logIn
+
+-(IBAction)onRemove :(id)sender
 {
-    
-    NSString *authority = @"https://login.windows.net/b0460523-b78c-4b4a-8a10-5928b799ad45/FederationMetadata/2007-06/FederationMetadata.xml";
-    NSString *resourceURI = @"https://slf-mobile-span.azurewebsites.net";
-    NSString *clientID = @"75842aba-501f-409d-b0e0-7b2091678c4b";
-    NSString *redirectURI = @"http://console-app-test-oauth/";
-    
-    ADAuthenticationError *error;
-    ADAuthenticationContext *authContext = [ADAuthenticationContext authenticationContextWithAuthority:authority error:&error];
-    NSURL *redirectUri = [[NSURL alloc]initWithString:redirectURI];
-    
-    [authContext acquireTokenWithResource:resourceURI clientId:clientID redirectUri:redirectUri completionBlock:^(ADAuthenticationResult *result) {
-        if (result.tokenCacheStoreItem == nil)
-        {
-            // exit the app
-            //home button press programmatically
-        UIApplication *app = [UIApplication sharedApplication];
-        [app performSelector:@selector(suspend)];
-
-        //wait 2 seconds while app is going background
-        [NSThread sleepForTimeInterval:2.0];
-
-        //exit app when app is in background
-        exit(0);
-
-            
-            return;
-        }
-        else
-        {
-            
-            Globals * globals  = [Globals instance];
-            
-            globals.oAuthAccessToken = [NSString stringWithFormat:@"%@ %@",result.tokenCacheStoreItem.accessTokenType, result.tokenCacheStoreItem.accessToken];
-            
-            if (globals.device != nil) {
-                
-                globals.device.username = result.tokenCacheStoreItem.userInformation.userId ;
-            }
-            
-            SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
-            
-            [httpClient setBearerToken:globals.oAuthAccessToken];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [self.navigationController.view addSubview:self.overlayView];
-                [self.indicatorView startAnimating];
-                
-            });
-            
-            
-            Synchronizer * sync  =  [Synchronizer instance];
-            sync.delegate = self;
-            [sync Sync];
-
-            
-        }
-    }];
-    
-    
+    DBRepository * repo =  [[DBRepository alloc] init];
+    [repo deleteAllFeeds];
+     self.details = [repo getAllDetails];
+    [self.tableView reloadData];
 }
 
 

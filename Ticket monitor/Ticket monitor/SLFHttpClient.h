@@ -41,6 +41,10 @@
 
 -(void) getLatestFeeds;
 
+
+
+    
+
 -(void) getAllSubscriptions;
 
 -(void) registerDevice:(SLFDevice*) device;

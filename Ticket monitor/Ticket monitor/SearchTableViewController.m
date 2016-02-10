@@ -20,6 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isFiltering = false;
+    self.searchBar.delegate = self;
+    self.searchBar.showsCancelButton= false;
+    
     self.tableView.tableHeaderView = self.searchBar;
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     // Uncomment the following line to preserve selection between presentations.
@@ -32,21 +36,22 @@
 -(void) initCustom
 {
      DBRepository * repo =  [[DBRepository alloc] init];
-    
+    self.isFiltering = false;
+
     switch (self.FilterType) {
             
         case SLFCompanyFilter:
             
-            self.items = [repo getAllCompanies];
+            self.items = [repo getAllCompanies:nil];
             
             break;
         case SLFServiceFilter:
             
-            self.items = [repo getAllServices];
+            self.items = [repo getAllServices:nil];
             break;
         case SLFSubjectFilter:
             
-            self.items = [repo getAllSubjects];
+            self.items = [repo getAllSubjects:nil];
             break;
             
         default:
@@ -70,13 +75,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [self.items count];
+    if(self.isFiltering)
+    {
+        self.searchTableView = tableView;
+    }
+    NSInteger count = 0;
+    count  = [self.items count];
+    
+    return count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
     
     
     if (cell == nil) {
@@ -125,11 +137,112 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.checkedIndex = indexPath.row;
-    
-    [self.tableView reloadData];
+     self.checkedIndex = indexPath.row;
+    if(self.isFiltering)
+    {
+        [self.searchTableView  reloadData];
+         [self pickIt];
+    }
+        else
+            [self.tableView reloadData];
 }
 
+-(void) pickIt
+{
+    DBRepository * repo =  [[DBRepository alloc] init];
+    
+    SLFCompany * company = nil;
+    SLFService * service = nil;
+    SLFSubject * subject = nil;
+    NSString * value = nil;
+    NSString * valueDisplayText = nil;
+    
+    switch (self.FilterType) {
+            
+        case SLFCompanyFilter:
+            
+            company  = (SLFCompany *)[self.items objectAtIndex:self.checkedIndex];
+            value = [ NSString stringWithFormat:@"%d" ,company.ID ];
+            valueDisplayText  = company.name;
+            
+            break;
+        case SLFServiceFilter:
+            service = (SLFService*) [self.items objectAtIndex:self.checkedIndex];
+            value = [ NSString stringWithFormat:@"%d" ,service.ID ];
+            valueDisplayText  = service.name;
+            break;
+        case SLFSubjectFilter:
+            
+            subject = (SLFSubject*) [self.items objectAtIndex:self.checkedIndex];
+            value = [ NSString stringWithFormat:@"%d" ,subject.ID ];
+            valueDisplayText  = subject.name;
+            
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    //do something when click button
+    NSDateFormatter * dateFormater = [[NSDateFormatter alloc]init];
+    dateFormater.dateFormat =  @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    
+    SLFSubscription * subs= [[SLFSubscription alloc] init];
+    subs.iDProperty = [[NSUUID UUID] UUIDString];
+    subs.subscriptionGroupID  =  self.groupID;
+    subs.ruleTypeID =  self.FilterType;
+    subs.value =  value;
+    subs.valueDisplayText = valueDisplayText;
+    subs.lastCheckPoint =  [dateFormater stringFromDate:[NSDate date]];
+    subs.active = true;
+    
+    [repo saveSubscription:subs syncStatus:0 ];
+    
+    //[self dismissViewControllerAnimated:true completion:nil];
+    [self.navigationController popViewControllerAnimated:TRUE];
+}
+
+-(IBAction)onDone :(id)sender
+{
+    
+   
+    [self pickIt];
+    
+}
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    DBRepository * repo =  [[DBRepository alloc] init];
+    
+    self.isFiltering =  ![searchText isEqualToString:@"" ];
+    
+    
+    
+    switch (self.FilterType) {
+            
+        case SLFCompanyFilter:
+            
+            self.items = [repo getAllCompanies:searchText];
+            
+            break;
+        case SLFServiceFilter:
+            
+            self.items = [repo getAllServices:searchText];
+            break;
+        case SLFSubjectFilter:
+            
+            self.items = [repo getAllSubjects:searchText];
+            break;
+            
+        default:
+            break;
+    }
+    
+    self.searchTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.searchTableView reloadData];
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

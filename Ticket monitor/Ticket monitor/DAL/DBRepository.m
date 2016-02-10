@@ -101,13 +101,23 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     return name;
 }
 
--(NSMutableArray *) getAllCompanies
+-(NSMutableArray *) getAllCompanies:(NSString*) searchStr
 {
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
+    
+    NSString * query = nil;
+    
+    if([searchStr isEqualToString:@""] || !searchStr ){
+        query = @"SELECT * FROM Company order by Name";
+    }else
+    {
+        query = [NSString stringWithFormat:@"SELECT * FROM Company where Name like '%@%%' order by Name",searchStr ];
+    }
+    
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Company"];
+    FMResultSet *s = [self.DB executeQuery:query];
     while ([s next]) {
         SLFCompany * company = [[SLFCompany alloc] init];
         
@@ -129,14 +139,22 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 
 
 
--(NSMutableArray *) getAllSubjects
+-(NSMutableArray *) getAllSubjects:(NSString*) searchStr
 {
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
+    NSString * query = nil;
+    
+    if([searchStr isEqualToString:@""] || !searchStr ){
+        query = @"SELECT * FROM Subject order by Name";
+    }else
+    {
+        query = [NSString stringWithFormat:@"SELECT * FROM Subject where Name like '%@%%' order by Name",searchStr ];
+    }
+    
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Subject"];
-    while ([s next]) {
+    FMResultSet *s = [self.DB executeQuery:query];    while ([s next]) {
         SLFSubject * subject = [[SLFSubject alloc] init];
         
         subject.ID = [s intForColumn:@"ID"];
@@ -154,13 +172,22 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
 }
 
--(NSMutableArray *) getAllServices
+-(NSMutableArray *) getAllServices:(NSString*) searchStr;
 {
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
+    NSString * query = nil;
+    
+    if([searchStr isEqualToString:@""] || !searchStr ){
+        query = @"SELECT * FROM Service order by Name";
+    }else
+    {
+        query = [NSString stringWithFormat:@"SELECT * FROM Service where Name like '%@%%' order by Name",searchStr ];
+    }
+    
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Service"];
+    FMResultSet *s = [self.DB executeQuery:query];
     while ([s next]) {
         SLFService * service = [[SLFService alloc] init];
         
@@ -296,7 +323,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM SubscriptionGroup where Active = 1 and SyncStatus = 0"];
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM SubscriptionGroup where  SyncStatus = 0"];
     while ([s next]) {
         SLFGroup * group = [[SLFGroup alloc] init];
         
@@ -352,7 +379,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Subscription	 where Active = 1 and SyncStatus  =  0"];
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Subscription	 where  SyncStatus  =  0"];
     while ([s next]) {
         SLFSubscription * subscription = [[SLFSubscription alloc] init];
         
@@ -376,17 +403,17 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 }
 
 
--(void) saveGroup:(SLFGroup*) group{
+-(void) saveGroup:(SLFGroup*) group syncStatus:(int) syncStatus{
     
     
     [self.DB open];
   // [self.DB executeUpdate:@"update SubscriptionGroup set Name = ? , GroupOperation = ? , Active = ?, SyncStatus = 0 where ID = ? " , group.name , group.groupOperation, TRUE, group.iDProperty,nil];
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"update SubscriptionGroup set Name = '%@' , GroupOperation = '%@' , Active = %d, SyncStatus = 1 where ID = '%@' " , group.name , group.groupOperation, group.active, group.iDProperty ]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update SubscriptionGroup set Name = '%@' , GroupOperation = '%@' , Active = %d, SyncStatus = %d where ID = '%@' " , group.name , group.groupOperation, group.active,syncStatus, group.iDProperty ]];
     
     // jsut in case then make insert
     
-     [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values('%@','%@','%@',%d,1)" , group.iDProperty ,group.name , group.groupOperation, TRUE ]];
+     [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values('%@','%@','%@',%d,%d)" , group.iDProperty ,group.name , group.groupOperation, TRUE ,syncStatus]];
     
    // [self.DB executeUpdate:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values(?,?,?,?,?)", group.iDProperty, group.name,group.groupOperation,1,0];
     
@@ -394,18 +421,18 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
 }
 
--(void) saveSubscription:(SLFSubscription*) subscription
+-(void) saveSubscription:(SLFSubscription*) subscription syncStatus:(int) syncStatus
 {
 
     [self.DB open];
     
-     [self.DB executeUpdate:[NSString stringWithFormat:@"update Subscription set SubscriptionGroupID = '%@' , RuleTypeID = %d , LastCheckPoint = '%@', Value='%@', ValueDisplayText = '%@' , Active = %d, SyncStatus = 1 where ID = '%@' " , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active, subscription.iDProperty]];
+     [self.DB executeUpdate:[NSString stringWithFormat:@"update Subscription set SubscriptionGroupID = '%@' , RuleTypeID = %d , LastCheckPoint = '%@', Value='%@', ValueDisplayText = '%@' , Active = %d, SyncStatus = %d where ID = '%@' " , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active, syncStatus,subscription.iDProperty]];
     
   
     
     // jsut in case then make insert
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Subscription(ID,SubscriptionGroupID,RuleTypeID,LastCheckPoint,Value,ValueDisplayText ,Active,SyncStatus) values('%@','%@',%d,'%@','%@','%@',%d,%d)", subscription.iDProperty, subscription.subscriptionGroupID,subscription.ruleTypeID,subscription.lastCheckPoint,subscription.value,subscription.valueDisplayText ,subscription.active,1]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Subscription(ID,SubscriptionGroupID,RuleTypeID,LastCheckPoint,Value,ValueDisplayText ,Active,SyncStatus) values('%@','%@',%d,'%@','%@','%@',%d,%d)", subscription.iDProperty, subscription.subscriptionGroupID,subscription.ruleTypeID,subscription.lastCheckPoint,subscription.value,subscription.valueDisplayText ,subscription.active,syncStatus]];
     
     [self.DB close];
     
@@ -512,6 +539,37 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB close];
 }
+-(void) deleteAllDisabledAndSynced
+{
+    [self.DB open];
+    
+    [self.DB executeUpdate:@"delete Subscription where Active = 0 and SyncStatus = 1"];
+    
+    [self.DB executeUpdate:@"delete SubscriptionGroup where Active = 0 and SyncStatus = 1"];
+    
+    [self.DB close];
+}
+-(void) disableAllSubscriptionsForGroup:(NSString*) groupID
+{
+    [self.DB open];
+    
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update Subscription set Active = 0, SyncStatus = 0  where SubscriptionGroupID = '%@' " , groupID]];
+    
+    
+    
+    [self.DB close];
+}
+
+-(void) deleteAllFeeds
+{
+    [self.DB open];
+    
+    [self.DB executeUpdate:[NSString stringWithFormat:@"delete from TicketDetail"]];
+    
+    
+    
+    [self.DB close];
+}
 
 
 -(void) saveCompany:(SLFCompany *)company
@@ -568,6 +626,30 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     [self.DB close];
     
     return res;
+}
+-(BOOL) checkUnsynced
+{
+    BOOL exists=false;
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Subscription	 where  SyncStatus  =  0"];
+    if ([s next]) {
+        exists = TRUE;
+    }
+    
+    [s close];
+    
+    s = [self.DB executeQuery:@"SELECT * FROM SubscriptionGroup	 where  SyncStatus  =  0"];
+    if ([s next]) {
+        exists = TRUE;
+    }
+    
+    [s close];
+    
+    [self.DB close];
+    
+    return exists;
 }
 
 

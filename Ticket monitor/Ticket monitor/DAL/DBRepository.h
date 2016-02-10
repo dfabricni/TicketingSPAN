@@ -20,11 +20,11 @@
 
 -(NSString*) getCodeItemName:(NSString*) codeName  identifer:(int) identifier;
 
--(NSMutableArray *) getAllCompanies;
+-(NSMutableArray *) getAllCompanies:(NSString*) searchStr;
 
--(NSMutableArray *) getAllSubjects;
+-(NSMutableArray *) getAllSubjects:(NSString*) searchStr;
 
--(NSMutableArray *) getAllServices;
+-(NSMutableArray *) getAllServices:(NSString*) searchStr;
 
 -(NSMutableArray *) getAllRuleTypes;
 
@@ -49,18 +49,24 @@
 -(NSMutableArray *) getAllDetails;
 -(SLFTicketDetail *) getTicketDetail:(NSString*) guid;
 
+-(void) deleteAllFeeds;
 
--(void) saveGroup:(SLFGroup*) group;
+-(void) saveGroup:(SLFGroup*) group syncStatus:(int) syncStatus;
 
--(void) saveSubscription:(SLFSubscription*) subscription;
+-(void) saveSubscription:(SLFSubscription*) subscription syncStatus:(int) syncStatus;
 
 -(void) saveTicketDetail:(SLFTicketDetail*) ticketDetail;
 
 -(void) markAllAsSynced;
 
+-(void) deleteAllDisabledAndSynced;
+-(void) disableAllSubscriptionsForGroup:(NSString*) groupID;
+
+
 -(void) markTicketAsRead:(NSString*)guid;
 
 -(void) markAllAsRead;
+-(BOOL) checkUnsynced;
 
 -(void) saveCompany:(SLFCompany*) company;
 -(void) saveService:(SLFService*) service;

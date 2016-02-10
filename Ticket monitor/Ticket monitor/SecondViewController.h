@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLFHttpClient.h"
+#import "Synchronizer.h"
 
-@interface SecondViewController : UITableViewController
+@interface SecondViewController : UITableViewController<SLFHttpClientDelegate>
 
 @property (strong, nonatomic) NSMutableArray * groups;
 

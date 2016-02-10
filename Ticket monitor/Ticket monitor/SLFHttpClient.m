@@ -1,4 +1,4 @@
-//
+
 //  SLFHttpClient.m
 //  Ticket monitor
 //
@@ -113,7 +113,14 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
     
         [repo markAllAsSynced];
+        [repo deleteAllDisabledAndSynced];
+        
         NSLog(@"JSON: %@", [responseObject description]);
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdating:)]) {
+            [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdating:nil];
+        }
+
     
 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     
@@ -288,12 +295,12 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         
         for (int i=0; i < [subscriptionsResponse.groups count]; i++) {
             
-            [repo saveGroup:subscriptionsResponse.groups[i]];
+            [repo saveGroup:subscriptionsResponse.groups[i] syncStatus:1 ];
         }
         
         for (int i=0; i < [subscriptionsResponse.subscriptions count]; i++) {
             
-            [repo saveSubscription:subscriptionsResponse.subscriptions[i]];
+            [repo saveSubscription:subscriptionsResponse.subscriptions[i] syncStatus:1];
         }
         
         
@@ -361,10 +368,14 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     
     double maxTimestampInSeconds =  [repo findMaxTimestamp];
     
-    // convert it to time Z format
-   // 2016-01-20T11:33:55.678Z
-    
-   timestamp  =  [globals formatDateFromTimestamp:maxTimestampInSeconds];  
+    if(maxTimestampInSeconds ==0)
+    {
+        timestamp = [globals formatDateFromTimestampUTCLast24Hours];
+    }
+    else
+    {
+        timestamp  =  [globals formatDateFromTimestampUTC:maxTimestampInSeconds];
+    }
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     

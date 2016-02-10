@@ -95,7 +95,7 @@
         <scene sceneID="UVI-iC-BsI">
             <objects>
                 <navigationController title="Feed nav" id="sVr-Zn-dLo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="BkD-K3-LOS"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed.png" selectedImage="feedtap" id="BkD-K3-LOS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ma3-ov-7mW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -116,7 +116,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.90000000000000002" contentMode="scaleToFill" id="aFR-6H-rwx">
+                            <view hidden="YES" alpha="0.90000000000000002" contentMode="scaleToFill" id="aFR-6H-rwx">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -141,11 +141,18 @@
                             <outlet property="delegate" destination="9pv-A4-QxB" id="kdw-9h-78i"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" image="first" id="acW-dT-cKf"/>
-                    <navigationItem key="navigationItem" title="Feed" id="GHh-Ej-HfU"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed" selectedImage="feedtap" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="Feed" id="GHh-Ej-HfU">
+                        <barButtonItem key="rightBarButtonItem" title="Remove all" id="tR7-Th-cj1">
+                            <connections>
+                                <action selector="onRemove:" destination="9pv-A4-QxB" id="9PG-7Z-8sU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="indicatorView" destination="NYy-bo-igr" id="aXj-tS-8WK"/>
                         <outlet property="overlayView" destination="aFR-6H-rwx" id="3M8-fs-2bJ"/>
+                        <outlet property="rightButtonNEW" destination="tR7-Th-cj1" id="IQc-G9-Juf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -192,7 +199,7 @@
             </objects>
             <point key="canvasLocation" x="823" y="312"/>
         </scene>
-        <!--Search Table View Controller-->
+        <!--Title-->
         <scene sceneID="x8G-Iq-DCg">
             <objects>
                 <tableViewController storyboardIdentifier="SearchVC" id="H5S-wL-g5y" customClass="SearchTableViewController" sceneMemberID="viewController">
@@ -200,12 +207,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableFooterView" contentMode="redraw" id="GDr-Ot-YhT">
-                            <rect key="frame" x="0.0" y="72" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fv6-a0-bGT">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -221,11 +222,39 @@
                             <outlet property="delegate" destination="H5S-wL-g5y" id="66i-tk-83y"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="N7K-63-UzC">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="xUf-hu-fBv">
+                            <connections>
+                                <action selector="onDone:" destination="H5S-wL-g5y" id="lpj-j5-kbd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="searchBar" destination="GDr-Ot-YhT" id="Q8s-vU-zjn"/>
+                        <outlet property="rightButtonDone" destination="xUf-hu-fBv" id="got-eV-uSb"/>
+                        <outlet property="searchBar" destination="Mjt-81-opZ" id="8Cz-qS-lmM"/>
+                        <outlet property="searchDisplayController" destination="8vx-FE-emd" id="klW-MR-wMm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXW-ae-tdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" placeholder="Search" id="Mjt-81-opZ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="H5S-wL-g5y" id="pTx-rt-FTQ"/>
+                    </connections>
+                </searchBar>
+                <searchDisplayController id="8vx-FE-emd">
+                    <connections>
+                        <outlet property="delegate" destination="H5S-wL-g5y" id="gYK-GH-8wf"/>
+                        <outlet property="searchBar" destination="Mjt-81-opZ" id="ppn-cl-Irc"/>
+                        <outlet property="searchContentsController" destination="H5S-wL-g5y" id="8FK-lq-Sve"/>
+                        <outlet property="searchResultsDataSource" destination="H5S-wL-g5y" id="NRb-s7-bj4"/>
+                        <outlet property="searchResultsDelegate" destination="H5S-wL-g5y" id="HZ4-cX-phN"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1240" y="952"/>
         </scene>
@@ -291,7 +320,7 @@
         <scene sceneID="Wm3-5D-vgx">
             <objects>
                 <navigationController title="Settings nav" id="LA8-XL-Oxy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Subscriptions" id="SL4-jX-AcH"/>
+                    <tabBarItem key="tabBarItem" title="Subscriptions" image="subscriptions.png" selectedImage="subscriptionstap" id="SL4-jX-AcH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OFf-dr-T8e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -313,6 +342,8 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="sVr-Zn-dLo" kind="relationship" relationship="viewControllers" id="CoD-6g-OoA"/>
@@ -325,6 +356,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="feed" width="24" height="17"/>
+        <image name="feed.png" width="24" height="17"/>
+        <image name="feedtap" width="24" height="17"/>
+        <image name="subscriptions.png" width="22" height="23"/>
+        <image name="subscriptionstap" width="22" height="22"/>
     </resources>
+    <color key="tintColor" red="0.88627450980392153" green="0.13333333333333333" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
 </document>

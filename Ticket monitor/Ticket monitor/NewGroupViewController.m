@@ -31,8 +31,13 @@
     
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    DBRepository * repo =  [[DBRepository alloc] init];
+   
+}
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    DBRepository * repo =  [[DBRepository alloc] init];
+    
     
     if(self.group)
     {
@@ -41,15 +46,17 @@
         
         self.txtName.text = self.group.name;
         [self.orSwitch setOn:[self.group.groupOperation isEqualToString:@"A"]];
-
+        
         
         self.txtName.enabled = false;
         self.orSwitch.enabled = false;
-       // self.rightButtonSave.enabled = false;
+        // self.rightButtonSave.enabled = false;
         self.rightButtonSave.title = @"Add";
     }else{
         self.subscriptions  = [[NSMutableArray alloc]init];
     }
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,7 +99,7 @@
         self.group.iDProperty = [[NSUUID UUID] UUIDString];
         self.group.name = self.txtName.text;
         self.group.groupOperation = self.orSwitch.isOn ? @"A" : @"O";
-        [repo saveGroup:self.group];
+        [repo saveGroup:self.group syncStatus:0];
         
          [self showMessage:@"Do you want to add subscription details?" withTitle:@"Details"];
     }else
@@ -138,12 +145,12 @@
             subs.iDProperty = [[NSUUID UUID] UUIDString];
             subs.subscriptionGroupID  =  self.group.iDProperty;
             subs.ruleTypeID =  1;
-            subs.value =  @"10382";
-            subs.valueDisplayText = @"SPAN promjena";
+            subs.value =  @"1038";
+            subs.valueDisplayText = @"SPAN d.o.o.";
             subs.lastCheckPoint =  [dateFormater stringFromDate:[NSDate date]];
             subs.active = true;
             
-            [repo saveSubscription:subs];
+            [repo saveSubscription:subs syncStatus:0 ];
             self.subscriptions = [repo getAllSubscriptionsForGroup:self.group.iDProperty];
             [self.tableView reloadData];
         
@@ -161,6 +168,7 @@
             
             SearchTableViewController *vc = (SearchTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
             vc.FilterType = SLFCompanyFilter;
+            vc.groupID= self.group.iDProperty;
             [vc initCustom];
             [self.navigationController pushViewController:vc animated:TRUE];
             
@@ -179,6 +187,7 @@
             
             SearchTableViewController *vc = (SearchTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
             vc.FilterType = SLFServiceFilter;
+             vc.groupID= self.group.iDProperty;
             [vc initCustom];
             [self.navigationController pushViewController:vc animated:TRUE];
         }];
@@ -195,6 +204,7 @@
             
             SearchTableViewController *vc = (SearchTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
             vc.FilterType = SLFSubjectFilter;
+            vc.groupID= self.group.iDProperty;
             [vc initCustom];
             [self.navigationController pushViewController:vc animated:TRUE];
         }];
@@ -250,7 +260,7 @@
                 subs.lastCheckPoint =  [dateFormater stringFromDate:[NSDate date]];
                 subs.active = true;
                 
-                [repo saveSubscription:subs];
+                [repo saveSubscription:subs syncStatus:0 ];
                 self.subscriptions = [repo getAllSubscriptionsForGroup:self.group.iDProperty];
                 [self.tableView reloadData];
                 
@@ -319,7 +329,7 @@
                 subs.lastCheckPoint =  [dateFormater stringFromDate:[NSDate date]];
                 subs.active = true;
                 
-                [repo saveSubscription:subs];
+                [repo saveSubscription:subs syncStatus:0 ];
                 self.subscriptions = [repo getAllSubscriptionsForGroup:self.group.iDProperty];
                 [self.tableView reloadData];
                 
@@ -512,7 +522,7 @@
         subscription.active =  false;
         //[controller removeObjectFromListAtIndex:indexPath.row];
         
-        [repo saveSubscription:subscription];
+        [repo saveSubscription:subscription syncStatus:0];
         self.subscriptions = [repo getAllSubscriptionsForGroup:self.group.iDProperty];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];

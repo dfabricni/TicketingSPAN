@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Ticket monitor/Ticket monitor.xcodeproj">
+      location = "group:/Users/administrator/Development/TicketingSPAN/Ticket monitor/SPAN Live Feed.xcodeproj">
    </FileRef>
 </Workspace>
