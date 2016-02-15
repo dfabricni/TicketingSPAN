@@ -407,16 +407,15 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     
     [self.DB open];
-  // [self.DB executeUpdate:@"update SubscriptionGroup set Name = ? , GroupOperation = ? , Active = ?, SyncStatus = 0 where ID = ? " , group.name , group.groupOperation, TRUE, group.iDProperty,nil];
+  
     
     [self.DB executeUpdate:[NSString stringWithFormat:@"update SubscriptionGroup set Name = '%@' , GroupOperation = '%@' , Active = %d, SyncStatus = %d where ID = '%@' " , group.name , group.groupOperation, group.active,syncStatus, group.iDProperty ]];
     
     // jsut in case then make insert
     
-     [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values('%@','%@','%@',%d,%d)" , group.iDProperty ,group.name , group.groupOperation, TRUE ,syncStatus]];
+     [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values('%@','%@','%@',%d,%d)" , group.iDProperty ,group.name , group.groupOperation, group.active ,syncStatus]];
     
-   // [self.DB executeUpdate:@"insert or ignore into SubscriptionGroup(Id,Name,GroupOperation,Active,SyncStatus) values(?,?,?,?,?)", group.iDProperty, group.name,group.groupOperation,1,0];
-    
+   
     [self.DB close];
     
 }
@@ -442,17 +441,42 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 {
     [self.DB open];
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"update TicketDetail set TicketID = %D, SubjectID = %d, DetailDescription = '%@', ActionDescription = '%@', CompanyID = %d, Datetime = '%@', Priority = %d, ServiceID = %d, DetailNote = '%@',  TicketDescription = '%@' , ServerTimestamp = %f , DatetimeInSeconds = %f where GUID = '%@' " , ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp, ticketDetail.datetimeInSeconds, ticketDetail.gUID]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"update TicketDetail set TicketID = %D, SubjectID = %d, DetailDescription = '%@', ActionDescription = '%@', CompanyID = %d, Datetime = '%@', Priority = %d, ServiceID = %d, DetailNote = '%@',  TicketDescription = '%@' , ServerTimestamp = %f , DatetimeInSeconds = %f , SubscriptionGroupID = '%@'  where GUID = '%@' " , ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp, ticketDetail.datetimeInSeconds, ticketDetail.subscriptionGroupID, ticketDetail.gUID]];
     
     // jsut in case then make insert
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into TicketDetail(GUID,TicketID, SubjectID, DetailDescription, ActionDescription, CompanyID, Datetime, Priority, ServiceID, DetailNote,  TicketDescription,ServerTimestamp,DateTimeInSeconds) values('%@',%d,%d,'%@','%@',%d,'%@',%d,%d,'%@','%@',%f,%f)", ticketDetail.gUID, ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp, ticketDetail.datetimeInSeconds]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into TicketDetail(GUID,TicketID, SubjectID, DetailDescription, ActionDescription, CompanyID, Datetime, Priority, ServiceID, DetailNote,  TicketDescription,ServerTimestamp,DateTimeInSeconds,SubscriptionGroupID) values('%@',%d,%d,'%@','%@',%d,'%@',%d,%d,'%@','%@',%f,%f,'%@')", ticketDetail.gUID, ticketDetail.ticketID, ticketDetail.subjectID, ticketDetail.detailDescription, ticketDetail.action, ticketDetail.companyID, ticketDetail.datetime, ticketDetail.priorityID, ticketDetail.serviceID, ticketDetail.detailNote, ticketDetail.ticketMasterDescription,ticketDetail.timestamp, ticketDetail.datetimeInSeconds,ticketDetail.subscriptionGroupID]];
     
     [self.DB close];
     
     
 }
+-(SLFGroup*) getGroup:(NSString*) groupID
+{
+    SLFGroup * group = nil;
 
+    [self.DB open];
+    NSString * query =[NSString stringWithFormat: @"SELECT * FROM SubscriptionGroup where ID = '%@'",[groupID uppercaseString] ];
+   
+    FMResultSet *s = [self.DB executeQuery:query];
+    while ([s next]) {
+      
+        group = [[SLFGroup alloc] init];        
+        group.iDProperty = [s stringForColumn:@"ID"];
+        group.name = [s stringForColumn:@"Name"];
+        group.groupOperation = [s stringForColumn:@"GroupOperation"];
+        group.active = [s boolForColumn:@"Active"];
+        
+        
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return group;
+}
 -(NSMutableArray*) getAllDetails
 {
     NSMutableArray *items = [[NSMutableArray alloc] init];
@@ -461,12 +485,29 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM TicketDetail	 order by DatetimeInSeconds desc limit 500"];
     while ([s next]) {
+       SLFTicketDetail* detail =  [[SLFTicketDetail alloc] init];
+        
+        detail.gUID = [s stringForColumn:@"GUID"];
+        detail.detailDescription  = [s stringForColumn:@"DetailDescription"];
+        detail.detailNote  = [s stringForColumn:@"DetailNote"];
+        detail.ticketMasterDescription  = [s stringForColumn:@"TicketDescription"];
+        detail.subjectID  = [s intForColumn:@"SubjectID"];
+        detail.companyID  = [s intForColumn:@"CompanyID"];
+        detail.serviceID  = [s intForColumn:@"ServiceID"];
+        detail.priorityID  = [s intForColumn:@"Priority"];
+        detail.datetime  = [s stringForColumn:@"Datetime"];
+        detail.ticketID  = [s intForColumn:@"TicketID"];
+        detail.action  = [s stringForColumn:@"ActionDescription"];
+        detail.subscriptionGroupID  = [s stringForColumn:@"SubscriptionGroupID"];
+        detail.read = [s boolForColumn:@"Read"];
+       /*
         NSMutableDictionary * detail = [NSMutableDictionary dictionary];
         
     detail[@"GUID"] = [s stringForColumn:@"GUID"];
     detail[@"DetailDescription"] = [s stringForColumn:@"DetailDescription"];
     detail[@"Datetime"] = [s stringForColumn:@"Datetime"];
-        
+    detail[@"ticketID"] = @([s intForColumn:@"ticketID"]);
+        */
        
        [items addObject:detail];
     }
@@ -500,6 +541,8 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
         detail.datetime  = [s stringForColumn:@"Datetime"];
         detail.ticketID  = [s intForColumn:@"TicketID"];
         detail.action  = [s stringForColumn:@"ActionDescription"];
+        detail.subscriptionGroupID  = [s stringForColumn:@"SubscriptionGroupID"];
+        detail.read = [s boolForColumn:@"Read"];
         
     }
     
@@ -608,6 +651,26 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB close];
 }
+-(NSString*) findMaxTimestampVer2
+{
+    NSString * res = 0;
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:@"SELECT ifnull(max(GUID),0)  FROM TicketDetail"];
+    while ([s next]) {
+        
+        res = [s stringForColumnIndex:0];
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return res;
+}
+
 -(double) findMaxTimestamp
 {
     double res = 0;

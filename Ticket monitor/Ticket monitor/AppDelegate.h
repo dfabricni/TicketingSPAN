@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLFHttpClient.h"
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, SLFHttpClientDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -73,10 +73,13 @@
     
     }
         
+        // get feeds
+        [httpClient getLatestFeeds:nil];
+
         
     // push subscriptions ready to sync
     
-     DBRepository * repo = [[DBRepository alloc] init];
+    // DBRepository * repo = [[DBRepository alloc] init];
     /*
     SLFSubscriptionsRequest * slfSubscriptionsRequest = [[SLFSubscriptionsRequest alloc] init];
     
@@ -110,9 +113,7 @@
     [httpClient getAllSubscriptions];
     
     
-    // get feeds
-    [httpClient getLatestFeeds];
-    
+        
     // push new groups
     
     

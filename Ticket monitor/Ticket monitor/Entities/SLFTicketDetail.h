@@ -24,6 +24,9 @@
 @property (nonatomic, assign) int serviceID;
 @property (nonatomic, strong) NSString *datetime;
 @property (nonatomic, assign) int subjectID;
+@property (nonatomic, strong) NSString *subscriptionGroupID;
+@property (nonatomic, assign) BOOL read;
+
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

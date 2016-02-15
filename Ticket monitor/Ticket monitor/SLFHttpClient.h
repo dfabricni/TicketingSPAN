@@ -39,7 +39,7 @@
 -(void) getSubjects:(double) timestamp;
 
 
--(void) getLatestFeeds;
+-(void) getLatestFeeds:(NSString*) timeStamp;
 
 
 
@@ -51,6 +51,9 @@
 
 -(void) getDetailByGUID:(NSString*) GUID;
 
+
+-(void) getDetailByGUIDFromBackgroundTask:(NSString*) GUID taskID:(UIBackgroundTaskIdentifier) taskID;
+
 @end
 
 
@@ -60,5 +63,11 @@
 -(void)slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdating:(id)object;
 @optional
 -(void)slfHTTPClient:(SLFHttpClient *)client didFailWithError:(NSError *)error;
+
+@optional
+-(void)slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdatingFromBackgroundTask:(id)object taskID:(UIBackgroundTaskIdentifier) taskID;
+@optional
+-(void)slfHTTPClient:(SLFHttpClient *)client didFailWithErrorFromBackgroundTask:(NSError *)error taskID:(UIBackgroundTaskIdentifier) taskID;
+
 
 @end

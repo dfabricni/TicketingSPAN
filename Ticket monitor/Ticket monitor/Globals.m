@@ -34,6 +34,13 @@
       // get settings
       self.expiresOn = [NSDate date];
       self.authInProcess=false;
+      
+      self.refreshToken=nil;
+      self.authority = @"https://login.windows.net/b0460523-b78c-4b4a-8a10-5928b799ad45/FederationMetadata/2007-06/FederationMetadata.xml";
+      self.resourceURI = @"https://slf-mobile-span.azurewebsites.net";
+      self.clientID = @"75842aba-501f-409d-b0e0-7b2091678c4b";
+      self.redirectURI = @"http://console-app-test-oauth/";
+      
       DBRepository * repo =  [[DBRepository alloc] init];
 
       self.settings = [repo getSettings];
@@ -98,7 +105,7 @@
     
     if(self.authInProcess)
         return false;
-    
+    //3600
     NSDate * current = [[NSDate date] dateByAddingTimeInterval:60];
     
     
@@ -106,7 +113,7 @@
     if ([current compare:self.expiresOn] == NSOrderedDescending )// || [self.oAuthAccessToken isEqualToString:@""])
     {
         self.authInProcess = true;
-        [self logIn];
+        [self acquireOrRefreshToken];
         res = true;
     }
     
@@ -114,40 +121,57 @@
     
 }
 
-
--(void) logIn
+-(void) acquireOrRefreshToken
 {
+   
     
-    NSString *authority = @"https://login.windows.net/b0460523-b78c-4b4a-8a10-5928b799ad45/FederationMetadata/2007-06/FederationMetadata.xml";
-    NSString *resourceURI = @"https://slf-mobile-span.azurewebsites.net";
-    NSString *clientID = @"75842aba-501f-409d-b0e0-7b2091678c4b";
-    NSString *redirectURI = @"http://console-app-test-oauth/";
+    // then check if we already have refresh token token
     
+    if (self.refreshToken == nil || [self.refreshToken isEqualToString:@""]) {
+        
+        //no refresh token
+        // login
+        [self logIn];
+    }else
+    {
+        [self refreshAccessToken];
+    }
+    
+    
+    
+}
+-(void) exit
+{
+    // exit the app
+    //home button press programmatically
+    UIApplication *app = [UIApplication sharedApplication];
+    [app performSelector:@selector(suspend)];
+    
+    //wait 2 seconds while app is going background
+    [NSThread sleepForTimeInterval:2.0];
+    
+    //exit app when app is in background
+    exit(0);
+
+}
+
+
+
+-(void) refreshAccessToken
+{
     ADAuthenticationError *error;
-    ADAuthenticationContext *authContext = [ADAuthenticationContext authenticationContextWithAuthority:authority error:&error];
-    NSURL *redirectUri = [[NSURL alloc]initWithString:redirectURI];
+    ADAuthenticationContext *authContext = [ADAuthenticationContext authenticationContextWithAuthority:self.authority error:&error];
     
-    [authContext acquireTokenWithResource:resourceURI clientId:clientID redirectUri:redirectUri completionBlock:^(ADAuthenticationResult *result) {
+    [authContext acquireTokenByRefreshToken:self.refreshToken clientId:self.clientID completionBlock:^(ADAuthenticationResult *result) {
         if (result.tokenCacheStoreItem == nil)
         {
-            // exit the app
-            //home button press programmatically
-            UIApplication *app = [UIApplication sharedApplication];
-            [app performSelector:@selector(suspend)];
-            
-            //wait 2 seconds while app is going background
-            [NSThread sleepForTimeInterval:2.0];
-            
-            //exit app when app is in background
-            exit(0);
-            
-            
+            [self exit];
             return;
         }
         else
         {
             
-            
+            // result.tokenCacheStoreItem.refreshToken
             
             Globals * globals  = [Globals instance];
             
@@ -155,6 +179,61 @@
             
             globals.expiresOn = result.tokenCacheStoreItem.expiresOn;
             
+            globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
+            // store this token also in some persistant storage
+            
+            SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
+            
+            [httpClient setBearerToken:globals.oAuthAccessToken];
+            
+            self.authInProcess=false;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+               
+                if ([self.delegate respondsToSelector:@selector(globals:didFinishedAcquaringToken:)])
+                    [self.delegate globals:self didFinishedAcquaringToken:nil];
+
+                
+            });
+
+            
+            
+        }
+    }];
+
+}
+
+
+-(void) logIn
+{
+    
+    ADAuthenticationError *error;
+    ADAuthenticationContext *authContext = [ADAuthenticationContext authenticationContextWithAuthority:self.authority error:&error];
+    NSURL *redirectUri = [[NSURL alloc]initWithString:self.redirectURI];
+    
+    //authContext acquireTokenByRefreshToken:<#(NSString *)#> clientId:<#(NSString *)#> completionBlock:<#^(ADAuthenticationResult *result)completionBlock#>
+    
+    [authContext acquireTokenWithResource:self.resourceURI clientId:self.clientID redirectUri:redirectUri completionBlock:^(ADAuthenticationResult *result) {
+        if (result.tokenCacheStoreItem == nil)
+        {
+            [self exit];
+            
+            return;
+        }
+        else
+        {
+            
+           // result.tokenCacheStoreItem.refreshToken
+            
+            Globals * globals  = [Globals instance];
+            
+            globals.oAuthAccessToken = [NSString stringWithFormat:@"%@ %@",result.tokenCacheStoreItem.accessTokenType, result.tokenCacheStoreItem.accessToken];
+            
+            globals.expiresOn = result.tokenCacheStoreItem.expiresOn;
+            
+            globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
+            // store this token also in some persistant storage
             
             if (globals.device != nil) {
                 
@@ -169,16 +248,13 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-              //  [self.navigationController.view addSubview:self.overlayView];
-              //  [self.indicatorView startAnimating];
+                
+                if ([self.delegate respondsToSelector:@selector(globals:didFinishedAuthenticating:)])
+                    [self.delegate globals:self didFinishedAuthenticating:nil];
                 
             });
             
-            
-            Synchronizer * sync  =  [Synchronizer instance];
-            // sync.delegate = self;
-            [sync Sync];
-            
+         
             
         }
     }];

@@ -98,6 +98,21 @@
 
 }
 
+-(void) slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdatingFromBackgroundTask:(id)object taskID:(UIBackgroundTaskIdentifier)taskID
+{
+    
+    UIApplication  *app = [UIApplication sharedApplication];
+    client.delegate = nil;
+    [app endBackgroundTask:taskID];
+    
+}
+-(void) slfHTTPClient:(SLFHttpClient *)client didFailWithErrorFromBackgroundTask:(NSError *)error taskID:(UIBackgroundTaskIdentifier)taskID
+{
+    UIApplication  *app = [UIApplication sharedApplication];
+    client.delegate = nil;
+    [app endBackgroundTask:taskID];
+}
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 
    
@@ -105,15 +120,36 @@
     
     SLFNotification * notification   =[[SLFNotification alloc] initWithDictionary:userInfo];
     
-    SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+    
     
     
    
     if(state == UIApplicationStateBackground)
     {
+        /*
+         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         // just download it
-        [httpClient getDetailByGUID:notification.GUID];
+             
+             [httpClient getDetailByGUID:notification.GUID];
+             
+         });
         
+           */
+        UIBackgroundTaskIdentifier bgTask;
+
+            UIApplication  *app = [UIApplication sharedApplication];
+
+            bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+                
+                NSLog(@"Timeout for background process");
+
+            }];
+        
+        SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+        httpClient.delegate = self;
+        [httpClient getDetailByGUIDFromBackgroundTask:notification.GUID taskID:bgTask];
+        
+
         
     } else if(state == UIApplicationStateInactive)
     {
@@ -121,6 +157,11 @@
         
         // [httpClient getDetailID:notification.detailID];
         
+     //   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1), dispatch_get_main_queue(), ^{
+   
+            
+        
+
         // maybe first show view controller
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
@@ -147,12 +188,16 @@
             TicketDetaillViewController *vcExisting =(TicketDetaillViewController*) [navController.viewControllers objectAtIndex:1];
             [vcExisting initWithTicketDetailID:notification.GUID];
         }
+            
+         
+            
+    //    });
         
         
     }
     else if(state == UIApplicationStateActive)
     {
-        
+        SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
         // download it and refresh Firstview screen (table)
         [httpClient getDetailByGUID:notification.GUID];
         
@@ -161,40 +206,7 @@
     
     
     
-    
-    //NSLog(application.ap );
-    
-   /*
-    
-    //************************************************************
-    // I only want this called if the user opened from swiping the push notification. 
-    // Otherwise I just want to update the local model
-    //************************************************************
-    if(application.applicationState == UIApplicationStateActive) {
-        
-         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
-        
-        UIViewController * unknownController =  [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-       // UITabBarController * tabBarController =  (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
-        int n = 5;
-      //  UINavigationController * navController =(UINavigationController*)[tabBarController.tabBar.items objectAtIndex:0];
-        
-      //  [navController pushViewController:vc animated:TRUE];
-        
-        
-        
-        
-    } else {
-        
-        ///Update local model
-        
-        
-        
-    }
-    */
-
+  
     completionHandler(UIBackgroundFetchResultNewData);
 }
 

@@ -98,6 +98,7 @@
     
         self.group.iDProperty = [[NSUUID UUID] UUIDString];
         self.group.name = self.txtName.text;
+        self.group.active = TRUE;
         self.group.groupOperation = self.orSwitch.isOn ? @"A" : @"O";
         [repo saveGroup:self.group syncStatus:0];
         

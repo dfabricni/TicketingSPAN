@@ -330,7 +330,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    //[manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
     
     [manager GET:@"detail" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {;;
         
@@ -358,14 +358,52 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
 }
 
--(void) getLatestFeeds
+-(void) getDetailByGUIDFromBackgroundTask:(NSString*) GUID taskID:(UIBackgroundTaskIdentifier) taskID
 {
-    NSString * timestamp = nil;
+    //Globals * globals = [Globals instance];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"guid"] = [NSString stringWithFormat:@"%@", GUID ];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:  BaseURLString]];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    //[manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:@"detail" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {;;
+        
+        NSLog(@"JSON Ticket Detail: %@", [responseObject description]);
+        
+        SLFTicketDetail * ticketDetail = [[SLFTicketDetail alloc] initWithDictionary:responseObject];
+        
+        DBRepository * repo = [[DBRepository alloc] init];
+        [repo saveTicketDetail:ticketDetail];
+        
+        // call delegate to refresh table view
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdatingFromBackgroundTask:taskID:)]) {
+            [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdatingFromBackgroundTask:ticketDetail taskID:taskID ];
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithErrorFromBackgroundTask:taskID:)]) {
+            [self.delegate slfHTTPClient:self didFailWithErrorFromBackgroundTask:error taskID:taskID];
+        }
+        
+    }];
+}
+
+-(void) getLatestFeeds:(NSString*) timeStamp
+{
+   // NSString * timestamp = nil;
    
-    DBRepository * repo = [[DBRepository alloc] init];
+   // DBRepository * repo = [[DBRepository alloc] init];
     Globals * globals = [Globals instance];
     
-    
+    /*
     double maxTimestampInSeconds =  [repo findMaxTimestamp];
     
     if(maxTimestampInSeconds ==0)
@@ -375,11 +413,16 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     else
     {
         timestamp  =  [globals formatDateFromTimestampUTC:maxTimestampInSeconds];
+    }*/
+    //timeStamp = [repo findMaxTimestampVer2];
+    if([timeStamp isEqualToString:@""] || timeStamp == nil)
+    {
+        timeStamp = @"0";
     }
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    parameters[@"timestamp"] = [NSString stringWithFormat:@"%@", timestamp ];
+    parameters[@"timestamp"] = [NSString stringWithFormat:@"%@", timeStamp ];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:  BaseURLString]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -410,6 +453,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
         
         if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
             [self.delegate slfHTTPClient:self didFailWithError:error];

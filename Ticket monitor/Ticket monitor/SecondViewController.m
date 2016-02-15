@@ -30,29 +30,53 @@
 
 -(void) viewDidAppear:(BOOL)animated
 {
-    DBRepository * repo =  [[DBRepository alloc] init];
+   
     
-    Globals * globals  = [Globals instance];   
+    Globals * globals  = [Globals instance];
+    globals.delegate = self;
     if([globals needsReauthentication])
         return;
     
+    
+   
+    [self syncIfNeeded];
+    
+
+}
+
+-(void) syncIfNeeded
+{
+     DBRepository * repo =  [[DBRepository alloc] init];
     
     // check to see if there is need to sync
     BOOL needsync = [repo checkUnsynced];
     if(needsync)
     {
         
-        [self sync];
+        [self callSync];
         
     }
-        
+    
     self.groups = [repo getAllGroups];
     [self.tableView reloadData];
-        
-    
-
 }
--(void) sync
+
+
+-(void) globals:(Globals *)global didFinishedAcquaringToken:(id)object
+{
+    global.delegate = nil;
+    [self syncIfNeeded];
+   
+}
+-(void) globals:(Globals *)global didFinishedAuthenticating:(id)object
+{
+    global.delegate = nil;
+    [self syncIfNeeded];
+
+   
+}
+
+-(void) callSync
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
@@ -111,7 +135,7 @@
         
         client.delegate  = nil;
         
-        [self showMessage:@"Error synchronizing data"
+        [self showMessage:[NSString stringWithFormat:@"Network Error : %@ ",[error userInfo] ]
                 withTitle:@"Error"];
         
     });
@@ -164,7 +188,7 @@
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
-        [self sync];
+        [self callSync];
     }
 
 }

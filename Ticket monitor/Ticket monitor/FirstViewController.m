@@ -59,44 +59,35 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     Globals * globals  = [Globals instance];
+    globals.delegate = self;
     if([globals needsReauthentication])
         return;
-    /*
-    if (globals.authInProcess) {
-        return;
-    }*/
     
+
+    [self loadData];
+    
+}
+-(void) loadData
+{
     DBRepository * repo =  [[DBRepository alloc] init];
-    
     self.details = [repo getAllDetails];
-    
     [self.tableView reloadData];
     [self invalidateTableView];
-    
-    
-    /*
-    // TODO revidirat ovo oko syncanja
-    if (self.syncNeeded) {
-        Synchronizer * sync  =  [Synchronizer instance];
-        sync.delegate = self;
-        [sync Sync];
-        self.syncNeeded = false;
-    }
-    */
-
-    
-    
-    
-    
 }
-
--(void) viewWillAppear:(BOOL)animated
+-(void) globals:(Globals *)global didFinishedAcquaringToken:(id)object
 {
-    
-    
-    
-    
+    global.delegate = nil;
+    [self loadData];
 }
+-(void) globals:(Globals *)global didFinishedAuthenticating:(id)object
+{
+    global.delegate = nil;
+    
+     Synchronizer * sync  =  [Synchronizer instance];
+    sync.delegate = self;
+     [sync Sync];
+}
+
 
 -(void) invalidateTableView
 {
@@ -125,14 +116,14 @@
 {
     SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
     httpClient.delegate = self;
-    [httpClient getLatestFeeds];
+    [httpClient getLatestFeeds:nil];
 }
 
 -(void)slfHTTPClient:(SLFHttpClient *)client didFailWithError:(NSError *)error
 {
     client.delegate = nil;
     
-    [self showMessage:@"Network error occured"
+    [self showMessage:[NSString stringWithFormat:@"Network Error : %@ ",[error userInfo] ]
             withTitle:@"Error"];
     
     [self refreshRefreshControl];
@@ -178,10 +169,10 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
-    NSDictionary * detail = self.details[indexPath.row];
+    SLFTicketDetail * detail = self.details[indexPath.row];
     
    
-    [vc initWithTicketDetailID:detail[@"GUID"]];
+    [vc initWithTicketDetailID:detail.gUID];
     
     [self.navigationController pushViewController:vc animated:TRUE];
 
@@ -219,20 +210,55 @@
         
     }
 
- 
     
-    NSDictionary * detail = self.details[indexPath.row];
+   // NSDictionary * detail = self.details[indexPath.row];
+    SLFTicketDetail *detail= (SLFTicketDetail*)self.details[indexPath.row];
+    NSString * str =  detail.detailDescription  ;
     
-    cell.textLabel.text = detail[@"DetailDescription"];
+    cell.textLabel.text = str;
+  
     
    
 //2016-01-14T07:55:16.000Z
+    
+    NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
+    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    
     NSDateFormatter * dateFormater = [[NSDateFormatter alloc]init];
-    dateFormater.dateFormat =  @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";    
-    NSDate* date= [dateFormater dateFromString: detail[@"Datetime"]];
-    dateFormater.dateFormat =  @"dd.MM.yyyy HH:mm:ss";
-   
-    cell.detailTextLabel.text =  [dateFormater stringFromDate:date];
+    [dateFormater setTimeZone:gmt];
+    dateFormater.dateFormat =  @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    
+    NSDate* date= [dateFormater dateFromString: detail.datetime];
+    
+    dateFormater.dateFormat =  @"dd.MM. HH:mm:ss";
+   [dateFormater setTimeZone:outputTimeZone];
+    
+    
+    if (detail.subscriptionGroupID != nil && ![detail.subscriptionGroupID isEqualToString:@""]) {
+        
+        DBRepository * repo =  [[DBRepository alloc] init];
+        
+        SLFGroup * group = [repo getGroup:detail.subscriptionGroupID];
+        
+        if (group) {
+             cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %d  %@ %@", detail.ticketID,[dateFormater stringFromDate:date], group.name ];
+        }else
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %d  %@ ", detail.ticketID,[dateFormater stringFromDate:date] ];
+        
+        
+    }else
+    {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %d  %@ ", detail.ticketID,[dateFormater stringFromDate:date] ]; //  [dateFormater stringFromDate:date];
+    }
+    
+    if (!detail.read) {
+        cell.textLabel.textColor = UIColorFromRGB(0xC43947);
+        cell.textLabel.font  = [UIFont boldSystemFontOfSize:16.];
+
+    }else{
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.textLabel.font  = [UIFont systemFontOfSize: 16.];
+    }
     
     return cell;
     
@@ -240,10 +266,9 @@
 
 -(void) synchronizer:(Synchronizer *)sync didFinishedSynchronizing:(id)object
 {
-   // self.overlayView.hidden  =  true;
+   [self loadData];
     sync.delegate  = nil;
-    [self.indicatorView stopAnimating];
-    [self.overlayView removeFromSuperview];
+   
     
 }
 -(void) synchronizer:(Synchronizer *)sync errorOccured:(NSError *)error
@@ -255,9 +280,7 @@
     [self showMessage:@"Error synchronizing data"
                     withTitle:@"Error"];
 
-    [self.indicatorView stopAnimating];
-   // self.overlayView.hidden  =  true;
-    [self.overlayView removeFromSuperview];
+    
     
 }
 -(void)showMessage:(NSString*)message withTitle:(NSString *)title

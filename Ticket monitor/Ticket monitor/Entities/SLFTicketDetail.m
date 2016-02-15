@@ -21,6 +21,7 @@ NSString *const kSLFTicketDetailServiceID = @"ServiceID";
 NSString *const kSLFTicketDetailDatetime = @"Datetime";
 NSString *const kSLFTicketDetailSubjectID = @"SubjectID";
 NSString *const kSLFTicketDetailDatetimeInSeconds= @"DatetimeInSeconds";
+NSString *const kSLFTicketDetailSubscriptionGroupID = @"SubscriptionGroupID";
 
 
 @interface SLFTicketDetail ()
@@ -44,6 +45,7 @@ NSString *const kSLFTicketDetailDatetimeInSeconds= @"DatetimeInSeconds";
 @synthesize datetime = _datetime;
 @synthesize subjectID = _subjectID;
 @synthesize datetimeInSeconds = _datetimeInSeconds;
+@synthesize subscriptionGroupID = _subscriptionGroupID;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -71,6 +73,7 @@ NSString *const kSLFTicketDetailDatetimeInSeconds= @"DatetimeInSeconds";
         self.serviceID = [[self objectOrNilForKey:kSLFTicketDetailServiceID fromDictionary:dict] intValue];
         self.datetime = [self objectOrNilForKey:kSLFTicketDetailDatetime fromDictionary:dict];
         self.subjectID = [[self objectOrNilForKey:kSLFTicketDetailSubjectID fromDictionary:dict] intValue];
+        self.subscriptionGroupID= [self objectOrNilForKey:kSLFTicketDetailSubscriptionGroupID fromDictionary:dict];
         
     }
     
@@ -94,6 +97,7 @@ NSString *const kSLFTicketDetailDatetimeInSeconds= @"DatetimeInSeconds";
     [mutableDict setValue:[NSNumber numberWithInt:self.serviceID] forKey:kSLFTicketDetailServiceID];
     [mutableDict setValue:self.datetime forKey:kSLFTicketDetailDatetime];
     [mutableDict setValue:[NSNumber numberWithInt:self.subjectID] forKey:kSLFTicketDetailSubjectID];
+    [mutableDict setValue:self.subscriptionGroupID forKey:kSLFTicketDetailSubscriptionGroupID];
     
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -130,6 +134,7 @@ NSString *const kSLFTicketDetailDatetimeInSeconds= @"DatetimeInSeconds";
     self.serviceID = [aDecoder decodeIntForKey:kSLFTicketDetailServiceID];
     self.datetime = [aDecoder decodeObjectForKey:kSLFTicketDetailDatetime];
     self.subjectID = [aDecoder decodeIntForKey:kSLFTicketDetailSubjectID];
+    self.subscriptionGroupID = [aDecoder decodeObjectForKey:kSLFTicketDetailSubscriptionGroupID];
     return self;
 }
 
@@ -149,6 +154,8 @@ NSString *const kSLFTicketDetailDatetimeInSeconds= @"DatetimeInSeconds";
     [aCoder encodeInt:_serviceID forKey:kSLFTicketDetailServiceID];
     [aCoder encodeObject:_datetime forKey:kSLFTicketDetailDatetime];
     [aCoder encodeInt:_subjectID forKey:kSLFTicketDetailSubjectID];
+    [aCoder encodeObject:_subscriptionGroupID forKey:kSLFTicketDetailSubscriptionGroupID];
+    
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -170,6 +177,7 @@ NSString *const kSLFTicketDetailDatetimeInSeconds= @"DatetimeInSeconds";
         copy.serviceID = self.serviceID;
         copy.datetime = [self.datetime copyWithZone:zone];
         copy.subjectID = self.subjectID ;
+        copy.subscriptionGroupID = [self.subscriptionGroupID copyWithZone:zone];
     }
     
     return copy;

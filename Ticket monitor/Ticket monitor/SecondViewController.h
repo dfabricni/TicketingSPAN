@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SLFHttpClient.h"
 #import "Synchronizer.h"
+#import "Globals.h"
 
-@interface SecondViewController : UITableViewController<SLFHttpClientDelegate>
+@interface SecondViewController : UITableViewController<SLFHttpClientDelegate,OAuthTokenRefresherDelegate>
 
 @property (strong, nonatomic) NSMutableArray * groups;
 
