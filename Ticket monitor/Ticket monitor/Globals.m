@@ -35,7 +35,7 @@
       self.expiresOn = [NSDate date];
       self.authInProcess=false;
       
-      self.refreshToken=nil;
+      //self.refreshToken=nil;
       self.authority = @"https://login.windows.net/b0460523-b78c-4b4a-8a10-5928b799ad45/FederationMetadata/2007-06/FederationMetadata.xml";
       self.resourceURI = @"https://slf-mobile-span.azurewebsites.net";
       self.clientID = @"75842aba-501f-409d-b0e0-7b2091678c4b";
@@ -106,7 +106,7 @@
     if(self.authInProcess)
         return false;
     //3600
-    NSDate * current = [[NSDate date] dateByAddingTimeInterval:60];
+    NSDate * current = [[NSDate date] dateByAddingTimeInterval:120];
     
     
     
@@ -124,10 +124,12 @@
 -(void) acquireOrRefreshToken
 {
    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
+    NSString * refreshToken = [userDefaults valueForKey:@"RefreshToken"];
     // then check if we already have refresh token token
     
-    if (self.refreshToken == nil || [self.refreshToken isEqualToString:@""]) {
+    if (refreshToken == nil || [refreshToken isEqualToString:@""]) {
         
         //no refresh token
         // login
@@ -138,7 +140,7 @@
     }
     
     
-    
+    ;;
 }
 -(void) exit
 {
@@ -162,7 +164,12 @@
     ADAuthenticationError *error;
     ADAuthenticationContext *authContext = [ADAuthenticationContext authenticationContextWithAuthority:self.authority error:&error];
     
-    [authContext acquireTokenByRefreshToken:self.refreshToken clientId:self.clientID completionBlock:^(ADAuthenticationResult *result) {
+    
+     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString * refreshToken = [userDefaults valueForKey:@"RefreshToken"];
+    
+    [authContext acquireTokenByRefreshToken:refreshToken clientId:self.clientID completionBlock:^(ADAuthenticationResult *result) {
         if (result.tokenCacheStoreItem == nil)
         {
             [self exit];
@@ -179,12 +186,15 @@
             
             globals.expiresOn = result.tokenCacheStoreItem.expiresOn;
             
-            globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
+           // globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:result.tokenCacheStoreItem.refreshToken forKey:@"RefreshToken"];
+            
             // store this token also in some persistant storage
             
-            SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
+           // SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
             
-            [httpClient setBearerToken:globals.oAuthAccessToken];
+          //  [httpClient setBearerToken:globals.oAuthAccessToken];
             
             self.authInProcess=false;
             
@@ -232,7 +242,11 @@
             
             globals.expiresOn = result.tokenCacheStoreItem.expiresOn;
             
-            globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
+           // globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
+            
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:result.tokenCacheStoreItem.refreshToken forKey:@"RefreshToken"];
+            
             // store this token also in some persistant storage
             
             if (globals.device != nil) {
@@ -240,9 +254,9 @@
                 globals.device.username = result.tokenCacheStoreItem.userInformation.userId ;
             }
             
-            SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
+           // SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
             
-            [httpClient setBearerToken:globals.oAuthAccessToken];
+          //  [httpClient setBearerToken:globals.oAuthAccessToken];
             
             self.authInProcess=false;
             

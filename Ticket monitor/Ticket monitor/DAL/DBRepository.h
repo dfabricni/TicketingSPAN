@@ -58,6 +58,8 @@
 
 -(void) saveSubscription:(SLFSubscription*) subscription syncStatus:(int) syncStatus;
 
+//-(void) deleteAllsubscriptionsForGroup:(NSString*) groupID;
+
 -(void) saveTicketDetail:(SLFTicketDetail*) ticketDetail;
 
 -(void) markAllAsSynced;

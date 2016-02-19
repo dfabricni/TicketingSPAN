@@ -20,15 +20,21 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
 + (SLFHttpClient *)sharedSLFHttpClient
 {
+    /*
     static SLFHttpClient *_sharedSLFHTTPClient = nil;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        //_sharedSLFHTTPClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:BaseURLString]];
         _sharedSLFHTTPClient = [[self alloc] init];
     });
+    */
+    
+     Globals * globals  = [Globals instance];
+    SLFHttpClient * client =  [[SLFHttpClient alloc] init];
+    [client setBearerToken:globals.oAuthAccessToken];
 
-    return _sharedSLFHTTPClient;
+    return client;
+   // return _sharedSLFHTTPClient;
 }
 /*
 
@@ -61,8 +67,14 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer =[AFJSONRequestSerializer serializer];
     
+    NSString * deviceRegisterLink = @"device";
     
-    NSMutableURLRequest *request =  [manager.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@device", BaseURLString] parameters:parameters error:nil];
+#if DEBUG
+    deviceRegisterLink = @"deviceDev";
+#endif
+    
+    
+    NSMutableURLRequest *request =  [manager.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", BaseURLString,deviceRegisterLink] parameters:parameters error:nil];
     
     
     [request setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
@@ -73,7 +85,19 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         
+        
         NSLog(@"JSON: %@", [responseObject description]);
+        
+        if(operation.response.statusCode == 403)
+        {
+            NSError  *error = [NSError errorWithDomain:@"eu.span.slf" code:14 userInfo:[NSDictionary dictionaryWithObject:@"Forbidden" forKey:NSLocalizedDescriptionKey]];
+
+            if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+                [self.delegate slfHTTPClient:self didFailWithError:error];
+            }
+
+            
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -117,8 +141,18 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         
         NSLog(@"JSON: %@", [responseObject description]);
         
+        if(operation.response.statusCode != 200)
+        {
+            NSError  *error = [NSError errorWithDomain:@"eu.span.slf" code:14 userInfo:[NSDictionary dictionaryWithObject:@"Unexpected error" forKey:NSLocalizedDescriptionKey]];
+            
+            if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+                [self.delegate slfHTTPClient:self didFailWithError:error];
+            }
+            
+        }else{
         if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdating:)]) {
             [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdating:nil];
+        }
         }
 
     
@@ -303,6 +337,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
             [repo saveSubscription:subscriptionsResponse.subscriptions[i] syncStatus:1];
         }
         
+        [repo deleteAllDisabledAndSynced];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -360,7 +395,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
 -(void) getDetailByGUIDFromBackgroundTask:(NSString*) GUID taskID:(UIBackgroundTaskIdentifier) taskID
 {
-    //Globals * globals = [Globals instance];
+   // Globals * globals = [Globals instance];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     

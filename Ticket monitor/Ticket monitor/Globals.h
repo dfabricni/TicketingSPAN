@@ -21,7 +21,7 @@
 @property (nonatomic, weak) id<OAuthTokenRefresherDelegate>delegate;
 
 @property (nonatomic, copy) NSString * oAuthAccessToken;
-@property (nonatomic, copy) NSString * refreshToken;
+//@property (nonatomic, copy) NSString * refreshToken;
 @property (nonatomic, retain) SLFSettings * settings;
 @property (nonatomic, retain) SLFDevice * device;
 @property (nonatomic, assign) long  servicesTimestamp;

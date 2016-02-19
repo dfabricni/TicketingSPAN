@@ -60,11 +60,12 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     // Perform long running process
     
+     Globals * globals = [Globals instance];
+        
      SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
-        httpClient.delegate = self;
+     httpClient.delegate = self;
    
-    Globals * globals = [Globals instance];
-   
+       
     // register device if needed
         
     if(globals.device != nil)

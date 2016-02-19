@@ -78,6 +78,9 @@
 {
     global.delegate = nil;
     [self loadData];
+    Synchronizer * sync  =  [Synchronizer instance];
+    sync.delegate = self;
+    [sync Sync];
 }
 -(void) globals:(Globals *)global didFinishedAuthenticating:(id)object
 {
@@ -275,10 +278,12 @@
 {
     NSLog(@"Network error:   %@",   [error userInfo]);
 
+    NSString * errorText = [[error userInfo] valueForKey:@"NSLocalizedDescription"];
+    
     sync.delegate  = nil;
     
     [self showMessage:@"Error synchronizing data"
-                    withTitle:@"Error"];
+                    withTitle:errorText];
 
     
     
@@ -294,6 +299,20 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
 
         //do something when click button
+        
+        if ([title containsString:@"Forbidden"]) {
+            // exit app
+            UIApplication *app = [UIApplication sharedApplication];
+            [app performSelector:@selector(suspend)];
+            
+            //wait 2 seconds while app is going background
+            [NSThread sleepForTimeInterval:2.0];
+            
+            //exit app when app is in background
+            exit(0);
+
+        }
+        
     }];
     [alert addAction:okAction];
     UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];

@@ -586,9 +586,9 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 {
     [self.DB open];
     
-    [self.DB executeUpdate:@"delete Subscription where Active = 0 and SyncStatus = 1"];
+    [self.DB executeUpdate:@"delete from Subscription where Active = 0 and SyncStatus = 1"];
     
-    [self.DB executeUpdate:@"delete SubscriptionGroup where Active = 0 and SyncStatus = 1"];
+    [self.DB executeUpdate:@"delete from SubscriptionGroup where Active = 0 and SyncStatus = 1"];
     
     [self.DB close];
 }
