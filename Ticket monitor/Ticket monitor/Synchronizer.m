@@ -68,7 +68,7 @@
        
     // register device if needed
         
-    if(globals.device != nil)
+    if(globals.device != nil && (globals.device.username != nil || ![globals.device.username isEqualToString:@""] ))
     {
         [httpClient registerDevice:globals.device];
     
