@@ -1,4 +1,4 @@
-//
+;//
 //  AppDelegate.m
 //  Ticket monitor
 //
@@ -145,12 +145,13 @@
             bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
                 
                 NSLog(@"Timeout for background process");
-
             }];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString * username = [userDefaults objectForKey:@"SLFUsername"];
         
         SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
         httpClient.delegate = self;
-        [httpClient getDetailByGUIDFromBackgroundTask:notification.GUID taskID:bgTask];
+        [httpClient getDetailByGUIDFromBackgroundTask:notification.GUID username:username  taskID:bgTask];
         
 
         
@@ -200,9 +201,11 @@
     }
     else if(state == UIApplicationStateActive)
     {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString * username = [userDefaults objectForKey:@"SLFUsername"];
         SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
         // download it and refresh Firstview screen (table)
-        [httpClient getDetailByGUID:notification.GUID];
+        [httpClient getDetailByGUID:notification.GUID username:username];
         
         
     }

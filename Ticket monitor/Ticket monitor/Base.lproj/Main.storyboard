@@ -90,6 +90,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" image="feed" selectedImage="feedtap" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" title="Feed" id="GHh-Ej-HfU">
+                        <barButtonItem key="leftBarButtonItem" title="Group by" id="ar0-Dk-rJV">
+                            <connections>
+                                <action selector="onGroupBy:" destination="9pv-A4-QxB" id="5yn-kI-W39"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Remove all" id="tR7-Th-cj1">
                             <connections>
                                 <action selector="onRemove:" destination="9pv-A4-QxB" id="9PG-7Z-8sU"/>
@@ -97,6 +102,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="leftButtonGroup" destination="ar0-Dk-rJV" id="xSQ-br-6Ma"/>
                         <outlet property="rightButtonNEW" destination="tR7-Th-cj1" id="IQc-G9-Juf"/>
                     </connections>
                 </viewController>
@@ -224,7 +230,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;AND&quot; type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rYf-lV-U7d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rYf-lV-U7d">
                                 <rect key="frame" x="20" y="161" width="144" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -234,6 +240,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="QLQ-p7-nvL">
                                 <rect key="frame" x="239" y="156" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeSwitch:" destination="V8j-1M-mEF" eventType="valueChanged" id="4t4-Cy-QIE"/>
+                                </connections>
                             </switch>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="x4g-rP-VK3">
                                 <rect key="frame" x="0.0" y="212" width="320" height="308"/>
@@ -251,7 +260,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="orSwitch" destination="QLQ-p7-nvL" id="SuZ-ct-KWU"/>
+                        <outlet property="enabledSwitch" destination="QLQ-p7-nvL" id="jXd-4i-mLd"/>
                         <outlet property="rightButtonSave" destination="P2x-UK-zp6" id="IeP-ec-FgO"/>
                         <outlet property="tableView" destination="x4g-rP-VK3" id="46U-JB-8b8"/>
                         <outlet property="txtName" destination="PWf-kF-6HG" id="uhZ-32-4M3"/>

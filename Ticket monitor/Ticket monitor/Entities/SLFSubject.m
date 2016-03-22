@@ -10,7 +10,7 @@
 
 NSString *const kSLFSubjectsId = @"Id";
 NSString *const kSLFSubjectsName = @"Name";
-
+NSString *const kSLFSubjectsDetail = @"Detail";
 
 @interface SLFSubject ()
 
@@ -22,6 +22,7 @@ NSString *const kSLFSubjectsName = @"Name";
 
 @synthesize ID = _subjectsIdentifier;
 @synthesize name = _name;
+@synthesize detail = _detail;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -38,6 +39,7 @@ NSString *const kSLFSubjectsName = @"Name";
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.ID = [[self objectOrNilForKey:kSLFSubjectsId fromDictionary:dict] intValue];
             self.name = [self objectOrNilForKey:kSLFSubjectsName fromDictionary:dict];
+            self.detail= [self objectOrNilForKey:kSLFSubjectsDetail fromDictionary:dict];
 
     }
     
@@ -50,6 +52,7 @@ NSString *const kSLFSubjectsName = @"Name";
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithInt:self.ID] forKey:kSLFSubjectsId];
     [mutableDict setValue:self.name forKey:kSLFSubjectsName];
+    [mutableDict setValue:self.detail forKey:kSLFSubjectsDetail];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -75,6 +78,7 @@ NSString *const kSLFSubjectsName = @"Name";
 
     self.ID = [aDecoder decodeIntForKey:kSLFSubjectsId];
     self.name = [aDecoder decodeObjectForKey:kSLFSubjectsName];
+    self.detail = [aDecoder decodeObjectForKey:kSLFSubjectsDetail];
     return self;
 }
 
@@ -83,6 +87,7 @@ NSString *const kSLFSubjectsName = @"Name";
 
     [aCoder encodeInt:_subjectsIdentifier forKey:kSLFSubjectsId];
     [aCoder encodeObject:_name forKey:kSLFSubjectsName];
+    [aCoder encodeObject:_detail forKey:kSLFSubjectsDetail];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -93,6 +98,7 @@ NSString *const kSLFSubjectsName = @"Name";
 
         copy.ID = self.ID;
         copy.name = [self.name copyWithZone:zone];
+        copy.detail = [self.detail copyWithZone:zone];
     }
     
     return copy;

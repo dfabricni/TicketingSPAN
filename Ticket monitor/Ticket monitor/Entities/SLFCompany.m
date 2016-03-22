@@ -10,7 +10,7 @@
 
 NSString *const kSLFCompaniesId = @"Id";
 NSString *const kSLFCompaniesName = @"Name";
-
+NSString *const kSLFCompaniesDetail = @"Detail";
 
 @interface SLFCompany ()
 
@@ -38,6 +38,7 @@ NSString *const kSLFCompaniesName = @"Name";
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.ID = [[self objectOrNilForKey:kSLFCompaniesId fromDictionary:dict] intValue];
             self.name = [self objectOrNilForKey:kSLFCompaniesName fromDictionary:dict];
+            self.detail = [self objectOrNilForKey:kSLFCompaniesDetail fromDictionary:dict];
 
     }
     
@@ -50,6 +51,7 @@ NSString *const kSLFCompaniesName = @"Name";
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithInt:self.ID] forKey:kSLFCompaniesId];
     [mutableDict setValue:self.name forKey:kSLFCompaniesName];
+    [mutableDict setValue:self.detail forKey:kSLFCompaniesDetail];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -75,6 +77,7 @@ NSString *const kSLFCompaniesName = @"Name";
 
     self.ID = [aDecoder decodeIntForKey:kSLFCompaniesId];
     self.name = [aDecoder decodeObjectForKey:kSLFCompaniesName];
+    self.detail = [aDecoder decodeObjectForKey:kSLFCompaniesDetail];
     return self;
 }
 
@@ -83,6 +86,7 @@ NSString *const kSLFCompaniesName = @"Name";
 
     [aCoder encodeInt:_companiesIdentifier forKey:kSLFCompaniesId];
     [aCoder encodeObject:_name forKey:kSLFCompaniesName];
+    [aCoder encodeObject:_detail forKey:kSLFCompaniesDetail];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -93,6 +97,7 @@ NSString *const kSLFCompaniesName = @"Name";
 
         copy.ID = self.ID;
         copy.name = [self.name copyWithZone:zone];
+        copy.detail = [self.detail copyWithZone:zone];
     }
     
     return copy;

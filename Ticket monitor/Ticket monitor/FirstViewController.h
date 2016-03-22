@@ -11,13 +11,26 @@
 #import "Synchronizer.h"
 #import "Globals.h"
 
+
+typedef NS_ENUM(NSInteger, FeedTableType) {
+    NoGrouping = 0,
+    GroupByTicket = 1,
+    GroupByCompany = 2,
+    GroupBySubscription = 3
+    
+};
+
 @interface FirstViewController : UITableViewController<SLFHttpClientDelegate,SynchronizerDelegate,OAuthTokenRefresherDelegate>
 
 
 @property (strong, nonatomic) NSMutableArray * details;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButtonNEW;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem * leftButtonGroup;
 
 @property (nonatomic, assign) BOOL  syncNeeded;
+
+@property (nonatomic, assign) FeedTableType  feedTableType;
+
 
 //-(void) logIn;
 
@@ -30,6 +43,12 @@
 -(void) refreshRefreshControl;
 
 -(IBAction)onRemove :(id)sender;
+
+-(IBAction)onGroupBy :(id)sender;
+
+
+-(void) resolveView;
+
 @end
 
 

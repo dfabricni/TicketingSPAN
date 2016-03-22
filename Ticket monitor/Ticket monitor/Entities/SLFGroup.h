@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *groupOperation;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) BOOL active;
+@property (nonatomic, assign) BOOL toDelete;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

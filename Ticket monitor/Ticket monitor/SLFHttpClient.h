@@ -49,10 +49,10 @@
 
 -(void) registerDevice:(SLFDevice*) device;
 
--(void) getDetailByGUID:(NSString*) GUID;
+-(void) getDetailByGUID:(NSString*) GUID username:(NSString*) username;
 
 
--(void) getDetailByGUIDFromBackgroundTask:(NSString*) GUID taskID:(UIBackgroundTaskIdentifier) taskID;
+-(void) getDetailByGUIDFromBackgroundTask:(NSString*) GUID username:(NSString*) username taskID:(UIBackgroundTaskIdentifier) taskID;
 
 @end
 

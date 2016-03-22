@@ -73,6 +73,10 @@
     return 1;
 }
 
+-(CGFloat)  tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     if(self.isFiltering)
@@ -114,18 +118,19 @@
             
            company  = (SLFCompany *)[self.items objectAtIndex:indexPath.row];
             cell.textLabel.text = company.name;
-            
+           // cell.detailTextLabel.text = company.detail;
             break;
         case SLFServiceFilter:
             service = (SLFService*) [self.items objectAtIndex:indexPath.row];
             cell.textLabel.text = service.name;
+            cell.detailTextLabel.text = service.detail;
             break;
         case SLFSubjectFilter:
             
             subject = (SLFSubject*) [self.items objectAtIndex:indexPath.row];
             
             cell.textLabel.text = subject.name;
-            
+            cell.detailTextLabel.text = subject.detail;
             break;
             
         default:

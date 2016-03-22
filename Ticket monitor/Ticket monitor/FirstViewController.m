@@ -25,6 +25,7 @@
 {
      self = [super init];
 
+ 
     if(self)
     {
         self.tableView.delegate  = self;
@@ -35,9 +36,25 @@
 }
  */
 
+
+-(void) resolveView
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber * number = (NSNumber*)[userDefaults objectForKey:@"SLFFeedGroupBy"];
+    FeedTableType feedTableType  = (FeedTableType) [number intValue];
+    
+    self.feedTableType =feedTableType; 
+  // self.tableView  =  [[UITableView alloc] initWithFrame:self.tableView.frame style:UITableViewStyleGrouped];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    // resolve which type of table shold we load
+    [self resolveView];
+    
     
    // self.tableView.delegate  = self;
     //self.tableView.dataSource =  self;
@@ -54,6 +71,9 @@
    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
    
+    
+    
+    
 
 }
 -(void) viewDidAppear:(BOOL)animated
@@ -70,7 +90,26 @@
 -(void) loadData
 {
     DBRepository * repo =  [[DBRepository alloc] init];
-    self.details = [repo getAllDetails];
+    
+    switch (self.feedTableType) {
+        case GroupByCompany:
+            self.details = [repo getDetailsGroupedByCompanies];
+            break;
+        case GroupBySubscription:
+            self.details = [repo getDetailsGroupedBySubscriptions];
+            break;
+        case GroupByTicket:
+            self.details = [repo getDetailsGroupedByTickets];
+            break;
+        case NoGrouping:
+            self.details = [repo getAllDetails];
+            break;
+            
+        default:
+            self.details = [repo getAllDetails];
+            break;
+    }
+    
     [self.tableView reloadData];
     [self invalidateTableView];
 }
@@ -96,7 +135,7 @@
 {
     if ([self.details count] > 0) {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-       
+        self.tableView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         
     }
     else{
@@ -151,11 +190,7 @@
 -(void)slfHTTPClient:(SLFHttpClient *)client didFinishedWithPullingAndUpdating:(id)object
 {
 
-    DBRepository * repo =  [[DBRepository alloc] init];
-    
-    self.details = [repo getAllDetails];
-    
-    [self.tableView reloadData];
+    [self loadData];
     
     [self refreshRefreshControl];
     
@@ -171,13 +206,41 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
-    SLFTicketDetail * detail = self.details[indexPath.row];
+    switch (self.feedTableType) {
+        case NoGrouping:
+        {
+            
+            TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
+            SLFTicketDetail * detail = self.details[indexPath.row];
+            [vc initWithTicketDetailID:detail.gUID];
+            [self.navigationController pushViewController:vc animated:TRUE];
+            
+        }
+            break;
+        case GroupByCompany:
+        {
+           
+        }
+            break;
+            
+        case GroupByTicket:
+        {
+           
+            
+        }
+            break;
+        case GroupBySubscription:
+        {
+            
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
     
    
-    [vc initWithTicketDetailID:detail.gUID];
-    
-    [self.navigationController pushViewController:vc animated:TRUE];
 
 }
 
@@ -213,56 +276,79 @@
         
     }
 
+    bool read  = false;
     
-   // NSDictionary * detail = self.details[indexPath.row];
-    SLFTicketDetail *detail= (SLFTicketDetail*)self.details[indexPath.row];
-    NSString * str =  detail.detailDescription  ;
-    
-    cell.textLabel.text = str;
-  
-    
-   
-//2016-01-14T07:55:16.000Z
-    
-    NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
-    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    
-    NSDateFormatter * dateFormater = [[NSDateFormatter alloc]init];
-    [dateFormater setTimeZone:gmt];
-    dateFormater.dateFormat =  @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-    
-    NSDate* date= [dateFormater dateFromString: detail.datetime];
-    
-    dateFormater.dateFormat =  @"dd.MM. HH:mm:ss";
-   [dateFormater setTimeZone:outputTimeZone];
-    
-    
-    if (detail.subscriptionGroupID != nil && ![detail.subscriptionGroupID isEqualToString:@""]) {
-        
-        DBRepository * repo =  [[DBRepository alloc] init];
-        
-        SLFGroup * group = [repo getGroup:detail.subscriptionGroupID];
-        
-        if (group) {
-             cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %d  %@ %@", detail.ticketID,[dateFormater stringFromDate:date], group.name ];
-        }else
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %d  %@ ", detail.ticketID,[dateFormater stringFromDate:date] ];
-        
-        
-    }else
-    {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %d  %@ ", detail.ticketID,[dateFormater stringFromDate:date] ]; //  [dateFormater stringFromDate:date];
+    switch (self.feedTableType) {
+        case NoGrouping:
+        {
+            SLFTicketDetail * detail = (SLFTicketDetail*)self.details[indexPath.row];
+            
+            NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
+            NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+            
+            NSDateFormatter * dateFormater = [[NSDateFormatter alloc]init];
+            [dateFormater setTimeZone:gmt];
+            dateFormater.dateFormat =  @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+            
+            NSDate* date= [dateFormater dateFromString: detail.datetime];
+            
+            dateFormater.dateFormat =  @"dd.MM. HH:mm:ss";
+            [dateFormater setTimeZone:outputTimeZone];
+            
+            cell.textLabel.text = detail.detailDescription;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %d  %@ %@", detail.ticketID,[dateFormater stringFromDate:date], detail.subscriptionGroupName ];
+            
+            read  = detail.read;
+            
+            
+            
+        }
+            break;
+        case GroupByCompany:
+        {
+            SLFGroupedItem * detail = (SLFGroupedItem*)self.details[indexPath.row];
+            cell.textLabel.text= detail.GroupedItemName;
+            read = detail.NewOnes == 0;
+                      
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"No. %d (%d)",detail.Count,detail.NewOnes];
+        }
+            break;
+            
+        case GroupByTicket:
+        {
+            SLFGroupedItem * detail = (SLFGroupedItem*)self.details[indexPath.row];
+            cell.textLabel.text= detail.GroupedItemName;
+            read = detail.NewOnes == 0;
+            
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"Ticket ID: %@    No. %d (%d)",detail.GroupedItem,detail.Count, detail.NewOnes];
+            
+        }
+            break;
+        case GroupBySubscription:
+        {
+           SLFGroupedItem * detail = (SLFGroupedItem*)self.details[indexPath.row];
+           cell.textLabel.text= detail.GroupedItemName;
+           read = detail.NewOnes == 0;
+         
+           cell.detailTextLabel.text = [NSString stringWithFormat:@"No. %d (%d)",detail.Count,detail.NewOnes];
+            
+        }
+            break;
+      
+        default:
+            break;
     }
     
-    if (!detail.read) {
+    
+    if (!read) {
         cell.textLabel.textColor = UIColorFromRGB(0xC43947);
         cell.textLabel.font  = [UIFont boldSystemFontOfSize:16.];
-
+        
     }else{
         cell.textLabel.textColor = [UIColor blackColor];
         cell.textLabel.font  = [UIFont systemFontOfSize: 16.];
     }
-    
+   
     return cell;
     
 }
@@ -322,12 +408,102 @@
 
 -(IBAction)onRemove :(id)sender
 {
+    
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Warning"
+                                  message:@"Do you really want to remove all items?"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        //do something when click button
+        [self removeAllItems];
+        
+    }];
+    [alert addAction:okAction];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        //do something when click button
+        
+    }];
+    [alert addAction:noAction];
+    
+    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    [vc presentViewController:alert animated:YES completion:nil];
+    
+}
+-(void) removeAllItems
+{
     DBRepository * repo =  [[DBRepository alloc] init];
     [repo deleteAllFeeds];
-     self.details = [repo getAllDetails];
+    self.details = [repo getAllDetails];
     [self.tableView reloadData];
+    [self invalidateTableView];
 }
 
+-(IBAction)onGroupBy:(id)sender
+{
+    [self showGroupBySelector];
+}
+-(void) showGroupBySelector
+{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    UIAlertController * actions=   [UIAlertController
+                                    alertControllerWithTitle:nil
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    
+    UIAlertAction *groupByTicketAction = [UIAlertAction actionWithTitle:@"Ticket" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        self.feedTableType = GroupByTicket;
+       [userDefaults setObject:[[NSNumber alloc] initWithInt:GroupByTicket ]  forKey:@"SLFFeedGroupBy"];
+        
+        [self loadData ];
+        
+    }];
+    [actions addAction:groupByTicketAction];
+
+    UIAlertAction *groupByCompanyAction = [UIAlertAction actionWithTitle:@"Company" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        self.feedTableType = GroupByCompany;
+        [userDefaults setObject:[[NSNumber alloc] initWithInt:GroupByCompany ]  forKey:@"SLFFeedGroupBy"];
+        
+         [self loadData ];
+        
+    }];
+    [actions addAction:groupByCompanyAction];
+    
+    
+    UIAlertAction *groupBySubscriptionAction = [UIAlertAction actionWithTitle:@"Subscription" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        self.feedTableType = GroupBySubscription;
+        [userDefaults setObject:[[NSNumber alloc] initWithInt:GroupBySubscription ]  forKey:@"SLFFeedGroupBy"];
+        
+         [self loadData ];
+        
+    }];
+    [actions addAction:groupBySubscriptionAction];
+    
+    UIAlertAction *groupByNoneAction = [UIAlertAction actionWithTitle:@"None" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        self.feedTableType = NoGrouping;
+        [userDefaults setObject:[[NSNumber alloc] initWithInt:NoGrouping ]  forKey:@"SLFFeedGroupBy"];
+        
+         [self loadData ];
+        
+    }];
+    [actions addAction:groupByNoneAction];
+    
+    
+    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    [vc presentViewController:actions animated:YES completion:nil];
+    
+}
 
 @end
 

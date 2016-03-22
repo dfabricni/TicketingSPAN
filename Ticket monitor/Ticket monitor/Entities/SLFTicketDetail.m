@@ -23,6 +23,13 @@ NSString *const kSLFTicketDetailSubjectID = @"SubjectID";
 NSString *const kSLFTicketDetailDatetimeInSeconds= @"DatetimeInSeconds";
 NSString *const kSLFTicketDetailSubscriptionGroupID = @"SubscriptionGroupID";
 
+NSString *const kSLFTicketDetailTicketTitle = @"TicketTitle";
+NSString *const kSLFTicketDetailCompanyCode = @"CompanyCode";
+NSString *const kSLFTicketDetailTicketAssignedTo = @"TicketAssignedTo";
+NSString *const kSLFTicketDetailModifiedBy = @"TicketTitle";
+NSString *const kSLFTicketDetailSubscriptionGroupName = @"SubscriptionGroupName";
+
+
 
 @interface SLFTicketDetail ()
 
@@ -46,6 +53,11 @@ NSString *const kSLFTicketDetailSubscriptionGroupID = @"SubscriptionGroupID";
 @synthesize subjectID = _subjectID;
 @synthesize datetimeInSeconds = _datetimeInSeconds;
 @synthesize subscriptionGroupID = _subscriptionGroupID;
+@synthesize ticketTitle = _ticketTitle;
+@synthesize companyCode = _companyCode;
+@synthesize ticketAssignedTo = _ticketAssignedTo;
+@synthesize modifiedBy = _modifiedBy;
+@synthesize subscriptionGroupName = _subscriptionGroupName;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -74,6 +86,11 @@ NSString *const kSLFTicketDetailSubscriptionGroupID = @"SubscriptionGroupID";
         self.datetime = [self objectOrNilForKey:kSLFTicketDetailDatetime fromDictionary:dict];
         self.subjectID = [[self objectOrNilForKey:kSLFTicketDetailSubjectID fromDictionary:dict] intValue];
         self.subscriptionGroupID= [self objectOrNilForKey:kSLFTicketDetailSubscriptionGroupID fromDictionary:dict];
+        self.ticketTitle= [self objectOrNilForKey:kSLFTicketDetailTicketTitle fromDictionary:dict];
+        self.companyCode= [self objectOrNilForKey:kSLFTicketDetailCompanyCode fromDictionary:dict];
+        self.ticketAssignedTo = [self objectOrNilForKey:kSLFTicketDetailTicketAssignedTo fromDictionary:dict];
+        self.modifiedBy= [self objectOrNilForKey:kSLFTicketDetailModifiedBy fromDictionary:dict];
+        self.subscriptionGroupName= [self objectOrNilForKey:kSLFTicketDetailSubscriptionGroupName fromDictionary:dict];
         
     }
     
@@ -98,6 +115,11 @@ NSString *const kSLFTicketDetailSubscriptionGroupID = @"SubscriptionGroupID";
     [mutableDict setValue:self.datetime forKey:kSLFTicketDetailDatetime];
     [mutableDict setValue:[NSNumber numberWithInt:self.subjectID] forKey:kSLFTicketDetailSubjectID];
     [mutableDict setValue:self.subscriptionGroupID forKey:kSLFTicketDetailSubscriptionGroupID];
+    [mutableDict setValue:self.ticketTitle forKey:kSLFTicketDetailTicketTitle];
+    [mutableDict setValue:self.companyCode forKey:kSLFTicketDetailCompanyCode];
+    [mutableDict setValue:self.ticketAssignedTo forKey:kSLFTicketDetailTicketAssignedTo];
+    [mutableDict setValue:self.modifiedBy forKey:kSLFTicketDetailModifiedBy];
+    [mutableDict setValue:self.subscriptionGroupName forKey:kSLFTicketDetailSubscriptionGroupName];
     
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -135,6 +157,12 @@ NSString *const kSLFTicketDetailSubscriptionGroupID = @"SubscriptionGroupID";
     self.datetime = [aDecoder decodeObjectForKey:kSLFTicketDetailDatetime];
     self.subjectID = [aDecoder decodeIntForKey:kSLFTicketDetailSubjectID];
     self.subscriptionGroupID = [aDecoder decodeObjectForKey:kSLFTicketDetailSubscriptionGroupID];
+    self.ticketTitle = [aDecoder decodeObjectForKey:kSLFTicketDetailTicketTitle];
+    self.companyCode = [aDecoder decodeObjectForKey:kSLFTicketDetailCompanyCode];
+    self.ticketAssignedTo = [aDecoder decodeObjectForKey:kSLFTicketDetailTicketAssignedTo];
+    self.modifiedBy = [aDecoder decodeObjectForKey:kSLFTicketDetailModifiedBy];
+    self.subscriptionGroupName = [aDecoder decodeObjectForKey:kSLFTicketDetailSubscriptionGroupName];
+    
     return self;
 }
 
@@ -154,7 +182,12 @@ NSString *const kSLFTicketDetailSubscriptionGroupID = @"SubscriptionGroupID";
     [aCoder encodeInt:_serviceID forKey:kSLFTicketDetailServiceID];
     [aCoder encodeObject:_datetime forKey:kSLFTicketDetailDatetime];
     [aCoder encodeInt:_subjectID forKey:kSLFTicketDetailSubjectID];
-    [aCoder encodeObject:_subscriptionGroupID forKey:kSLFTicketDetailSubscriptionGroupID];
+    [aCoder encodeObject:_subscriptionGroupID forKey:kSLFTicketDetailSubscriptionGroupID];    
+    [aCoder encodeObject:_ticketTitle forKey:kSLFTicketDetailTicketTitle];
+    [aCoder encodeObject:_companyCode forKey:kSLFTicketDetailCompanyCode];
+    [aCoder encodeObject:_ticketAssignedTo forKey:kSLFTicketDetailTicketAssignedTo];
+    [aCoder encodeObject:_modifiedBy forKey:kSLFTicketDetailModifiedBy];
+    [aCoder encodeObject:_subscriptionGroupName forKey:kSLFTicketDetailSubscriptionGroupName];
     
 }
 
@@ -178,6 +211,12 @@ NSString *const kSLFTicketDetailSubscriptionGroupID = @"SubscriptionGroupID";
         copy.datetime = [self.datetime copyWithZone:zone];
         copy.subjectID = self.subjectID ;
         copy.subscriptionGroupID = [self.subscriptionGroupID copyWithZone:zone];
+        copy.ticketTitle = [self.ticketTitle copyWithZone:zone];
+        copy.companyCode = [self.companyCode copyWithZone:zone];
+        copy.ticketAssignedTo = [self.ticketAssignedTo copyWithZone:zone];
+        copy.modifiedBy = [self.modifiedBy copyWithZone:zone];
+        copy.subscriptionGroupName = [self.subscriptionGroupName copyWithZone:zone];
+        
     }
     
     return copy;

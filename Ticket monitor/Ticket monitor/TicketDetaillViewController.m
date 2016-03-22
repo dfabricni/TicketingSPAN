@@ -40,9 +40,12 @@
         
          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1), dispatch_get_main_queue(), ^{
         //trz pull from server
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSString * username = [userDefaults objectForKey:@"SLFUsername"];
+             
         SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
         httpClient.delegate = self;
-        [httpClient getDetailByGUID:self.ticketGUID];
+        [httpClient getDetailByGUID:self.ticketGUID username:username];
              
     });
         

@@ -12,7 +12,7 @@
 #import "DBRepository.h"
 #import "AFHTTPRequestOperationManager.h"
 
-static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.net/api/";
+static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.net/v2/api/";
 
 
 @implementation SLFHttpClient
@@ -68,11 +68,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     manager.requestSerializer =[AFJSONRequestSerializer serializer];
     
     NSString * deviceRegisterLink = @"device";
-    
-#if DEBUG
-    deviceRegisterLink = @"deviceDev";
-#endif
-    
+     
     
     NSMutableURLRequest *request =  [manager.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", BaseURLString,deviceRegisterLink] parameters:parameters error:nil];
     
@@ -137,7 +133,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
     
         [repo markAllAsSynced];
-        [repo deleteAllDisabledAndSynced];
+        [repo deleteAllMarkedForDeletionAndSynced];
         
         NSLog(@"JSON: %@", [responseObject description]);
         
@@ -337,7 +333,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
             [repo saveSubscription:subscriptionsResponse.subscriptions[i] syncStatus:1];
         }
         
-        [repo deleteAllDisabledAndSynced];
+        [repo deleteAllMarkedForDeletionAndSynced];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -352,7 +348,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
 }	
 
--(void) getDetailByGUID:(NSString*) GUID
+-(void) getDetailByGUID:(NSString*) GUID username:(NSString*) username
 {
     
     Globals * globals = [Globals instance];
@@ -360,6 +356,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
      NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     parameters[@"guid"] = [NSString stringWithFormat:@"%@", GUID ];
+    parameters[@"user"] = [NSString stringWithFormat:@"%@", username ];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:  BaseURLString]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -393,13 +390,15 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
 }
 
--(void) getDetailByGUIDFromBackgroundTask:(NSString*) GUID taskID:(UIBackgroundTaskIdentifier) taskID
+-(void) getDetailByGUIDFromBackgroundTask:(NSString*) GUID username:(NSString*) username taskID:(UIBackgroundTaskIdentifier) taskID
 {
    // Globals * globals = [Globals instance];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     parameters[@"guid"] = [NSString stringWithFormat:@"%@", GUID ];
+    parameters[@"user"] = [NSString stringWithFormat:@"%@", username ];
+    
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:  BaseURLString]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];

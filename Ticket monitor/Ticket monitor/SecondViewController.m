@@ -179,11 +179,15 @@
         DBRepository * repo =  [[DBRepository alloc] init];
         SLFGroup* group = (SLFGroup*) [self.groups objectAtIndex:[indexPath row]];
         
-        group.active =  false;
+        group.toDelete =  true;
         //[controller removeObjectFromListAtIndex:indexPath.row];
 
         [repo saveGroup:group syncStatus:0];
-        [repo disableAllSubscriptionsForGroup:group.iDProperty];
+        
+       // [repo disableAllSubscriptionsForGroup:group.iDProperty];
+        
+        [repo markAllSubscriptionsToDeleteForGroup:group.iDProperty];
+        
         self.groups = [repo getAllGroups];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -217,8 +221,9 @@
     
     SLFGroup * group = self.groups[indexPath.row];
     
+    cell.textLabel.font  = [UIFont systemFontOfSize: 16.];
     cell.textLabel.text = group.name;
-    cell.detailTextLabel.text= group.groupOperation;
+    cell.detailTextLabel.text= !group.active ? @"Disabled":@"";
     
     return cell;
 

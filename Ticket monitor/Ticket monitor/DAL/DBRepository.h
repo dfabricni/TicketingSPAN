@@ -35,7 +35,10 @@
 
 +(void) prepareSqlLiteFile;
 
+-(NSMutableArray *) getFeedsGroupedByCompany;
+-(NSMutableArray *) getFeedsGroupedByTicket;
 
+-(void) deleteGroup:(NSString*) groupID;
 -(NSMutableArray *) getAllGroups;
 
 -(NSMutableArray *) getAllSubscriptionsForGroup:(NSString*) groupId;
@@ -47,6 +50,17 @@
 -(NSMutableArray *) getAllGroupsForSync;
 
 -(NSMutableArray *) getAllDetails;
+
+-(NSMutableArray *) getDetailsForTicket:(int) ticketID;
+
+-(NSMutableArray *) getDetailsForSubscription:(NSString*) subscriptionGroupID;
+
+-(NSMutableArray *) getDetailsForCompany:(int) companyID;
+
+-(NSMutableArray *) getDetailsGroupedByTickets;
+-(NSMutableArray *) getDetailsGroupedByCompanies;
+-(NSMutableArray *) getDetailsGroupedBySubscriptions;
+
 
 -(SLFTicketDetail *) getTicketDetail:(NSString*) guid;
 
@@ -64,8 +78,11 @@
 
 -(void) markAllAsSynced;
 
--(void) deleteAllDisabledAndSynced;
+-(void) deleteAllMarkedForDeletionAndSynced;
 -(void) disableAllSubscriptionsForGroup:(NSString*) groupID;
+-(void) enableAllSubscriptionsForGroup:(NSString*) groupID;
+-(void) markAllSubscriptionsToDeleteForGroup:(NSString*) groupID;
+
 
 
 -(void) markTicketAsRead:(NSString*)guid;

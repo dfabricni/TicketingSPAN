@@ -69,6 +69,7 @@
 		BCCF6BC61C0903D1001F0EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF6BC51C0903D0001F0EAD /* UIKit.framework */; };
 		BCCF6BC81C0903DC001F0EAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF6BC71C0903DC001F0EAD /* Foundation.framework */; };
 		C363DDCC1C6B22A800158A29 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C363DDCB1C6B22A800158A29 /* Images.xcassets */; };
+		C3777D6D1C9AA4C900C5F5D7 /* SLFGroupedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3777D6C1C9AA4C900C5F5D7 /* SLFGroupedItem.m */; };
 		C399D5B21C6B41D5006375FC /* App-icon in Resources */ = {isa = PBXBuildFile; fileRef = C399D5B01C6B41D5006375FC /* App-icon */; };
 		C399D5B31C6B41D5006375FC /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = C399D5B11C6B41D5006375FC /* Icons */; };
 		C39C61101C242441002EE4C2 /* fmdb in Resources */ = {isa = PBXBuildFile; fileRef = C39C610F1C242441002EE4C2 /* fmdb */; };
@@ -79,7 +80,6 @@
 		C39C61231C242547002EE4C2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C611E1C242546002EE4C2 /* FMResultSet.m */; };
 		C39C61261C2425AA002EE4C2 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C39C61251C2425AA002EE4C2 /* libsqlite3.0.tbd */; };
 		C39C613B1C242F5C002EE4C2 /* DBRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C613A1C242F5C002EE4C2 /* DBRepository.m */; };
-		C39C613F1C2439B7002EE4C2 /* SLFDB.rdb in Resources */ = {isa = PBXBuildFile; fileRef = C39C613E1C2439B7002EE4C2 /* SLFDB.rdb */; };
 		C39C61551C3E65FF002EE4C2 /* SLFService.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C614E1C3E65FF002EE4C2 /* SLFService.m */; };
 		C39C61571C3E65FF002EE4C2 /* SLFSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61521C3E65FF002EE4C2 /* SLFSubject.m */; };
 		C39C61581C3E65FF002EE4C2 /* SLFSubjectsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61541C3E65FF002EE4C2 /* SLFSubjectsResponse.m */; };
@@ -98,6 +98,7 @@
 		C39C618B1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C618A1C43CD79002EE4C2 /* SLFSubscriptionStatusesResponse.m */; };
 		C39C618E1C43EC31002EE4C2 /* Synchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C618D1C43EC31002EE4C2 /* Synchronizer.m */; };
 		C39C61911C43F0E2002EE4C2 /* SLFHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C39C61901C43F0E2002EE4C2 /* SLFHttpClient.m */; };
+		C3A00BA11C899B92001C60C2 /* SLFDB.rdb in Resources */ = {isa = PBXBuildFile; fileRef = C3A00BA01C899B92001C60C2 /* SLFDB.rdb */; };
 		C3D3DE031C6B329900AC8428 /* ADAL_iPad_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D3DE011C6B329900AC8428 /* ADAL_iPad_Storyboard.storyboard */; };
 		C3D3DE041C6B329900AC8428 /* ADAL_iPhone_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D3DE021C6B329900AC8428 /* ADAL_iPhone_Storyboard.storyboard */; };
 		C3E999CE1C47A7C00008456D /* SLFAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E999C91C47A7C00008456D /* SLFAlert.m */; };
@@ -259,6 +260,8 @@
 		BCCF6BC71C0903DC001F0EAD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCCF6BCA1C090812001F0EAD /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C363DDCB1C6B22A800158A29 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C3777D6B1C9AA4C900C5F5D7 /* SLFGroupedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFGroupedItem.h; sourceTree = "<group>"; };
+		C3777D6C1C9AA4C900C5F5D7 /* SLFGroupedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFGroupedItem.m; sourceTree = "<group>"; };
 		C399D5B01C6B41D5006375FC /* App-icon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "App-icon"; sourceTree = "<group>"; };
 		C399D5B11C6B41D5006375FC /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = "<group>"; };
 		C39C610F1C242441002EE4C2 /* fmdb */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fmdb; path = "/Users/administrator/Development/TicketingSPAN/Ticket monitor/fmdb"; sourceTree = "<absolute>"; };
@@ -277,7 +280,6 @@
 		C39C61251C2425AA002EE4C2 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		C39C61391C242F5C002EE4C2 /* DBRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBRepository.h; path = DAL/DBRepository.h; sourceTree = "<group>"; };
 		C39C613A1C242F5C002EE4C2 /* DBRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBRepository.m; path = DAL/DBRepository.m; sourceTree = "<group>"; };
-		C39C613E1C2439B7002EE4C2 /* SLFDB.rdb */ = {isa = PBXFileReference; lastKnownFileType = file; name = SLFDB.rdb; path = "Ticket monitor/SLFDB.rdb"; sourceTree = "<group>"; };
 		C39C61401C3E6461002EE4C2 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataModels.h; path = Entities/DataModels.h; sourceTree = "<group>"; };
 		C39C614D1C3E65FF002EE4C2 /* SLFService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFService.h; path = Entities/SLFService.h; sourceTree = "<group>"; };
 		C39C614E1C3E65FF002EE4C2 /* SLFService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLFService.m; path = Entities/SLFService.m; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		C39C618D1C43EC31002EE4C2 /* Synchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Synchronizer.m; sourceTree = "<group>"; };
 		C39C618F1C43F0E2002EE4C2 /* SLFHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFHttpClient.h; sourceTree = "<group>"; };
 		C39C61901C43F0E2002EE4C2 /* SLFHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFHttpClient.m; sourceTree = "<group>"; };
+		C3A00BA01C899B92001C60C2 /* SLFDB.rdb */ = {isa = PBXFileReference; lastKnownFileType = file; name = SLFDB.rdb; path = "Ticket monitor/SLFDB.rdb"; sourceTree = "<group>"; };
 		C3D3DE011C6B329900AC8428 /* ADAL_iPad_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ADAL_iPad_Storyboard.storyboard; sourceTree = "<group>"; };
 		C3D3DE021C6B329900AC8428 /* ADAL_iPhone_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ADAL_iPhone_Storyboard.storyboard; sourceTree = "<group>"; };
 		C3E999C81C47A7C00008456D /* SLFAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLFAlert.h; path = Entities/SLFAlert.h; sourceTree = "<group>"; };
@@ -364,9 +367,9 @@
 		BCCF69651C08F1AB001F0EAD = {
 			isa = PBXGroup;
 			children = (
+				C3A00BA01C899B92001C60C2 /* SLFDB.rdb */,
 				C399D5B01C6B41D5006375FC /* App-icon */,
 				C399D5B11C6B41D5006375FC /* Icons */,
-				C39C613E1C2439B7002EE4C2 /* SLFDB.rdb */,
 				C39C61241C242554002EE4C2 /* FMDatabase */,
 				BCCF6BC91C0903F3001F0EAD /* Frameworks */,
 				BCCF6B4D1C09029A001F0EAD /* ADALiOS */,
@@ -654,6 +657,8 @@
 				C39C61721C3E7775002EE4C2 /* SLFRuleType.m */,
 				C39C61771C3E8B0B002EE4C2 /* SLFSettings.h */,
 				C39C61781C3E8B0B002EE4C2 /* SLFSettings.m */,
+				C3777D6B1C9AA4C900C5F5D7 /* SLFGroupedItem.h */,
+				C3777D6C1C9AA4C900C5F5D7 /* SLFGroupedItem.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -771,10 +776,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C399D5B31C6B41D5006375FC /* Icons in Resources */,
-				C39C613F1C2439B7002EE4C2 /* SLFDB.rdb in Resources */,
 				C363DDCC1C6B22A800158A29 /* Images.xcassets in Resources */,
 				C39C61101C242441002EE4C2 /* fmdb in Resources */,
 				BCCF69841C08F1AC001F0EAD /* LaunchScreen.storyboard in Resources */,
+				C3A00BA11C899B92001C60C2 /* SLFDB.rdb in Resources */,
 				C3D3DE041C6B329900AC8428 /* ADAL_iPhone_Storyboard.storyboard in Resources */,
 				C3D3DE031C6B329900AC8428 /* ADAL_iPad_Storyboard.storyboard in Resources */,
 				BCCF697F1C08F1AC001F0EAD /* Main.storyboard in Resources */,
@@ -816,6 +821,7 @@
 				BCCF6BB91C09029B001F0EAD /* ADTokenCacheValue.m in Sources */,
 				C39C616A1C3E6DB0002EE4C2 /* SLFSubscriptionsResponse.m in Sources */,
 				BCCF6BBB1C09029B001F0EAD /* ADUserInformation.m in Sources */,
+				C3777D6D1C9AA4C900C5F5D7 /* SLFGroupedItem.m in Sources */,
 				C39C61551C3E65FF002EE4C2 /* SLFService.m in Sources */,
 				BCCF6A4A1C08F513001F0EAD /* UIRefreshControl+AFNetworking.m in Sources */,
 				BCCF6BAE1C09029B001F0EAD /* ADHelpers.m in Sources */,
@@ -1035,8 +1041,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Domagoj Fabricni (FG634J27KE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Domagoj Fabricni (FG634J27KE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Ticket monitor/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "-deep";
@@ -1053,8 +1059,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SPAN d.o.o. za projektiranje informacijskih sustava";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SPAN d.o.o. za projektiranje informacijskih sustava";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Ticket monitor/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "-deep";

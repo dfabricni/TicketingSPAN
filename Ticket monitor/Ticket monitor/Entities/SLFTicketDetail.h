@@ -26,6 +26,11 @@
 @property (nonatomic, assign) int subjectID;
 @property (nonatomic, strong) NSString *subscriptionGroupID;
 @property (nonatomic, assign) BOOL read;
+@property (nonatomic, strong) NSString *ticketTitle;
+@property (nonatomic, strong) NSString *companyCode;
+@property (nonatomic, strong) NSString *ticketAssignedTo;
+@property (nonatomic, strong) NSString *modifiedBy;
+@property (nonatomic, strong) NSString *subscriptionGroupName;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

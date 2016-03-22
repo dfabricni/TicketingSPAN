@@ -12,7 +12,7 @@ NSString *const kSLFGroupsID = @"ID";
 NSString *const kSLFGroupsGroupOperation = @"GroupOperation";
 NSString *const kSLFGroupsName = @"Name";
 NSString *const kSLFGroupsActive = @"Active";
-
+NSString *const kSLFGroupsToDelete = @"ToDelete";
 
 @interface SLFGroup()
 
@@ -26,7 +26,7 @@ NSString *const kSLFGroupsActive = @"Active";
 @synthesize groupOperation = _groupOperation;
 @synthesize name = _name;
 @synthesize active = _active;
-
+@synthesize toDelete = _toDelete;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -44,7 +44,7 @@ NSString *const kSLFGroupsActive = @"Active";
             self.groupOperation = [self objectOrNilForKey:kSLFGroupsGroupOperation fromDictionary:dict];
             self.name = [self objectOrNilForKey:kSLFGroupsName fromDictionary:dict];
             self.active = [[self objectOrNilForKey:kSLFGroupsActive fromDictionary:dict] boolValue];
-
+            self.toDelete = [[self objectOrNilForKey:kSLFGroupsToDelete fromDictionary:dict] boolValue];
     }
     
     return self;
@@ -58,7 +58,8 @@ NSString *const kSLFGroupsActive = @"Active";
     [mutableDict setValue:self.groupOperation forKey:kSLFGroupsGroupOperation];
     [mutableDict setValue:self.name forKey:kSLFGroupsName];
     [mutableDict setValue:[NSNumber numberWithBool:self.active] forKey:kSLFGroupsActive];
-
+    [mutableDict setValue:[NSNumber numberWithBool:self.toDelete] forKey:kSLFGroupsToDelete];
+    
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -85,6 +86,8 @@ NSString *const kSLFGroupsActive = @"Active";
     self.groupOperation = [aDecoder decodeObjectForKey:kSLFGroupsGroupOperation];
     self.name = [aDecoder decodeObjectForKey:kSLFGroupsName];
     self.active = [aDecoder decodeBoolForKey:kSLFGroupsActive];
+    self.toDelete = [aDecoder decodeBoolForKey:kSLFGroupsToDelete];
+    
     return self;
 }
 
@@ -95,6 +98,7 @@ NSString *const kSLFGroupsActive = @"Active";
     [aCoder encodeObject:_groupOperation forKey:kSLFGroupsGroupOperation];
     [aCoder encodeObject:_name forKey:kSLFGroupsName];
     [aCoder encodeBool:_active forKey:kSLFGroupsActive];
+    [aCoder encodeBool:_toDelete forKey:kSLFGroupsToDelete];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -107,6 +111,7 @@ NSString *const kSLFGroupsActive = @"Active";
         copy.groupOperation = [self.groupOperation copyWithZone:zone];
         copy.name = [self.name copyWithZone:zone];
         copy.active = self.active;
+        copy.toDelete = self.toDelete;
     }
     
     return copy;

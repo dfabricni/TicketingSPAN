@@ -45,15 +45,16 @@
         self.subscriptions = [repo getAllSubscriptionsForGroup:self.group.iDProperty];
         
         self.txtName.text = self.group.name;
-        [self.orSwitch setOn:[self.group.groupOperation isEqualToString:@"A"]];
+        [self.enabledSwitch setOn:self.group.active];
         
         
         self.txtName.enabled = false;
-        self.orSwitch.enabled = false;
+        //self.orSwitch.enabled = false;
         // self.rightButtonSave.enabled = false;
         self.rightButtonSave.title = @"Add";
     }else{
         self.subscriptions  = [[NSMutableArray alloc]init];
+        self.enabledSwitch.enabled= false;
     }
     
     [self.tableView reloadData];
@@ -98,8 +99,9 @@
     
         self.group.iDProperty = [[NSUUID UUID] UUIDString];
         self.group.name = self.txtName.text;
-        self.group.active = TRUE;
-        self.group.groupOperation = self.orSwitch.isOn ? @"A" : @"O";
+        self.group.active = self.enabledSwitch.isOn;
+       // self.group.groupOperation = self.orSwitch.isOn ? @"A" : @"O";
+        self.group.groupOperation = @"A";
         [repo saveGroup:self.group syncStatus:0];
         
          [self showMessage:@"Do you want to add subscription details?" withTitle:@"Details"];
@@ -416,7 +418,7 @@
         //do something when click button
         
         self.txtName.enabled = false;
-        self.orSwitch.enabled = false;
+       self.enabledSwitch.enabled = true;
         
         
         // pop up details view
@@ -527,6 +529,26 @@
         self.subscriptions = [repo getAllSubscriptionsForGroup:self.group.iDProperty];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
+    
+}
+- (IBAction)changeSwitch:(id)sender
+{
+    DBRepository * repo =  [[DBRepository alloc] init];
+    
+    self.group.active=self.enabledSwitch.isOn;
+    [repo saveGroup:self.group syncStatus:0];
+    
+    if (self.enabledSwitch.isOn) {
+        
+        // enable
+        [repo enableAllSubscriptionsForGroup:self.group.iDProperty];
+        
+    }else
+    {
+        
+        [repo disableAllSubscriptionsForGroup:self.group.iDProperty];
         
     }
     

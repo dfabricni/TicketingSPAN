@@ -9,6 +9,7 @@
 
 
 NSString *const kSLFSubscriptionsActive = @"Active";
+NSString *const kSLFSubscriptionsToDelete = @"ToDelete";
 NSString *const kSLFSubscriptionsRuleTypeID = @"RuleTypeID";
 NSString *const kSLFSubscriptionsSubscriptionGroupID = @"SubscriptionGroupID";
 NSString *const kSLFSubscriptionsLastCheckPoint = @"LastCheckPoint";
@@ -26,6 +27,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
 @implementation SLFSubscription
 
 @synthesize active = _active;
+@synthesize toDelete = _toDelete;
 @synthesize ruleTypeID = _ruleTypeID;
 @synthesize subscriptionGroupID = _subscriptionGroupID;
 @synthesize lastCheckPoint = _lastCheckPoint;
@@ -47,6 +49,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.active = [[self objectOrNilForKey:kSLFSubscriptionsActive fromDictionary:dict] boolValue];
+            self.toDelete = [[self objectOrNilForKey:kSLFSubscriptionsToDelete fromDictionary:dict] boolValue];
             self.ruleTypeID = [[self objectOrNilForKey:kSLFSubscriptionsRuleTypeID fromDictionary:dict] intValue];
             self.subscriptionGroupID = [self objectOrNilForKey:kSLFSubscriptionsSubscriptionGroupID fromDictionary:dict];
             self.lastCheckPoint = [self objectOrNilForKey:kSLFSubscriptionsLastCheckPoint fromDictionary:dict];
@@ -64,6 +67,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithBool:self.active] forKey:kSLFSubscriptionsActive];
+    [mutableDict setValue:[NSNumber numberWithBool:self.toDelete] forKey:kSLFSubscriptionsToDelete];
     [mutableDict setValue:[NSNumber numberWithInt:self.ruleTypeID] forKey:kSLFSubscriptionsRuleTypeID];
     [mutableDict setValue:self.subscriptionGroupID forKey:kSLFSubscriptionsSubscriptionGroupID];
     [mutableDict setValue:self.lastCheckPoint forKey:kSLFSubscriptionsLastCheckPoint];
@@ -94,6 +98,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
     self = [super init];
 
     self.active = [aDecoder decodeBoolForKey:kSLFSubscriptionsActive];
+    self.toDelete = [aDecoder decodeBoolForKey:kSLFSubscriptionsToDelete];
     self.ruleTypeID = [aDecoder decodeIntForKey:kSLFSubscriptionsRuleTypeID];
     self.subscriptionGroupID = [aDecoder decodeObjectForKey:kSLFSubscriptionsSubscriptionGroupID];
     self.lastCheckPoint = [aDecoder decodeObjectForKey:kSLFSubscriptionsLastCheckPoint];
@@ -107,6 +112,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
 {
 
     [aCoder encodeBool:_active forKey:kSLFSubscriptionsActive];
+    [aCoder encodeBool:_toDelete forKey:kSLFSubscriptionsToDelete];
     [aCoder encodeInt:_ruleTypeID forKey:kSLFSubscriptionsRuleTypeID];
     [aCoder encodeObject:_subscriptionGroupID forKey:kSLFSubscriptionsSubscriptionGroupID];
     [aCoder encodeObject:_lastCheckPoint forKey:kSLFSubscriptionsLastCheckPoint];
@@ -122,6 +128,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
     if (copy) {
 
         copy.active = self.active;
+        copy.toDelete = self.toDelete;
         copy.ruleTypeID = self.ruleTypeID;
         copy.subscriptionGroupID = [self.subscriptionGroupID copyWithZone:zone];
         copy.lastCheckPoint = [self.lastCheckPoint copyWithZone:zone];

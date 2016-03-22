@@ -21,6 +21,7 @@
 #import "SLFAlert.h"
 #import "SLFAps.h"
 #import "SLFNotification.h"
+#import "SLFGroupedItem.h"
 
 #define SLFSubscriptionsRequest SLFSubscriptionsResponse
 

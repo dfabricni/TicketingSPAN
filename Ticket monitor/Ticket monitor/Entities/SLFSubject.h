@@ -13,6 +13,7 @@
 
 @property (nonatomic, assign) int ID;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *detail;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

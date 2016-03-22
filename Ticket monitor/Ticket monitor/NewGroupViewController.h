@@ -14,12 +14,15 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButtonSave;
 @property (strong, nonatomic) IBOutlet UITextField * txtName;
-@property (strong, nonatomic) IBOutlet UISwitch * orSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch * enabledSwitch;
 @property (strong, nonatomic)  SLFGroup * group;
 @property (strong, nonatomic)  NSMutableArray * subscriptions;
 @property (strong, nonatomic) IBOutlet UITableView * tableView;
 
 -(IBAction)onSave :(id)sender;
+
+- (IBAction)changeSwitch:(id)sender;
+
 
 -(BOOL) validateName;
 

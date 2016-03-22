@@ -10,6 +10,7 @@
 
 NSString *const kSLFServicesId = @"Id";
 NSString *const kSLFServicesName = @"Name";
+NSString *const kSLFServicesDetail = @"Detail";
 
 
 @interface SLFService ()
@@ -22,7 +23,7 @@ NSString *const kSLFServicesName = @"Name";
 
 @synthesize ID = _servicesIdentifier;
 @synthesize name = _name;
-
+@synthesize detail = _detail;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -38,6 +39,7 @@ NSString *const kSLFServicesName = @"Name";
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.ID = [[self objectOrNilForKey:kSLFServicesId fromDictionary:dict] intValue];
             self.name = [self objectOrNilForKey:kSLFServicesName fromDictionary:dict];
+            self.detail = [self objectOrNilForKey:kSLFServicesDetail fromDictionary:dict];
 
     }
     
@@ -50,6 +52,7 @@ NSString *const kSLFServicesName = @"Name";
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithInt:self.ID] forKey:kSLFServicesId];
     [mutableDict setValue:self.name forKey:kSLFServicesName];
+    [mutableDict setValue:self.detail forKey:kSLFServicesDetail];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -75,6 +78,7 @@ NSString *const kSLFServicesName = @"Name";
 
     self.ID = [aDecoder decodeIntForKey:kSLFServicesId];
     self.name = [aDecoder decodeObjectForKey:kSLFServicesName];
+    self.detail = [aDecoder decodeObjectForKey:kSLFServicesDetail];
     return self;
 }
 
@@ -83,6 +87,7 @@ NSString *const kSLFServicesName = @"Name";
 
     [aCoder encodeInt:_servicesIdentifier forKey:kSLFServicesId];
     [aCoder encodeObject:_name forKey:kSLFServicesName];
+    [aCoder encodeObject:_detail forKey:kSLFServicesDetail];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -93,6 +98,7 @@ NSString *const kSLFServicesName = @"Name";
 
         copy.ID = self.ID;
         copy.name = [self.name copyWithZone:zone];
+        copy.detail = [self.detail copyWithZone:zone];
     }
     
     return copy;

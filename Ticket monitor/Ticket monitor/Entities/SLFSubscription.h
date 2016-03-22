@@ -12,6 +12,7 @@
 @interface SLFSubscription : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, assign) BOOL active;
+@property (nonatomic, assign) BOOL toDelete;
 @property (nonatomic, assign) int ruleTypeID;
 @property (nonatomic, strong) NSString *subscriptionGroupID;
 @property (nonatomic, strong) NSString *lastCheckPoint;

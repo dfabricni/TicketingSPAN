@@ -172,6 +172,7 @@
     [authContext acquireTokenByRefreshToken:refreshToken clientId:self.clientID completionBlock:^(ADAuthenticationResult *result) {
         if (result.tokenCacheStoreItem == nil)
         {
+            [userDefaults setObject:@"" forKey:@"RefreshToken"];
             [self exit];
             return;
         }
@@ -252,6 +253,10 @@
             if (globals.device != nil) {
                 
                 globals.device.username = result.tokenCacheStoreItem.userInformation.userId ;
+                
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setObject:result.tokenCacheStoreItem.userInformation.userId forKey:@"SLFUsername"];
+
             }
             
            // SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
