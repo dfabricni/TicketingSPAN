@@ -24,7 +24,7 @@
 @property (nonatomic, weak) id<SLFHttpClientDelegate>delegate;
 @property (nonatomic, copy) NSString * oAuthAccessToken;
 
-+ (SLFHttpClient *)sharedSLFHttpClient;
++ (SLFHttpClient *)createSLFHttpClient;
 
 -(void) setBearerToken:(NSString*) token;
 

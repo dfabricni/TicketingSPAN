@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl * segmentedControl;
 @property (strong, nonatomic) IBOutlet UITextView * textView;
 @property (strong, nonatomic) IBOutlet UIView * infoView;
+@property (strong, nonatomic) IBOutlet UITextView * ticketMasterTextView;
 @property (strong, nonatomic) IBOutlet UITableView * tableView;
 @property (strong, nonatomic)  SLFTicketDetail * ticketDetail;
 
@@ -38,7 +39,7 @@
 -(void) initWithTicketDetailID:(NSString *)guid;
 
 -(void) showTicketDetail;
--(void) showTicketInfo;
+//-(void) showTicketInfo;
 -(void) refreshTicketDetail;
 
 -(IBAction)segmentChangeViewValueChanged:(UISegmentedControl *)SControl;

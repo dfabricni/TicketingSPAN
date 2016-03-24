@@ -43,7 +43,7 @@
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             NSString * username = [userDefaults objectForKey:@"SLFUsername"];
              
-        SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
+        SLFHttpClient * httpClient =  [SLFHttpClient createSLFHttpClient];
         httpClient.delegate = self;
         [httpClient getDetailByGUID:self.ticketGUID username:username];
              
@@ -70,24 +70,19 @@
    
     if(self.ticketDetail)
     {
-        if (self.segmentedControl.selectedSegmentIndex == 0 )
-        {
+       // if (self.segmentedControl.selectedSegmentIndex == 0 )
+      //  {
             self.textView.text = [NSString stringWithFormat:@"%@  \n %@ ",self.ticketDetail.detailDescription, self.ticketDetail.detailNote ];
-        }else if(self.segmentedControl.selectedSegmentIndex == 1){
-            self.textView.text=self.ticketDetail.ticketMasterDescription;
-        }
-        else {
+            self.ticketMasterTextView.text=self.ticketDetail.ticketMasterDescription;
+      //  }
+      //  else {
             
             [self.tableView  reloadData];
-        }
-        
-        
-        
-        
-        
-        
+      //  }
+ 
     
     [[[DBRepository alloc] init] markTicketAsRead:self.ticketDetail.gUID];
+        
     }else
     {
         self.textView.text = @"";
@@ -95,7 +90,6 @@
 
    
     
-     [self showTicketInfo];
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -171,24 +165,25 @@
     {
         self.textView.hidden  = false;
         self.infoView.hidden = true;
-        [self showTicketDetail];
+      
         
         
     }
-    else if (SControl.selectedSegmentIndex==1)
+   /* else if (SControl.selectedSegmentIndex==1)
     {
          self.textView.hidden  = false;
          self.infoView.hidden = true;
          self.textView.text  = self.ticketDetail.ticketMasterDescription;
         
-    }
-else if (SControl.selectedSegmentIndex==2)
+    }*/
+else if (SControl.selectedSegmentIndex==1)
     {
          self.textView.hidden  = true;
          self.infoView.hidden = false;
-        [self showTicketInfo];
+        
     }
-
+    
+    [self showTicketDetail];
 }
 
 
@@ -205,10 +200,17 @@ else if (SControl.selectedSegmentIndex==2)
         
     }
     
-   
-            
+   if (indexPath.row == 0) {
+       
+       if (self.ticketDetail) {
            
-    if (indexPath.row == 0) {
+           cell.textLabel.text = [NSString stringWithFormat:@"Ticket: %@", self.ticketDetail.ticketTitle ];
+           
+       }
+   }
+    
+           
+    if (indexPath.row == 1) {
         
         cell.textLabel.text = [NSString stringWithFormat:@"Company: " ];
         
@@ -228,7 +230,7 @@ else if (SControl.selectedSegmentIndex==2)
     
     
             
-        if (indexPath.row == 1) {
+        if (indexPath.row == 2) {
             
             cell.textLabel.text = [NSString stringWithFormat:@"Service: " ];
             
@@ -244,7 +246,7 @@ else if (SControl.selectedSegmentIndex==2)
             }
         }
     
-      if (indexPath.row == 2) {
+      if (indexPath.row == 3) {
           
             cell.textLabel.text = [NSString stringWithFormat:@"Subject: " ];
           
@@ -261,7 +263,7 @@ else if (SControl.selectedSegmentIndex==2)
             
       }
     
-      if (indexPath.row == 3) {
+      if (indexPath.row == 4) {
           
             cell.textLabel.text = [NSString stringWithFormat:@"Priority: " ];
           
@@ -286,7 +288,7 @@ else if (SControl.selectedSegmentIndex==2)
             
       }
     
-    if (indexPath.row == 4) {
+    if (indexPath.row == 5) {
         
         if (self.ticketDetail) {
             NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
@@ -309,6 +311,31 @@ else if (SControl.selectedSegmentIndex==2)
                
     }
     
+    if (indexPath.row == 6) {
+        
+        //assigned to
+        
+        if (self.ticketDetail) {
+            
+             cell.textLabel.text = [NSString stringWithFormat:@"Assigned to: %@", self.ticketDetail.ticketAssignedTo ];
+            
+        }
+        
+    }
+    
+    if (indexPath.row == 7) {
+        
+        // modified by
+        
+        if (self.ticketDetail) {
+           
+            cell.textLabel.text = [NSString stringWithFormat:@"Modified by: %@", self.ticketDetail.modifiedBy ];
+            
+        }
+        
+    }
+    
+    
     
     
     return cell;
@@ -318,19 +345,15 @@ else if (SControl.selectedSegmentIndex==2)
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 8;
 }
 
 -(CGFloat)  tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 30;
 }
 
 
--(void) showTicketInfo
-{
-    [self.tableView reloadData];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

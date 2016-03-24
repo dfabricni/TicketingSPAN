@@ -17,12 +17,18 @@
 
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButtonNEW;
+
+
+
 //@property (strong, nonatomic) IBOutlet UIBarButtonItem * leftButtonRemove;
 @property (assign, nonatomic) BOOL  editing;
 
--(IBAction)onNew :(id)sender;
--(IBAction)onRemove :(id)sender;
 
+-(IBAction)onNew :(id)sender;
+
+
+-(IBAction)onRemove :(id)sender;
+-(void) refreshRefreshControl;
 @end
 
 

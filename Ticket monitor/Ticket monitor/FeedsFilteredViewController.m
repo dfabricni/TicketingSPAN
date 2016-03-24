@@ -6,7 +6,7 @@
 //  Copyright © 2015 Domagoj Fabricni. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "FeedsFilteredViewController.h"
 #import "AFURLSessionManager.h"
 #import "ADAuthenticationContext.h"
 #import "DBRepository.h"
@@ -14,13 +14,12 @@
 #import "SLFHttpClient.h"
 #import "Synchronizer.h"
 #import "TicketDetaillViewController.h"
-#import "FeedsFilteredViewController.h"
 
-@interface FirstViewController ()
+@interface FeedsFilteredViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation FeedsFilteredViewController
 /*
 -(id) init
 {
@@ -37,37 +36,25 @@
 }
  */
 
-
--(void) resolveView
+-(void) initWithGroupingData:(SLFGroupedItem*) groupedItem feedTableType:(FeedTableType) type
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber * number = (NSNumber*)[userDefaults objectForKey:@"SLFFeedGroupBy"];
-    FeedTableType feedTableType  = (FeedTableType) [number intValue];
-    
-    self.feedTableType =feedTableType; 
-  // self.tableView  =  [[UITableView alloc] initWithFrame:self.tableView.frame style:UITableViewStyleGrouped];
-    
+    self.title = groupedItem.GroupedItemName;
+    self.groupedItem = groupedItem;
+    self.feedTableType = type;
+    [self loadData];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    // resolve which type of table shold we load
-    [self resolveView];
-    
-    
-   // self.tableView.delegate  = self;
-    //self.tableView.dataSource =  self;
-    self.syncNeeded = true;
-    //init refresh control
+       //init refresh control
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = UIColorFromRGB(0xe3e3e3);
     self.refreshControl.tintColor = UIColorFromRGB(0xe22221);
     [self.refreshControl addTarget:self action:@selector(getMoreFeeds) forControlEvents:UIControlEventValueChanged];
 
-    
     
    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
@@ -94,21 +81,23 @@
     
     switch (self.feedTableType) {
         case GroupByCompany:
-            self.details = [repo getDetailsGroupedByCompanies];
+        {
+            int companyID = [self.groupedItem.GroupedItem intValue];
+            self.details = [repo getDetailsForCompany:companyID];
+        }
             break;
         case GroupBySubscription:
-            self.details = [repo getDetailsGroupedBySubscriptions];
+            self.details = [repo getDetailsForSubscription:self.groupedItem.GroupedItem];
             break;
         case GroupByTicket:
-            self.details = [repo getDetailsGroupedByTickets];
+        {
+            int ticketID = [self.groupedItem.GroupedItem intValue];
+            self.details = [repo getDetailsForTicket:ticketID];
+        }
             break;
         case NoGrouping:
-            self.details = [repo getAllDetails];
             break;
-            
-        default:
-            self.details = [repo getAllDetails];
-            break;
+       
     }
     
     [self.tableView reloadData];
@@ -207,51 +196,12 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    switch (self.feedTableType) {
-        case NoGrouping:
-        {
-            
-            TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
-            SLFTicketDetail * detail = self.details[indexPath.row];
-            [vc initWithTicketDetailID:detail.gUID];
-            [self.navigationController pushViewController:vc animated:TRUE];
-            
-        }
-            break;
-        case GroupByCompany:
-        {
-            SLFGroupedItem * detail = (SLFGroupedItem*)self.details[indexPath.row];
-            FeedsFilteredViewController * fc = (FeedsFilteredViewController*) [storyboard instantiateViewControllerWithIdentifier:@"FeedsFiltered"];
-            [fc initWithGroupingData:detail feedTableType:GroupByCompany];
-            [self.navigationController pushViewController:fc animated:TRUE];
-            
-        }
-            break;
-            
-        case GroupByTicket:
-        {
-            SLFGroupedItem * detail = (SLFGroupedItem*)self.details[indexPath.row];
-            FeedsFilteredViewController * fc = (FeedsFilteredViewController*) [storyboard instantiateViewControllerWithIdentifier:@"FeedsFiltered"];
-            [fc initWithGroupingData:detail feedTableType:GroupByTicket];
-            [self.navigationController pushViewController:fc animated:TRUE];
-            
-        }
-            break;
-        case GroupBySubscription:
-        {
-            SLFGroupedItem * detail = (SLFGroupedItem*)self.details[indexPath.row];
-            FeedsFilteredViewController * fc = (FeedsFilteredViewController*) [storyboard instantiateViewControllerWithIdentifier:@"FeedsFiltered"];
-            [fc initWithGroupingData:detail feedTableType:GroupBySubscription];
-            [self.navigationController pushViewController:fc animated:TRUE];
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
+    TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
+    SLFTicketDetail * detail = self.details[indexPath.row];
+    [vc initWithTicketDetailID:detail.gUID];
+    [self.navigationController pushViewController:vc animated:TRUE];
     
-   
+    
 
 }
 
@@ -289,9 +239,7 @@
 
     bool read  = false;
     
-    switch (self.feedTableType) {
-        case NoGrouping:
-        {
+  
             SLFTicketDetail * detail = (SLFTicketDetail*)self.details[indexPath.row];
             
             NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
@@ -313,42 +261,7 @@
             
             
             
-        }
-            break;
-        case GroupByCompany:
-        {
-            SLFGroupedItem * detail = (SLFGroupedItem*)self.details[indexPath.row];
-            cell.textLabel.text= detail.GroupedItemName;
-            read = detail.NewOnes == 0;
-                      
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"No. %d (%d)",detail.Count,detail.NewOnes];
-        }
-            break;
-            
-        case GroupByTicket:
-        {
-            SLFGroupedItem * detail = (SLFGroupedItem*)self.details[indexPath.row];
-            cell.textLabel.text= detail.GroupedItemName;
-            read = detail.NewOnes == 0;
-            
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"Ticket ID: %@    No. %d (%d)",detail.GroupedItem,detail.Count, detail.NewOnes];
-            
-        }
-            break;
-        case GroupBySubscription:
-        {
-           SLFGroupedItem * detail = (SLFGroupedItem*)self.details[indexPath.row];
-           cell.textLabel.text= detail.GroupedItemName;
-           read = detail.NewOnes == 0;
-         
-           cell.detailTextLabel.text = [NSString stringWithFormat:@"No. %d (%d)",detail.Count,detail.NewOnes];
-            
-        }
-            break;
-      
-        default:
-            break;
-    }
+    
     
     
     if (!read) {
@@ -385,6 +298,7 @@
     
     
 }
+
 -(void)showMessage:(NSString*)message withTitle:(NSString *)title
 {
 
@@ -417,104 +331,6 @@
 }
 
 
--(IBAction)onRemove :(id)sender
-{
-    
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"Warning"
-                                  message:@"Do you really want to remove all items?"
-                                  preferredStyle:UIAlertControllerStyleAlert];
-    
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        //do something when click button
-        [self removeAllItems];
-        
-    }];
-    [alert addAction:okAction];
-    
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        //do something when click button
-        
-    }];
-    [alert addAction:noAction];
-    
-    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    [vc presentViewController:alert animated:YES completion:nil];
-    
-}
--(void) removeAllItems
-{
-    DBRepository * repo =  [[DBRepository alloc] init];
-    [repo deleteAllFeeds];
-    self.details = [repo getAllDetails];
-    [self.tableView reloadData];
-    [self invalidateTableView];
-}
-
--(IBAction)onGroupBy:(id)sender
-{
-    [self showGroupBySelector];
-}
--(void) showGroupBySelector
-{
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
-    UIAlertController * actions=   [UIAlertController
-                                    alertControllerWithTitle:nil
-                                    message:nil
-                                    preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    
-    UIAlertAction *groupByTicketAction = [UIAlertAction actionWithTitle:@"Ticket" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        self.feedTableType = GroupByTicket;
-       [userDefaults setObject:[[NSNumber alloc] initWithInt:GroupByTicket ]  forKey:@"SLFFeedGroupBy"];
-        
-        [self loadData ];
-        
-    }];
-    [actions addAction:groupByTicketAction];
-
-    UIAlertAction *groupByCompanyAction = [UIAlertAction actionWithTitle:@"Company" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        self.feedTableType = GroupByCompany;
-        [userDefaults setObject:[[NSNumber alloc] initWithInt:GroupByCompany ]  forKey:@"SLFFeedGroupBy"];
-        
-         [self loadData ];
-        
-    }];
-    [actions addAction:groupByCompanyAction];
-    
-    
-    UIAlertAction *groupBySubscriptionAction = [UIAlertAction actionWithTitle:@"Subscription" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        self.feedTableType = GroupBySubscription;
-        [userDefaults setObject:[[NSNumber alloc] initWithInt:GroupBySubscription ]  forKey:@"SLFFeedGroupBy"];
-        
-         [self loadData ];
-        
-    }];
-    [actions addAction:groupBySubscriptionAction];
-    
-    UIAlertAction *groupByNoneAction = [UIAlertAction actionWithTitle:@"None" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        self.feedTableType = NoGrouping;
-        [userDefaults setObject:[[NSNumber alloc] initWithInt:NoGrouping ]  forKey:@"SLFFeedGroupBy"];
-        
-         [self loadData ];
-        
-    }];
-    [actions addAction:groupByNoneAction];
-    
-    
-    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    [vc presentViewController:actions animated:YES completion:nil];
-    
-}
 
 @end
 

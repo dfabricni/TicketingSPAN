@@ -28,6 +28,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.txtName.delegate= self;
     
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -47,11 +48,13 @@
         self.txtName.text = self.group.name;
         [self.enabledSwitch setOn:self.group.active];
         
+        self.btnInclude.enabled = self.enabledSwitch.isOn;
+        self.btnExclude.enabled = self.enabledSwitch.isOn;
         
         self.txtName.enabled = false;
         //self.orSwitch.enabled = false;
         // self.rightButtonSave.enabled = false;
-        self.rightButtonSave.title = @"Add";
+        self.rightButtonSave.enabled= false;
     }else{
         self.subscriptions  = [[NSMutableArray alloc]init];
         self.enabledSwitch.enabled= false;
@@ -90,32 +93,46 @@
 -(IBAction)onSave :(id)sender
 {
     
+    [self saveGroup];
+    
+
+}
+-(IBAction)onExclude :(id)sender
+{
+    [self showActions:false ];
+}
+-(IBAction)onInclude :(id)sender
+{
+    [self showActions:true ];
+}
+-(void) saveGroup
+{
     if(![self validateName])
         return;
     
     DBRepository * repo =  [[DBRepository alloc] init];
     if(!self.group){
         self.group = [[SLFGroup alloc]init];
-    
+        
         self.group.iDProperty = [[NSUUID UUID] UUIDString];
         self.group.name = self.txtName.text;
         self.group.active = self.enabledSwitch.isOn;
-       // self.group.groupOperation = self.orSwitch.isOn ? @"A" : @"O";
+        // self.group.groupOperation = self.orSwitch.isOn ? @"A" : @"O";
         self.group.groupOperation = @"A";
         [repo saveGroup:self.group syncStatus:0];
         
-         [self showMessage:@"Do you want to add subscription details?" withTitle:@"Details"];
-    }else
+        [self showMessage:@"Do you want to add subscription details?" withTitle:@"Details"];
+    }
+    /*else
     {
         // show actions
         
         [self showActions  ];
         
-    }
-    
-
+    }*/
 }
--(void) showActions
+
+-(void) showActions:(BOOL) include
 {
     
   
@@ -138,6 +155,9 @@
     
         UIAlertAction *myCompanyAction = [UIAlertAction actionWithTitle:@"Set my company" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         
+            self.btnInclude.enabled = self.enabledSwitch.isOn;
+            self.btnExclude.enabled = self.enabledSwitch.isOn;
+            
              DBRepository * repo =  [[DBRepository alloc] init];
             
         //do something when click button
@@ -152,6 +172,8 @@
             subs.valueDisplayText = @"SPAN d.o.o.";
             subs.lastCheckPoint =  [dateFormater stringFromDate:[NSDate date]];
             subs.active = true;
+            subs.notIn= !include;
+            
             
             [repo saveSubscription:subs syncStatus:0 ];
             self.subscriptions = [repo getAllSubscriptionsForGroup:self.group.iDProperty];
@@ -171,6 +193,7 @@
             
             SearchTableViewController *vc = (SearchTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
             vc.FilterType = SLFCompanyFilter;
+            vc.notIn = !include;
             vc.groupID= self.group.iDProperty;
             [vc initCustom];
             [self.navigationController pushViewController:vc animated:TRUE];
@@ -190,6 +213,7 @@
             
             SearchTableViewController *vc = (SearchTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
             vc.FilterType = SLFServiceFilter;
+            vc.notIn = !include;
              vc.groupID= self.group.iDProperty;
             [vc initCustom];
             [self.navigationController pushViewController:vc animated:TRUE];
@@ -207,6 +231,7 @@
             
             SearchTableViewController *vc = (SearchTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
             vc.FilterType = SLFSubjectFilter;
+            vc.notIn = !include;
             vc.groupID= self.group.iDProperty;
             [vc initCustom];
             [self.navigationController pushViewController:vc animated:TRUE];
@@ -235,12 +260,18 @@
              }];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                 
+                
                 NSString * enteredValue = alertController.textFields.firstObject.text;
                 NSString * valueDisplayText=nil;
                 if ([enteredValue isEqualToString:@""]) {
                     
                     return ;
                 }
+                
+                
+                self.btnInclude.enabled = self.enabledSwitch.isOn;
+                self.btnExclude.enabled = self.enabledSwitch.isOn;
+
                 
                 if ([enteredValue isEqualToString:@"1"]) {
                     enteredValue  = @"9";
@@ -262,6 +293,7 @@
                 subs.valueDisplayText = valueDisplayText;
                 subs.lastCheckPoint =  [dateFormater stringFromDate:[NSDate date]];
                 subs.active = true;
+                subs.notIn= !include;
                 
                 [repo saveSubscription:subs syncStatus:0 ];
                 self.subscriptions = [repo getAllSubscriptionsForGroup:self.group.iDProperty];
@@ -319,6 +351,9 @@
                 }
                 
                 
+                self.btnInclude.enabled = self.enabledSwitch.isOn;
+                self.btnExclude.enabled = self.enabledSwitch.isOn;
+                
                 //do something when click button
                 NSDateFormatter * dateFormater = [[NSDateFormatter alloc]init];
                 dateFormater.dateFormat =  @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
@@ -331,6 +366,7 @@
                 subs.valueDisplayText = enteredValue;
                 subs.lastCheckPoint =  [dateFormater stringFromDate:[NSDate date]];
                 subs.active = true;
+                subs.notIn= !include;
                 
                 [repo saveSubscription:subs syncStatus:0 ];
                 self.subscriptions = [repo getAllSubscriptionsForGroup:self.group.iDProperty];
@@ -394,12 +430,25 @@
         okAction.enabled = txtField.text.length ==  1;
     }
 }
+- (BOOL)textFieldShouldReturn:(UITextField *)textField 
+{
+    if (textField == self.txtName && ![textField.text isEqualToString:@""]) {
+        [self saveGroup];
+    }
+    return YES;
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
+  
+    if(textField != self.txtName)
+    {
     NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:@"12"] invertedSet];
     
     NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
     
     return [string isEqualToString:filtered];
+    }
+    else return TRUE;
 }
 
 
@@ -422,8 +471,8 @@
         
         
         // pop up details view
-        self.rightButtonSave.title = @"Add" ;
-        [self showActions  ];
+        //self.rightButtonSave.title = @"Add" ;
+        [self showActions:TRUE];
         
     }];
     [alert addAction:okAction];
@@ -476,9 +525,21 @@
     
     SLFSubscription * subscription = self.subscriptions[indexPath.row];
     
-    cell.textLabel.text = [self resolveDetailType :subscription.ruleTypeID ];
+    cell.detailTextLabel.text = [self resolveDetailType :subscription.ruleTypeID ];
     
-    cell.detailTextLabel.text= subscription.valueDisplayText;
+    cell.textLabel.text= subscription.valueDisplayText;
+    
+    if(subscription.notIn)
+    {
+        //red
+        cell.textLabel.textColor = self.view.tintColor;
+        cell.textLabel.font  = [UIFont boldSystemFontOfSize:16.];
+        
+    }else{
+    
+        cell.textLabel.textColor = UIColorFromRGB(0x408000);
+        
+    }
     
     return cell;
     
@@ -522,7 +583,7 @@
         DBRepository * repo =  [[DBRepository alloc] init];
         SLFSubscription* subscription = (SLFSubscription*) [self.subscriptions objectAtIndex:[indexPath row]];
         
-        subscription.active =  false;
+        subscription.toDelete =  true;
         //[controller removeObjectFromListAtIndex:indexPath.row];
         
         [repo saveSubscription:subscription syncStatus:0];
@@ -535,12 +596,17 @@
 }
 - (IBAction)changeSwitch:(id)sender
 {
+    self.rightButtonSave.enabled = self.enabledSwitch.isOn;
+    self.btnInclude.enabled = self.enabledSwitch.isOn;
+    self.btnExclude.enabled = self.enabledSwitch.isOn;
+    
     DBRepository * repo =  [[DBRepository alloc] init];
     
     self.group.active=self.enabledSwitch.isOn;
     [repo saveGroup:self.group syncStatus:0];
     
     if (self.enabledSwitch.isOn) {
+        
         
         // enable
         [repo enableAllSubscriptionsForGroup:self.group.iDProperty];

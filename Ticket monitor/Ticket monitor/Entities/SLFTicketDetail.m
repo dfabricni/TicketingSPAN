@@ -26,7 +26,7 @@ NSString *const kSLFTicketDetailSubscriptionGroupID = @"SubscriptionGroupID";
 NSString *const kSLFTicketDetailTicketTitle = @"TicketTitle";
 NSString *const kSLFTicketDetailCompanyCode = @"CompanyCode";
 NSString *const kSLFTicketDetailTicketAssignedTo = @"TicketAssignedTo";
-NSString *const kSLFTicketDetailModifiedBy = @"TicketTitle";
+NSString *const kSLFTicketDetailModifiedBy = @"ModifiedBy";
 NSString *const kSLFTicketDetailSubscriptionGroupName = @"SubscriptionGroupName";
 
 

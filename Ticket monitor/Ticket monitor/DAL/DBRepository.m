@@ -215,7 +215,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat: @"SELECT RuleTypeID FROM Subscription where Active = 1 and SubscriptionGroupID = '%@'", groupId ]];
+    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat: @"SELECT RuleTypeID FROM Subscription where Active = 1 and NotIn = 0 and SubscriptionGroupID = '%@'", groupId ]];
     while ([s next]) {
         
       int ruleTypeID = [s intForColumn:@"RuleTypeID"];
@@ -306,6 +306,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
         group.iDProperty = [s stringForColumn:@"ID"];
         group.name = [s stringForColumn:@"Name"];
         group.groupOperation = [s stringForColumn:@"GroupOperation"];
+        group.toDelete= [s boolForColumn:@"ToDelete"];
         group.active = [s boolForColumn:@"Active"];
         
         [items addObject:group];
@@ -333,6 +334,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
         group.iDProperty = [s stringForColumn:@"ID"];
         group.name = [s stringForColumn:@"Name"];
         group.groupOperation = [s stringForColumn:@"GroupOperation"];
+        group.toDelete= [s boolForColumn:@"ToDelete"];
         group.active = [s boolForColumn:@"Active"];
         
         [items addObject:group];
@@ -352,7 +354,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Subscription	 where Active = 1 and ToDelete = 0 and SubscriptionGroupID = ?", groupId];
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM Subscription	 where  ToDelete = 0 and SubscriptionGroupID = ?", groupId];
     while ([s next]) {
         SLFSubscription * subscription = [[SLFSubscription alloc] init];
         
@@ -363,6 +365,8 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
         subscription.value = [s stringForColumn:@"Value"];
         subscription.valueDisplayText = [s stringForColumn:@"ValueDisplayText"];
         subscription.active = [s boolForColumn:@"Active"];
+        subscription.toDelete = [s boolForColumn:@"ToDelete"];
+        subscription.notIn = [s boolForColumn:@"NotIn"];
         
         [items addObject:subscription];
     }
@@ -393,6 +397,8 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
         subscription.value = [s stringForColumn:@"Value"];
         subscription.valueDisplayText = [s stringForColumn:@"ValueDisplayText"];
         subscription.active = [s boolForColumn:@"Active"];
+        subscription.toDelete = [s boolForColumn:@"ToDelete"];
+        subscription.notIn = [s boolForColumn:@"NotIn"];
         
         [items addObject:subscription];
     }
@@ -436,13 +442,13 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
 
     [self.DB open];
     
-     [self.DB executeUpdate:[NSString stringWithFormat:@"update Subscription set SubscriptionGroupID = '%@' , RuleTypeID = %d , LastCheckPoint = '%@', Value='%@', ValueDisplayText = '%@' , Active = %d, SyncStatus = %d where ID = '%@' " , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active, syncStatus,subscription.iDProperty]];
+     [self.DB executeUpdate:[NSString stringWithFormat:@"update Subscription set SubscriptionGroupID = '%@' , RuleTypeID = %d , LastCheckPoint = '%@', Value='%@', ValueDisplayText = '%@' , Active = %d, ToDelete = %d,SyncStatus = %d , NotIn = %d where ID = '%@' " , subscription.subscriptionGroupID, subscription.ruleTypeID, subscription.lastCheckPoint, subscription.value, subscription.valueDisplayText, subscription.active,subscription.toDelete, syncStatus,subscription.notIn ,subscription.iDProperty]];
     
   
     
     // jsut in case then make insert
     
-    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Subscription(ID,SubscriptionGroupID,RuleTypeID,LastCheckPoint,Value,ValueDisplayText ,Active,SyncStatus) values('%@','%@',%d,'%@','%@','%@',%d,%d)", subscription.iDProperty, subscription.subscriptionGroupID,subscription.ruleTypeID,subscription.lastCheckPoint,subscription.value,subscription.valueDisplayText ,subscription.active,syncStatus]];
+    [self.DB executeUpdate:[NSString stringWithFormat:@"insert or ignore into Subscription(ID,SubscriptionGroupID,RuleTypeID,LastCheckPoint,Value,ValueDisplayText ,Active,SyncStatus,NotIn) values('%@','%@',%d,'%@','%@','%@',%d,%d,%d)", subscription.iDProperty, subscription.subscriptionGroupID,subscription.ruleTypeID,subscription.lastCheckPoint,subscription.value,subscription.valueDisplayText ,subscription.active,syncStatus,subscription.notIn]];
     
     [self.DB close];
     
@@ -891,48 +897,6 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     return exists;
 }
 
--(NSMutableArray *) getFeedsGroupedByCompany
-{
-    NSMutableArray *items = [[NSMutableArray alloc] init];
-    
-    [self.DB open];
-    
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM TicketDetail	 group by CompanyID:"];
-    while ([s next]) {
-        SLFTicketDetail* detail =  [[SLFTicketDetail alloc] init];
-        
-        detail.gUID = [s stringForColumn:@"GUID"];
-        detail.detailDescription  = [s stringForColumn:@"DetailDescription"];
-        detail.detailNote  = [s stringForColumn:@"DetailNote"];
-        detail.ticketMasterDescription  = [s stringForColumn:@"TicketDescription"];
-        detail.subjectID  = [s intForColumn:@"SubjectID"];
-        detail.companyID  = [s intForColumn:@"CompanyID"];
-        detail.serviceID  = [s intForColumn:@"ServiceID"];
-        detail.priorityID  = [s intForColumn:@"Priority"];
-        detail.datetime  = [s stringForColumn:@"Datetime"];
-        detail.ticketID  = [s intForColumn:@"TicketID"];
-        detail.action  = [s stringForColumn:@"ActionDescription"];
-        detail.subscriptionGroupID  = [s stringForColumn:@"SubscriptionGroupID"];
-        detail.read = [s boolForColumn:@"Read"];
-        /*
-         NSMutableDictionary * detail = [NSMutableDictionary dictionary];
-         
-         detail[@"GUID"] = [s stringForColumn:@"GUID"];
-         detail[@"DetailDescription"] = [s stringForColumn:@"DetailDescription"];
-         detail[@"Datetime"] = [s stringForColumn:@"Datetime"];
-         detail[@"ticketID"] = @([s intForColumn:@"ticketID"]);
-         */
-        
-        [items addObject:detail];
-    }
-    
-    [s close];
-    
-    
-    [self.DB close];
-    
-    return items;
-}
 -(NSMutableArray *) getFeedsGroupedByTicket
 {
     return nil;

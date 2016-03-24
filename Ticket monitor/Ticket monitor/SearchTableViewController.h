@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, SLFFilterType) {
 @property (assign, nonatomic)  long  checkedIndex;
 
 @property (assign, nonatomic)  BOOL  isFiltering;
+@property (assign, nonatomic)  BOOL  notIn;
 
 -(void) initCustom;
 

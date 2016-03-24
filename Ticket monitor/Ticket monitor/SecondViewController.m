@@ -23,6 +23,15 @@
     
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.editing = false;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = UIColorFromRGB(0xe3e3e3);
+    self.refreshControl.tintColor = UIColorFromRGB(0xe22221);
+    [self.refreshControl addTarget:self action:@selector(refreshSubscriptions) forControlEvents:UIControlEventValueChanged];
+    
+    
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
    // [self.tableView setEditing:TRUE animated:TRUE];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -61,6 +70,27 @@
     [self.tableView reloadData];
 }
 
+-(void)refreshSubscriptions
+{
+    SLFHttpClient * httpClient = [SLFHttpClient createSLFHttpClient];
+    httpClient.delegate = self;
+    [httpClient getAllSubscriptions];
+
+}
+-(void) refreshRefreshControl
+{
+    if (self.refreshControl) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
+        NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]forKey:NSForegroundColorAttributeName];
+        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+        self.refreshControl.attributedTitle = attributedTitle;
+        
+        [self.refreshControl endRefreshing];
+    }
+}
 
 -(void) globals:(Globals *)global didFinishedAcquaringToken:(id)object
 {
@@ -84,7 +114,7 @@
         // Perform long running process
         
     DBRepository * repo =  [[DBRepository alloc] init];
-    SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+    SLFHttpClient * httpClient = [SLFHttpClient createSLFHttpClient];
     httpClient.delegate = self;
     // start syncing
     SLFSubscriptionsRequest * slfSubscriptionsRequest = [[SLFSubscriptionsRequest alloc] init];
@@ -108,6 +138,7 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         
+        [self refreshRefreshControl];
         // Update the UI
         // end progress notification
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -127,6 +158,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
+        [self refreshRefreshControl];
         // Update the UI
         // end progress notification
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -221,7 +253,9 @@
     
     SLFGroup * group = self.groups[indexPath.row];
     
-    cell.textLabel.font  = [UIFont systemFontOfSize: 16.];
+    cell.textLabel.textColor = UIColorFromRGB(0xC43947);
+    cell.textLabel.font  = [UIFont boldSystemFontOfSize:16.];
+    
     cell.textLabel.text = group.name;
     cell.detailTextLabel.text= !group.active ? @"Disabled":@"";
     

@@ -149,7 +149,7 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString * username = [userDefaults objectForKey:@"SLFUsername"];
         
-        SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+        SLFHttpClient * httpClient = [SLFHttpClient createSLFHttpClient];
         httpClient.delegate = self;
         [httpClient getDetailByGUIDFromBackgroundTask:notification.GUID username:username  taskID:bgTask];
         
@@ -175,27 +175,23 @@
         
        // TicketDetaillViewController * ticketDetailVC = nil;
        // [tabBarController.navigationController pushViewController:vc animated:true];
-        
+       
         // then cehck DB
         // if does not exists then dwnload it
-       UINavigationController * navController =(UINavigationController*)[tabBarController.viewControllers objectAtIndex:0];
+       UINavigationController * navController = (UINavigationController*)[tabBarController.viewControllers objectAtIndex:0];
         
-        // check is that view already on the stack
-        if([navController.viewControllers count] == 1)
+        long count = [navController.viewControllers count];
+        
+        if([[navController.viewControllers objectAtIndex:count-1] isKindOfClass:[TicketDetaillViewController class]])
         {
-        
-            [navController pushViewController:vc animated:TRUE];
-        
-        }else if( [[navController.viewControllers objectAtIndex:1] isKindOfClass:[TicketDetaillViewController class]])
-        {
-            
-            TicketDetaillViewController *vcExisting =(TicketDetaillViewController*) [navController.viewControllers objectAtIndex:1];
+            TicketDetaillViewController *vcExisting = (TicketDetaillViewController*)[navController.viewControllers objectAtIndex:count-1];
             [vcExisting initWithTicketDetailID:notification.GUID];
+        
+        }else
+        {
+            [navController pushViewController:vc animated:TRUE];
         }
-            
-         
-            
-    //    });
+      
         
         
     }
@@ -203,7 +199,7 @@
     {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString * username = [userDefaults objectForKey:@"SLFUsername"];
-        SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+        SLFHttpClient * httpClient = [SLFHttpClient createSLFHttpClient];
         // download it and refresh Firstview screen (table)
         [httpClient getDetailByGUID:notification.GUID username:username];
         

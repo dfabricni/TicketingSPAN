@@ -202,6 +202,7 @@
     subs.valueDisplayText = valueDisplayText;
     subs.lastCheckPoint =  [dateFormater stringFromDate:[NSDate date]];
     subs.active = true;
+    subs.notIn= self.notIn;
     
     [repo saveSubscription:subs syncStatus:0 ];
     

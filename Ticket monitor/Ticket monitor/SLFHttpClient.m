@@ -18,7 +18,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 @implementation SLFHttpClient
 
 
-+ (SLFHttpClient *)sharedSLFHttpClient
++ (SLFHttpClient *)createSLFHttpClient
 {
     /*
     static SLFHttpClient *_sharedSLFHTTPClient = nil;
@@ -334,6 +334,11 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         }
         
         [repo deleteAllMarkedForDeletionAndSynced];
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdating:)]) {
+            [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdating:nil];
+        }
+
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         

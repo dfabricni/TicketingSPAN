@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *valueDisplayText;
 @property (nonatomic, strong) NSString *iDProperty;
 @property (nonatomic, strong) NSString *value;
+@property (nonatomic, assign) BOOL notIn;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

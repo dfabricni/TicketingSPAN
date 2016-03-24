@@ -16,7 +16,7 @@ NSString *const kSLFSubscriptionsLastCheckPoint = @"LastCheckPoint";
 NSString *const kSLFSubscriptionsValueDisplayText = @"ValueDisplayText";
 NSString *const kSLFSubscriptionsID = @"ID";
 NSString *const kSLFSubscriptionsValue = @"Value";
-
+NSString *const kSLFSubscriptionsNotIn = @"NotIn";
 
 @interface SLFSubscription ()
 
@@ -34,6 +34,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
 @synthesize valueDisplayText = _valueDisplayText;
 @synthesize iDProperty = _iDProperty;
 @synthesize value = _value;
+@synthesize notIn = _notIn;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -56,6 +57,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
             self.valueDisplayText = [self objectOrNilForKey:kSLFSubscriptionsValueDisplayText fromDictionary:dict];
             self.iDProperty = [self objectOrNilForKey:kSLFSubscriptionsID fromDictionary:dict];
             self.value = [self objectOrNilForKey:kSLFSubscriptionsValue fromDictionary:dict];
+            self.notIn = [[self objectOrNilForKey:kSLFSubscriptionsNotIn fromDictionary:dict] boolValue];
 
     }
     
@@ -74,6 +76,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
     [mutableDict setValue:self.valueDisplayText forKey:kSLFSubscriptionsValueDisplayText];
     [mutableDict setValue:self.iDProperty forKey:kSLFSubscriptionsID];
     [mutableDict setValue:self.value forKey:kSLFSubscriptionsValue];
+    [mutableDict setValue:[NSNumber numberWithBool:self.notIn] forKey:kSLFSubscriptionsNotIn];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -105,6 +108,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
     self.valueDisplayText = [aDecoder decodeObjectForKey:kSLFSubscriptionsValueDisplayText];
     self.iDProperty = [aDecoder decodeObjectForKey:kSLFSubscriptionsID];
     self.value = [aDecoder decodeObjectForKey:kSLFSubscriptionsValue];
+    self.notIn = [aDecoder decodeBoolForKey:kSLFSubscriptionsNotIn];
     return self;
 }
 
@@ -119,6 +123,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
     [aCoder encodeObject:_valueDisplayText forKey:kSLFSubscriptionsValueDisplayText];
     [aCoder encodeObject:_iDProperty forKey:kSLFSubscriptionsID];
     [aCoder encodeObject:_value forKey:kSLFSubscriptionsValue];
+     [aCoder encodeBool:_notIn forKey:kSLFSubscriptionsNotIn];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -135,6 +140,7 @@ NSString *const kSLFSubscriptionsValue = @"Value";
         copy.valueDisplayText = [self.valueDisplayText copyWithZone:zone];
         copy.iDProperty = [self.iDProperty copyWithZone:zone];
         copy.value = [self.value copyWithZone:zone];
+        copy.notIn = self.notIn;
     }
     
     return copy;

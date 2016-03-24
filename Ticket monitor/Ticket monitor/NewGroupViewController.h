@@ -18,6 +18,11 @@
 @property (strong, nonatomic)  SLFGroup * group;
 @property (strong, nonatomic)  NSMutableArray * subscriptions;
 @property (strong, nonatomic) IBOutlet UITableView * tableView;
+@property (strong, nonatomic) IBOutlet UIButton * btnInclude;
+@property (strong, nonatomic) IBOutlet UIButton * btnExclude;
+
+-(IBAction)onExclude :(id)sender;
+-(IBAction)onInclude :(id)sender;
 
 -(IBAction)onSave :(id)sender;
 

@@ -193,7 +193,7 @@
             
             // store this token also in some persistant storage
             
-           // SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
+           // SLFHttpClient * httpClient =  [SLFHttpClient createSLFHttpClient];
             
           //  [httpClient setBearerToken:globals.oAuthAccessToken];
             
@@ -259,7 +259,7 @@
 
             }
             
-           // SLFHttpClient * httpClient =  [SLFHttpClient sharedSLFHttpClient];
+           // SLFHttpClient * httpClient =  [SLFHttpClient createSLFHttpClient];
             
           //  [httpClient setBearerToken:globals.oAuthAccessToken];
             

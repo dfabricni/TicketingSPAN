@@ -70,6 +70,7 @@
 		BCCF6BC81C0903DC001F0EAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF6BC71C0903DC001F0EAD /* Foundation.framework */; };
 		C363DDCC1C6B22A800158A29 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C363DDCB1C6B22A800158A29 /* Images.xcassets */; };
 		C3777D6D1C9AA4C900C5F5D7 /* SLFGroupedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3777D6C1C9AA4C900C5F5D7 /* SLFGroupedItem.m */; };
+		C386A8F21CA279CD00B11F78 /* FeedsFilteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C386A8F01CA279CD00B11F78 /* FeedsFilteredViewController.m */; };
 		C399D5B21C6B41D5006375FC /* App-icon in Resources */ = {isa = PBXBuildFile; fileRef = C399D5B01C6B41D5006375FC /* App-icon */; };
 		C399D5B31C6B41D5006375FC /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = C399D5B11C6B41D5006375FC /* Icons */; };
 		C39C61101C242441002EE4C2 /* fmdb in Resources */ = {isa = PBXBuildFile; fileRef = C39C610F1C242441002EE4C2 /* fmdb */; };
@@ -262,6 +263,8 @@
 		C363DDCB1C6B22A800158A29 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C3777D6B1C9AA4C900C5F5D7 /* SLFGroupedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFGroupedItem.h; sourceTree = "<group>"; };
 		C3777D6C1C9AA4C900C5F5D7 /* SLFGroupedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFGroupedItem.m; sourceTree = "<group>"; };
+		C386A8F01CA279CD00B11F78 /* FeedsFilteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedsFilteredViewController.m; sourceTree = "<group>"; };
+		C386A8F11CA279CD00B11F78 /* FeedsFilteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedsFilteredViewController.h; sourceTree = "<group>"; };
 		C399D5B01C6B41D5006375FC /* App-icon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "App-icon"; sourceTree = "<group>"; };
 		C399D5B11C6B41D5006375FC /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = "<group>"; };
 		C39C610F1C242441002EE4C2 /* fmdb */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fmdb; path = "/Users/administrator/Development/TicketingSPAN/Ticket monitor/fmdb"; sourceTree = "<absolute>"; };
@@ -393,6 +396,8 @@
 		BCCF69701C08F1AB001F0EAD /* Ticket monitor */ = {
 			isa = PBXGroup;
 			children = (
+				C386A8F01CA279CD00B11F78 /* FeedsFilteredViewController.m */,
+				C386A8F11CA279CD00B11F78 /* FeedsFilteredViewController.h */,
 				C3E99A1F1C48FDF90008456D /* TicketDetaillViewController.h */,
 				C3E99A201C48FDF90008456D /* TicketDetaillViewController.m */,
 				C39C61291C24266F002EE4C2 /* Entities */,
@@ -897,6 +902,7 @@
 				C39C61691C3E6DB0002EE4C2 /* SLFSubscription.m in Sources */,
 				BCCF69731C08F1AC001F0EAD /* main.m in Sources */,
 				C39C613B1C242F5C002EE4C2 /* DBRepository.m in Sources */,
+				C386A8F21CA279CD00B11F78 /* FeedsFilteredViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Ticket Detaill View Controller-->
@@ -19,7 +19,6 @@
                                 <segments>
                                     <segment title="Details"/>
                                     <segment title="Ticket"/>
-                                    <segment title="Info"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentChangeViewValueChanged:" destination="MDt-lO-W35" eventType="valueChanged" id="Lsi-eq-8Dn"/>
@@ -30,10 +29,17 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="e50-nZ-a6Q">
-                                        <rect key="frame" x="0.0" y="35" width="320" height="382"/>
+                                        <rect key="frame" x="8" y="0.0" width="304" height="245"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" textAlignment="natural" id="atJ-4e-6An">
+                                        <rect key="frame" x="8" y="244" width="304" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -52,6 +58,7 @@
                         <outlet property="segmentedControl" destination="lcv-7d-9WY" id="scZ-oQ-r2y"/>
                         <outlet property="tableView" destination="e50-nZ-a6Q" id="LVX-BY-hTO"/>
                         <outlet property="textView" destination="Xq5-z9-3iz" id="YZW-d1-bCq"/>
+                        <outlet property="ticketMasterTextView" destination="atJ-4e-6An" id="6Bc-kN-s20"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sn-fY-UVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,7 +238,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rYf-lV-U7d">
-                                <rect key="frame" x="20" y="161" width="144" height="21"/>
+                                <rect key="frame" x="18" y="161" width="144" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -245,10 +252,30 @@
                                 </connections>
                             </switch>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="x4g-rP-VK3">
-                                <rect key="frame" x="0.0" y="212" width="320" height="308"/>
+                                <rect key="frame" x="0.0" y="245" width="320" height="275"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MWU-tf-j7T">
+                                <rect key="frame" x="163" y="206" width="125" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Exclude"/>
+                                <connections>
+                                    <action selector="onExclude:" destination="V8j-1M-mEF" eventType="touchUpInside" id="6d0-qd-bX4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nVK-DT-xgP">
+                                <rect key="frame" x="23" y="206" width="125" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Include"/>
+                                <connections>
+                                    <action selector="onInclude:" destination="V8j-1M-mEF" eventType="touchUpInside" id="STT-6h-SJP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -260,6 +287,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnExclude" destination="MWU-tf-j7T" id="7aV-I3-e4a"/>
+                        <outlet property="btnInclude" destination="nVK-DT-xgP" id="Rc4-bx-W9A"/>
                         <outlet property="enabledSwitch" destination="QLQ-p7-nvL" id="jXd-4i-mLd"/>
                         <outlet property="rightButtonSave" destination="P2x-UK-zp6" id="IeP-ec-FgO"/>
                         <outlet property="tableView" destination="x4g-rP-VK3" id="46U-JB-8b8"/>
@@ -307,6 +336,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-133.86666666666667" y="-322.81333333333333"/>
+        </scene>
+        <!--Data Source-->
+        <scene sceneID="Ggc-2j-muO">
+            <objects>
+                <viewController storyboardIdentifier="FeedsFiltered" title="Feed" id="Il5-5e-Eeb" customClass="FeedsFilteredViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mGZ-71-Ocr" customClass="UITableView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Il5-5e-Eeb" id="wcH-8q-5Eo"/>
+                            <outlet property="delegate" destination="Il5-5e-Eeb" id="jKD-Bk-x6S"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Feed" id="i0D-pa-i67"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wIY-Dd-Dqu" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-43" y="-1030"/>
         </scene>
     </scenes>
     <resources>

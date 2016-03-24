@@ -62,7 +62,7 @@
     
      Globals * globals = [Globals instance];
         
-     SLFHttpClient * httpClient = [SLFHttpClient sharedSLFHttpClient];
+     SLFHttpClient * httpClient = [SLFHttpClient createSLFHttpClient];
      httpClient.delegate = self;
    
        
