@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Ticket Detaill View Controller-->
+        <!--Title-->
         <scene sceneID="0H6-i2-T0L">
             <objects>
                 <viewController storyboardIdentifier="TicketDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MDt-lO-W35" customClass="TicketDetaillViewController" sceneMemberID="viewController">
@@ -13,19 +13,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="lcv-7d-9WY">
-                                <rect key="frame" x="23" y="81" width="275" height="29"/>
+                            <view contentMode="scaleToFill" id="Auz-3G-roC">
+                                <rect key="frame" x="0.0" y="61" width="320" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Details"/>
-                                    <segment title="Ticket"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentChangeViewValueChanged:" destination="MDt-lO-W35" eventType="valueChanged" id="Lsi-eq-8Dn"/>
-                                </connections>
-                            </segmentedControl>
-                            <view hidden="YES" contentMode="center" id="vQH-KO-R1c">
-                                <rect key="frame" x="0.0" y="117" width="320" height="451"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="lcv-7d-9WY">
+                                        <rect key="frame" x="20" y="16" width="277" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Details"/>
+                                            <segment title="Ticket"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentChangeViewValueChanged:" destination="MDt-lO-W35" eventType="valueChanged" id="Lsi-eq-8Dn"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="center" id="vQH-KO-R1c" customClass="UIScrollView">
+                                <rect key="frame" x="0.0" y="117" width="320" height="406"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="e50-nZ-a6Q">
@@ -34,7 +41,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" textAlignment="natural" id="atJ-4e-6An">
-                                        <rect key="frame" x="8" y="244" width="304" height="180"/>
+                                        <rect key="frame" x="8" y="244" width="304" height="270"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -53,8 +60,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="uki-i9-1es">
+                        <barButtonItem key="rightBarButtonItem" title="Reply" id="V2N-Q6-K3v">
+                            <connections>
+                                <action selector="onRespond:" destination="MDt-lO-W35" id="P15-3R-cL9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="infoView" destination="vQH-KO-R1c" id="iPc-Qc-YCc"/>
+                        <outlet property="rightButtonResponde" destination="V2N-Q6-K3v" id="qbS-3U-tit"/>
                         <outlet property="segmentedControl" destination="lcv-7d-9WY" id="scZ-oQ-r2y"/>
                         <outlet property="tableView" destination="e50-nZ-a6Q" id="LVX-BY-hTO"/>
                         <outlet property="textView" destination="Xq5-z9-3iz" id="YZW-d1-bCq"/>
@@ -63,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sn-fY-UVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1067" y="-1484"/>
+            <point key="canvasLocation" x="1035" y="-1480"/>
         </scene>
         <!--Feed nav-->
         <scene sceneID="UVI-iC-BsI">
@@ -161,12 +178,12 @@
         <scene sceneID="x8G-Iq-DCg">
             <objects>
                 <tableViewController storyboardIdentifier="SearchVC" id="H5S-wL-g5y" customClass="SearchTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8dP-jH-i2u">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell11" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8dP-jH-i2u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fv6-a0-bGT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell1" id="Fv6-a0-bGT">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fv6-a0-bGT" id="gaU-bd-nNP">

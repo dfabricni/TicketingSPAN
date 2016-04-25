@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface UIAlertView (Additions)
+@interface UIAlertController (Additions)
 
 + (void)presentCredentialAlert:(void(^)(NSUInteger index))handler;
 

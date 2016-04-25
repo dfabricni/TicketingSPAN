@@ -10,6 +10,8 @@
 #import "DBRepository.h"
 #import "SLFHttpClient.h"
 #import "Globals.h"
+#import <MessageUI/MessageUI.h>
+#import "QuartzCore/QuartzCore.h"
 
 @interface TicketDetaillViewController ()
 
@@ -110,6 +112,11 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.scrollEnabled = false;
+    self.ticketMasterTextView.scrollEnabled = false;
+    self.infoView.scrollEnabled = true;
+    self.infoView.contentSize = CGSizeMake(self.view.frame.size.width, self.tableView.frame.size.height + self.ticketMasterTextView.frame.size.height);
+    self.infoView.layer.zPosition = -1;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -360,5 +367,31 @@ else if (SControl.selectedSegmentIndex==1)
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction) onRespond:(id) sender
+{
+    if (![MFMailComposeViewController canSendMail]) {
+		   NSLog(@"Mail services are not available.");
+		   return;
+    }
+
+    
+    MFMailComposeViewController* composeVC = [[MFMailComposeViewController alloc] init];
+		composeVC.mailComposeDelegate = self;
+		 
+		// Configure the fields of the interface.
+		[composeVC setToRecipients:@[@"ServiceDeskApp@span.eu"]];
+    
+		[composeVC setSubject:[NSString stringWithFormat:@"%@ *ref#24-%d", self.ticketDetail.ticketTitle, self.ticketDetail.ticketID]];
+		[composeVC setMessageBody:@"" isHTML:NO];
+		 
+		// Present the view controller modally.
+		[self presentViewController:composeVC animated:YES completion:nil];
+
+}
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [controller dismissViewControllerAnimated:TRUE completion:nil];
+    
+}
 
 @end

@@ -9,17 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "DataModels.h"
 #import "SLFHttpClient.h"
+#import <MessageUI/MessageUI.h>
 
-
-@interface TicketDetaillViewController : UIViewController<SLFHttpClientDelegate,UITableViewDataSource, UITableViewDelegate>
+@interface TicketDetaillViewController : UIViewController<SLFHttpClientDelegate,UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl * segmentedControl;
 @property (strong, nonatomic) IBOutlet UITextView * textView;
-@property (strong, nonatomic) IBOutlet UIView * infoView;
+@property (strong, nonatomic) IBOutlet UIScrollView * infoView;
 @property (strong, nonatomic) IBOutlet UITextView * ticketMasterTextView;
 @property (strong, nonatomic) IBOutlet UITableView * tableView;
 @property (strong, nonatomic)  SLFTicketDetail * ticketDetail;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButtonResponde;
 
 /*
 @property (strong, nonatomic) IBOutlet UILabel * lblCompany;
@@ -45,5 +46,7 @@
 -(IBAction)segmentChangeViewValueChanged:(UISegmentedControl *)SControl;
 
 -(void)showMessage:(NSString*)message withTitle:(NSString *)title;
+-(IBAction)onRespond :(id)sender;
+
 
 @end

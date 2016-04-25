@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *contentAvailable;
 @property (nonatomic, strong) SLFAlert *alert;
 @property (nonatomic, assign) double badge;
-@property (nonatomic, assign) id sound;
+@property (nonatomic, strong) id sound;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

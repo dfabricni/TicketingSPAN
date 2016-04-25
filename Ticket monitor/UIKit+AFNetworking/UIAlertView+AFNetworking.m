@@ -122,13 +122,30 @@ static void AFGetAlertViewTitleAndMessageFromError(NSError *error, NSString * __
                 NSString *title, *message;
                 AFGetAlertViewTitleAndMessageFromError(error, &title, &message);
 
+                UIAlertController * alert=   [UIAlertController
+                                              alertControllerWithTitle:title
+                                              message:message
+                                              preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                    
+                    //do something when click button
+                    [alert dismissViewControllerAnimated:TRUE completion:nil];
+                    
+                }];
+                [alert addAction:noAction];
+                
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:delegate cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil, nil];
+              
                 for (NSString *otherButtonTitle in mutableOtherTitles) {
                     [alertView addButtonWithTitle:otherButtonTitle];
                 }
-                [alertView setTitle:title];
-                [alertView setMessage:message];
-                [alertView show];
+               // [alertView setTitle:title];
+               // [alertView setMessage:message];
+                //[alertView show];
+                
+                UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+                [vc presentViewController:alert animated:YES completion:nil];
             }
         }
 

@@ -26,6 +26,8 @@ NSString* const sLog = @"HTTP Protocol";
 @implementation ADURLProtocol
 {
     NSURLConnection *_connection;
+    
+   // NSURLSession * _session;
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request
@@ -69,15 +71,24 @@ NSString* const sLog = @"HTTP Protocol";
     AD_LOG_VERBOSE_F(sLog, @"startLoading host: %@", [self.request.URL host] );
     NSMutableURLRequest *mutableRequest = [self.request mutableCopy];
     [NSURLProtocol setProperty:@"YES" forKey:@"ADURLProtocol" inRequest:mutableRequest];
+    
+  //  _session = [NSURLSession sharedSession];
+   /*
+    [_session dataTaskWithRequest:mutableRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        
+    }];*/
+    
     _connection = [[NSURLConnection alloc] initWithRequest:mutableRequest
                                                   delegate:self
-                                          startImmediately:YES];
+                                         startImmediately:YES];
 }
 
 - (void)stopLoading
 {
     AD_LOG_VERBOSE_F(sLog, @"Stop loading");
     [_connection cancel];
+    
     [self.client URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
 }
 

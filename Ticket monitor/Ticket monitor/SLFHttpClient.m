@@ -356,7 +356,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 -(void) getDetailByGUID:(NSString*) GUID username:(NSString*) username
 {
     
-    Globals * globals = [Globals instance];
+    //Globals * globals = [Globals instance];
     
      NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     

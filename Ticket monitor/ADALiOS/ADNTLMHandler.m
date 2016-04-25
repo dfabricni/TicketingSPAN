@@ -23,7 +23,7 @@
 #import "ADKeyChainHelper.h"
 #import "ADALiOS.h"
 #import "ADURLProtocol.h"
-#import "UIAlertView+Additions.h"
+//#import "UIAlertView+Additions.h"
 
 NSString* const AD_WPJ_LOG = @"ADNTLMHandler";
 @implementation ADNTLMHandler
@@ -100,6 +100,7 @@ NSURLConnection *_conn = nil;
             }
             // This is the NTLM challenge: use the identity to authenticate:
             AD_LOG_VERBOSE_F(AD_WPJ_LOG, @"Attempting to handle NTLM challenge for host: %@", challenge.protectionSpace.host);
+            /*
             [UIAlertView presentCredentialAlert:^(NSUInteger index) {
                 if (index == 1)
                 {
@@ -120,7 +121,7 @@ NSURLConnection *_conn = nil;
                     [challenge.sender performDefaultHandlingForAuthenticationChallenge:challenge];
                     [protocol stopLoading];
                 }
-            }];
+            }];*/
             succeeded = YES;
         }//@synchronized
     } else{

@@ -24,7 +24,6 @@
 		BCCF6A301C08F4D3001F0EAD /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6A271C08F4D3001F0EAD /* AFURLSessionManager.m */; };
 		BCCF6A441C08F513001F0EAD /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6A331C08F513001F0EAD /* AFNetworkActivityIndicatorManager.m */; };
 		BCCF6A451C08F513001F0EAD /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6A351C08F513001F0EAD /* UIActivityIndicatorView+AFNetworking.m */; };
-		BCCF6A461C08F513001F0EAD /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6A371C08F513001F0EAD /* UIAlertView+AFNetworking.m */; };
 		BCCF6A471C08F513001F0EAD /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6A391C08F513001F0EAD /* UIButton+AFNetworking.m */; };
 		BCCF6A481C08F513001F0EAD /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6A3C1C08F513001F0EAD /* UIImageView+AFNetworking.m */; };
 		BCCF6A491C08F513001F0EAD /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6A3F1C08F513001F0EAD /* UIProgressView+AFNetworking.m */; };
@@ -64,7 +63,6 @@
 		BCCF6BC01C09029B001F0EAD /* NSDictionary+ADExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6B961C09029A001F0EAD /* NSDictionary+ADExtensions.m */; };
 		BCCF6BC11C09029B001F0EAD /* NSString+ADHelperMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6B981C09029A001F0EAD /* NSString+ADHelperMethods.m */; };
 		BCCF6BC21C09029B001F0EAD /* NSURL+ADExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6B9A1C09029A001F0EAD /* NSURL+ADExtensions.m */; };
-		BCCF6BC31C09029B001F0EAD /* UIAlertView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6B9C1C09029A001F0EAD /* UIAlertView+Additions.m */; };
 		BCCF6BC41C09029B001F0EAD /* UIApplication+ADExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF6B9E1C09029A001F0EAD /* UIApplication+ADExtensions.m */; };
 		BCCF6BC61C0903D1001F0EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF6BC51C0903D0001F0EAD /* UIKit.framework */; };
 		BCCF6BC81C0903DC001F0EAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF6BC71C0903DC001F0EAD /* Foundation.framework */; };
@@ -165,8 +163,6 @@
 		BCCF6A331C08F513001F0EAD /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		BCCF6A341C08F513001F0EAD /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		BCCF6A351C08F513001F0EAD /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
-		BCCF6A361C08F513001F0EAD /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
-		BCCF6A371C08F513001F0EAD /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
 		BCCF6A381C08F513001F0EAD /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AFNetworking.h"; sourceTree = "<group>"; };
 		BCCF6A391C08F513001F0EAD /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		BCCF6A3A1C08F513001F0EAD /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AFNetworking.h"; sourceTree = "<group>"; };
@@ -253,8 +249,6 @@
 		BCCF6B981C09029A001F0EAD /* NSString+ADHelperMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ADHelperMethods.m"; sourceTree = "<group>"; };
 		BCCF6B991C09029A001F0EAD /* NSURL+ADExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ADExtensions.h"; sourceTree = "<group>"; };
 		BCCF6B9A1C09029A001F0EAD /* NSURL+ADExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ADExtensions.m"; sourceTree = "<group>"; };
-		BCCF6B9B1C09029A001F0EAD /* UIAlertView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Additions.h"; sourceTree = "<group>"; };
-		BCCF6B9C1C09029A001F0EAD /* UIAlertView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Additions.m"; sourceTree = "<group>"; };
 		BCCF6B9D1C09029A001F0EAD /* UIApplication+ADExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+ADExtensions.h"; sourceTree = "<group>"; };
 		BCCF6B9E1C09029A001F0EAD /* UIApplication+ADExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+ADExtensions.m"; sourceTree = "<group>"; };
 		BCCF6BC51C0903D0001F0EAD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -468,8 +462,6 @@
 				BCCF6A331C08F513001F0EAD /* AFNetworkActivityIndicatorManager.m */,
 				BCCF6A341C08F513001F0EAD /* UIActivityIndicatorView+AFNetworking.h */,
 				BCCF6A351C08F513001F0EAD /* UIActivityIndicatorView+AFNetworking.m */,
-				BCCF6A361C08F513001F0EAD /* UIAlertView+AFNetworking.h */,
-				BCCF6A371C08F513001F0EAD /* UIAlertView+AFNetworking.m */,
 				BCCF6A381C08F513001F0EAD /* UIButton+AFNetworking.h */,
 				BCCF6A391C08F513001F0EAD /* UIButton+AFNetworking.m */,
 				BCCF6A3A1C08F513001F0EAD /* UIImage+AFNetworking.h */,
@@ -565,8 +557,6 @@
 				BCCF6B981C09029A001F0EAD /* NSString+ADHelperMethods.m */,
 				BCCF6B991C09029A001F0EAD /* NSURL+ADExtensions.h */,
 				BCCF6B9A1C09029A001F0EAD /* NSURL+ADExtensions.m */,
-				BCCF6B9B1C09029A001F0EAD /* UIAlertView+Additions.h */,
-				BCCF6B9C1C09029A001F0EAD /* UIAlertView+Additions.m */,
 				BCCF6B9D1C09029A001F0EAD /* UIApplication+ADExtensions.h */,
 				BCCF6B9E1C09029A001F0EAD /* UIApplication+ADExtensions.m */,
 			);
@@ -837,7 +827,6 @@
 				BCCF6BA61C09029A001F0EAD /* ADAuthenticationParameters+Internal.m in Sources */,
 				BCCF6BB41C09029B001F0EAD /* ADOAuth2Constants.m in Sources */,
 				BCCF6BB71C09029B001F0EAD /* ADTokenCacheStoreItem.m in Sources */,
-				BCCF6A461C08F513001F0EAD /* UIAlertView+AFNetworking.m in Sources */,
 				C39C61851C43CA84002EE4C2 /* SLFSubscriptionStatus.m in Sources */,
 				BCCF6BBE1C09029B001F0EAD /* ADWorkPlaceJoin.m in Sources */,
 				BCCF697C1C08F1AC001F0EAD /* SecondViewController.m in Sources */,
@@ -856,7 +845,6 @@
 				BCCF6BA11C09029A001F0EAD /* ADALiOS.m in Sources */,
 				BCCF6A291C08F4D3001F0EAD /* AFHTTPRequestOperationManager.m in Sources */,
 				BCCF6BB61C09029B001F0EAD /* ADRegistrationInformation.m in Sources */,
-				BCCF6BC31C09029B001F0EAD /* UIAlertView+Additions.m in Sources */,
 				C3E99A4F1C64D7FF0008456D /* SearchTableViewController.m in Sources */,
 				BCCF6BBD1C09029B001F0EAD /* ADWebResponse.m in Sources */,
 				BCCF6A2D1C08F4D3001F0EAD /* AFURLConnectionOperation.m in Sources */,

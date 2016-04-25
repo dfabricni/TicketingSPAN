@@ -1848,11 +1848,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "479736295.921156"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "-initWithTicketDetailID:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1864,11 +1864,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "479736295.921156"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-initWithTicketDetailID:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1880,11 +1880,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480415537.588294"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-slfHTTPClient:didFinishedWithPullingAndUpdating:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1928,11 +1928,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480415537.588294"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-segmentChangeViewValueChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2088,11 +2088,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "476810030.105259"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "-initWithTicketDetail:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2104,11 +2104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480415537.588294"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-slfHTTPClient:didFailWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2759,11 +2759,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480415537.588294"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-slfHTTPClient:didFailWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2775,11 +2775,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480415537.588294"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-slfHTTPClient:didFinishedWithPullingAndUpdating:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2791,11 +2791,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "479736295.921156"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "-refreshTicketDetail"
             landmarkType = "5">
          </BreakpointContent>
@@ -3015,11 +3015,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480415537.588294"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3047,11 +3047,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "476813298.558084"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "-initWithTicketDetail:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3063,11 +3063,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "479736295.921156"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "-refreshTicketDetail"
             landmarkType = "5">
          </BreakpointContent>
@@ -3079,11 +3079,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "479736295.921156"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-initWithTicketDetailID:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3095,11 +3095,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "479736295.921156"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-showTicketDetail"
             landmarkType = "5">
          </BreakpointContent>
@@ -3111,11 +3111,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480415537.588294"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-showTicketDetail"
             landmarkType = "5">
          </BreakpointContent>
@@ -3267,7 +3267,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
@@ -3399,11 +3399,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480416005.113532"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3415,11 +3415,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480415537.588294"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-segmentChangeViewValueChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3431,11 +3431,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480416005.113532"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3447,11 +3447,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480416005.113532"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3767,11 +3767,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "480415537.588294"
+            timestampString = "483286074.576863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-showTicketDetail"
             landmarkType = "5">
          </BreakpointContent>
@@ -4894,6 +4894,86 @@
             endingLineNumber = "175"
             landmarkName = "-refreshAccessToken"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/ADALiOS/NSString+ADHelperMethods.m"
+            timestampString = "482148020.020639"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
+            landmarkName = "-adUrlFormEncode"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/ADALiOS/NSString+ADHelperMethods.m"
+            timestampString = "482147996.297756"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
+            landmarkName = "-adUrlFormEncode"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/ADALiOS/ADURLProtocol.m"
+            timestampString = "482148659.503622"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-startLoading"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ADURLProtocol startLoading]"
+                  moduleName = "SPAN Live Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/ADALiOS/ADURLProtocol.m"
+                  timestampString = "483286479.967375"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ADURLProtocol startLoading]"
+                  moduleName = "SPAN Live Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/ADALiOS/ADURLProtocol.m"
+                  timestampString = "483286479.967523"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
