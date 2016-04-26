@@ -500,7 +500,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM TicketDetail	 order by DatetimeInSeconds desc limit 500"];
+    FMResultSet *s = [self.DB executeQuery:@"SELECT * FROM TicketDetail inner join SubscriptionGroup on upper(TicketDetail.SubscriptiongroupID) = upper(SubscriptionGroup.ID)  where SubscriptionGroup.active = 1 order by DatetimeInSeconds desc limit 500"];
     while ([s next]) {
        SLFTicketDetail* detail =  [[SLFTicketDetail alloc] init];
         
@@ -646,7 +646,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat:  @"select TicketID as GroupedItem, TicketTitle as GroupedItemName ,count(*) as Count, count(*) - sum(Read) as NewOnes from TicketDetail group by TicketID,TicketTitle order by TicketID desc"]];
+    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat:  @"select TicketID as GroupedItem, TicketTitle as GroupedItemName ,count(*) as Count, count(*) - sum(Read) as NewOnes from TicketDetail inner join SubscriptionGroup on upper(TicketDetail.SubscriptiongroupID) = upper(SubscriptionGroup.ID)  where SubscriptionGroup.active = 1 group by TicketID,TicketTitle order by TicketID desc"]];
     while ([s next]) {
         
         SLFGroupedItem * groupedItem = [[SLFGroupedItem alloc] init];
@@ -670,7 +670,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat:  @"select CompanyID as GroupedItem, CompanyCode as GroupedItemName, count(*) as Count, count(*) - sum(Read) as NewOnes from TicketDetail group by CompanyID,CompanyCode order by TicketID desc"]];
+    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat:  @"select CompanyID as GroupedItem, CompanyCode as GroupedItemName, count(*) as Count, count(*) - sum(Read) as NewOnes from TicketDetail inner join SubscriptionGroup on upper(TicketDetail.SubscriptiongroupID) = upper(SubscriptionGroup.ID)  where SubscriptionGroup.active = 1 group by CompanyID,CompanyCode order by TicketID desc"]];
     while ([s next]) {
         
         SLFGroupedItem * groupedItem = [[SLFGroupedItem alloc] init];
@@ -695,7 +695,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     [self.DB open];
     
-    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat:  @"select SubscriptionGroupID as GroupedItem, SubscriptionGroupName as GroupedItemName, count(*) as Count, count(*) - sum(Read) as NewOnes from TicketDetail group by SubscriptionGroupID,SubscriptionGroupName order by TicketID desc"]];
+    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat:  @"select SubscriptionGroupID as GroupedItem, SubscriptionGroupName as GroupedItemName, count(*) as Count, count(*) - sum(Read) as NewOnes from TicketDetail inner join SubscriptionGroup on upper(TicketDetail.SubscriptiongroupID) = upper(SubscriptionGroup.ID)  where SubscriptionGroup.active = 1 group by SubscriptionGroupID,SubscriptionGroupName order by TicketID desc"]];
     while ([s next]) {
         
         SLFGroupedItem * groupedItem = [[SLFGroupedItem alloc] init];

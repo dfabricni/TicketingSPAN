@@ -67,6 +67,7 @@
 		BCCF6BC61C0903D1001F0EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF6BC51C0903D0001F0EAD /* UIKit.framework */; };
 		BCCF6BC81C0903DC001F0EAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF6BC71C0903DC001F0EAD /* Foundation.framework */; };
 		C363DDCC1C6B22A800158A29 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C363DDCB1C6B22A800158A29 /* Images.xcassets */; };
+		C372AC271CCE61E30030CC0C /* TicketDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C372AC261CCE61E30030CC0C /* TicketDetailViewCell.m */; };
 		C3777D6D1C9AA4C900C5F5D7 /* SLFGroupedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3777D6C1C9AA4C900C5F5D7 /* SLFGroupedItem.m */; };
 		C386A8F21CA279CD00B11F78 /* FeedsFilteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C386A8F01CA279CD00B11F78 /* FeedsFilteredViewController.m */; };
 		C399D5B21C6B41D5006375FC /* App-icon in Resources */ = {isa = PBXBuildFile; fileRef = C399D5B01C6B41D5006375FC /* App-icon */; };
@@ -255,6 +256,8 @@
 		BCCF6BC71C0903DC001F0EAD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCCF6BCA1C090812001F0EAD /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C363DDCB1C6B22A800158A29 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C372AC251CCE61E30030CC0C /* TicketDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketDetailViewCell.h; sourceTree = "<group>"; };
+		C372AC261CCE61E30030CC0C /* TicketDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketDetailViewCell.m; sourceTree = "<group>"; };
 		C3777D6B1C9AA4C900C5F5D7 /* SLFGroupedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFGroupedItem.h; sourceTree = "<group>"; };
 		C3777D6C1C9AA4C900C5F5D7 /* SLFGroupedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFGroupedItem.m; sourceTree = "<group>"; };
 		C386A8F01CA279CD00B11F78 /* FeedsFilteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedsFilteredViewController.m; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 				C3E99A4D1C64D7FF0008456D /* SearchTableViewController.h */,
 				C3E99A4E1C64D7FF0008456D /* SearchTableViewController.m */,
 				C363DDCB1C6B22A800158A29 /* Images.xcassets */,
+				C372AC251CCE61E30030CC0C /* TicketDetailViewCell.h */,
+				C372AC261CCE61E30030CC0C /* TicketDetailViewCell.m */,
 			);
 			path = "Ticket monitor";
 			sourceTree = "<group>";
@@ -838,6 +843,7 @@
 				BCCF69761C08F1AC001F0EAD /* AppDelegate.m in Sources */,
 				BCCF6BC11C09029B001F0EAD /* NSString+ADHelperMethods.m in Sources */,
 				C39C61611C3E6AFB002EE4C2 /* SLFServicesResponse.m in Sources */,
+				C372AC271CCE61E30030CC0C /* TicketDetailViewCell.m in Sources */,
 				C39C618E1C43EC31002EE4C2 /* Synchronizer.m in Sources */,
 				C39C61681C3E6DB0002EE4C2 /* SLFGroup.m in Sources */,
 				C39C61571C3E65FF002EE4C2 /* SLFSubject.m in Sources */,

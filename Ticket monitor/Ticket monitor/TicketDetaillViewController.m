@@ -12,6 +12,7 @@
 #import "Globals.h"
 #import <MessageUI/MessageUI.h>
 #import "QuartzCore/QuartzCore.h"
+#import "TicketDetailViewCell.h"
 
 @interface TicketDetaillViewController ()
 
@@ -196,22 +197,24 @@ else if (SControl.selectedSegmentIndex==1)
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
+    TicketDetailViewCell *cell =  (TicketDetailViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TicketDetailTableViewCell"];
     DBRepository * repo =  [[DBRepository alloc] init];
     
     if (cell == nil) {
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"DefaultCell"];
+        cell = [[TicketDetailViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"TicketDetailTableViewCell"];
         
         cell.accessoryType = UITableViewCellAccessoryNone;
         
     }
     
+    cell.textLabel.font = [UIFont systemFontOfSize: 13.];
+    
    if (indexPath.row == 0) {
-       
+       cell.lblCaption.text = @"Ticket:";
        if (self.ticketDetail) {
            
-           cell.textLabel.text = [NSString stringWithFormat:@"Ticket: %@", self.ticketDetail.ticketTitle ];
+           cell.lblValue.text = [NSString stringWithFormat:@"%@", self.ticketDetail.ticketTitle ];
            
        }
    }
@@ -219,15 +222,15 @@ else if (SControl.selectedSegmentIndex==1)
            
     if (indexPath.row == 1) {
         
-        cell.textLabel.text = [NSString stringWithFormat:@"Company: " ];
-        
+       // cell.textLabel.text = [NSString stringWithFormat:@"Company: " ];
+        cell.lblCaption.text = @"Company:";
         if(self.ticketDetail && self.ticketDetail.companyID > 0){
             
             NSString * name = [repo getCodeItemName:@"Company" identifer:self.ticketDetail.companyID];
             
             if(name)
             {
-                cell.textLabel.text = [NSString stringWithFormat:@"Company: %@", name ];
+                cell.lblValue.text = [NSString stringWithFormat:@"%@", name ];
             } 
             
         }
@@ -239,7 +242,8 @@ else if (SControl.selectedSegmentIndex==1)
             
         if (indexPath.row == 2) {
             
-            cell.textLabel.text = [NSString stringWithFormat:@"Service: " ];
+            cell.lblCaption.text = @"Service:";
+           // cell.textLabel.text = [NSString stringWithFormat:@"Service: " ];
             
             if(self.ticketDetail &&  self.ticketDetail.serviceID > 0){
                 
@@ -247,7 +251,7 @@ else if (SControl.selectedSegmentIndex==1)
                 
                 if(name)
                 {
-                    cell.textLabel.text = [NSString stringWithFormat:@"Service: %@", name ];
+                    cell.lblValue.text = [NSString stringWithFormat:@"%@", name ];
                 }
                 
             }
@@ -255,7 +259,8 @@ else if (SControl.selectedSegmentIndex==1)
     
       if (indexPath.row == 3) {
           
-            cell.textLabel.text = [NSString stringWithFormat:@"Subject: " ];
+           cell.lblCaption.text = @"Category:";
+          //  cell.textLabel.text = [NSString stringWithFormat:@"Subject: " ];
           
             if(self.ticketDetail &&  self.ticketDetail.subjectID > 0){
                 
@@ -263,7 +268,7 @@ else if (SControl.selectedSegmentIndex==1)
                 
                 if(name)
                 {
-                    cell.textLabel.text = [NSString stringWithFormat:@"Subject: %@", name ];
+                    cell.lblValue.text = [NSString stringWithFormat:@"%@", name ];
                 }
                 
             }
@@ -272,23 +277,23 @@ else if (SControl.selectedSegmentIndex==1)
     
       if (indexPath.row == 4) {
           
-            cell.textLabel.text = [NSString stringWithFormat:@"Priority: " ];
-          
+           // cell.textLabel.text = [NSString stringWithFormat:@"Priority: " ];
+           cell.lblCaption.text = @"Priority:";
             if(self.ticketDetail &&  self.ticketDetail.priorityID > 0){
                 
                 int priority = self.ticketDetail.priorityID;
                 
                 if (priority == 9) {
-                    cell.textLabel.text =@"Priority: 1";
+                    cell.lblValue.text =@"1";
                 }
                 if (priority == 8) {
-                    cell.textLabel.text =@"Priority: 2";
+                    cell.lblValue.text =@"2";
                 }
                 if (priority == 7) {
-                    cell.textLabel.text =@"Priority: 3";
+                    cell.lblValue.text =@"3";
                 }
                 if (priority == 6) {
-                    cell.textLabel.text =@"Priority: 4";
+                    cell.lblValue.text =@"4";
                 }
                
             }
@@ -296,6 +301,8 @@ else if (SControl.selectedSegmentIndex==1)
       }
     
     if (indexPath.row == 5) {
+        
+         cell.lblCaption.text = @"Time:";
         
         if (self.ticketDetail) {
             NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
@@ -310,9 +317,9 @@ else if (SControl.selectedSegmentIndex==1)
             dateFormater.dateFormat =  @"dd.MM. HH:mm:ss";
             [dateFormater setTimeZone:outputTimeZone];
             
-            cell.textLabel.text = [NSString stringWithFormat:@"Time: %@",[dateFormater stringFromDate:date] ];
+            cell.lblValue.text = [NSString stringWithFormat:@"%@",[dateFormater stringFromDate:date] ];
         }else{
-            cell.textLabel.text = [NSString stringWithFormat:@"Time: " ];
+            cell.lblValue.text = [NSString stringWithFormat:@"" ];
         }
        
                
@@ -321,10 +328,10 @@ else if (SControl.selectedSegmentIndex==1)
     if (indexPath.row == 6) {
         
         //assigned to
-        
+         cell.lblCaption.text = @"Assigned to:";
         if (self.ticketDetail) {
             
-             cell.textLabel.text = [NSString stringWithFormat:@"Assigned to: %@", self.ticketDetail.ticketAssignedTo ];
+             cell.lblValue.text = [NSString stringWithFormat:@"%@", self.ticketDetail.ticketAssignedTo ];
             
         }
         
@@ -333,10 +340,11 @@ else if (SControl.selectedSegmentIndex==1)
     if (indexPath.row == 7) {
         
         // modified by
+        cell.lblCaption.text = @"Modified by:";
         
         if (self.ticketDetail) {
            
-            cell.textLabel.text = [NSString stringWithFormat:@"Modified by: %@", self.ticketDetail.modifiedBy ];
+            cell.lblValue.text = [NSString stringWithFormat:@"%@", self.ticketDetail.modifiedBy ];
             
         }
         
@@ -357,7 +365,7 @@ else if (SControl.selectedSegmentIndex==1)
 
 -(CGFloat)  tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30;
+    return 25;
 }
 
 

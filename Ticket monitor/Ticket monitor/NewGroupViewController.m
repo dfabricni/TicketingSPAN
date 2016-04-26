@@ -224,7 +224,7 @@
     if([self.group.groupOperation isEqualToString:@"O"] || (![existingOnes containsObject:[NSNumber numberWithInt:4]] && [self.group.groupOperation isEqualToString:@"A"]) )
     {
         
-        UIAlertAction * subjectTypeAction = [UIAlertAction actionWithTitle:@"Set subject" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        UIAlertAction * subjectTypeAction = [UIAlertAction actionWithTitle:@"Set category" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             
             //do something when click button
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
