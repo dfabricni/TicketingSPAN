@@ -28,7 +28,7 @@ NSString *const kSLFTicketDetailCompanyCode = @"CompanyCode";
 NSString *const kSLFTicketDetailTicketAssignedTo = @"TicketAssignedTo";
 NSString *const kSLFTicketDetailModifiedBy = @"ModifiedBy";
 NSString *const kSLFTicketDetailSubscriptionGroupName = @"SubscriptionGroupName";
-
+NSString *const kSLFTicketDetailStatus = @"Status";
 
 
 @interface SLFTicketDetail ()
@@ -58,7 +58,7 @@ NSString *const kSLFTicketDetailSubscriptionGroupName = @"SubscriptionGroupName"
 @synthesize ticketAssignedTo = _ticketAssignedTo;
 @synthesize modifiedBy = _modifiedBy;
 @synthesize subscriptionGroupName = _subscriptionGroupName;
-
+@synthesize status = _status;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -91,6 +91,7 @@ NSString *const kSLFTicketDetailSubscriptionGroupName = @"SubscriptionGroupName"
         self.ticketAssignedTo = [self objectOrNilForKey:kSLFTicketDetailTicketAssignedTo fromDictionary:dict];
         self.modifiedBy= [self objectOrNilForKey:kSLFTicketDetailModifiedBy fromDictionary:dict];
         self.subscriptionGroupName= [self objectOrNilForKey:kSLFTicketDetailSubscriptionGroupName fromDictionary:dict];
+        self.status= [self objectOrNilForKey:kSLFTicketDetailStatus fromDictionary:dict];
         
     }
     
@@ -120,6 +121,7 @@ NSString *const kSLFTicketDetailSubscriptionGroupName = @"SubscriptionGroupName"
     [mutableDict setValue:self.ticketAssignedTo forKey:kSLFTicketDetailTicketAssignedTo];
     [mutableDict setValue:self.modifiedBy forKey:kSLFTicketDetailModifiedBy];
     [mutableDict setValue:self.subscriptionGroupName forKey:kSLFTicketDetailSubscriptionGroupName];
+    [mutableDict setValue:self.status forKey:kSLFTicketDetailStatus];
     
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -162,6 +164,7 @@ NSString *const kSLFTicketDetailSubscriptionGroupName = @"SubscriptionGroupName"
     self.ticketAssignedTo = [aDecoder decodeObjectForKey:kSLFTicketDetailTicketAssignedTo];
     self.modifiedBy = [aDecoder decodeObjectForKey:kSLFTicketDetailModifiedBy];
     self.subscriptionGroupName = [aDecoder decodeObjectForKey:kSLFTicketDetailSubscriptionGroupName];
+    self.status = [aDecoder decodeObjectForKey:kSLFTicketDetailStatus];
     
     return self;
 }
@@ -188,6 +191,7 @@ NSString *const kSLFTicketDetailSubscriptionGroupName = @"SubscriptionGroupName"
     [aCoder encodeObject:_ticketAssignedTo forKey:kSLFTicketDetailTicketAssignedTo];
     [aCoder encodeObject:_modifiedBy forKey:kSLFTicketDetailModifiedBy];
     [aCoder encodeObject:_subscriptionGroupName forKey:kSLFTicketDetailSubscriptionGroupName];
+    [aCoder encodeObject:_status forKey:kSLFTicketDetailStatus];
     
 }
 
@@ -216,6 +220,7 @@ NSString *const kSLFTicketDetailSubscriptionGroupName = @"SubscriptionGroupName"
         copy.ticketAssignedTo = [self.ticketAssignedTo copyWithZone:zone];
         copy.modifiedBy = [self.modifiedBy copyWithZone:zone];
         copy.subscriptionGroupName = [self.subscriptionGroupName copyWithZone:zone];
+        copy.status = [self.status copyWithZone:zone];
         
     }
     

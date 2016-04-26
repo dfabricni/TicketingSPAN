@@ -31,7 +31,7 @@
 @property (nonatomic, strong) NSString *ticketAssignedTo;
 @property (nonatomic, strong) NSString *modifiedBy;
 @property (nonatomic, strong) NSString *subscriptionGroupName;
-
+@property (nonatomic, strong) NSString *status;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

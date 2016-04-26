@@ -25,7 +25,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>DBVersion</key>
-	<string>1.42</string>
+	<string>1.46</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

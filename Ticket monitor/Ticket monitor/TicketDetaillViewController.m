@@ -219,8 +219,20 @@ else if (SControl.selectedSegmentIndex==1)
        }
    }
     
-           
     if (indexPath.row == 1) {
+        
+        //assigned to
+        cell.lblCaption.text = @"Status:";
+        if (self.ticketDetail) {
+            
+            cell.lblValue.text = [NSString stringWithFormat:@"%@", self.ticketDetail.status ];
+            
+        }
+        
+    }
+    
+    
+    if (indexPath.row == 2) {
         
        // cell.textLabel.text = [NSString stringWithFormat:@"Company: " ];
         cell.lblCaption.text = @"Company:";
@@ -240,7 +252,7 @@ else if (SControl.selectedSegmentIndex==1)
     
     
             
-        if (indexPath.row == 2) {
+        if (indexPath.row == 3) {
             
             cell.lblCaption.text = @"Service:";
            // cell.textLabel.text = [NSString stringWithFormat:@"Service: " ];
@@ -257,7 +269,7 @@ else if (SControl.selectedSegmentIndex==1)
             }
         }
     
-      if (indexPath.row == 3) {
+      if (indexPath.row == 4) {
           
            cell.lblCaption.text = @"Category:";
           //  cell.textLabel.text = [NSString stringWithFormat:@"Subject: " ];
@@ -275,7 +287,7 @@ else if (SControl.selectedSegmentIndex==1)
             
       }
     
-      if (indexPath.row == 4) {
+      if (indexPath.row == 5) {
           
            // cell.textLabel.text = [NSString stringWithFormat:@"Priority: " ];
            cell.lblCaption.text = @"Priority:";
@@ -300,7 +312,7 @@ else if (SControl.selectedSegmentIndex==1)
             
       }
     
-    if (indexPath.row == 5) {
+    if (indexPath.row == 6) {
         
          cell.lblCaption.text = @"Time:";
         
@@ -325,7 +337,7 @@ else if (SControl.selectedSegmentIndex==1)
                
     }
     
-    if (indexPath.row == 6) {
+    if (indexPath.row == 7) {
         
         //assigned to
          cell.lblCaption.text = @"Assigned to:";
@@ -337,7 +349,7 @@ else if (SControl.selectedSegmentIndex==1)
         
     }
     
-    if (indexPath.row == 7) {
+    if (indexPath.row == 8) {
         
         // modified by
         cell.lblCaption.text = @"Modified by:";
@@ -360,7 +372,7 @@ else if (SControl.selectedSegmentIndex==1)
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 9;
 }
 
 -(CGFloat)  tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
