@@ -49,6 +49,16 @@
 
 -(NSMutableArray *) getAllDetails;
 
+-(SLFTicketDetail *) getNextTicketDetail:(double) datetimeInSecond;
+-(SLFTicketDetail *) getPreviousTicketDetail:(double) datetimeInSecond;
+
+/*
+select  Datetimeinseconds from TicketDetail where Datetimeinseconds < 1461647276000 order by datetimeinseconds desc limit 1
+
+
+1461647274000
+select  Datetimeinseconds from TicketDetail where Datetimeinseconds > 1461647274000 order by datetimeinseconds asc limit 1
+*/
 
 -(NSMutableArray *) getDetailsForTicket:(int) ticketID;
 -(NSMutableArray *) getDetailsForSubscription:(NSString*) subscriptionGroupID;

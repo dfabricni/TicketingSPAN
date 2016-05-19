@@ -32,7 +32,15 @@
     
      self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-   
+    
+    self.btnExclude.layer.borderWidth = 1.0f;
+    self.btnExclude.layer.borderColor = self.view.tintColor.CGColor;
+    self.btnExclude.layer.cornerRadius= 5.0f;
+    
+    self.btnInclude.layer.borderWidth = 1.0f;
+    self.btnInclude.layer.borderColor =UIColorFromRGB(0x408000).CGColor; //self.view.tintColor.CGColor;
+    self.btnInclude.layer.cornerRadius= 5.0f;
+    self.btnInclude.tintColor=UIColorFromRGB(0x408000);
 }
 
 -(void) viewWillAppear:(BOOL)animated

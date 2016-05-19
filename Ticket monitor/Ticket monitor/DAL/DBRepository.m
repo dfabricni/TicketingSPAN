@@ -616,6 +616,53 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     return detail;
 }
+-(SLFTicketDetail *) getNextTicketDetail:(double) datetimeInSecond
+{
+    SLFTicketDetail * detail = nil;
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat: @"select  * from TicketDetail where Datetimeinseconds > %f order by datetimeinseconds asc limit 1", datetimeInSecond ]];
+    while ([s next]) {
+        
+        detail =  [[SLFTicketDetail alloc] init];
+        
+        [self fillTicketDetailFromResultSet:detail resultSet:s];
+        
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return detail;
+}
+
+-(SLFTicketDetail *) getPreviousTicketDetail:(double) datetimeInSecond
+{
+    SLFTicketDetail * detail = nil;
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:[NSString stringWithFormat: @"select  * from TicketDetail where Datetimeinseconds < %f order by datetimeinseconds desc limit 1", datetimeInSecond ]];
+    while ([s next]) {
+        
+        detail =  [[SLFTicketDetail alloc] init];
+        
+        [self fillTicketDetailFromResultSet:detail resultSet:s];
+        
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return detail;
+}
+
+
 -(void)fillTicketDetailFromResultSet:(SLFTicketDetail*) detail resultSet:(FMResultSet*) s
 {
     detail.gUID = [s stringForColumn:@"GUID"];
@@ -636,6 +683,7 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     detail.modifiedBy  = [s stringForColumn:@"ModifiedBy"];
     detail.subscriptionGroupName  = [s stringForColumn:@"SubscriptionGroupName"];
     detail.status  = [s stringForColumn:@"Status"];
+    detail.datetimeInSeconds  = [s doubleForColumn:@"DatetimeInSeconds"];
     
     detail.read = [s boolForColumn:@"Read"];
 

@@ -22,6 +22,9 @@
 @property (strong, nonatomic)  SLFTicketDetail * ticketDetail;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButtonResponde;
 
+@property (strong, nonatomic) IBOutlet UIButton * btnPrevious;
+@property (strong, nonatomic) IBOutlet UIButton * btnNext;
+
 /*
 @property (strong, nonatomic) IBOutlet UILabel * lblCompany;
 @property (strong, nonatomic) IBOutlet UILabel * lblService;
@@ -48,5 +51,7 @@
 -(void)showMessage:(NSString*)message withTitle:(NSString *)title;
 -(IBAction)onRespond :(id)sender;
 
+-(IBAction)onPrevious :(id)sender;
+-(IBAction)onNext :(id)sender;
 
 @end

@@ -75,6 +75,7 @@
     {
        // if (self.segmentedControl.selectedSegmentIndex == 0 )
       //  {
+        self.title = self.ticketDetail.ticketTitle;
             self.textView.text = [NSString stringWithFormat:@"%@  \n %@ ",self.ticketDetail.detailDescription, self.ticketDetail.detailNote ];
             self.ticketMasterTextView.text=self.ticketDetail.ticketMasterDescription;
       //  }
@@ -118,6 +119,14 @@
     self.infoView.scrollEnabled = true;
     self.infoView.contentSize = CGSizeMake(self.view.frame.size.width, self.tableView.frame.size.height + self.ticketMasterTextView.frame.size.height);
     self.infoView.layer.zPosition = -1;
+    
+    self.btnPrevious.layer.borderWidth = 1.0f;
+    self.btnPrevious.layer.borderColor = self.view.tintColor.CGColor;
+    self.btnPrevious.layer.cornerRadius= 5.0f;
+    
+    self.btnNext.layer.borderWidth = 1.0f;
+    self.btnNext.layer.borderColor = self.view.tintColor.CGColor;
+    self.btnNext.layer.cornerRadius= 5.0f;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -172,6 +181,8 @@
      if (SControl.selectedSegmentIndex==0)
     {
         self.textView.hidden  = false;
+        self.btnNext.hidden= false;
+        self.btnPrevious.hidden = false;
         self.infoView.hidden = true;
       
         
@@ -187,6 +198,8 @@
 else if (SControl.selectedSegmentIndex==1)
     {
          self.textView.hidden  = true;
+        self.btnNext.hidden= true;
+        self.btnPrevious.hidden = true;
          self.infoView.hidden = false;
         
     }
@@ -385,6 +398,42 @@ else if (SControl.selectedSegmentIndex==1)
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(IBAction)onPrevious :(id)sender
+{
+    
+    self.btnNext.enabled = true;
+    
+     DBRepository * repo =  [[DBRepository alloc] init];
+    SLFTicketDetail * detail =  [repo getPreviousTicketDetail:self.ticketDetail.datetimeInSeconds];
+    if(detail)
+    {
+        self.ticketDetail = nil;
+        self.ticketDetail = detail;
+        [self showTicketDetail];
+    }else
+    {
+        self.btnPrevious.enabled = false;
+    }
+    
+}
+-(IBAction)onNext :(id)sender
+{
+    self.btnPrevious.enabled = true;
+    
+    DBRepository * repo =  [[DBRepository alloc] init];
+    SLFTicketDetail * detail =  [repo getNextTicketDetail:self.ticketDetail.datetimeInSeconds];
+    if(detail)
+    {
+        self.ticketDetail = nil;
+        self.ticketDetail = detail;
+        [self showTicketDetail];
+    }else
+    {
+        self.btnNext.enabled = false;
+    }
 }
 
 -(IBAction) onRespond:(id) sender

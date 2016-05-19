@@ -13,6 +13,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qp0-D3-iFP">
+                                <rect key="frame" x="26" y="122" width="125" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Previous"/>
+                                <connections>
+                                    <action selector="onPrevious:" destination="MDt-lO-W35" eventType="touchUpInside" id="rEQ-jT-Hwb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RmC-Nu-TP1">
+                                <rect key="frame" x="166" y="122" width="125" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="onNext:" destination="MDt-lO-W35" eventType="touchUpInside" id="ah5-Ns-qQl"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" id="Auz-3G-roC">
                                 <rect key="frame" x="0.0" y="61" width="320" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -47,7 +65,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="304" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="zbQ-C4-GJ2">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="zbQ-C4-GJ2">
                                                             <rect key="frame" x="95" y="1" width="209" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -82,7 +100,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" textAlignment="natural" id="Xq5-z9-3iz">
-                                <rect key="frame" x="0.0" y="117" width="320" height="424"/>
+                                <rect key="frame" x="0.0" y="152" width="320" height="389"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -101,6 +119,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="btnNext" destination="RmC-Nu-TP1" id="yHG-gD-MRw"/>
+                        <outlet property="btnPrevious" destination="qp0-D3-iFP" id="G1E-ah-k3g"/>
                         <outlet property="infoView" destination="vQH-KO-R1c" id="iPc-Qc-YCc"/>
                         <outlet property="rightButtonResponde" destination="V2N-Q6-K3v" id="qbS-3U-tit"/>
                         <outlet property="segmentedControl" destination="lcv-7d-9WY" id="scZ-oQ-r2y"/>
