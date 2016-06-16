@@ -20,7 +20,10 @@
 
 -(NSString*) getCodeItemName:(NSString*) codeName  identifer:(int) identifier;
 
+-(SLFCompany *) getCompany:(int) companyID;
+
 -(NSMutableArray *) getAllCompanies:(NSString*) searchStr;
+
 
 -(NSMutableArray *) getAllSubjects:(NSString*) searchStr;
 

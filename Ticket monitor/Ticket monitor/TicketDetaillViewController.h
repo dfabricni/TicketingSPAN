@@ -25,6 +25,10 @@
 @property (strong, nonatomic) IBOutlet UIButton * btnPrevious;
 @property (strong, nonatomic) IBOutlet UIButton * btnNext;
 
+
+@property (strong, nonatomic) NSMutableArray * details;
+@property (assign, nonatomic) int currentIndex;
+
 /*
 @property (strong, nonatomic) IBOutlet UILabel * lblCompany;
 @property (strong, nonatomic) IBOutlet UILabel * lblService;
@@ -37,6 +41,9 @@
 //@property (strong, nonatomic)  SLFCompany * ticketCompany;
 
 @property (copy, nonatomic)  NSString * ticketGUID;
+
+
+-(void) initWithDetails:(NSMutableArray*) details currentIndex:(long) index;
 
 -(void) initWithTicketDetail:(SLFTicketDetail*) ticketDetail;
 

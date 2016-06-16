@@ -197,8 +197,9 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
-    SLFTicketDetail * detail = self.details[indexPath.row];
-    [vc initWithTicketDetailID:detail.gUID];
+  //  SLFTicketDetail * detail = self.details[indexPath.row];
+   // [vc initWithTicketDetailID:detail.gUID];
+    [vc initWithDetails:self.details currentIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:TRUE];
     
     

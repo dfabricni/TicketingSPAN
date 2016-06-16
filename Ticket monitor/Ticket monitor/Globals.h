@@ -33,6 +33,10 @@
 @property (nonatomic, retain) NSString * clientID;
 @property (nonatomic, retain) NSString * redirectURI;
 
+@property (nonatomic, assign) BOOL  isMainSPANCompany;
+@property (nonatomic, assign) int  companyID;
+
+
 + (id)instance;
 
 -(void) saveSettings;

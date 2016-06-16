@@ -62,12 +62,13 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 {
     
    // DBRepository * repo = [[DBRepository alloc] init];
+   
     NSDictionary *parameters = [device dictionaryRepresentation];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer =[AFJSONRequestSerializer serializer];
     
-    NSString * deviceRegisterLink = @"device";
+    NSString * deviceRegisterLink = @"deviceV2";
      
     
     NSMutableURLRequest *request =  [manager.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", BaseURLString,deviceRegisterLink] parameters:parameters error:nil];
@@ -84,6 +85,8 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         
         NSLog(@"JSON: %@", [responseObject description]);
         
+        
+        
         if(operation.response.statusCode == 403)
         {
             NSError  *error = [NSError errorWithDomain:@"eu.span.slf" code:14 userInfo:[NSDictionary dictionaryWithObject:@"Forbidden" forKey:NSLocalizedDescriptionKey]];
@@ -92,6 +95,13 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
                 [self.delegate slfHTTPClient:self didFailWithError:error];
             }
 
+            
+        }else{
+        
+            Globals * globals = [Globals instance];
+            NSDictionary * dict = (NSDictionary*) responseObject;
+            globals.isMainSPANCompany = [dict objectForKey:@"IsMain"];
+            globals.companyID = [[dict objectForKey:@"CompanyID"] intValue];
             
         }
         

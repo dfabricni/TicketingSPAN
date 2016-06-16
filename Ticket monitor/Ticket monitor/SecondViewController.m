@@ -190,7 +190,7 @@
     */
 }
 
--(IBAction)onNew :(id)sender
+-(IBAction)onNew	 :(id)sender
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     

@@ -100,7 +100,33 @@ if([[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:documentsDBF
     
     return name;
 }
-
+-(SLFCompany *) getCompany:(int) companyID
+{
+     SLFCompany * company= nil;
+    NSString * query = nil;
+    
+   
+    query = [NSString stringWithFormat:@"SELECT * FROM Company where ID  = %d ",companyID ];
+    
+    [self.DB open];
+    
+    FMResultSet *s = [self.DB executeQuery:query];
+    if ([s next]) {
+        company = [[SLFCompany alloc] init];
+        company.ID = [s intForColumn:@"ID"];
+        company.name = [s stringForColumn:@"Name"];
+        company.detail = [s stringForColumn:@"Detail"];
+        
+       
+    }
+    
+    [s close];
+    
+    
+    [self.DB close];
+    
+    return company;
+}
 -(NSMutableArray *) getAllCompanies:(NSString*) searchStr
 {
     NSMutableArray *items = [[NSMutableArray alloc] init];

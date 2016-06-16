@@ -57,6 +57,16 @@
         [self showTicketDetail];
     }
 }
+
+-(void) initWithDetails:(NSMutableArray*) details currentIndex:(long) index
+{
+    self.currentIndex =  index;
+    self.ticketDetail = (SLFTicketDetail*) [details objectAtIndex:index];
+    self.details  = details;
+    
+    [self refreshTicketDetail];
+    
+}
 -(void) initWithTicketDetailID:(NSString *)guid
 {
    
@@ -403,10 +413,44 @@ else if (SControl.selectedSegmentIndex==1)
 
 -(IBAction)onPrevious :(id)sender
 {
+    if(!self.details)
+    {
+         [self previousFromDB];
+    }
+    else{
     
+        [self previousFromArray];
+    }
+    
+}
+-(void) previousFromArray
+{
     self.btnNext.enabled = true;
     
-     DBRepository * repo =  [[DBRepository alloc] init];
+    if(self.currentIndex < [self.details count]-1){
+        
+        self.currentIndex++;
+          self.ticketDetail = nil;
+        self.ticketDetail = (SLFTicketDetail*)[self.details objectAtIndex:self.currentIndex];
+        [self showTicketDetail];
+        
+        if(self.currentIndex == [self.details count]-1)
+        {
+            self.btnPrevious.enabled = false;
+        }
+        
+    }else
+    {
+        self.btnPrevious.enabled = false;
+    }
+    
+    
+}
+-(void) previousFromDB
+{
+    self.btnNext.enabled = true;
+    
+    DBRepository * repo =  [[DBRepository alloc] init];
     SLFTicketDetail * detail =  [repo getPreviousTicketDetail:self.ticketDetail.datetimeInSeconds];
     if(detail)
     {
@@ -417,9 +461,43 @@ else if (SControl.selectedSegmentIndex==1)
     {
         self.btnPrevious.enabled = false;
     }
-    
+
 }
 -(IBAction)onNext :(id)sender
+{
+    if(!self.details)
+    {
+        [self nextFromDB];
+    }else{
+    
+        [self nextFromArray];
+    }
+    
+}
+-(void) nextFromArray
+{
+    self.btnPrevious.enabled = true;
+    
+    if(self.currentIndex > 0){
+        
+        self.currentIndex--;
+        
+        self.ticketDetail = nil;
+        self.ticketDetail = (SLFTicketDetail*)[self.details objectAtIndex:self.currentIndex];
+        [self showTicketDetail];
+        
+        if(self.currentIndex == 0)
+        {
+            self.btnNext.enabled = false;
+        }
+
+        
+    }else
+    {
+        self.btnNext.enabled = false;
+    }
+}
+-(void) nextFromDB
 {
     self.btnPrevious.enabled = true;
     
@@ -438,6 +516,7 @@ else if (SControl.selectedSegmentIndex==1)
 
 -(IBAction) onRespond:(id) sender
 {
+    /*
     if (![MFMailComposeViewController canSendMail]) {
 		   NSLog(@"Mail services are not available.");
 		   return;
@@ -455,6 +534,72 @@ else if (SControl.selectedSegmentIndex==1)
 		 
 		// Present the view controller modally.
 		[self presentViewController:composeVC animated:YES completion:nil];
+    
+    */
+    
+    NSString *toEmail=@"ServiceDeskApp@span.eu";
+    NSString *subject=[NSString stringWithFormat:@"%@ *ref#24-%d", self.ticketDetail.ticketTitle, self.ticketDetail.ticketID];
+    NSString *body = @"";
+
+   
+   //: NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    UIAlertController * actions=   [UIAlertController
+                                    alertControllerWithTitle:nil
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    
+    UIAlertAction * microsoftOutlookAction = [UIAlertAction actionWithTitle:@"Microsoft Outlook" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        NSString * email = [NSString stringWithFormat:@"ms-outlook://compose?to=%@&subject=%@&body=%@", toEmail, subject, body];
+        email = [email stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+        
+    }];
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"ms-outlook://"]]) {
+
+     [actions addAction:microsoftOutlookAction];
+    }
+    
+     UIAlertAction *mailActionAction = [UIAlertAction actionWithTitle:@"Mail" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    
+         NSString *email = [NSString stringWithFormat:@"mailto:%@?subject=%@&body=%@", toEmail,subject,body];
+         email = [email stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+        
+    }];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mailto://"]]) {
+
+        [actions addAction:mailActionAction];
+    }
+    
+    
+    UIAlertAction *gmailAction = [UIAlertAction actionWithTitle:@"Gmail" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+      
+        NSString *email = [NSString stringWithFormat:@"googlegmail:///co?to=%@&subject=%@&body=%@", toEmail,subject,body];
+        email = [email stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+        
+    }];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"googlegmail://"]]) {
+
+        [actions addAction:gmailAction];
+    }
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        
+       
+        
+    }];
+    [actions addAction:cancelAction];
+    
+    
+    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    [vc presentViewController:actions animated:YES completion:nil];
+    
 
 }
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error

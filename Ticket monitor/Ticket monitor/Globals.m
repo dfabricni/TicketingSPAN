@@ -40,7 +40,7 @@
       self.resourceURI = @"https://slf-mobile-span.azurewebsites.net";
       self.clientID = @"75842aba-501f-409d-b0e0-7b2091678c4b";
       self.redirectURI = @"http://console-app-test-oauth/";
-      
+     
       DBRepository * repo =  [[DBRepository alloc] init];
 
       self.settings = [repo getSettings];
@@ -126,7 +126,7 @@
    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSString * refreshToken = [userDefaults valueForKey:@"RefreshToken"];
+    NSString * refreshToken = [userDefaults valueForKey:@"SLFRefreshToken"];
     // then check if we already have refresh token token
     
     if (refreshToken == nil || [refreshToken isEqualToString:@""]) {
@@ -167,12 +167,12 @@
     
      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSString * refreshToken = [userDefaults valueForKey:@"RefreshToken"];
+    NSString * refreshToken = [userDefaults valueForKey:@"SLFRefreshToken"];
     
     [authContext acquireTokenByRefreshToken:refreshToken clientId:self.clientID completionBlock:^(ADAuthenticationResult *result) {
         if (result.tokenCacheStoreItem == nil)
         {
-            [userDefaults setObject:@"" forKey:@"RefreshToken"];
+            [userDefaults setObject:@"" forKey:@"SLFRefreshToken"];
             [self exit];
             return;
         }
@@ -189,7 +189,7 @@
             
            // globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:result.tokenCacheStoreItem.refreshToken forKey:@"RefreshToken"];
+            [userDefaults setObject:result.tokenCacheStoreItem.refreshToken forKey:@"SLFRefreshToken"];
             
             // store this token also in some persistant storage
             
@@ -246,7 +246,7 @@
            // globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
             
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:result.tokenCacheStoreItem.refreshToken forKey:@"RefreshToken"];
+            [userDefaults setObject:result.tokenCacheStoreItem.refreshToken forKey:@"SLFRefreshToken"];
             
             // store this token also in some persistant storage
             

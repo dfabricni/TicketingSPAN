@@ -142,7 +142,7 @@
 
 -(void) showActions:(BOOL) include
 {
-    
+    Globals * globals  = [Globals instance];
   
         // pull existing ones and pull them out of the array
         
@@ -157,7 +157,7 @@
                                     message:nil
                                     preferredStyle:UIAlertControllerStyleActionSheet];
     
-    
+    /*
     if([self.group.groupOperation isEqualToString:@"O"] || (![existingOnes containsObject:[NSNumber numberWithInt:1]] && ![existingOnes containsObject:[NSNumber numberWithInt:2]] && [self.group.groupOperation isEqualToString:@"A"]) )
     {
     
@@ -190,11 +190,39 @@
         }];
         [actions addAction:myCompanyAction];
     }
+     */
+    
+    //first chek if this is not SPAN company
+    // and if it is not then insert subscription with that company
+    if(!globals.isMainSPANCompany && ![existingOnes containsObject:[NSNumber numberWithInt:2] ])
+    {
+    
+        // insert this company
+        NSDateFormatter * dateFormater = [[NSDateFormatter alloc]init];
+        dateFormater.dateFormat =  @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+        
+        SLFSubscription * subs= [[SLFSubscription alloc] init];
+        subs.iDProperty = [[NSUUID UUID] UUIDString];
+        subs.subscriptionGroupID  =  self.group.iDProperty;
+        subs.ruleTypeID =  2;
+        
+        // get company
+        SLFCompany * company  = [repo getCompany:globals.companyID];
+        
+        subs.value = [NSString stringWithFormat:@"%d",  globals.companyID ];
+        subs.valueDisplayText = company.name;
+        
+        subs.lastCheckPoint =  [dateFormater stringFromDate:[NSDate date]];
+        subs.active = true;
+        subs.notIn= FALSE;
+        
+    }
+    
     
     if([self.group.groupOperation isEqualToString:@"O"] || (![existingOnes containsObject:[NSNumber numberWithInt:2]] && ![existingOnes containsObject:[NSNumber numberWithInt:1]] && [self.group.groupOperation isEqualToString:@"A"]) )
     {
         
-        UIAlertAction * otherCompanyAction = [UIAlertAction actionWithTitle:@"Set other company" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        UIAlertAction * otherCompanyAction = [UIAlertAction actionWithTitle:@"Set company" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             
             //do something when click button
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -208,7 +236,9 @@
             
             
         }];
-        [actions addAction:otherCompanyAction];
+        //add it only if it is SPAN
+        if(globals.isMainSPANCompany)
+            [actions addAction:otherCompanyAction];
     }
     
     if([self.group.groupOperation isEqualToString:@"O"] || (![existingOnes containsObject:[NSNumber numberWithInt:3]] && [self.group.groupOperation isEqualToString:@"A"]) )
@@ -581,15 +611,35 @@
 
 }
 
+-(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Globals * globals = [Globals instance];
+    
+    if(!globals.isMainSPANCompany)
+    {
+        SLFSubscription* subscription = (SLFSubscription*) [self.subscriptions objectAtIndex:[indexPath row]];
+        if (subscription.ruleTypeID == 2 )
+        {
+            return UITableViewCellEditingStyleNone;
+        }
+        
+    }
+    
+    return UITableViewCellEditingStyleDelete;
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // If row is deleted, remove it from the list.
+    Globals * globals = [Globals instance];
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         //SimpleEditableListAppDelegate *controller = (SimpleEditableListAppDelegate *)[[UIApplication sharedApplication] delegate];
         DBRepository * repo =  [[DBRepository alloc] init];
         SLFSubscription* subscription = (SLFSubscription*) [self.subscriptions objectAtIndex:[indexPath row]];
+        
+        //if(!globals.isMainSPANCompany)
         
         subscription.toDelete =  true;
         //[controller removeObjectFromListAtIndex:indexPath.row];
