@@ -1,4 +1,4 @@
-//
+			//
 //  Globals.m
 //  Ticket monitor
 //
@@ -24,7 +24,7 @@
     dispatch_once(&onceToken, ^{
         shared  = [[self alloc] init];
     });
-    return shared;
+    return shared;	
 }
 
 
@@ -37,6 +37,7 @@
       
       //self.refreshToken=nil;
       self.authority = @"https://login.windows.net/b0460523-b78c-4b4a-8a10-5928b799ad45/FederationMetadata/2007-06/FederationMetadata.xml";
+     // self.resourceURI = @"https://slf-mobile-span.span.eu";
       self.resourceURI = @"https://slf-mobile-span.azurewebsites.net";
       self.clientID = @"75842aba-501f-409d-b0e0-7b2091678c4b";
       self.redirectURI = @"http://console-app-test-oauth/";
@@ -125,6 +126,8 @@
 {
    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //just for test
+    //[userDefaults setObject:@"" forKey:@"SLFRefreshToken"];
     
     NSString * refreshToken = [userDefaults valueForKey:@"SLFRefreshToken"];
     // then check if we already have refresh token token

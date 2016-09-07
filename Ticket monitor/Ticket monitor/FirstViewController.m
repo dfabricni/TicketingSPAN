@@ -379,10 +379,9 @@
     
     sync.delegate  = nil;
     
-    [self showMessage:@"Error synchronizing data"
-                    withTitle:errorText];
 
-    
+        [self showMessage:@"Error synchronizing data"
+                withTitle:errorText];
     
 }
 -(void)showMessage:(NSString*)message withTitle:(NSString *)title

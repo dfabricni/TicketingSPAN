@@ -134,7 +134,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     
     NSMutableURLRequest *request =  [manager.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@subscriptions", BaseURLString] parameters:parameters error:nil];
     
-    
+      
     [request setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];

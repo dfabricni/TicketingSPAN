@@ -74,14 +74,14 @@
         
         
     }
-        
+        /*
         // for test
         SLFDevice * device = [[SLFDevice alloc] init];
         device.deviceID = @"12344567245656eetm";
         device.deviceType = [NSString stringWithFormat:@"A"];
         device.username = @"dfabricni4@span.eu";
         [httpClient registerDevice:device];
-        
+        */
 
         
         // get feeds
