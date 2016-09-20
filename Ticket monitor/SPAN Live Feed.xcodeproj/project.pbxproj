@@ -334,6 +334,7 @@
 		C3E99A4B1C5F976E0008456D /* NewGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGroupViewController.m; sourceTree = "<group>"; };
 		C3E99A4D1C64D7FF0008456D /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
 		C3E99A4E1C64D7FF0008456D /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
+		C3F47C461D913D76001E4D72 /* SPAN Live Feed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SPAN Live Feed.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +368,7 @@
 		BCCF69651C08F1AB001F0EAD = {
 			isa = PBXGroup;
 			children = (
+				C3F47C461D913D76001E4D72 /* SPAN Live Feed.entitlements */,
 				C3A00BA01C899B92001C60C2 /* SLFDB.rdb */,
 				C399D5B01C6B41D5006375FC /* App-icon */,
 				C399D5B11C6B41D5006375FC /* Icons */,
@@ -990,7 +992,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "";
-				PROVISIONING_PROFILE = "57499896-5271-4bec-bf2e-6004791f63a1";
+				PROVISIONING_PROFILE = "414aa70e-46a2-4d92-bc97-b0003e475e38";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1029,7 +1031,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "5baf52e6-dd1e-47db-b362-f6d3d2d2befb";
+				PROVISIONING_PROFILE = "cb14457b-33f1-4544-b2a5-259a701b11d4";
 				"PROVISIONING_PROFILE[sdk=*]" = "5baf52e6-dd1e-47db-b362-f6d3d2d2befb";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1042,8 +1044,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_ENTITLEMENTS = "SPAN Live Feed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Domagoj Fabricni (FG634J27KE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Domagoj Fabricni (FG634J27KE)";
 				INFOPLIST_FILE = "Ticket monitor/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "-deep";
@@ -1051,7 +1054,7 @@
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.span.serviceDesk.SLF;
 				PRODUCT_NAME = "SPAN Live Feed";
-				PROVISIONING_PROFILE = "57499896-5271-4bec-bf2e-6004791f63a1";
+				PROVISIONING_PROFILE = "414aa70e-46a2-4d92-bc97-b0003e475e38";
 			};
 			name = Debug;
 		};
@@ -1060,15 +1063,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_ENTITLEMENTS = "SPAN Live Feed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SPAN d.o.o. za projektiranje informacijskih sustava";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SPAN d.o.o. za projektiranje informacijskih sustava";
 				INFOPLIST_FILE = "Ticket monitor/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "-deep";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.span.serviceDesk.SLF;
 				PRODUCT_NAME = "SPAN Live Feed";
-				PROVISIONING_PROFILE = "5baf52e6-dd1e-47db-b362-f6d3d2d2befb";
+				PROVISIONING_PROFILE = "cb14457b-33f1-4544-b2a5-259a701b11d4";
 			};
 			name = Release;
 		};

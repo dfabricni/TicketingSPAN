@@ -60,7 +60,7 @@
 
 -(void) initWithDetails:(NSMutableArray*) details currentIndex:(long) index
 {
-    self.currentIndex =  index;
+    self.currentIndex =  (int)index;
     self.ticketDetail = (SLFTicketDetail*) [details objectAtIndex:index];
     self.details  = details;
     

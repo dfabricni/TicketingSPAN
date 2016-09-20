@@ -631,7 +631,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // If row is deleted, remove it from the list.
-    Globals * globals = [Globals instance];
+   // Globals * globals = [Globals instance];
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         

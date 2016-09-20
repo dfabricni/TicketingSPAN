@@ -176,7 +176,7 @@
         if (result.tokenCacheStoreItem == nil)
         {
             [userDefaults setObject:@"" forKey:@"SLFRefreshToken"];
-            [self exit];
+            [self exit];;
             return;
         }
         else

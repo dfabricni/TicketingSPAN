@@ -16,7 +16,7 @@
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "-init"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,7 +32,7 @@
             startingLineNumber = "30"
             endingLineNumber = "30"
             landmarkName = "-init"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -48,7 +48,7 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "-init"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,7 +64,7 @@
             startingLineNumber = "27"
             endingLineNumber = "27"
             landmarkName = "-init"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -80,7 +80,7 @@
             startingLineNumber = "16"
             endingLineNumber = "16"
             landmarkName = "-init"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -144,7 +144,7 @@
             startingLineNumber = "848"
             endingLineNumber = "848"
             landmarkName = "-disableAllSubscriptionsForGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -176,7 +176,7 @@
             startingLineNumber = "855"
             endingLineNumber = "855"
             landmarkName = "-enableAllSubscriptionsForGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -192,7 +192,7 @@
             startingLineNumber = "853"
             endingLineNumber = "853"
             landmarkName = "-enableAllSubscriptionsForGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -208,7 +208,7 @@
             startingLineNumber = "73"
             endingLineNumber = "73"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -224,7 +224,7 @@
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -240,7 +240,7 @@
             startingLineNumber = "76"
             endingLineNumber = "76"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -256,7 +256,7 @@
             startingLineNumber = "52"
             endingLineNumber = "52"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -272,7 +272,7 @@
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -288,7 +288,7 @@
             startingLineNumber = "116"
             endingLineNumber = "116"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -304,7 +304,7 @@
             startingLineNumber = "112"
             endingLineNumber = "112"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -320,7 +320,7 @@
             startingLineNumber = "75"
             endingLineNumber = "75"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -352,7 +352,7 @@
             startingLineNumber = "119"
             endingLineNumber = "119"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -496,7 +496,7 @@
             startingLineNumber = "108"
             endingLineNumber = "108"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -608,7 +608,7 @@
             startingLineNumber = "444"
             endingLineNumber = "444"
             landmarkName = "-deleteGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -624,7 +624,7 @@
             startingLineNumber = "461"
             endingLineNumber = "461"
             landmarkName = "-saveGroup:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -656,7 +656,7 @@
             startingLineNumber = "453"
             endingLineNumber = "453"
             landmarkName = "-saveGroup:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -672,7 +672,7 @@
             startingLineNumber = "454"
             endingLineNumber = "454"
             landmarkName = "-saveGroup:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -688,7 +688,7 @@
             startingLineNumber = "447"
             endingLineNumber = "447"
             landmarkName = "-deleteGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -704,7 +704,7 @@
             startingLineNumber = "449"
             endingLineNumber = "449"
             landmarkName = "-saveGroup:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -720,7 +720,7 @@
             startingLineNumber = "469"
             endingLineNumber = "469"
             landmarkName = "-saveSubscription:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -736,7 +736,7 @@
             startingLineNumber = "463"
             endingLineNumber = "463"
             landmarkName = "-saveGroup:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -784,7 +784,7 @@
             startingLineNumber = "863"
             endingLineNumber = "863"
             landmarkName = "-deleteAllFeeds"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -800,7 +800,7 @@
             startingLineNumber = "866"
             endingLineNumber = "866"
             landmarkName = "-deleteAllFeeds"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -816,7 +816,7 @@
             startingLineNumber = "868"
             endingLineNumber = "868"
             landmarkName = "-deleteAllFeeds"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -832,7 +832,7 @@
             startingLineNumber = "875"
             endingLineNumber = "875"
             landmarkName = "-saveCompany:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -848,7 +848,7 @@
             startingLineNumber = "878"
             endingLineNumber = "878"
             landmarkName = "-saveCompany:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -864,7 +864,7 @@
             startingLineNumber = "880"
             endingLineNumber = "880"
             landmarkName = "-saveCompany:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -880,7 +880,7 @@
             startingLineNumber = "850"
             endingLineNumber = "850"
             landmarkName = "-disableAllSubscriptionsForGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -896,7 +896,7 @@
             startingLineNumber = "479"
             endingLineNumber = "479"
             landmarkName = "-saveSubscription:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -912,7 +912,7 @@
             startingLineNumber = "483"
             endingLineNumber = "483"
             landmarkName = "-saveTicketDetail:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -928,7 +928,7 @@
             startingLineNumber = "485"
             endingLineNumber = "485"
             landmarkName = "-saveTicketDetail:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -944,7 +944,7 @@
             startingLineNumber = "471"
             endingLineNumber = "471"
             landmarkName = "-saveSubscription:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -960,7 +960,7 @@
             startingLineNumber = "451"
             endingLineNumber = "451"
             landmarkName = "-saveGroup:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -976,7 +976,7 @@
             startingLineNumber = "148"
             endingLineNumber = "148"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1040,7 +1040,7 @@
             startingLineNumber = "104"
             endingLineNumber = "104"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1056,7 +1056,7 @@
             startingLineNumber = "98"
             endingLineNumber = "98"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1072,7 +1072,7 @@
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1120,13 +1120,13 @@
             startingLineNumber = "118"
             endingLineNumber = "118"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
@@ -1136,7 +1136,7 @@
             startingLineNumber = "90"
             endingLineNumber = "90"
             landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1152,7 +1152,7 @@
             startingLineNumber = "91"
             endingLineNumber = "91"
             landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1168,7 +1168,7 @@
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1184,7 +1184,7 @@
             startingLineNumber = "213"
             endingLineNumber = "213"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1200,7 +1200,7 @@
             startingLineNumber = "212"
             endingLineNumber = "212"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1216,7 +1216,7 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1295,7 +1295,7 @@
             startingLineNumber = "128"
             endingLineNumber = "128"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1391,7 +1391,7 @@
             startingLineNumber = "363"
             endingLineNumber = "363"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1407,7 +1407,7 @@
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1423,7 +1423,7 @@
             startingLineNumber = "136"
             endingLineNumber = "136"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1455,7 +1455,7 @@
             startingLineNumber = "535"
             endingLineNumber = "535"
             landmarkName = "-getAllDetails"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1477,7 +1477,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Synchronizer.m"
@@ -1487,7 +1487,7 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1503,7 +1503,7 @@
             startingLineNumber = "208"
             endingLineNumber = "208"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1519,7 +1519,7 @@
             startingLineNumber = "60"
             endingLineNumber = "60"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1535,7 +1535,7 @@
             startingLineNumber = "138"
             endingLineNumber = "138"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1598,7 +1598,7 @@
             startingLineNumber = "204"
             endingLineNumber = "204"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1614,7 +1614,7 @@
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1630,7 +1630,7 @@
             startingLineNumber = "126"
             endingLineNumber = "126"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1646,7 +1646,7 @@
             startingLineNumber = "100"
             endingLineNumber = "100"
             landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1742,7 +1742,7 @@
             startingLineNumber = "543"
             endingLineNumber = "543"
             landmarkName = "-getAllDetails"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1758,7 +1758,7 @@
             startingLineNumber = "86"
             endingLineNumber = "86"
             landmarkName = "-formatDateFromTimestamp:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1822,7 +1822,7 @@
             startingLineNumber = "162"
             endingLineNumber = "162"
             landmarkName = "-getMoreFeeds"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1838,7 +1838,7 @@
             startingLineNumber = "194"
             endingLineNumber = "194"
             landmarkName = "-slfHTTPClient:didFinishedWithPullingAndUpdating:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1854,7 +1854,7 @@
             startingLineNumber = "75"
             endingLineNumber = "75"
             landmarkName = "-initWithTicketDetailID:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1870,7 +1870,7 @@
             startingLineNumber = "79"
             endingLineNumber = "79"
             landmarkName = "-initWithTicketDetailID:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1886,7 +1886,7 @@
             startingLineNumber = "182"
             endingLineNumber = "182"
             landmarkName = "-slfHTTPClient:didFinishedWithPullingAndUpdating:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1902,7 +1902,7 @@
             startingLineNumber = "370"
             endingLineNumber = "370"
             landmarkName = "-synchronizer:didFinishedSynchronizing:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1918,7 +1918,7 @@
             startingLineNumber = "381"
             endingLineNumber = "381"
             landmarkName = "-synchronizer:errorOccured:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1934,7 +1934,7 @@
             startingLineNumber = "205"
             endingLineNumber = "205"
             landmarkName = "-segmentChangeViewValueChanged:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2014,13 +2014,13 @@
             startingLineNumber = "59"
             endingLineNumber = "59"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/DAL/DBRepository.m"
@@ -2030,7 +2030,7 @@
             startingLineNumber = "56"
             endingLineNumber = "56"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2046,13 +2046,13 @@
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/DAL/DBRepository.m"
@@ -2062,7 +2062,7 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2078,7 +2078,7 @@
             startingLineNumber = "68"
             endingLineNumber = "68"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2094,7 +2094,7 @@
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "-initWithTicketDetail:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2110,7 +2110,7 @@
             startingLineNumber = "171"
             endingLineNumber = "171"
             landmarkName = "-slfHTTPClient:didFailWithError:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2158,7 +2158,7 @@
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "-validateName"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2190,7 +2190,7 @@
             startingLineNumber = "82"
             endingLineNumber = "82"
             landmarkName = "-initWithGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2222,7 +2222,7 @@
             startingLineNumber = "159"
             endingLineNumber = "159"
             landmarkName = "-showActions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2238,7 +2238,7 @@
             startingLineNumber = "189"
             endingLineNumber = "189"
             landmarkName = "-showActions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2254,7 +2254,7 @@
             startingLineNumber = "562"
             endingLineNumber = "562"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2270,7 +2270,7 @@
             startingLineNumber = "535"
             endingLineNumber = "535"
             landmarkName = "-tableView:numberOfRowsInSection:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2286,7 +2286,7 @@
             startingLineNumber = "185"
             endingLineNumber = "185"
             landmarkName = "-showActions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2302,7 +2302,7 @@
             startingLineNumber = "149"
             endingLineNumber = "149"
             landmarkName = "-showActions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2318,7 +2318,7 @@
             startingLineNumber = "188"
             endingLineNumber = "188"
             landmarkName = "-showActions:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2381,7 +2381,7 @@
             startingLineNumber = "153"
             endingLineNumber = "153"
             landmarkName = "-showActions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2397,7 +2397,7 @@
             startingLineNumber = "248"
             endingLineNumber = "248"
             landmarkName = "-getExistingSubscriptionsTypes:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2413,7 +2413,7 @@
             startingLineNumber = "245"
             endingLineNumber = "245"
             landmarkName = "-getExistingSubscriptionsTypes:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2429,7 +2429,7 @@
             startingLineNumber = "390"
             endingLineNumber = "390"
             landmarkName = "-showActions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2445,7 +2445,7 @@
             startingLineNumber = "386"
             endingLineNumber = "386"
             landmarkName = "-showActions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2589,7 +2589,7 @@
             startingLineNumber = "443"
             endingLineNumber = "443"
             landmarkName = "-onRemove:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2637,7 +2637,7 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "-formatDateFromTimestamp:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2765,7 +2765,7 @@
             startingLineNumber = "166"
             endingLineNumber = "166"
             landmarkName = "-slfHTTPClient:didFailWithError:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2781,7 +2781,7 @@
             startingLineNumber = "179"
             endingLineNumber = "179"
             landmarkName = "-slfHTTPClient:didFinishedWithPullingAndUpdating:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2797,7 +2797,7 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "-refreshTicketDetail"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2829,7 +2829,7 @@
             startingLineNumber = "72"
             endingLineNumber = "72"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2845,13 +2845,13 @@
             startingLineNumber = "117"
             endingLineNumber = "117"
             landmarkName = "-needsReauthentication"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
@@ -2861,37 +2861,37 @@
             startingLineNumber = "231"
             endingLineNumber = "231"
             landmarkName = "-logIn"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[Globals logIn]"
                   moduleName = "SPAN Live Feed"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/Ticket%20monitor/Globals.m"
-                  timestampString = "494941774.535931"
+                  timestampString = "496055276.771928"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "231"
                   endingLineNumber = "231"
-                  offsetFromSymbolStart = "250">
+                  offsetFromSymbolStart = "292">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__16-[Globals logIn]_block_invoke"
                   moduleName = "SPAN Live Feed"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/Ticket%20monitor/Globals.m"
-                  timestampString = "494941774.536068"
+                  timestampString = "496055276.773851"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "232"
                   endingLineNumber = "232"
-                  offsetFromSymbolStart = "47">
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2909,7 +2909,7 @@
             startingLineNumber = "114"
             endingLineNumber = "114"
             landmarkName = "-needsReauthentication"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2925,7 +2925,7 @@
             startingLineNumber = "256"
             endingLineNumber = "256"
             landmarkName = "-logIn"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2941,7 +2941,7 @@
             startingLineNumber = "245"
             endingLineNumber = "245"
             landmarkName = "-logIn"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2957,7 +2957,7 @@
             startingLineNumber = "110"
             endingLineNumber = "110"
             landmarkName = "-needsReauthentication"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2973,7 +2973,7 @@
             startingLineNumber = "227"
             endingLineNumber = "227"
             landmarkName = "-logIn"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2989,7 +2989,7 @@
             startingLineNumber = "281"
             endingLineNumber = "281"
             landmarkName = "-logIn"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3005,7 +3005,7 @@
             startingLineNumber = "82"
             endingLineNumber = "82"
             landmarkName = "-viewDidAppear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3021,7 +3021,7 @@
             startingLineNumber = "115"
             endingLineNumber = "115"
             landmarkName = "-viewDidAppear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3037,7 +3037,7 @@
             startingLineNumber = "62"
             endingLineNumber = "62"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3053,7 +3053,7 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "-initWithTicketDetail:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3069,7 +3069,7 @@
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "-refreshTicketDetail"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3085,7 +3085,7 @@
             startingLineNumber = "77"
             endingLineNumber = "77"
             landmarkName = "-initWithTicketDetailID:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3101,7 +3101,7 @@
             startingLineNumber = "84"
             endingLineNumber = "84"
             landmarkName = "-showTicketDetail"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3117,7 +3117,7 @@
             startingLineNumber = "102"
             endingLineNumber = "102"
             landmarkName = "-showTicketDetail"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3133,7 +3133,7 @@
             startingLineNumber = "169"
             endingLineNumber = "169"
             landmarkName = "-slfHTTPClient:didFailWithError:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3149,7 +3149,7 @@
             startingLineNumber = "199"
             endingLineNumber = "199"
             landmarkName = "-refreshAccessToken"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3165,7 +3165,7 @@
             startingLineNumber = "497"
             endingLineNumber = "497"
             landmarkName = "-getGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3181,7 +3181,7 @@
             startingLineNumber = "513"
             endingLineNumber = "513"
             landmarkName = "-getGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3197,7 +3197,7 @@
             startingLineNumber = "500"
             endingLineNumber = "500"
             landmarkName = "-getGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3213,7 +3213,7 @@
             startingLineNumber = "344"
             endingLineNumber = "344"
             landmarkName = "-getAllGroups"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3229,7 +3229,7 @@
             startingLineNumber = "142"
             endingLineNumber = "142"
             landmarkName = "-acquireOrRefreshToken"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3245,7 +3245,7 @@
             startingLineNumber = "139"
             endingLineNumber = "139"
             landmarkName = "-acquireOrRefreshToken"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3261,7 +3261,7 @@
             startingLineNumber = "121"
             endingLineNumber = "121"
             landmarkName = "-needsReauthentication"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3277,7 +3277,7 @@
             startingLineNumber = "189"
             endingLineNumber = "189"
             landmarkName = "-refreshAccessToken"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3293,7 +3293,7 @@
             startingLineNumber = "86"
             endingLineNumber = "86"
             landmarkName = "-viewDidAppear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3309,7 +3309,7 @@
             startingLineNumber = "129"
             endingLineNumber = "129"
             landmarkName = "-globals:didFinishedAuthenticating:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3325,7 +3325,7 @@
             startingLineNumber = "121"
             endingLineNumber = "121"
             landmarkName = "-globals:didFinishedAcquaringToken:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3341,7 +3341,7 @@
             startingLineNumber = "371"
             endingLineNumber = "371"
             landmarkName = "-synchronizer:didFinishedSynchronizing:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3405,7 +3405,7 @@
             startingLineNumber = "304"
             endingLineNumber = "304"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3421,7 +3421,7 @@
             startingLineNumber = "214"
             endingLineNumber = "214"
             landmarkName = "-segmentChangeViewValueChanged:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3437,7 +3437,7 @@
             startingLineNumber = "258"
             endingLineNumber = "258"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3453,7 +3453,7 @@
             startingLineNumber = "300"
             endingLineNumber = "300"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3469,7 +3469,7 @@
             startingLineNumber = "251"
             endingLineNumber = "251"
             landmarkName = "-logIn"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3485,7 +3485,7 @@
             startingLineNumber = "170"
             endingLineNumber = "170"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3597,7 +3597,7 @@
             startingLineNumber = "136"
             endingLineNumber = "136"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3629,7 +3629,7 @@
             startingLineNumber = "143"
             endingLineNumber = "143"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3645,7 +3645,7 @@
             startingLineNumber = "147"
             endingLineNumber = "147"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3661,7 +3661,7 @@
             startingLineNumber = "154"
             endingLineNumber = "154"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3677,7 +3677,7 @@
             startingLineNumber = "109"
             endingLineNumber = "109"
             landmarkName = "-slfHTTPClient:didFinishedWithPullingAndUpdatingFromBackgroundTask:taskID:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3693,7 +3693,7 @@
             startingLineNumber = "116"
             endingLineNumber = "116"
             landmarkName = "-slfHTTPClient:didFailWithErrorFromBackgroundTask:taskID:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3773,7 +3773,7 @@
             startingLineNumber = "98"
             endingLineNumber = "98"
             landmarkName = "-showTicketDetail"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3789,7 +3789,7 @@
             startingLineNumber = "800"
             endingLineNumber = "800"
             landmarkName = "-markAllAsRead"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3805,7 +3805,7 @@
             startingLineNumber = "114"
             endingLineNumber = "114"
             landmarkName = "-loadData"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3837,7 +3837,7 @@
             startingLineNumber = "380"
             endingLineNumber = "380"
             landmarkName = "-synchronizer:errorOccured:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3853,7 +3853,7 @@
             startingLineNumber = "76"
             endingLineNumber = "76"
             landmarkName = "-applicationWillTerminate:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3869,7 +3869,7 @@
             startingLineNumber = "194"
             endingLineNumber = "194"
             landmarkName = "-refreshAccessToken"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3885,7 +3885,7 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "-slfHTTPClient:didFailWithError:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3901,7 +3901,7 @@
             startingLineNumber = "401"
             endingLineNumber = "401"
             landmarkName = "-showMessage:withTitle:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3981,7 +3981,7 @@
             startingLineNumber = "203"
             endingLineNumber = "203"
             landmarkName = "-refreshAccessToken"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3997,7 +3997,7 @@
             startingLineNumber = "124"
             endingLineNumber = "124"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4013,7 +4013,7 @@
             startingLineNumber = "831"
             endingLineNumber = "831"
             landmarkName = "-markAllSubscriptionsToDeleteForGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4029,7 +4029,7 @@
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "+prepareSqlLiteFile"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4045,7 +4045,7 @@
             startingLineNumber = "821"
             endingLineNumber = "821"
             landmarkName = "-deleteAllMarkedForDeletionAndSynced"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4077,7 +4077,7 @@
             startingLineNumber = "50"
             endingLineNumber = "50"
             landmarkName = "-resolveView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4141,7 +4141,7 @@
             startingLineNumber = "907"
             endingLineNumber = "907"
             landmarkName = "-saveSubject:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4157,7 +4157,7 @@
             startingLineNumber = "895"
             endingLineNumber = "895"
             landmarkName = "-saveService:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4173,7 +4173,7 @@
             startingLineNumber = "882"
             endingLineNumber = "882"
             landmarkName = "-saveCompany:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4189,7 +4189,7 @@
             startingLineNumber = "897"
             endingLineNumber = "897"
             landmarkName = "-saveService:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4205,7 +4205,7 @@
             startingLineNumber = "884"
             endingLineNumber = "884"
             landmarkName = "-saveCompany:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4221,7 +4221,7 @@
             startingLineNumber = "909"
             endingLineNumber = "909"
             landmarkName = "-saveSubject:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4237,7 +4237,7 @@
             startingLineNumber = "47"
             endingLineNumber = "47"
             landmarkName = "-resolveView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4253,7 +4253,7 @@
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4269,7 +4269,7 @@
             startingLineNumber = "458"
             endingLineNumber = "458"
             landmarkName = "-onGroupBy:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4285,7 +4285,7 @@
             startingLineNumber = "465"
             endingLineNumber = "465"
             landmarkName = "-showGroupBySelector"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4301,7 +4301,7 @@
             startingLineNumber = "476"
             endingLineNumber = "476"
             landmarkName = "-showGroupBySelector"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4317,7 +4317,7 @@
             startingLineNumber = "486"
             endingLineNumber = "486"
             landmarkName = "-showGroupBySelector"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4333,7 +4333,7 @@
             startingLineNumber = "497"
             endingLineNumber = "497"
             landmarkName = "-showGroupBySelector"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4349,7 +4349,7 @@
             startingLineNumber = "507"
             endingLineNumber = "507"
             landmarkName = "-showGroupBySelector"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4365,7 +4365,7 @@
             startingLineNumber = "97"
             endingLineNumber = "97"
             landmarkName = "-loadData"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4381,7 +4381,7 @@
             startingLineNumber = "100"
             endingLineNumber = "100"
             landmarkName = "-loadData"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4397,7 +4397,7 @@
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "-loadData"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4413,7 +4413,7 @@
             startingLineNumber = "106"
             endingLineNumber = "106"
             landmarkName = "-loadData"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4429,7 +4429,7 @@
             startingLineNumber = "110"
             endingLineNumber = "110"
             landmarkName = "-loadData"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4445,7 +4445,7 @@
             startingLineNumber = "763"
             endingLineNumber = "763"
             landmarkName = "-getDetailsGroupedByCompanies"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4461,7 +4461,7 @@
             startingLineNumber = "475"
             endingLineNumber = "475"
             landmarkName = "-showGroupBySelector"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4477,7 +4477,7 @@
             startingLineNumber = "179"
             endingLineNumber = "179"
             landmarkName = "-refreshAccessToken"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4493,13 +4493,13 @@
             startingLineNumber = "234"
             endingLineNumber = "234"
             landmarkName = "-logIn"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
@@ -4509,7 +4509,7 @@
             startingLineNumber = "274"
             endingLineNumber = "274"
             landmarkName = "-logIn"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4525,7 +4525,7 @@
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "-loadData"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4541,7 +4541,7 @@
             startingLineNumber = "175"
             endingLineNumber = "175"
             landmarkName = "-refreshAccessToken"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -4589,7 +4589,7 @@
             startingLineNumber = "459"
             endingLineNumber = "459"
             landmarkName = "-saveGroup:syncStatus:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4605,7 +4605,7 @@
             startingLineNumber = "405"
             endingLineNumber = "405"
             landmarkName = "-getAllSubscriptionsForGroup:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4621,7 +4621,7 @@
             startingLineNumber = "648"
             endingLineNumber = "648"
             landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4637,7 +4637,7 @@
             startingLineNumber = "829"
             endingLineNumber = "829"
             landmarkName = "-deleteAllMarkedForDeletionAndSynced"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4669,7 +4669,7 @@
             startingLineNumber = "188"
             endingLineNumber = "188"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4685,7 +4685,7 @@
             startingLineNumber = "192"
             endingLineNumber = "192"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4701,7 +4701,7 @@
             startingLineNumber = "473"
             endingLineNumber = "473"
             landmarkName = "-textFieldShouldReturn:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4861,7 +4861,7 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "-viewWillAppear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4877,7 +4877,7 @@
             startingLineNumber = "178"
             endingLineNumber = "178"
             landmarkName = "-refreshAccessToken"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4925,7 +4925,7 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "-startLoading"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -4973,7 +4973,7 @@
             startingLineNumber = "234"
             endingLineNumber = "234"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4989,7 +4989,7 @@
             startingLineNumber = "228"
             endingLineNumber = "228"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5005,7 +5005,7 @@
             startingLineNumber = "529"
             endingLineNumber = "529"
             landmarkName = "-getAllDetails"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5021,7 +5021,7 @@
             startingLineNumber = "190"
             endingLineNumber = "190"
             landmarkName = "-refreshAccessToken"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5037,7 +5037,7 @@
             startingLineNumber = "544"
             endingLineNumber = "544"
             landmarkName = "-onRespond:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5053,7 +5053,7 @@
             startingLineNumber = "589"
             endingLineNumber = "589"
             landmarkName = "-onRespond:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5069,7 +5069,7 @@
             startingLineNumber = "575"
             endingLineNumber = "575"
             landmarkName = "-onRespond:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5085,7 +5085,7 @@
             startingLineNumber = "562"
             endingLineNumber = "562"
             landmarkName = "-onRespond:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5165,7 +5165,7 @@
             startingLineNumber = "79"
             endingLineNumber = "79"
             landmarkName = "-Sync"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5229,7 +5229,7 @@
             startingLineNumber = "650"
             endingLineNumber = "650"
             landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5245,7 +5245,7 @@
             startingLineNumber = "636"
             endingLineNumber = "636"
             landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5261,7 +5261,7 @@
             startingLineNumber = "618"
             endingLineNumber = "618"
             landmarkName = "-tableView:editingStyleForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5293,7 +5293,39 @@
             startingLineNumber = "135"
             endingLineNumber = "135"
             landmarkName = "-acquireOrRefreshToken"
-            landmarkType = "5">
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/Synchronizer.m"
+            timestampString = "496056460.861951"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-Sync"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
+            timestampString = "496056469.172941"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
