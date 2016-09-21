@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SLFHttpClient.h"
 
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, SLFHttpClientDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, SLFHttpClientDelegate,UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

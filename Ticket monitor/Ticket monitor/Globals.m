@@ -8,7 +8,7 @@
 
 #import "Globals.h"
 #import "DBRepository.h"
-#import "AFURLSessionManager.h"
+#import <AFNetworking/AFNetworking.h>
 #import "SLFHttpClient.h"
 #import "Synchronizer.h"
 #import <ADAL/ADAL.h>
@@ -123,11 +123,11 @@
 -(void) acquireOrRefreshToken
 {
    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     //just for test
     //[userDefaults setObject:@"" forKey:@"SLFRefreshToken"];
     
-    NSString * refreshToken = [userDefaults valueForKey:@"SLFRefreshToken"];
+   // NSString * refreshToken = [userDefaults valueForKey:@"SLFRefreshToken"];
     // then check if we already have refresh token token
     
     [self logIn];

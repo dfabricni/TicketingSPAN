@@ -7,7 +7,7 @@
 //
 
 #import "FeedsFilteredViewController.h"
-#import "AFURLSessionManager.h"
+#import <AFNetworking/AFNetworking.h>
 
 #import "DBRepository.h"
 #import "Globals.h"

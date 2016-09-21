@@ -16,6 +16,7 @@
 #import "TicketDetaillViewController.h"
 #import "Synchronizer.h"
 #import <QuartzCore/QuartzCore.h>
+#import <UserNotifications/UserNotifications.h>
 
 @interface AppDelegate ()
 
@@ -27,14 +28,29 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
     
-    	UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-		UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-       [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+  
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound + UNAuthorizationOptionBadge)
+                          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                              // Enable or disable features based on authorization.
+                          }];
+    
+    //获取当前的通知设置，UNNotificationSettings 是只读对象，不能直接修改，只能通过以下方法获取
+    [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+        
+    }];
+    
+    //UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    
+	//	UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    
+    
+    //[[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
        [[UIApplication sharedApplication]  registerForRemoteNotifications];
     
-    
-    // UITabBarController * tabBarController =  (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+        // UITabBarController * tabBarController =  (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
      //tabBarController.tabBar.barTintColor = [UIColor blackColor];
     [[UITabBar appearance] setTintColor:[UIColor redColor]];
    // [[UITabBar appearance] setSelectedImageTintColor:[UIColor redColor]];
@@ -48,6 +64,10 @@
    
     
     return YES;
+}
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    
+    completionHandler(UNNotificationPresentationOptionAlert);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -10,7 +10,7 @@
 #import "DataModels.h"
 #import "Globals.h"
 #import "DBRepository.h"
-#import "AFHTTPRequestOperationManager.h"
+#import <AFNetworking/AFNetworking.h>
 
 static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.net/v2/api/";
 
@@ -60,16 +60,59 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
 
 -(void) registerDevice:(SLFDevice *)device
 {
+    Globals * globals = [Globals instance];
+    //DBRepository * repo = [[DBRepository alloc] init];
+    NSDictionary *parameters = [device dictionaryRepresentation];
     
-   // DBRepository * repo = [[DBRepository alloc] init];
-   
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer =[AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+
+    NSString * deviceRegisterLink = @"device";
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@", BaseURLString,deviceRegisterLink] parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"JSON: %@", [responseObject description]);
+        NSInteger statusCode = 0;
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
+        
+        if ([httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+            statusCode = httpResponse.statusCode;
+        }
+        
+        if(statusCode == 403)
+        {
+            NSError  *error = [NSError errorWithDomain:@"eu.span.slf" code:14 userInfo:[NSDictionary dictionaryWithObject:@"Forbidden" forKey:NSLocalizedDescriptionKey]];
+            
+            if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+                [self.delegate slfHTTPClient:self didFailWithError:error];
+            }
+            
+            
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"Error: %@", [error description]);
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+            [self.delegate slfHTTPClient:self didFailWithError:error];
+        }
+
+    }];
+    
+    /*
+    // DBRepository * repo = [[DBRepository alloc] init];
     NSDictionary *parameters = [device dictionaryRepresentation];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer =[AFJSONRequestSerializer serializer];
     
-    NSString * deviceRegisterLink = @"deviceV2";
-     
+    NSString * deviceRegisterLink = @"device";
+    
     
     NSMutableURLRequest *request =  [manager.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", BaseURLString,deviceRegisterLink] parameters:parameters error:nil];
     
@@ -85,23 +128,14 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         
         NSLog(@"JSON: %@", [responseObject description]);
         
-        
-        
         if(operation.response.statusCode == 403)
         {
             NSError  *error = [NSError errorWithDomain:@"eu.span.slf" code:14 userInfo:[NSDictionary dictionaryWithObject:@"Forbidden" forKey:NSLocalizedDescriptionKey]];
-
+            
             if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
                 [self.delegate slfHTTPClient:self didFailWithError:error];
             }
-
             
-        }else{
-        
-            Globals * globals = [Globals instance];
-            NSDictionary * dict = (NSDictionary*) responseObject;
-            globals.isMainSPANCompany = [dict objectForKey:@"IsMain"];
-            globals.companyID = [[dict objectForKey:@"CompanyID"] intValue];
             
         }
         
@@ -117,14 +151,63 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [operation start];
     [operation waitUntilFinished];
     // [manager.operationQueue addOperation:operation];
-    
-    
+    */
 }
 
 
 -(void) postSubscriptions:(SLFSubscriptionsRequest *)subscriptions{
     
     
+    Globals * globals = [Globals instance];
+    DBRepository * repo = [[DBRepository alloc] init];
+    NSDictionary *parameters = [subscriptions dictionaryRepresentation];
+    
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer =[AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    
+    
+    
+    [manager POST:[NSString stringWithFormat:@"%@subscriptions", BaseURLString] parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSInteger statusCode = 0;
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
+        
+        if ([httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+            statusCode = httpResponse.statusCode;
+        }
+        
+        [repo markAllAsSynced];
+        [repo deleteAllMarkedForDeletionAndSynced];
+        
+        NSLog(@"JSON: %@", [responseObject description]);
+        
+        if(statusCode != 200)
+        {
+            NSError  *error = [NSError errorWithDomain:@"eu.span.slf" code:14 userInfo:[NSDictionary dictionaryWithObject:@"Unexpected error" forKey:NSLocalizedDescriptionKey]];
+            
+            if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+                [self.delegate slfHTTPClient:self didFailWithError:error];
+            }
+            
+        }else{
+            if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdating:)]) {
+                [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdating:nil];
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        
+        
+    }];
+    
+    
+    /*
     DBRepository * repo = [[DBRepository alloc] init];
     NSDictionary *parameters = [subscriptions dictionaryRepresentation];
     
@@ -175,7 +258,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [operation waitUntilFinished];
    // [manager.operationQueue addOperation:operation];
 
-    
+    */
 }
 
 
@@ -186,17 +269,17 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     DBRepository * repo = [[DBRepository alloc] init];
 
     
-    NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@companies?timestamp=%f", BaseURLString, timestamp]]];
-    [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+   // NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@companies?timestamp=%f", BaseURLString, timestamp]]];
+   //: [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
  
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-
-   
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-    
+    [manager GET:[NSString stringWithFormat:@"%@companies?timestamp=%f", BaseURLString, timestamp] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         // save it in DB
         
         SLFCompaniesResponse * companiesResponse = [[SLFCompaniesResponse alloc] initWithDictionary:responseObject];
@@ -209,7 +292,24 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
             
             [repo saveCompany:companiesResponse.companies[i]];
         }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+            [self.delegate slfHTTPClient:self didFailWithError:error];
+        }
+        
 
+    }];
+    
+ 
+    /*AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+
+   
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+        
         
         
     
@@ -226,7 +326,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [operation start];
     [operation waitUntilFinished];
 
-
+*/
     
 }
 
@@ -236,10 +336,43 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     DBRepository * repo = [[DBRepository alloc] init];
     
     
-    NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@services?timestamp=%f", BaseURLString, timestamp]]];
-    [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
-
+    //NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@services?timestamp=%f", BaseURLString, timestamp]]];
+   // [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
     
+
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+     [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:[NSString stringWithFormat:@"%@services?timestamp=%f", BaseURLString, timestamp] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // save it in DB
+        
+       
+        SLFServicesResponse * servicesResponse = [[SLFServicesResponse alloc] initWithDictionary:responseObject];
+        
+        globals.settings.ServicesTimestamp = servicesResponse.maxtimestamp;
+        
+        [globals saveSettings];
+        
+        for (int i=0; i < [servicesResponse.services count]; i++) {
+            
+            [repo saveService:servicesResponse.services[i]];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+            [self.delegate slfHTTPClient:self didFailWithError:error];
+        }
+        
+        
+    }];
+    
+    
+    
+    /*
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -270,6 +403,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     
     [operation start];
     [operation waitUntilFinished];
+     */
 }
 
 -(void) getSubjects:(double)timestamp
@@ -278,9 +412,43 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     DBRepository * repo = [[DBRepository alloc] init];
     
     
-    NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@subjects?timestamp=%f", BaseURLString, timestamp]]];
-    [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+   // NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@subjects?timestamp=%f", BaseURLString, timestamp]]];
+   // [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
  
+    
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    
+    
+    [manager GET:[NSString stringWithFormat:@"%@subjects?timestamp=%f", BaseURLString, timestamp] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // save it in DB
+        
+        
+        SLFSubjectsResponse * subjectsResponse = [[SLFSubjectsResponse alloc] initWithDictionary:responseObject];
+        
+        globals.settings.SubjectsTimestamp = subjectsResponse.maxtimestamp;
+        
+        [globals saveSettings];
+        
+        for (int i=0; i < [subjectsResponse.subjects count]; i++) {
+            
+            [repo saveSubject:subjectsResponse.subjects[i]];
+        }
+
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+            [self.delegate slfHTTPClient:self didFailWithError:error];
+        }
+        
+        
+    }];
+    
+    /*
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
 
@@ -311,23 +479,29 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     [operation start];
     [operation waitUntilFinished];
     
-    
+    */
 }
 
 
 -(void) getAllSubscriptions
 {
-   
+    Globals * globals = [Globals instance];
+
     DBRepository * repo = [[DBRepository alloc] init];
     
     
-    NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@subscriptions", BaseURLString]]];
-    [requestWithURL setValue:self.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+   // NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@subscriptions", BaseURLString]]];
     
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+
+    [manager GET:[NSString stringWithFormat:@"%@subscriptions", BaseURLString] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         
         // save it in DB
         SLFSubscriptionsResponse * subscriptionsResponse = [[SLFSubscriptionsResponse alloc] initWithDictionary:responseObject];
@@ -348,38 +522,90 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdating:)]) {
             [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdating:nil];
         }
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+            [self.delegate slfHTTPClient:self didFailWithError:error];
+        }
+        
+        
+    }];
+
+    
+    
+    
+    /*
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requestWithURL];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+      
 
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
-            [self.delegate slfHTTPClient:self didFailWithError:error];
-        }
+       
         
     }];
     
     [operation start];
     [operation waitUntilFinished];
-
+*/
 }	
 
 -(void) getDetailByGUID:(NSString*) GUID username:(NSString*) username
 {
     
     //Globals * globals = [Globals instance];
+    NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@detail", BaseURLString]]];
     
-     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     parameters[@"guid"] = [NSString stringWithFormat:@"%@", GUID ];
     parameters[@"user"] = [NSString stringWithFormat:@"%@", username ];
     
+    
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager GET:requestWithURL.URL.absoluteString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+       
+        NSLog(@"JSON Ticket Detail: %@", [responseObject description]);
+        
+        SLFTicketDetail * ticketDetail = [[SLFTicketDetail alloc] initWithDictionary:responseObject];
+        
+        DBRepository * repo = [[DBRepository alloc] init];
+        [repo saveTicketDetail:ticketDetail];
+        
+        // call delegate to refresh table view
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdating:)]) {
+            [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdating:ticketDetail];
+        }
+    
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+            [self.delegate slfHTTPClient:self didFailWithError:error];
+        }
+        
+        
+    }];
+    /*
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:  BaseURLString]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
     //[manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
     
-    [manager GET:@"detail" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {;;
+    [manager GET:@"detail" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         
           NSLog(@"JSON Ticket Detail: %@", [responseObject description]);
         
@@ -402,13 +628,56 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
             
         }];
 
-
+*/
 }
 
 -(void) getDetailByGUIDFromBackgroundTask:(NSString*) GUID username:(NSString*) username taskID:(UIBackgroundTaskIdentifier) taskID
 {
    // Globals * globals = [Globals instance];
     
+    NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@detail", BaseURLString]]];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"guid"] = [NSString stringWithFormat:@"%@", GUID ];
+    parameters[@"user"] = [NSString stringWithFormat:@"%@", username ];
+    
+    
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager GET:requestWithURL.URL.absoluteString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"JSON Ticket Detail: %@", [responseObject description]);
+        
+        SLFTicketDetail * ticketDetail = [[SLFTicketDetail alloc] initWithDictionary:responseObject];
+        
+        DBRepository * repo = [[DBRepository alloc] init];
+        [repo saveTicketDetail:ticketDetail];
+        
+        // call delegate to refresh table view
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdatingFromBackgroundTask:taskID:)]) {
+            [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdatingFromBackgroundTask:ticketDetail taskID:taskID ];
+        }
+
+        
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithErrorFromBackgroundTask:taskID:)]) {
+            [self.delegate slfHTTPClient:self didFailWithErrorFromBackgroundTask:error taskID:taskID];
+        }
+        
+        
+    }];
+    
+    
+    /*
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     parameters[@"guid"] = [NSString stringWithFormat:@"%@", GUID ];
@@ -421,7 +690,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     
     //[manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
     
-    [manager GET:@"detail" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {;;
+    [manager GET:@"detail" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSLog(@"JSON Ticket Detail: %@", [responseObject description]);
         
@@ -443,6 +712,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         }
         
     }];
+     */
 }
 
 -(void) getLatestFeeds:(NSString*) timeStamp
@@ -464,6 +734,60 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         timestamp  =  [globals formatDateFromTimestampUTC:maxTimestampInSeconds];
     }*/
     //timeStamp = [repo findMaxTimestampVer2];
+    
+    if([timeStamp isEqualToString:@""] || timeStamp == nil)
+    {
+        timeStamp = @"0";
+    }
+
+    
+    NSMutableURLRequest * requestWithURL  = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat:@"%@feed", BaseURLString]]];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"timestamp"] = [NSString stringWithFormat:@"%@", timeStamp ];
+    
+    
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+     [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
+    
+    [manager GET:requestWithURL.URL.absoluteString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"JSON Ticket Detail: %@", [responseObject description]);
+        
+        NSArray * array = (NSArray*) responseObject;
+        
+        for(int i=0; i < [array count] ; i++)
+        {
+            SLFTicketDetail * ticketDetail = [[SLFTicketDetail alloc] initWithDictionary: (NSDictionary *)[array objectAtIndex:i]];
+            
+            DBRepository * repo = [[DBRepository alloc] init];
+            [repo saveTicketDetail:ticketDetail];
+            
+        }
+        
+        // call delegate to refresh table view
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFinishedWithPullingAndUpdating:)]) {
+            [self.delegate slfHTTPClient:self didFinishedWithPullingAndUpdating:nil];
+        }
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if ([self.delegate respondsToSelector:@selector(slfHTTPClient:didFailWithError:)]) {
+            [self.delegate slfHTTPClient:self didFailWithError:error];
+        }
+        
+    }];
+
+    
+    /*
+    
     if([timeStamp isEqualToString:@""] || timeStamp == nil)
     {
         timeStamp = @"0";
@@ -509,7 +833,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
         }
         
     }];
-
+*/
 }
 
 @end

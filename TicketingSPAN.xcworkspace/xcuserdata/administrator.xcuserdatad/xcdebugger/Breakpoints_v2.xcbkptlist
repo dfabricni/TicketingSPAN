@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "-getCompanies:"
             landmarkType = "7">
             <Locations>
@@ -144,22 +144,6 @@
             startingLineNumber = "848"
             endingLineNumber = "848"
             landmarkName = "-disableAllSubscriptionsForGroup:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "-getCompanies:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -330,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "462"
+            endingLineNumber = "462"
             landmarkName = "-getSubjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
             landmarkName = "-getSubjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
             landmarkName = "-getSubjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "-getServices:"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
             landmarkName = "-getServices:"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "-getCompanies:"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "-getCompanies:"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,27 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-getCompanies:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
             landmarkName = "-getAllSubscriptions"
             landmarkType = "7">
             <Locations>
@@ -570,27 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
-            landmarkName = "-getAllSubscriptions"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "494931884.09902"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "554"
+            endingLineNumber = "554"
             landmarkName = "-getAllSubscriptions"
             landmarkType = "7">
          </BreakpointContent>
@@ -624,22 +576,6 @@
             startingLineNumber = "461"
             endingLineNumber = "461"
             landmarkName = "-saveGroup:syncStatus:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
-            landmarkName = "-getAllSubscriptions"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -746,27 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "-getCompanies:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "-getCompanies:"
             landmarkType = "7">
          </BreakpointContent>
@@ -986,11 +906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "-getSubjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1002,11 +922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "-getSubjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1018,11 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "-getSubjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1082,11 +1002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-postSubscriptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1098,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-postSubscriptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1130,11 +1050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1146,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1178,11 +1098,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "480429724.195768"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1194,11 +1114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "480429724.195768"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1210,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "476796475.279585"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1226,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
+            startingLineNumber = "623"
+            endingLineNumber = "623"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
             <Locations>
@@ -1289,11 +1209,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1305,11 +1225,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1321,11 +1241,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "612"
+            endingLineNumber = "612"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1337,11 +1257,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "624"
+            endingLineNumber = "624"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1353,11 +1273,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "615"
+            endingLineNumber = "615"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1433,11 +1353,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "610"
+            endingLineNumber = "610"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1465,11 +1385,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
+            startingLineNumber = "625"
+            endingLineNumber = "625"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1529,11 +1449,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
             <Locations>
@@ -1592,11 +1512,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "480429724.195768"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1608,11 +1528,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "476796794.925098"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1624,28 +1544,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1655,45 +1559,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-registerDevice:"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1720,11 +1592,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "614"
+            endingLineNumber = "614"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1768,11 +1640,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
+            startingLineNumber = "812"
+            endingLineNumber = "812"
             landmarkName = "-getLatestFeeds:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1784,11 +1656,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "486"
-            endingLineNumber = "486"
+            startingLineNumber = "810"
+            endingLineNumber = "810"
             landmarkName = "-getLatestFeeds:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1800,11 +1672,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "816"
+            endingLineNumber = "816"
             landmarkName = "-getLatestFeeds:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1944,11 +1816,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "-getServices:"
             landmarkType = "7">
             <Locations>
@@ -1992,11 +1864,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
             landmarkName = "-getServices:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2567,11 +2439,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-postSubscriptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2599,11 +2471,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
+            startingLineNumber = "831"
+            endingLineNumber = "831"
             landmarkName = "-getLatestFeeds:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2615,11 +2487,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "472"
-            endingLineNumber = "472"
+            startingLineNumber = "796"
+            endingLineNumber = "796"
             landmarkName = "-getLatestFeeds:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2807,11 +2679,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "-postSubscriptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3350,22 +3222,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "-getCompanies:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SecondViewController.m"
             timestampString = "480499939.993279"
             startingColumnNumber = "9223372036854775807"
@@ -3479,11 +3335,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "479736295.921156"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3495,11 +3351,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "482"
-            endingLineNumber = "482"
+            startingLineNumber = "806"
+            endingLineNumber = "806"
             landmarkName = "-getLatestFeeds:"
             landmarkType = "7">
             <Locations>
@@ -3543,11 +3399,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
             <Locations>
@@ -3591,11 +3447,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3607,11 +3463,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "619"
+            endingLineNumber = "619"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3623,11 +3479,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3639,11 +3495,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3655,11 +3511,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "479736295.921156"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3671,11 +3527,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-slfHTTPClient:didFinishedWithPullingAndUpdatingFromBackgroundTask:taskID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3687,11 +3543,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316590.770492"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-slfHTTPClient:didFailWithErrorFromBackgroundTask:taskID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3703,11 +3559,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "626"
+            endingLineNumber = "626"
             landmarkName = "-getDetailByGUID:username:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3719,11 +3575,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
             landmarkName = "-getDetailByGUIDFromBackgroundTask:username:taskID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3735,11 +3591,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
+            startingLineNumber = "699"
+            endingLineNumber = "699"
             landmarkName = "-getDetailByGUIDFromBackgroundTask:username:taskID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3751,11 +3607,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "710"
+            endingLineNumber = "710"
             landmarkName = "-getDetailByGUIDFromBackgroundTask:username:taskID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3847,11 +3703,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "477316616.392371"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "-applicationWillTerminate:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3901,70 +3757,6 @@
             startingLineNumber = "401"
             endingLineNumber = "401"
             landmarkName = "-showMessage:withTitle:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "-registerDevice:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4055,11 +3847,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-postSubscriptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4087,11 +3879,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "-postSubscriptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4483,7 +4275,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
@@ -4694,11 +4486,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
+            timestampString = "496146841.3637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-postSubscriptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4710,11 +4502,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "480429697.262463"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4726,11 +4518,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "480429698.774196"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4861,22 +4653,6 @@
             endingLineNumber = "75"
             landmarkName = "-refreshSubscriptions"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
-            landmarkName = "-getAllSubscriptions"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5094,11 +4870,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "485340561.908177"
+            timestampString = "496148311.214166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "589"
-            endingLineNumber = "589"
+            startingLineNumber = "597"
+            endingLineNumber = "597"
             landmarkName = "-onRespond:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5110,11 +4886,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "485340564.083347"
+            timestampString = "496148311.214166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
+            startingLineNumber = "583"
+            endingLineNumber = "583"
             landmarkName = "-onRespond:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5126,76 +4902,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
-            timestampString = "485340565.684717"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "562"
-            endingLineNumber = "562"
+            startingLineNumber = "563"
+            endingLineNumber = "563"
             landmarkName = "-onRespond:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679703.31335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679361.054499"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679401.774013"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679403.742331"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-registerDevice:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5212,38 +4924,6 @@
             startingLineNumber = "79"
             endingLineNumber = "79"
             landmarkName = "-Sync"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679859.132818"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487679924.954407"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-registerDevice:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5317,22 +4997,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
-            timestampString = "487837420.368777"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-registerDevice:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
             timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
@@ -5366,11 +5030,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
-            timestampString = "496056469.172941"
+            timestampString = "496136264.178844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5404,6 +5068,165 @@
             startingLineNumber = "243"
             endingLineNumber = "243"
             landmarkName = "-logIn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
+            timestampString = "496146933.479144"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-postSubscriptions:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
+            timestampString = "496146939.871543"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-registerDevice:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/SLFHttpClient.m"
+            timestampString = "496146965.927343"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "-getSubjects:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
+            timestampString = "496148311.214166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "576"
+            endingLineNumber = "576"
+            landmarkName = "-onRespond:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
+            timestampString = "496147769.066415"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "540"
+            endingLineNumber = "540"
+            landmarkName = "-onRespond:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
+            timestampString = "496148311.214166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "580"
+            endingLineNumber = "580"
+            landmarkName = "-onRespond:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[TicketDetaillViewController onRespond:]_block_invoke.301"
+                  moduleName = "SPAN Live Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/Ticket%20monitor/TicketDetaillViewController.m"
+                  timestampString = "496147822.645499"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "576"
+                  endingLineNumber = "576"
+                  offsetFromSymbolStart = "416">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.304"
+                  moduleName = "SPAN Live Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/Ticket%20monitor/TicketDetaillViewController.m"
+                  timestampString = "496147822.648089"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "576"
+                  endingLineNumber = "576"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.305"
+                  moduleName = "SPAN Live Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/Ticket%20monitor/TicketDetaillViewController.m"
+                  timestampString = "496147822.650838"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "576"
+                  endingLineNumber = "576"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/TicketDetaillViewController.m"
+            timestampString = "496148298.447662"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
+            landmarkName = "-onRespond:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

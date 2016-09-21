@@ -541,7 +541,7 @@ else if (SControl.selectedSegmentIndex==1)
     NSString *subject=[NSString stringWithFormat:@"%@ *ref#24-%d", self.ticketDetail.ticketTitle, self.ticketDetail.ticketID];
     NSString *body = @"";
 
-   
+   NSDictionary *options = @{UIApplicationOpenURLOptionUniversalLinksOnly : @NO};
    //: NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     UIAlertController * actions=   [UIAlertController
@@ -554,7 +554,8 @@ else if (SControl.selectedSegmentIndex==1)
         
         NSString * email = [NSString stringWithFormat:@"ms-outlook://compose?to=%@&subject=%@&body=%@", toEmail, subject, body];
         email = [email stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+         [ [UIApplication sharedApplication]  openURL:[NSURL URLWithString:email] options:options completionHandler:nil];
         
     }];
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"ms-outlook://"]]) {
@@ -566,10 +567,17 @@ else if (SControl.selectedSegmentIndex==1)
     
          NSString *email = [NSString stringWithFormat:@"mailto:%@?subject=%@&body=%@", toEmail,subject,body];
          email = [email stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
-         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
-        
-    }];
-    
+       //  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+        // [[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email] options:nil completionHandler:nil] ] ;
+         
+         [ [UIApplication sharedApplication]  openURL:[NSURL URLWithString:email] options:options completionHandler:^(BOOL success) {
+             
+             NSLog(@"Open %@: %d",email,success);
+         
+         }];
+         
+         
+     }];
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mailto://"]]) {
 
         [actions addAction:mailActionAction];
@@ -580,7 +588,7 @@ else if (SControl.selectedSegmentIndex==1)
       
         NSString *email = [NSString stringWithFormat:@"googlegmail:///co?to=%@&subject=%@&body=%@", toEmail,subject,body];
         email = [email stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+         [ [UIApplication sharedApplication]  openURL:[NSURL URLWithString:email] options:options completionHandler:nil];
         
     }];
     
