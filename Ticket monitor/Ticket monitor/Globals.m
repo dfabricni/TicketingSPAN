@@ -9,11 +9,9 @@
 #import "Globals.h"
 #import "DBRepository.h"
 #import "AFURLSessionManager.h"
-#import "ADAuthenticationContext.h"
-
 #import "SLFHttpClient.h"
 #import "Synchronizer.h"
-
+#import <ADAL/ADAL.h>
 
 @implementation Globals
 
@@ -132,6 +130,8 @@
     NSString * refreshToken = [userDefaults valueForKey:@"SLFRefreshToken"];
     // then check if we already have refresh token token
     
+    [self logIn];
+    /*
     if (refreshToken == nil || [refreshToken isEqualToString:@""]) {
         
         //no refresh token
@@ -141,9 +141,9 @@
     {
         [self refreshAccessToken];
     }
+    */
     
     
-    ;;
 }
 -(void) exit
 {
@@ -161,7 +161,7 @@
 }
 
 
-
+/*
 -(void) refreshAccessToken
 {
     ADAuthenticationError *error;
@@ -173,7 +173,7 @@
     NSString * refreshToken = [userDefaults valueForKey:@"SLFRefreshToken"];
     
     [authContext acquireTokenByRefreshToken:refreshToken clientId:self.clientID completionBlock:^(ADAuthenticationResult *result) {
-        if (result.tokenCacheStoreItem == nil)
+        if (result.tokenCacheItem == nil)
         {
             [userDefaults setObject:@"" forKey:@"SLFRefreshToken"];
             [self exit];;
@@ -186,13 +186,13 @@
             
             Globals * globals  = [Globals instance];
             
-            globals.oAuthAccessToken = [NSString stringWithFormat:@"%@ %@",result.tokenCacheStoreItem.accessTokenType, result.tokenCacheStoreItem.accessToken];
+            globals.oAuthAccessToken = [NSString stringWithFormat:@"%@ %@",result.tokenCacheItem.accessTokenType, result.tokenCacheItem.accessToken];
             
-            globals.expiresOn = result.tokenCacheStoreItem.expiresOn;
+            globals.expiresOn = result.tokenCacheItem.expiresOn;
             
            // globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:result.tokenCacheStoreItem.refreshToken forKey:@"SLFRefreshToken"];
+            [userDefaults setObject:result.tokenCacheItem.refreshToken forKey:@"SLFRefreshToken"];
             
             // store this token also in some persistant storage
             
@@ -217,7 +217,7 @@
     }];
 
 }
-
+*/
 
 -(void) logIn
 {
@@ -229,7 +229,7 @@
     //authContext acquireTokenByRefreshToken:<#(NSString *)#> clientId:<#(NSString *)#> completionBlock:<#^(ADAuthenticationResult *result)completionBlock#>
     
     [authContext acquireTokenWithResource:self.resourceURI clientId:self.clientID redirectUri:redirectUri completionBlock:^(ADAuthenticationResult *result) {
-        if (result.tokenCacheStoreItem == nil)
+        if (result.tokenCacheItem == nil)
         {
             [self exit];
             
@@ -242,23 +242,23 @@
             
             Globals * globals  = [Globals instance];
             
-            globals.oAuthAccessToken = [NSString stringWithFormat:@"%@ %@",result.tokenCacheStoreItem.accessTokenType, result.tokenCacheStoreItem.accessToken];
+            globals.oAuthAccessToken = [NSString stringWithFormat:@"%@ %@",result.tokenCacheItem.accessTokenType, result.tokenCacheItem.accessToken];
             
-            globals.expiresOn = result.tokenCacheStoreItem.expiresOn;
+            globals.expiresOn = result.tokenCacheItem.expiresOn;
             
            // globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
             
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:result.tokenCacheStoreItem.refreshToken forKey:@"SLFRefreshToken"];
+            [userDefaults setObject:result.tokenCacheItem.refreshToken forKey:@"SLFRefreshToken"];
             
             // store this token also in some persistant storage
             
             if (globals.device != nil) {
                 
-                globals.device.username = result.tokenCacheStoreItem.userInformation.userId ;
+                globals.device.username = result.tokenCacheItem.userInformation.userId ;
                 
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                [userDefaults setObject:result.tokenCacheStoreItem.userInformation.userId forKey:@"SLFUsername"];
+                [userDefaults setObject:result.tokenCacheItem.userInformation.userId forKey:@"SLFUsername"];
 
             }
             

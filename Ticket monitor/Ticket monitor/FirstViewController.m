@@ -8,7 +8,7 @@
 
 #import "FirstViewController.h"
 #import "AFURLSessionManager.h"
-#import "ADAuthenticationContext.h"
+
 #import "DBRepository.h"
 #import "Globals.h"
 #import "SLFHttpClient.h"

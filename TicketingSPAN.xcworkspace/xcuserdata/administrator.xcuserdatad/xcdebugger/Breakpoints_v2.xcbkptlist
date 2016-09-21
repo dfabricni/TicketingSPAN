@@ -96,7 +96,7 @@
             startingLineNumber = "215"
             endingLineNumber = "215"
             landmarkName = "-getCompanies:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -160,7 +160,7 @@
             startingLineNumber = "210"
             endingLineNumber = "210"
             landmarkName = "-getCompanies:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -336,7 +336,7 @@
             startingLineNumber = "294"
             endingLineNumber = "294"
             landmarkName = "-getSubjects:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -368,7 +368,7 @@
             startingLineNumber = "279"
             endingLineNumber = "279"
             landmarkName = "-getSubjects:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -384,7 +384,7 @@
             startingLineNumber = "305"
             endingLineNumber = "305"
             landmarkName = "-getSubjects:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -400,7 +400,7 @@
             startingLineNumber = "252"
             endingLineNumber = "252"
             landmarkName = "-getServices:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -416,7 +416,7 @@
             startingLineNumber = "56"
             endingLineNumber = "56"
             landmarkName = "-setBearerToken:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -432,7 +432,7 @@
             startingLineNumber = "265"
             endingLineNumber = "265"
             landmarkName = "-getServices:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -448,7 +448,7 @@
             startingLineNumber = "220"
             endingLineNumber = "220"
             landmarkName = "-getCompanies:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -464,7 +464,7 @@
             startingLineNumber = "217"
             endingLineNumber = "217"
             landmarkName = "-getCompanies:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -480,7 +480,7 @@
             startingLineNumber = "37"
             endingLineNumber = "37"
             landmarkName = "+createSLFHttpClient"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -512,7 +512,7 @@
             startingLineNumber = "206"
             endingLineNumber = "206"
             landmarkName = "-getCompanies:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -528,7 +528,7 @@
             startingLineNumber = "330"
             endingLineNumber = "330"
             landmarkName = "-getAllSubscriptions"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -576,7 +576,7 @@
             startingLineNumber = "362"
             endingLineNumber = "362"
             landmarkName = "-getAllSubscriptions"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -592,7 +592,7 @@
             startingLineNumber = "356"
             endingLineNumber = "356"
             landmarkName = "-getAllSubscriptions"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -640,7 +640,7 @@
             startingLineNumber = "336"
             endingLineNumber = "336"
             landmarkName = "-getAllSubscriptions"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -752,7 +752,7 @@
             startingLineNumber = "207"
             endingLineNumber = "207"
             landmarkName = "-getCompanies:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -768,7 +768,7 @@
             startingLineNumber = "219"
             endingLineNumber = "219"
             landmarkName = "-getCompanies:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -992,7 +992,7 @@
             startingLineNumber = "281"
             endingLineNumber = "281"
             landmarkName = "-getSubjects:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1008,7 +1008,7 @@
             startingLineNumber = "290"
             endingLineNumber = "290"
             landmarkName = "-getSubjects:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1024,7 +1024,7 @@
             startingLineNumber = "298"
             endingLineNumber = "298"
             landmarkName = "-getSubjects:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1088,7 +1088,7 @@
             startingLineNumber = "167"
             endingLineNumber = "167"
             landmarkName = "-postSubscriptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1104,7 +1104,7 @@
             startingLineNumber = "142"
             endingLineNumber = "142"
             landmarkName = "-postSubscriptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1126,7 +1126,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/AppDelegate.m"
@@ -1232,7 +1232,7 @@
             startingLineNumber = "397"
             endingLineNumber = "397"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1311,7 +1311,7 @@
             startingLineNumber = "380"
             endingLineNumber = "380"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1327,7 +1327,7 @@
             startingLineNumber = "386"
             endingLineNumber = "386"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1343,7 +1343,7 @@
             startingLineNumber = "398"
             endingLineNumber = "398"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1359,7 +1359,7 @@
             startingLineNumber = "389"
             endingLineNumber = "389"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1439,7 +1439,7 @@
             startingLineNumber = "384"
             endingLineNumber = "384"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1471,13 +1471,13 @@
             startingLineNumber = "399"
             endingLineNumber = "399"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Synchronizer.m"
@@ -1662,7 +1662,7 @@
             startingLineNumber = "110"
             endingLineNumber = "110"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1678,7 +1678,7 @@
             startingLineNumber = "89"
             endingLineNumber = "89"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1694,7 +1694,7 @@
             startingLineNumber = "79"
             endingLineNumber = "79"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1710,7 +1710,7 @@
             startingLineNumber = "58"
             endingLineNumber = "58"
             landmarkName = "-setBearerToken:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1726,7 +1726,7 @@
             startingLineNumber = "388"
             endingLineNumber = "388"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1757,7 +1757,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "-formatDateFromTimestamp:"
+            landmarkName = "-formatDateFromTimestampUTC:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1774,7 +1774,7 @@
             startingLineNumber = "488"
             endingLineNumber = "488"
             landmarkName = "-getLatestFeeds:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1790,7 +1790,7 @@
             startingLineNumber = "486"
             endingLineNumber = "486"
             landmarkName = "-getLatestFeeds:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1806,7 +1806,7 @@
             startingLineNumber = "492"
             endingLineNumber = "492"
             landmarkName = "-getLatestFeeds:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1950,7 +1950,7 @@
             startingLineNumber = "246"
             endingLineNumber = "246"
             landmarkName = "-getServices:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1998,7 +1998,7 @@
             startingLineNumber = "258"
             endingLineNumber = "258"
             landmarkName = "-getServices:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2573,7 +2573,7 @@
             startingLineNumber = "159"
             endingLineNumber = "159"
             landmarkName = "-postSubscriptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2605,7 +2605,7 @@
             startingLineNumber = "507"
             endingLineNumber = "507"
             landmarkName = "-getLatestFeeds:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2621,7 +2621,7 @@
             startingLineNumber = "472"
             endingLineNumber = "472"
             landmarkName = "-getLatestFeeds:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2813,7 +2813,7 @@
             startingLineNumber = "148"
             endingLineNumber = "148"
             landmarkName = "-postSubscriptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2855,11 +2855,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-logIn"
             landmarkType = "7">
             <Locations>
@@ -2919,11 +2919,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "-logIn"
             landmarkType = "7">
          </BreakpointContent>
@@ -2931,15 +2931,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "-logIn"
             landmarkType = "7">
          </BreakpointContent>
@@ -2967,11 +2967,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-logIn"
             landmarkType = "7">
          </BreakpointContent>
@@ -2983,11 +2983,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "-logIn"
             landmarkType = "7">
          </BreakpointContent>
@@ -3143,13 +3143,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "-refreshAccessToken"
-            landmarkType = "7">
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "@implementation Globals"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3223,11 +3223,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-acquireOrRefreshToken"
             landmarkType = "7">
          </BreakpointContent>
@@ -3239,11 +3239,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-acquireOrRefreshToken"
             landmarkType = "7">
          </BreakpointContent>
@@ -3271,13 +3271,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "-refreshAccessToken"
-            landmarkType = "7">
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "@implementation Globals"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3357,7 +3357,7 @@
             startingLineNumber = "202"
             endingLineNumber = "202"
             landmarkName = "-getCompanies:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3459,15 +3459,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "-logIn"
             landmarkType = "7">
          </BreakpointContent>
@@ -3501,7 +3501,7 @@
             startingLineNumber = "482"
             endingLineNumber = "482"
             landmarkName = "-getLatestFeeds:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -3549,7 +3549,7 @@
             startingLineNumber = "382"
             endingLineNumber = "382"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -3613,7 +3613,7 @@
             startingLineNumber = "393"
             endingLineNumber = "393"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3709,7 +3709,7 @@
             startingLineNumber = "400"
             endingLineNumber = "400"
             landmarkName = "-getDetailByGUID:username:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3725,7 +3725,7 @@
             startingLineNumber = "419"
             endingLineNumber = "419"
             landmarkName = "-getDetailByGUIDFromBackgroundTask:username:taskID:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3741,7 +3741,7 @@
             startingLineNumber = "430"
             endingLineNumber = "430"
             landmarkName = "-getDetailByGUIDFromBackgroundTask:username:taskID:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3757,7 +3757,7 @@
             startingLineNumber = "441"
             endingLineNumber = "441"
             landmarkName = "-getDetailByGUIDFromBackgroundTask:username:taskID:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3821,7 +3821,7 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "+createSLFHttpClient"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3863,13 +3863,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "-refreshAccessToken"
-            landmarkType = "7">
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "@implementation Globals"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3917,7 +3917,7 @@
             startingLineNumber = "93"
             endingLineNumber = "93"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3933,7 +3933,7 @@
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3949,7 +3949,7 @@
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3965,7 +3965,7 @@
             startingLineNumber = "92"
             endingLineNumber = "92"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3975,13 +3975,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "-refreshAccessToken"
-            landmarkType = "7">
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "@implementation Globals"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4061,7 +4061,7 @@
             startingLineNumber = "152"
             endingLineNumber = "152"
             landmarkName = "-postSubscriptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4093,7 +4093,7 @@
             startingLineNumber = "154"
             endingLineNumber = "154"
             landmarkName = "-postSubscriptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4471,13 +4471,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-refreshAccessToken"
-            landmarkType = "7">
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "@implementation Globals"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4487,11 +4487,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-logIn"
             landmarkType = "7">
          </BreakpointContent>
@@ -4499,17 +4499,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "-logIn"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__16-[Globals logIn]_block_invoke_2"
+                  moduleName = "SPAN Live Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/Ticket%20monitor/Globals.m"
+                  timestampString = "496067655.735879"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.130"
+                  moduleName = "SPAN Live Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/Ticket%20monitor/Globals.m"
+                  timestampString = "496067655.738793"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.131"
+                  moduleName = "SPAN Live Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/administrator/Development/TicketingSPAN/Ticket%20monitor/Ticket%20monitor/Globals.m"
+                  timestampString = "496067655.741487"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4535,13 +4582,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "-refreshAccessToken"
-            landmarkType = "7">
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "@implementation Globals"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -4653,7 +4700,7 @@
             startingLineNumber = "146"
             endingLineNumber = "146"
             landmarkName = "-postSubscriptions:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4829,7 +4876,7 @@
             startingLineNumber = "347"
             endingLineNumber = "347"
             landmarkName = "-getAllSubscriptions"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4871,13 +4918,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "-refreshAccessToken"
-            landmarkType = "7">
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "@implementation Globals"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5015,13 +5062,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "-refreshAccessToken"
-            landmarkType = "7">
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "@implementation Globals"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5101,7 +5148,7 @@
             startingLineNumber = "90"
             endingLineNumber = "90"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5117,7 +5164,7 @@
             startingLineNumber = "77"
             endingLineNumber = "77"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5133,7 +5180,7 @@
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5149,7 +5196,7 @@
             startingLineNumber = "106"
             endingLineNumber = "106"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5181,7 +5228,7 @@
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5197,7 +5244,7 @@
             startingLineNumber = "118"
             endingLineNumber = "118"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5277,7 +5324,7 @@
             startingLineNumber = "117"
             endingLineNumber = "117"
             landmarkName = "-registerDevice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5287,11 +5334,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Globals.m"
-            timestampString = "487845317.416598"
+            timestampString = "496066231.227037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-acquireOrRefreshToken"
             landmarkType = "7">
          </BreakpointContent>
@@ -5299,7 +5346,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ticket monitor/Ticket monitor/Synchronizer.m"
@@ -5325,6 +5372,38 @@
             startingLineNumber = "82"
             endingLineNumber = "82"
             landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/Globals.m"
+            timestampString = "496066300.558457"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-logIn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ticket monitor/Ticket monitor/Globals.m"
+            timestampString = "496066305.446268"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "-logIn"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

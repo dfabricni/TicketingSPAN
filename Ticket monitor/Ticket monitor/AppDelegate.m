@@ -11,7 +11,7 @@
 #import "SLFHttpClient.h"
 #import "Globals.h"
 #import "DataModels.h"
-#import "ADAuthenticationContext.h"
+
 #import "DBRepository.h"
 #import "TicketDetaillViewController.h"
 #import "Synchronizer.h"
@@ -115,6 +115,7 @@
     client.delegate = nil;
     [app endBackgroundTask:taskID];
 }
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 
