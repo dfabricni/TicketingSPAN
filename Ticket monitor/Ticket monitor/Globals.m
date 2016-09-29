@@ -27,7 +27,7 @@
 
 
 - (id)init {
-  if (self = [super init]) {
+  if (self = [super init]) {	
       
       // get settings
       self.expiresOn = [NSDate date];
@@ -217,8 +217,8 @@
     }];
 
 }
-*/
 
+*/
 -(void) logIn
 {
     

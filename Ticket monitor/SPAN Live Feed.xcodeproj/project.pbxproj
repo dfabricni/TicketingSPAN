@@ -677,11 +677,12 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "";
-				PROVISIONING_PROFILE = "414aa70e-46a2-4d92-bc97-b0003e475e38";
+				PROVISIONING_PROFILE = "55072486-d2dd-42c2-81b9-67db13a51f5c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -725,6 +726,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
 			name = Release;
 		};
@@ -748,12 +750,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "-deep";
 				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.span.serviceDesk.SLF;
 				PRODUCT_NAME = "SPAN Live Feed";
-				PROVISIONING_PROFILE = "414aa70e-46a2-4d92-bc97-b0003e475e38";
+				PROVISIONING_PROFILE = "55072486-d2dd-42c2-81b9-67db13a51f5c";
 			};
 			name = Debug;
 		};

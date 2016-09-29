@@ -35,12 +35,16 @@
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound + UNAuthorizationOptionBadge)
                           completionHandler:^(BOOL granted, NSError * _Nullable error) {
                               // Enable or disable features based on authorization.
+                              
+        
+                              
                           }];
     
-    //获取当前的通知设置，UNNotificationSettings 是只读对象，不能直接修改，只能通过以下方法获取
-    [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+       [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
         
     }];
+    
+    [[UIApplication sharedApplication]  registerForRemoteNotifications];
     
     //UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     
@@ -48,7 +52,8 @@
     
     
     //[[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-       [[UIApplication sharedApplication]  registerForRemoteNotifications];
+    
+    
     
         // UITabBarController * tabBarController =  (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
      //tabBarController.tabBar.barTintColor = [UIColor blackColor];
@@ -64,10 +69,6 @@
    
     
     return YES;
-}
--(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
-    
-    completionHandler(UNNotificationPresentationOptionAlert);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -136,7 +137,149 @@
     [app endBackgroundTask:taskID];
 }
 
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+{
+    
+     SLFNotification * slfNotification   =[[SLFNotification alloc] initWithDictionary:notification.request.content.userInfo];
+    
+    NSLog( @"Handle push from foreground" );
+    // custom code to handle push while app is in the foreground
+    NSLog(@"%@", notification.request.content.userInfo);
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString * username = [userDefaults objectForKey:@"SLFUsername"];
+    SLFHttpClient * httpClient = [SLFHttpClient createSLFHttpClient];
+    // download it and refresh Firstview screen (table)
+    [httpClient getDetailByGUID:slfNotification.GUID username:username];
 
+    
+    completionHandler(UNNotificationPresentationOptionAlert);
+    
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)())completionHandler
+{
+    
+    SLFNotification * slfNotification   =[[SLFNotification alloc] initWithDictionary:response.notification.request.content.userInfo];
+
+    
+    
+    NSLog( @"Handle push from background or closed" );
+    // if you set a member variable in didReceiveRemoteNotification, you  will know if this is from closed or background
+    NSLog(@"%@", response.notification.request.content.userInfo);
+    
+    UIApplicationState state = [UIApplication sharedApplication].applicationState;
+    
+    if(state == UIApplicationStateBackground)
+    {
+       
+        UIBackgroundTaskIdentifier bgTask;
+        
+        UIApplication  *app = [UIApplication sharedApplication];
+        
+        bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+            
+            NSLog(@"Timeout for background process");
+        }];
+        
+        
+       
+        
+        
+      //  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            // Do the work associated with the task, preferably in chunks.
+            
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSString * username = [userDefaults objectForKey:@"SLFUsername"];
+            
+            SLFHttpClient * httpClient = [SLFHttpClient createSLFHttpClient];
+            httpClient.delegate = self;
+            [httpClient getDetailByGUIDFromBackgroundTask:slfNotification.GUID username:username  taskID:bgTask];
+        //});
+       
+
+        
+    } else if(state == UIApplicationStateInactive)
+    {
+        // download it  and  show it
+        
+      
+        // maybe first show view controller
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        TicketDetaillViewController *vc = (TicketDetaillViewController*)[storyboard instantiateViewControllerWithIdentifier:@"TicketDetail"];
+        [vc initWithTicketDetailID:slfNotification.GUID];
+        UITabBarController * tabBarController =  (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+        
+        // then cehck DB
+        // if does not exists then dwnload it
+        UINavigationController * navController = (UINavigationController*)[tabBarController.viewControllers objectAtIndex:0];
+        
+        long count = [navController.viewControllers count];
+        
+        if([[navController.viewControllers objectAtIndex:count-1] isKindOfClass:[TicketDetaillViewController class]])
+        {
+            TicketDetaillViewController *vcExisting = (TicketDetaillViewController*)[navController.viewControllers objectAtIndex:count-1];
+            [vcExisting initWithTicketDetailID:slfNotification.GUID];
+            
+        }else
+        {
+            [navController pushViewController:vc animated:TRUE];
+        }
+        
+        completionHandler(UIBackgroundFetchResultNewData);
+        
+    }
+    
+    
+
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [self application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:^(UIBackgroundFetchResult result) {
+    }];
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+
+    UIApplicationState state = application.applicationState;
+    
+    SLFNotification * notification   =[[SLFNotification alloc] initWithDictionary:userInfo];
+    
+    
+        
+    
+    if(state == UIApplicationStateBackground)
+    {
+       
+        
+        UIBackgroundTaskIdentifier bgTask;
+        
+        UIApplication  *app = [UIApplication sharedApplication];
+        
+        bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+            
+            NSLog(@"Timeout for background process");
+        }];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString * username = [userDefaults objectForKey:@"SLFUsername"];
+        
+        SLFHttpClient * httpClient = [SLFHttpClient createSLFHttpClient];
+        httpClient.delegate = self;
+        [httpClient getDetailByGUIDFromBackgroundTask:notification.GUID username:username  taskID:bgTask];
+        
+        
+        
+    }
+}
+
+    
+/*
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 
    
@@ -150,7 +293,7 @@
    
     if(state == UIApplicationStateBackground)
     {
-        /*
+ 
          dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         // just download it
              
@@ -158,7 +301,7 @@
              
          });
         
-           */
+ 
         UIBackgroundTaskIdentifier bgTask;
 
             UIApplication  *app = [UIApplication sharedApplication];
@@ -232,7 +375,7 @@
   
     completionHandler(UIBackgroundFetchResultNewData);
 }
-
+*/
 
 
 @end
