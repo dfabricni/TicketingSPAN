@@ -112,6 +112,7 @@
     globals.device = [[SLFDevice alloc] init];
     globals.device.deviceID = [NSString stringWithFormat:@"%@", hex];
     globals.device.deviceType = [NSString stringWithFormat:@"A"];
+    globals.device.username = globals.username;
     
 }
 

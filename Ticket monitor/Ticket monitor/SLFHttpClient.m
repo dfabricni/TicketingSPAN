@@ -69,7 +69,7 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     manager.requestSerializer =[AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:globals.oAuthAccessToken forHTTPHeaderField:@"Authorization"];
 
-    NSString * deviceRegisterLink = @"device";
+    NSString * deviceRegisterLink = @"deviceV2";
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
@@ -81,6 +81,9 @@ static NSString * const BaseURLString = @"https://slf-mobile-span.azurewebsites.
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         response=responseObject;
+        
+        globals.isMainSPANCompany = [[response objectForKey:@"IsMain"] boolValue];
+        globals.companyID = [[response objectForKey:@"CompanyID"] intValue];
         
         NSLog(@"JSON: %@", [responseObject description]);
         NSInteger statusCode = 0;

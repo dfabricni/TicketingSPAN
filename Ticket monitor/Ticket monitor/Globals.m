@@ -221,6 +221,8 @@
 */
 -(void) logIn
 {
+ 
+    [ADKeychainTokenCache setDefaultKeychainGroup:@"eu.span.serviceDesk.SLF"];
     
     ADAuthenticationError *error;
     ADAuthenticationContext *authContext = [ADAuthenticationContext authenticationContextWithAuthority:self.authority error:&error];
@@ -246,13 +248,19 @@
             
             globals.expiresOn = result.tokenCacheItem.expiresOn;
             
-           // globals.refreshToken = result.tokenCacheStoreItem.refreshToken;
+           // ADKeychainTokenCache * cache = [[ADKeychainTokenCache defaultKeychainCache] init];
+           //
+           // NSArray* item = [cache allItems:nil];
             
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:result.tokenCacheItem.refreshToken forKey:@"SLFRefreshToken"];
+            //globals.refreshToken = result.tokenCacheItem.refreshToken;
+            
+            //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+           // [userDefaults setObject:result.tokenCacheItem.refreshToken forKey:@"SLFRefreshToken"];
             
             // store this token also in some persistant storage
+             globals.username = result.tokenCacheItem.userInformation.userId ;
             
+            /*
             if (globals.device != nil) {
                 
                 globals.device.username = result.tokenCacheItem.userInformation.userId ;
@@ -260,7 +268,7 @@
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                 [userDefaults setObject:result.tokenCacheItem.userInformation.userId forKey:@"SLFUsername"];
 
-            }
+            }*/
             
            // SLFHttpClient * httpClient =  [SLFHttpClient createSLFHttpClient];
             
