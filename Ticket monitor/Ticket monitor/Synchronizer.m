@@ -71,7 +71,9 @@
    // if(globals.device != nil && (globals.device.username != nil || ![globals.device.username isEqualToString:@""] ))
     if(globals.device != nil )
     {
-        //globals.device.username = globals.username;
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+               
+        globals.device.username =[userDefaults objectForKey:@"SLFUsername"];
         
         [httpClient registerDevice:globals.device];
         

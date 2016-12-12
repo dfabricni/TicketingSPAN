@@ -258,7 +258,9 @@
            // [userDefaults setObject:result.tokenCacheItem.refreshToken forKey:@"SLFRefreshToken"];
             
             // store this token also in some persistant storage
-             globals.username = result.tokenCacheItem.userInformation.userId ;
+             //globals.username = result.tokenCacheItem.userInformation.userId ;
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:result.tokenCacheItem.userInformation.userId forKey:@"SLFUsername"];
             
             /*
             if (globals.device != nil) {
